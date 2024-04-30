@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import './App.css';
-import Home from './Screens/Home';
+// import Home from './Screens/Home';
+import Home from "./Pages/Home"
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { ACCOUNT_TYPE } from "./utils/constants";
 import NavBar from './components/common/NavBar';
@@ -37,7 +38,9 @@ import AppliedJobs from "./components/core/Dashboard/AppliedJobs/AppliedJobs"
 import AllJobs from "./components/core/Dashboard/AllJobsForAdmin/AllJobs"
 import AppliedCandidates from './components/core/Dashboard/AppliedCandidates/AppliedCandidates';
 import ViewCv from "./components/core/Dashboard/MyCv/ViewCv"
-
+import Sectors from "./components/core/Dashboard/Sectors"
+import AddSector from './components/core/Dashboard/Sectors/AddSector';
+import EditSector from "./components/core/Dashboard/Sectors/EditSector"
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -46,7 +49,7 @@ function App(){
 // console.log("serviceId inside app.js ",serviceId)
   return (
     // bg-orange-400
-         <div className='w-screen min-h-screen flex flex-col font-inter bg-richblack-700 '>
+         <div className='w-screen min-h-screen flex flex-col font-inter bg-white '>
           <NavBar/>
           <Routes>
 
@@ -89,6 +92,15 @@ function App(){
                   element={<EditService />}
                 />
               <Route path="all-jobs" element={<AllJobs />} />
+
+              {/* sector paths */}
+              <Route path="add-sector" element={<AddSector/>} />
+              <Route path="my-sectors" element={<Sectors />} />
+              <Route
+                  path="edit-sector/:sectorId"
+                  element={<EditSector />}
+                />
+
               
               {/* <Route
                   path="approve-job/:jobId"

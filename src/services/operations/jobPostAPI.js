@@ -14,6 +14,8 @@ const {
     GET_ALL_APPROVED_JOBS,
     UPDATE_JOB_STATUS_API,
     GET_APPLIED_CANDIDATES_API,
+    GET_TOP_JOB_POSTINGS_API, 
+    GET_SEARCHED_JOBS_API,
 } = jobEndpoints
 
 
@@ -285,3 +287,39 @@ export const getAppliedCandidates = async (jobId) => {
   toast.dismiss(toastId);
   return result;
 };
+
+export const getTopJobPostings = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_TOP_JOB_POSTINGS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch TOP Jobs")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_TOP_JOB_POSTINGS_API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const searchJobs = async (searchTerm) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("GET", GET_SEARCHED_JOBS_API, {keyword:searchTerm})
+    console.log("SEARCHED JOBS API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Get Searched Jobs")
+    }
+    toast.success("Searched Jobs Are Here")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("SEARCHED JOBS API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}

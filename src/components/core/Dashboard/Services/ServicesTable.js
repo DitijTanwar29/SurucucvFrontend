@@ -64,7 +64,7 @@ export default function CoursesTable({ services, setServices }) {
         <Tbody>
           {services?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium text-black bg-orange-300">
                 No services found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -73,7 +73,7 @@ export default function CoursesTable({ services, setServices }) {
             services?.map((service) => (
               <Tr
                 key={service._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
+                className="flex gap-x-10 border-b border-richblack-800 bg-black px-6 py-8"
               >
                 <Td className="flex flex-1 gap-x-4">
                   <img

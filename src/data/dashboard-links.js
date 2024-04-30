@@ -87,6 +87,14 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscBriefcase"
   },
+  {
+    id: 13,
+    name: "My Sectors",
+    path: "/dashboard/my-sectors",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscPieChart"
+  },
+  
   // {
   //   id:13,
   //   name: "Applied Candidates",

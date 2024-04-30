@@ -4,108 +4,40 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import IconBtn from '../../../../common/IconBtn';
 import { useForm } from "react-hook-form"
+import { useState, useEffect } from "react";
+import { getAllSectors } from '../../../../../services/operations/sectorAPI';
 
 
 const AddService = () => {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const [serviceName, setServiceName] = useState('');
-  // const [serviceIcon, setServiceIcon] = useState(null);
-  // const [description, setDescription] = useState('');
-  // const [status, setStatus] = useState('');
-  
-  // const [formData, setFormData] = useState({
-  //   serviceName:"", serviceIcon:"",serviceDescription:description,status:""
-  // })
-
-  // const { serviceName, serviceDescription, serviceIcon, status } = formData
-
-  // const handleServiceIconChange = (e) => {
-  //   // Handle file upload logic here
-  //   const file = e.target.files[0];
-  //   if (file && /\.(jpg|jpeg|gif|png)$/.test(file.name.toLowerCase())) {
-  //     setServiceIcon(file);
-  //   } else {
-  //     alert('Invalid file format. Only jpg, jpeg, gif, and png are allowed.');
-  //   }
-  // };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Handle form submission logic here
-  //   const formData = {serviceName,serviceIcon,description,status}
-  //   dispatch(addServiceDetails(formData));
-  //   console.log({
-  //     serviceName,
-  //     serviceIcon,
-  //     description,
-  //     status,
-
-  //   });
-
-  // };
-
-  // return (
-    // <div className="container mt-4">
-    //   <form onSubmit={handleSubmit}>
-    //     <div className="mb-3">
-        
-    //       <label className="form-label">Service Name</label>
-    //       <input
-    //         type="text"
-    //         className="form-control"
-    //         value={serviceName}
-    //         onChange={(e) => setServiceName(e.target.value)}
-    //         placeholder="Enter Service Name"
-    //       />
-    //     </div>
-
-    //     <div className="mb-3">
-    //       <label className="form-label">Service Icon</label>
-    //       <input
-    //         type="file"
-    //         className="form-control"
-    //         accept=".jpg, .jpeg, .gif, .png"
-    //         onChange={handleServiceIconChange}
-    //       />
-    //       {serviceIcon && <p className="mt-2">File selected: {serviceIcon.name}</p>}
-    //       <p className="text-muted">(Only jpg, jpeg, gif, and png are allowed)</p>
-    //     </div>
-
-    //     <div className="mb-3">
-    //       <label className="form-label">Description</label>
-    //       <textarea
-    //         className="form-control"
-    //         value={description}
-    //         onChange={(e) => setDescription(e.target.value)}
-    //         placeholder="Enter Description"
-    //       />
-    //     </div>
-
-    //     <div className="mb-3">
-    //       <label className="form-label">Status</label>
-    //       <select
-    //         className="form-select"
-    //         value={status}
-    //         onChange={(e) => setStatus(e.target.value)}
-    //       >
-    //         <option value="">----Status----</option>
-    //         <option value="active">Active</option>
-    //         <option value="inactive">Inactive</option>
-    //       </select>
-    //     </div>
-
-    //     <button type="submit" className="btn btn-primary">Submit</button>
-    //   </form>
-    // </div>
-
   const { user } = useSelector((state) => state.profile)
+  const [loading, setLoading] = useState(false)
+
+  
+
+
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;
   console.log("token : ",token)
   //token ki dikkat h kl check krungaa
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [sectors, setSectors] = useState([]);
   
+  useEffect(() => {
+    const getSectors = async () => {
+      setLoading(true);
+      const sectors = await getAllSectors();
+      if (sectors.length > 0) {
+        console.log("sectors", sectors)
+        setSectors(sectors);
+      }
+      setLoading(false);
+    };
+    getSectors();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -126,7 +58,7 @@ const AddService = () => {
     
       <form onSubmit={handleSubmit(submitServiceForm)}>
         {/* Service Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-orange-400 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Create Service
           </h2>
@@ -242,7 +174,37 @@ const AddService = () => {
           </div>
 
           
-
+          <div className="flex flex-col gap-2 lg:flex-row">
+            <div className="flex flex-col space-y-2 lg:w-[48%] ">
+              <label
+                className="lable-style"
+                htmlFor="sector"
+              >
+                Sector <sup className="text-pink-200">*</sup>
+              </label>
+              <select
+                {...register("sector", { required: true })}
+                defaultValue=""
+                id="sector"
+                className="form-style w-full"
+              >
+                <option value="" disabled>
+                  Choose a Sector
+                </option>
+                {!loading &&
+                  sectors?.map((sector, indx) => (
+                    <option key={indx} value={sector?._id}>
+                      {sector?.sectorName}
+                    </option>
+                  ))}
+              </select>
+              {errors.sector && (
+                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                  Sector is required
+                </span>
+              )}
+            </div>
+          </div>
 
           
 

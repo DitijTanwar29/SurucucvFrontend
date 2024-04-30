@@ -706,10 +706,10 @@ th {
   margin: 1rem;
 }
 .lable-style {
-  @apply text-[14px] text-richblack-5;
+  @apply text-[14px] text-black;
 }
 .form-style {
-  @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
+  @apply rounded-lg border-black bg-orange-300 p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/50 placeholder:text-pure-greys-300 focus:outline-none;
 }
 
  

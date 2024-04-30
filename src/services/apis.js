@@ -56,6 +56,14 @@ export const serviceEndpoints = {
     UPDATE_SERVICE_STATUS_API: BASE_URL + "/service/updateServiceStatus",
     ACTIVE_SERVICES_API: BASE_URL + "/service/getActiveServices",
 }
+//SECTOR ENDPOINTS
+export const sectorEndpoints = {
+    CREATE_SECTOR_API : BASE_URL + "/sector/createSector",
+    GET_ALL_SECTORS_API : BASE_URL + "/sector/showAllSectors",
+    UPDATE_SECTOR_STATUS_API : BASE_URL + "/sector/updateSectorStatus",
+    EDIT_SECTOR_API : BASE_URL + "/sector/editSector",
+    DELETE_SECTOR_API : BASE_URL + "/sector/deleteSector",
+}
 
 //JOBS ENDPOINTS
 export const jobEndpoints = {
@@ -68,7 +76,10 @@ export const jobEndpoints = {
     GET_APPLIED_JOBS : BASE_URL + "/job/showAppliedJobs",
     GET_ALL_APPROVED_JOBS : BASE_URL + "/job/getAllApprovedJobPosts",
     UPDATE_JOB_STATUS_API : BASE_URL + "/job/approveAJobPost",
-    GET_APPLIED_CANDIDATES_API : BASE_URL + "/job/showAppliedCandidates"
+    GET_APPLIED_CANDIDATES_API : BASE_URL + "/job/showAppliedCandidates",
+    GET_TOP_JOB_POSTINGS_API : BASE_URL + "/job/getTopJobPostings", 
+    GET_SEARCHED_JOBS_API : BASE_URL + "/job/searchJobs",
+
 }
 
 export const resumeEndpoints = {

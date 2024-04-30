@@ -38,7 +38,7 @@ const AddSector = () => {
       <form onSubmit={handleSubmit(submitSectorForm)}>
         {/* Service Information */}
         <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-orange-300 hover:bg-orange-400  p-8 px-12">
-          <h2 className="text-lg  text-black font-medium ">
+          <h2 className="text-lg text-black font-medium ">
             Create Sector
           </h2>
           <div className="flex flex-col gap-5 lg:flex-row">

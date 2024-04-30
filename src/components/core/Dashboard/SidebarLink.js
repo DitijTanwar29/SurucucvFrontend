@@ -16,9 +16,9 @@ export default function SidebarLink({ link, iconName }) {
       to={link.path}
       className={`relative px-8 py-2 text-sm font-medium ${
         matchRoute(link.path)
-          ? "bg-yellow-800 text-yellow-50"
-          : "bg-opacity-0 text-richblack-300"
-      } transition-all duration-200`}
+          ? "bg-white text-black border-2 border-black"
+          : "bg-opacity-0 text-white"
+      } transition-all duration-75`}
     >
       <span
         className={`absolute left-0 top-0 h-full w-[0.15rem] bg-yellow-50 ${
