@@ -23,13 +23,13 @@ export default function NavBar()  {
 
   return (
     <div 
-    className={`flex h-24 items-center justify-between lg:border-b-[1px] bg-orange-600 border-b-black ${
+    className={`flex h-24 items-center sticky top-0 z-50 justify-between lg:border-b-[1px] bg-orange-600 border-b-black ${
       location.pathname !== "/" ? " text-orange-600" : ""
-    } transition-all duration-200`}
+    } transition-all duration-200 `}
     
     >
 
-      <div className='flex justify-between items-center w-11/12 max-w-maxContent py-4 m-auto '>
+      <div className='flex justify-between items-center w-11/12 max-w-maxContent py-4 m-auto'>
         {/* logo */}
             <Link to="/">
             <img src={logo} alt="logo" width={160} height={42} loading='lazy'/>

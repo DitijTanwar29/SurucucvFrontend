@@ -68,7 +68,7 @@ export default function AllJobsTable({ jobs, setJobs }) {
         <Tbody>
           {jobs?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium text-white bg-orange-400">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -77,7 +77,7 @@ export default function AllJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex gap-x-10 justify-evenly border-b border-richblack-800 py-8"
+                className="flex gap-x-10 justify-evenly border-b border-richblack-800 py-8 bg-black"
               >
                 <Td className="flex flex-col gap-y-4">
                   {/* <img

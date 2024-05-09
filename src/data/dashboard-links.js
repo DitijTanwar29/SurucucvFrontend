@@ -94,6 +94,13 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscPieChart"
   },
+  {
+    id: 14,
+    name: "Add Sectors",
+    path: "/dashboard/add-sector",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscAdd"
+  },
   
   // {
   //   id:13,

@@ -74,11 +74,14 @@ export default function JobsTable({ jobs, setJobs }) {
             </Tr>
           ) : (
             jobs?.map((job) => (
-          <Link to={`/dashboard/applied-candidates/${job._id}`} key={job._id}>
               <div className="relative">
+          {/* <Link to={`/dashboard/applied-candidates/${job._id}`} key={job._id}> */}
 
-              <p className="text-richblack-500 translate-y-24 translate-x-96 absolute">Click To View Number Of Applicants</p>
-
+              <button className="text-richblack-500 translate-y-24 cursor-pointer translate-x-96 absolute"
+              onClick={() => {
+                      navigate(`/dashboard/applied-candidates/${job._id}`)
+                    }}>Click To View Number Of Applicants</button>
+              
 
               <Tr
                 key={job._id}
@@ -130,7 +133,7 @@ export default function JobsTable({ jobs, setJobs }) {
                         : job.jobDescription}
                     </p>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="text-sm font-medium text-richblack-100 z-30 ">
                   <button
                     disabled={loading}
                     onClick={() => {
@@ -139,7 +142,7 @@ export default function JobsTable({ jobs, setJobs }) {
                     title="Edit"
                     className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
                   >
-                    <FiEdit2 size={20} />
+                    <FiEdit2 size={20} className="z-30" />
                   </button>
                   <button
                     disabled={loading}
@@ -159,16 +162,16 @@ export default function JobsTable({ jobs, setJobs }) {
                       })
                     }}
                     title="Delete"
-                    className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
+                    className="px-1 transition-all duration-200 hover:scale-110  hover:text-[#ff0000]"
                   >
-                    <RiDeleteBin6Line size={20} />
+                    <RiDeleteBin6Line size={20} className="z-30" />
                   </button>
                 </Td>
               </Tr>
 
 
+            {/* </Link> */}
               </div>
-            </Link>
             ))
           )}
         </Tbody>

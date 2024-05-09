@@ -68,7 +68,7 @@ function App(){
             <Route exact path='/create-cv' element= {<CreateCv user={user} token={token} />} />
 
             <Route exact path='/privacy' element= {<OpenRoute><PrivacyPolicy/></OpenRoute>} />
-            <Route exact path='/terms' element= {<OpenRoute><Terms/></OpenRoute>} />
+            {/* <Route exact path='/terms' element= {<OpenRoute><Terms/></OpenRoute>} /> */}
             <Route exact path='/faq' element= {<OpenRoute><FAQ/></OpenRoute>} />
             <Route exact path='/vision' element= {<OpenRoute><Vision/></OpenRoute>} />
             <Route exact path='/our-publication' element={<OpenRoute><OurPublication/></OpenRoute>}/>

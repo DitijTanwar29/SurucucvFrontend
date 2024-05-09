@@ -79,7 +79,9 @@ export const jobEndpoints = {
     GET_APPLIED_CANDIDATES_API : BASE_URL + "/job/showAppliedCandidates",
     GET_TOP_JOB_POSTINGS_API : BASE_URL + "/job/getTopJobPostings", 
     GET_SEARCHED_JOBS_API : BASE_URL + "/job/searchJobs",
-
+    GET_RECENTLY_PUBLISHED_JOBS_API : BASE_URL + "/job/recentlyPublishedJobs",
+    GET_FULL_TIME_JOBS_API : BASE_URL + "/job/fullTimeJobs",
+    GET_PART_TIME_JOBS_API : BASE_URL + "/job/partTimeJobs",
 }
 
 export const resumeEndpoints = {

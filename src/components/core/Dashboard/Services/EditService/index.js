@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { setEditService, setService } from '../../../../../slices/serviceSlice';
 import { toast } from "react-hot-toast"
 import { useParams } from "react-router-dom"
+import { getAllSectors } from '../../../../../services/operations/sectorAPI';
 
 
 
@@ -29,89 +30,40 @@ const EditService = () => {
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;
   // console.log("token : ",token)
+  const [sectors, setSectors] = useState([]);
 
-//   useEffect(() => {
-//     ;(async () => {
-//       setLoading(true)
-//       const result = await fetchServiceDetails(serviceId, token)
-//       // console.log("result : ",result)
-//       console.log("result.[0] : ",result?.[0])
-//       // console.log("result.[0].serviceName : ",result?.[0].serviceName)
+  useEffect(() => {
+    const getSectors = async () => {
+      setLoading(true);
+      const sectors = await getAllSectors();
+      if (sectors.length > 0) {
+        // console.log("categories", categories)
+        setSectors(sectors);
+      }
+      setLoading(false);
+    };
+    // if form is in edit mode
+    // if (editCourse) {
+    //   // console.log("data populated", editCourse)
+    //   setValue("courseTitle", course.courseName)
+    //   setValue("courseShortDesc", course.courseDescription)
+    //   setValue("coursePrice", course.price)
+    //   setValue("courseTags", course.tag)
+    //   setValue("courseBenefits", course.whatYouWillLearn)
+    //   setValue("courseCategory", course.category)
+    //   setValue("courseRequirements", course.instructions)
+    //   setValue("courseImage", course.thumbnail)
+    // }
+    getSectors();
 
+      
 
-//       if(result?.serviceDetails){
-//         dispatch(setEditService(true))
-//         dispatch(setService(result?.[0]))
-//       }
-//       setLoading(false)
-//     })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-
-//   //if form is in edit mode
-//   if (editService) {
-//     // console.log("data populated", editCourse)
-//     setValue("serviceName", service.serviceName)
-//     setValue("serviceDescrservice", service.serviceDescrservice)
-//     setValue("status", service.status)
-//     setValue("serviceIcon", service.serviceIcon)
-//   }
-
-// },[])
-
-  // const isFormUpdated = () => {
-  //   const currentValues = getValues()
-  //   // console.log("changes after editing form values:", currentValues)
-  //   if (
-  //     currentValues.serviceName !== service.serviceName ||
-  //     currentValues.serviceDescrservice !== service.serviceDescrservice ||
-  //     currentValues.status !== service.status ||
-  //     currentValues.serviceIcon !== service.serviceIcon
-  //   ) {
-  //     return true
-  //   }
-  //   return false
-  // }
-  
   const onSubmit = async (data) => {
     console.log("Form Data after form submission - ", data)
-    // navigate("/dashboard/my-services")
-    // if (editService) {
-    //   // const currentValues = getValues()
-    //   // console.log("changes after editing form values:", currentValues)
-    //   // console.log("now course:", course)
-    //   // console.log("Has Form Changed:", isFormUpdated())
-    //   if (isFormUpdated()) {
-    //     const currentValues = getValues()
-    //     const formData = new FormData()
-    //     console.log("updated value :",data)
-    //     formData.append("serviceId", service._id)
-    //     if (currentValues.serviceName !== service.serviceName) {
-    //       formData.append("serviceName", data.serviceName)
-    //     }
-    //     if (currentValues.serviceDescription !== service.serviceDescription) {
-    //       formData.append("serviceDescription", data.serviceDescription)
-    //     }
-    //     if (currentValues.status !== service.status) {
-    //       formData.append("status", data.status)
-    //     }
-    //     if (currentValues.serviceIcon !== service.serviceIcon) {
-    //       formData.append("serviceIcon", data.serviceIcon[0])
-    //     }
-    //     console.log("Edit Form data: ", formData)
-    //     setLoading(true)
-    //     const result = await editServiceDetails(formData, token)
-    //     console.log("form data after editing : ",result)
-    //     setLoading(false)
-    //     if (result) {
-    //       dispatch(setService(result))
-          
-    //     }
-    //   } else {
-    //     toast.error("No changes made to the form")
-    //   }
-    //   return
-    // }
-
+    
 
 
 
@@ -141,7 +93,7 @@ const EditService = () => {
                 id="serviceName"
                 placeholder="Enter service name"
                 className="form-style"
-                {...register("serviceName", { required: true })}
+                {...register("serviceName")}
                 defaultValue={service?.serviceName}
               />
               {errors.serviceName && (
@@ -161,7 +113,7 @@ const EditService = () => {
                 id="serviceDescription"
                 placeholder="Enter service description"
                 className="form-style"
-                {...register("serviceDescription", { required: true })}
+                {...register("serviceDescription")}
                 defaultValue={service?.serviceDescription}
               />
               {errors.serviceDescription && (
@@ -171,25 +123,7 @@ const EditService = () => {
               )}
             </div>
             
-            {/* <div className="flex flex-col gap-2 lg:w-[33%]">
-              <label htmlFor="lastName" className="lable-style">
-                Last Name
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                placeholder="Enter first name"
-                className="form-style"
-                {...register("lastName", { required: true })}
-                defaultValue={user?.adminDetails?.lastName}
-              />
-              {errors.lastName && (
-                <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your last name.
-                </span>
-              )}
-            </div> */}
+            
           </div>
 
           <div className="flex flex-col gap-5 lg:flex-row">
@@ -204,7 +138,7 @@ const EditService = () => {
                 id="serviceIcon"
                 placeholder="Choose service Icon "
                 className="form-style"
-                {...register("serviceIcon", { required: true })}
+                {...register("serviceIcon")}
                 // defaultValue={user?.adminDetails?.post}
               />
               {errors.serviceIcon && (
@@ -224,7 +158,7 @@ const EditService = () => {
                 id="status"
                 placeholder="Enter Bio Details"
                 className="form-style"
-                {...register("status", { required: true })}
+                {...register("status")}
                 defaultValue={service?.status}
                 
               >
@@ -242,9 +176,37 @@ const EditService = () => {
 
           
 
-
-          
-
+          <div className="flex flex-col gap-5 lg:flex-row">
+            <div className="flex flex-col space-y-2 lg:w-[48%] ">
+              <label
+                className="lable-style"
+                htmlFor="sector"
+              >
+                Sector <sup className="text-pink-200">*</sup>
+              </label>
+              <select
+                {...register("sector")}
+                id="sector"
+                className="form-style w-full"
+                defaultValue={service?.sector}
+              >
+                <option value="" disabled>
+                  Choose a Sector
+                </option>
+                {!loading &&
+                  sectors?.map((sector, indx) => (
+                    <option key={indx} value={sector?._id}>
+                      {sector?.sectorName}
+                    </option>
+                  ))}
+              </select>
+              {errors.sector && (
+                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                  Sector is required
+                </span>
+              )}
+            </div>
+          </div>
           
 
           

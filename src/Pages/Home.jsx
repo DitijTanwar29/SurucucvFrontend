@@ -4,6 +4,9 @@ import ServiceSlider from '../components/common/ServicesSlider'
 import Banner from "../Assests/Images/Banner.mp4"
 import { TopJobPostings } from '../components/core/HomePage/TopJobPostings'
 import JobSearchBar from '../components/core/HomePage/JobSearchBar'
+import RecentlyPublishedJobs from "../components/core/HomePage/RecentlyPublishedJobs"
+import FullTimeJobs from "../components/core/HomePage/FullTimeJobs"
+import PartTimeJobs from '../components/core/HomePage/PartTimeJobs'
 const Home = () => {
   return (
     <div>
@@ -70,6 +73,15 @@ const Home = () => {
     	</div>
 
 
+		{/* Section 4 */}
+		<div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col lg:flex items-center justify-center  mt-40 ">
+
+			<RecentlyPublishedJobs/>
+
+			<FullTimeJobs/>
+			
+			<PartTimeJobs/>
+		</div>
 		</div>
   )
 }

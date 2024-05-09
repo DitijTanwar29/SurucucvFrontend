@@ -16,6 +16,9 @@ const {
     GET_APPLIED_CANDIDATES_API,
     GET_TOP_JOB_POSTINGS_API, 
     GET_SEARCHED_JOBS_API,
+    GET_RECENTLY_PUBLISHED_JOBS_API,
+    GET_FULL_TIME_JOBS_API,
+    GET_PART_TIME_JOBS_API,
 } = jobEndpoints
 
 
@@ -306,18 +309,75 @@ export const getTopJobPostings = async () => {
 }
 
 export const searchJobs = async (searchTerm) => {
+  console.log("search term inside api endpoint of searchjobs :",searchTerm)
   let result = null
   const toastId = toast.loading("Loading...")
   try {
-    const response = await apiConnector("GET", GET_SEARCHED_JOBS_API, {keyword:searchTerm})
+    const response = await apiConnector("GET", GET_SEARCHED_JOBS_API, null, null, {keyword:searchTerm})
     console.log("SEARCHED JOBS API RESPONSE............", response)
     if (!response?.data?.success) {
-      throw new Error("Could Not Get Searched Jobs")
+      toast.error("Could Not Get Searched Jobs")
     }
+
+    if(response?.data?.data.length == 0){
+      toast.error("Jobs not available for this search")
+    }
+
     toast.success("Searched Jobs Are Here")
     result = response?.data?.data
   } catch (error) {
     console.log("SEARCHED JOBS API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getRecentlyPublishedJobs = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_RECENTLY_PUBLISHED_JOBS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch Recently Published Jobs")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_RECENTLY_PUBLISHED_JOBS_API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getFullTimeJobs = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_FULL_TIME_JOBS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch Full Time Jobs")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_FULL_TIME_JOBS_API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getPartTimeJobs = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_PART_TIME_JOBS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch Part Time Jobs")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_PART_TIME_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
   toast.dismiss(toastId)

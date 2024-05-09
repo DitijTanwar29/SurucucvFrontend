@@ -30,9 +30,7 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+
 
 @keyframes App-logo-spin {
   from {
@@ -712,7 +710,32 @@ th {
   @apply rounded-lg border-black bg-orange-300 p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/50 placeholder:text-pure-greys-300 focus:outline-none;
 }
 
- 
+.recently-published-jobs-container {
+  margin-top: 20px;
+}
+
+.jobs-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.job-card {
+  width: calc(50% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid orange;
+}
+
+.job-card h3, .job-card p {
+  color: black;
+}
+@media (max-width: 768px) {
+  .job-card {
+    width: calc(100% - 20px);
+  }
+}
+
+
 
  
  

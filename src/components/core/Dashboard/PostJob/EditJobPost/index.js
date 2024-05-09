@@ -215,7 +215,7 @@ const onSubmit = async (data) => {
               Service <sup className="text-pink-200">*</sup>
             </label>
             <select
-              {...register("service",{required:true})}
+              {...register("service")}
               id="service"
               className="form-style w-full"
               defaultValue={job?.service}
@@ -628,7 +628,7 @@ const onSubmit = async (data) => {
                 id="psikoteknik"
                 className="form-style"
               placeholder="Required Validity of Psychotecnical "
-                {...register("psikoteknik", { required: true })}
+                {...register("psikoteknik")}
                 defaultValue={job?.psikoteknik}
               />
               {errors.psikoteknik && (
@@ -648,7 +648,7 @@ const onSubmit = async (data) => {
                 id="adrDriverLicence"
                 className="form-style"
               placeholder="Required Validity of ADR Licence "
-                {...register("adrDriverLicence", { required: true })}
+                {...register("adrDriverLicence")}
                 defaultValue={job?.adrDriverLicence}
               />
               {errors.adrDriverLicence && (
