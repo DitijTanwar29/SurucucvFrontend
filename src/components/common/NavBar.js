@@ -23,8 +23,8 @@ export default function NavBar()  {
 
   return (
     <div 
-    className={`flex h-24 items-center sticky top-0 z-50 justify-between lg:border-b-[1px] bg-orange-600 border-b-black ${
-      location.pathname !== "/" ? " text-orange-600" : ""
+    className={`flex h-24 items-center sticky top-0 z-50 justify-between lg:border-b-[1px] bg-orange-400 border-b-black ${
+      location.pathname !== "/" ? " text-orange-400" : ""
     } transition-all duration-200 `}
     
     >
@@ -35,7 +35,7 @@ export default function NavBar()  {
             <img src={logo} alt="logo" width={160} height={42} loading='lazy'/>
             </Link>
             {/* Nav Links */}
-            <nav className="hidden md:block">
+            <nav className="">
                 <ul className='flex gap-x-6 text-richblack-25 my-auto '>
                   {
                     NavbarLinks.map( (link, index) => (

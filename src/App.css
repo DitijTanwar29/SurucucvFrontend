@@ -711,7 +711,7 @@ th {
 }
 
 .recently-published-jobs-container {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .jobs-grid {
@@ -723,7 +723,8 @@ th {
   width: calc(50% - 20px);
   margin: 10px;
   padding: 15px;
-  border: 1px solid orange;
+  border: 1px solid rgb(192, 131, 18);
+  border-radius: 2rem;
 }
 
 .job-card h3, .job-card p {
@@ -734,6 +735,8 @@ th {
     width: calc(100% - 20px);
   }
 }
+
+
 
 
 

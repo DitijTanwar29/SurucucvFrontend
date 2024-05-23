@@ -25,6 +25,7 @@ const FindJobs = () => {
                 <h2 className="text-lg font-bold mb-2">{job.jobTitle}</h2>
                 <p className="text-sm text-gray-600 mb-2">{job.companyName}</p>
                 <p className="text-sm text-gray-600 mb-2">Salary Range: {job.rangeOfSalary}</p>
+                <p className="text-sm text-gray-600 mb-2">{job.jobLocation}</p>
                 {/* Add other important fields here */}
               </div>
             </div>

@@ -83,11 +83,11 @@ const SignupForm = () => {
     ]
 
   return (
-    <div className="mt-4 flex w-[50%] mx-auto flex-col gap-y-2">
+    <div className="mt-4 flex justify-center items-center w-[50%] mx-auto flex-col gap-y-2">
     {/* candidate-company tab */}
     <Tab tabData={tabData} field={accountType} setField={setAccountType} />
     {/* form */}
-    <form onSubmit={submitHandler}  className="flex w-full flex-col gap-y-2">
+    <form onSubmit={submitHandler}  className="flex w-full flex-col justify-center items-center gap-y-2">
     {/*  name  */}
             <label>
                 <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>Name<sup className='text-pink-200'>*</sup></p>
@@ -98,8 +98,8 @@ const SignupForm = () => {
                     onChange={changeHandler}
                     placeholder='Enter Name'
                     value={name}
-                    className='placeholder-white bg-richblack-800 rounded-[0.5rem]
-                     text-black text-sm font-inter h-12 w-[50%] px-4 py-4 shadow-sm shadow-richblack-200'
+                    className='placeholder-white bg-orange-300 rounded-[0.5rem]
+                     text-black text-sm font-inter h-12 w-[full] px-4 py-4 shadow-sm shadow-richblack-200'
                     style={{
                         boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                       }}
@@ -117,15 +117,18 @@ const SignupForm = () => {
                     onChange={changeHandler}
                     placeholder='Enter Last Name'
                     value={lastName}
-                    className='bg-richblack-800 placeholder-white rounded-md text-richblack-200 text-sm font-inter h-12 w-30 px-4 py-4 shadow-sm shadow-richblack-200'
+                    className='bg-orange-300 placeholder-black rounded-md text-richblack-200 text-sm font-inter h-12 w-30 px-4 py-4 shadow-sm shadow-richblack-200'
                     style={{
                         boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                       }}
                 />
             </label>
     </div> */}
+ 
 
-    <div className='flex flex-row  gap-5'>
+    
+
+    <div className=' w-full sm:flex sm:flex-wrap lg:flex-row  gap-5'>
 
         {/* Email Address */}
         <label>
@@ -137,7 +140,8 @@ const SignupForm = () => {
                 onChange={changeHandler}
                 placeholder='Enter Email Address'
                 value={email}
-                className=' placeholder-white bg-richblack-800 rounded-md text-black text-sm font-inter h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
+                className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter
+                 h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
                 style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
@@ -155,7 +159,8 @@ const SignupForm = () => {
                                 name="contactNumber"
                                 placeholder='Enter Contact Number'
                                 value={contactNumber}
-                                className=' placeholder-white bg-richblack-800 rounded-md text-richblack-200 text-sm font-inter h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
+                                className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter
+                                 h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
                                 type='number'
                                 onChange={changeHandler}
                             />
@@ -168,7 +173,7 @@ const SignupForm = () => {
                                     name="contactNumber"
                                     placeholder='+91 '
                                     // value={countryCode.code}
-                                    className='placeholder-white bg-richblack-800 rounded-md text-richblack-200 text-sm font-inter h-12 w-[30%] px-4 py-4 shadow-sm shadow-richblack-200'
+                                    className='placeholder-black bg-orange-300 rounded-md text-richblack-200 text-sm font-inter h-12 w-[30%] px-4 py-4 shadow-sm shadow-richblack-200'
 
                                 />
                                 <MdKeyboardArrowDown className='text-richblack-200 cursor-pointer' />
@@ -180,7 +185,7 @@ const SignupForm = () => {
     </div>
 
     {/* Date and city */}
-    <div className='flex flex-row  gap-5'>
+    <div className=' w-full sm:flex sm:flex-wrap lg:flex-row  gap-5'>
             <label>
                 <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>City<sup className='text-pink-200'>*</sup></p>
                 <input
@@ -190,8 +195,8 @@ const SignupForm = () => {
                     onChange={changeHandler}
                     placeholder='Enter City'
                     value={city}
-                    className='placeholder-white bg-richblack-800 rounded-[0.5rem]
-                     text-black text-sm font-inter h-12 w-30 px-4 py-4 shadow-sm shadow-richblack-200'
+                    className='placeholder-white bg-orange-300 rounded-[0.5rem]
+                     text-black text-sm font-inter h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
                     style={{
                         boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                       }}
@@ -208,7 +213,8 @@ const SignupForm = () => {
                     onChange={changeHandler}
                     placeholder='Enter Date'
                     value={date}
-                    className='bg-richblack-800 placeholder-white rounded-md text-richblack-200 text-sm font-inter h-12 w-30 px-4 py-4 shadow-sm shadow-richblack-200'
+                    className='bg-orange-300 text-black placeholder-white rounded-md  text-sm font-inter 
+                    h-12 w-54 px-4 py-4 shadow-sm shadow-richblack-200'
                     style={{
                         boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                       }}
@@ -217,7 +223,7 @@ const SignupForm = () => {
     </div>
         
          {/* create password and confirm password */}
-         <div className='flex flex-row gap-5 mb-5'>
+         <div className='w-full sm:flex sm:flex-wrap lg:flex-row  gap-5 mb-5'>
             <label >
                 <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>Create Password<sup className='text-pink-200'>*</sup></p>
                 <div className='flex flex-row justify-between relative'>
@@ -229,14 +235,15 @@ const SignupForm = () => {
                         onChange={changeHandler}
                         placeholder='Enter Password'
                         value={password}
-                        className='placeholder-white absolute bg-richblack-800 rounded-md text-black text-sm font-inter h-12 w-52  px-4 py-4 shadow-sm shadow-richblack-200'
+                        className='placeholder-white absolute bg-orange-300 rounded-md text-black text-sm font-inter
+                         h-12 w-52  px-4 py-4 shadow-sm shadow-richblack-200'
                         style={{
                             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                           }}
                     />
 
                     <span onClick={() => setShowPassword((prev) => !prev)}>
-                        {showPassword? (<AiOutlineEyeInvisible  className=' absolute translate-x-44 translate-y-4 my-auto' fontSize={24} fill="#AFB2BF"/>) : (<AiOutlineEye className='translate-x-44 translate-y-4  absolute my-auto' fontSize={24} fill="#AFB2BF"/>)}
+                        {showPassword? (<AiOutlineEyeInvisible  className=' absolute translate-x-44 translate-y-4 my-auto' fontSize={24} fill="white"/>) : (<AiOutlineEye className='translate-x-44 translate-y-4  absolute my-auto' fontSize={24} fill="white"/>)}
                     </span>
                 </div>
             </label>
@@ -254,13 +261,13 @@ const SignupForm = () => {
                         onChange={changeHandler}
                         placeholder='Confirm Password'
                         value={confirmPassword}
-                        className=' placeholder-white bg-richblack-800 rounded-md text-black text-sm font-inter h-12 w-52 px-4 py-4 shadow-sm ml-20 mt-12 shadow-richblack-200 absolute'
+                        className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-52 px-4 py-4 shadow-sm ml-20 mt-12 shadow-richblack-200 absolute'
                         style={{
                             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                           }}
                     />
                     <span onClick={() => setShowConfirmPassword((prev) => !prev)}>
-                        {showConfirmPassword? (<AiOutlineEyeInvisible className=' absolute translate-x-64 translate-y-4' fontSize={24} fill="#AFB2BF"/>) : (<AiOutlineEye className='translate-x-64 translate-y-4 absolute' fontSize={24} fill="#AFB2BF"/>)}
+                        {showConfirmPassword? (<AiOutlineEyeInvisible className=' absolute translate-x-64 translate-y-4' fontSize={24} fill="white"/>) : (<AiOutlineEye className='translate-x-64 translate-y-4 absolute' fontSize={24} fill="white"/>)}
                     </span>
                 </div>
 
@@ -269,8 +276,8 @@ const SignupForm = () => {
 
         <button 
         type="submit"
-        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px]
-         px-[12px] font-medium text-richblack-900 w-[50%] mx-auto "
+        className="mt-6 rounded-[8px] bg-orange-500 py-[8px]
+         px-[12px] font-medium text-black w-[50%] mx-auto "
          >
             <p>Create Account</p>
         </button>

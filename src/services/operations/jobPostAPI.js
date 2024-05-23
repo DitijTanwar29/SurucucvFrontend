@@ -19,6 +19,7 @@ const {
     GET_RECENTLY_PUBLISHED_JOBS_API,
     GET_FULL_TIME_JOBS_API,
     GET_PART_TIME_JOBS_API,
+    GET_TOP_JOB_LOCATIONS_API
 } = jobEndpoints
 
 
@@ -302,6 +303,23 @@ export const getTopJobPostings = async () => {
     result = response?.data?.data
   } catch (error) {
     console.log("GET_TOP_JOB_POSTINGS_API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getTopJobLocations = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_TOP_JOB_LOCATIONS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch TOP Job Locations")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_TOP_JOB_LOCATIONSS_API ERROR............", error)
     toast.error(error.message)
   }
   toast.dismiss(toastId)

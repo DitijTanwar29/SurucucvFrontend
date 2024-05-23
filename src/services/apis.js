@@ -1,13 +1,13 @@
-const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
-// const BASE_URL = process.env.REACT_APP_BASE_URL
+// const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 //AUTH ENDPOINTS
 export const endpoints = {
     // SENDOTP_API: BASE_URL + "/auth/sendotp",
-    // SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
-    // LOGIN_API: "http://localhost:1200/api/v1/auth/login",
-    SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
-    LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
+    SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
+    LOGIN_API: "http://localhost:1200/api/v1/auth/login",
+    // SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
+    // LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
     // RESETPASSTOKEN_API: BASE_URL + "/auth/reset-password-token",
     // RESETPASSWORD_API: BASE_URL + "/auth/reset-password"
 }
@@ -78,6 +78,7 @@ export const jobEndpoints = {
     UPDATE_JOB_STATUS_API : BASE_URL + "/job/approveAJobPost",
     GET_APPLIED_CANDIDATES_API : BASE_URL + "/job/showAppliedCandidates",
     GET_TOP_JOB_POSTINGS_API : BASE_URL + "/job/getTopJobPostings", 
+    GET_TOP_JOB_LOCATIONS_API : BASE_URL + "/job/topJobLocations",
     GET_SEARCHED_JOBS_API : BASE_URL + "/job/searchJobs",
     GET_RECENTLY_PUBLISHED_JOBS_API : BASE_URL + "/job/recentlyPublishedJobs",
     GET_FULL_TIME_JOBS_API : BASE_URL + "/job/fullTimeJobs",

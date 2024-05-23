@@ -7,6 +7,11 @@ module.exports = {
       "edu-sa": ["Edu SA Beginner", "cursive"],
       mono: ["Roboto Mono", "monospace"],
     },
+    screens: {
+      'sm': '320px',
+      'md': '768px',
+      'lg': '1024px',
+    },
     colors: {
       white: "#fff",
       black: "#000",
@@ -153,7 +158,32 @@ module.exports = {
         maxContent: "1260px",
         maxContentTab: "650px"
       },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        }
+      },
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+      },
+      animation: {
+        bounce: 'bounce 1s infinite',
+      },
+      keyframes: {
+        bounce :{
+        '0%, 100%' : {
+          transform: 'translateY(-10%)',
+          'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
+        },
+        '50%': {
+          'transform': 'translateY(0)',
+          'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+        }
+      }
+}
     },
+    
   },
   plugins: [],
 }
