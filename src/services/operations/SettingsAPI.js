@@ -10,9 +10,9 @@ import { settingsEndpoints } from "../apis"
 const {
     UPDATE_ADMIN_DISPLAY_PICTURE_API,
     UPDATE_ADMIN_PROFILE_API,
-    // UPDATE_CANDIDATE_PROFILE_API,
+    UPDATE_CANDIDATE_PROFILE_API,
     UPDATE_COMPANY_PROFILE_API,
-    // DELETE_PROFILE_API
+    DELETE_PROFILE_API
 } = settingsEndpoints
 
 export function updateAdminDisplayPicture(token, formData) {
@@ -47,7 +47,7 @@ export function updateAdminDisplayPicture(token, formData) {
 }
 
 
-export function updateAdminProfile(token, formData) {
+export function updateAdminProfile(token, formData, navigate) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       try {
@@ -59,13 +59,15 @@ export function updateAdminProfile(token, formData) {
         if (!response.data.success) {
           throw new Error(response.data.message)
         }
-        const userImage = response.data.adminProfileDetails.image
-          ? response.data.adminProfileDetails.image
-          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.adminProfileDetails.firstName} ${response.data.adminProfileDetails.lastName}`
+        const userImage = response.data.updatedUserDetails.image
+          ? response.data.updatedUserDetails.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
         dispatch(
-          setUser({ ...response.data.adminProfileDetails, image: userImage })
+          setUser({ ...response.data.updatedUserDetails, image: userImage })
         )
         toast.success("Admin Profile Updated Successfully")
+      navigate("/dashboard/my-profile")
+
       } catch (error) {
         console.log("UPDATE_ADMIN_PROFILE_API API ERROR............", error)
         toast.error("Could Not Update Admin Profile")
@@ -75,7 +77,7 @@ export function updateAdminProfile(token, formData) {
   }
 
 //Update company profile
-export function updateCompanyProfile(token, formData) {
+export function updateCompanyProfile(token, formData,navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     try {
@@ -87,13 +89,15 @@ export function updateCompanyProfile(token, formData) {
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
-      const userImage = response.data.companyProfileDetails.image
-        ? response.data.companyProfileDetails.image
-        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.companyProfileDetails.name}}`
-      dispatch(
-        setUser({ ...response.data.companyProfileDetails, image: userImage })
-      )
+      const userImage = response.data.updatedUserDetails.image
+          ? response.data.updatedUserDetails.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
+        dispatch(
+          setUser({ ...response.data.updatedUserDetails, image: userImage })
+        )
       toast.success("Company Profile Updated Successfully")
+      navigate("/dashboard/my-profile")
+
     } catch (error) {
       console.log("UPDATE_COMPANY_PROFILE_API API ERROR............", error)
       toast.error("Could Not Update Company Profile")
@@ -102,4 +106,31 @@ export function updateCompanyProfile(token, formData) {
   }
 }
 
+export function updateCandidateProfile(token, formData,navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+    try {
+      const response = await apiConnector("PUT", UPDATE_CANDIDATE_PROFILE_API, formData, {
+        Authorization: `Bearer ${token}`,
+      })
+      console.log("UPDATE_CANDIDATE_PROFILE_API API RESPONSE............", response)
 
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+      const userImage = response.data.updatedUserDetails.image
+          ? response.data.updatedUserDetails.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
+        dispatch(
+          setUser({ ...response.data.updatedUserDetails, image: userImage })
+        )
+        toast.success("Candidate Profile Updated Successfully")
+        
+      navigate("/dashboard/my-profile")
+    } catch (error) {
+      console.log("UPDATE_CANDIDATE_PROFILE_API API ERROR............", error)
+      toast.error("Could Not Update Candidate Profile")
+    }
+    toast.dismiss(toastId)
+  }
+}

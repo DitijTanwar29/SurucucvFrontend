@@ -22,7 +22,7 @@ const FullTimeJobs = () => {
   const TRUNCATE_LENGTH = 8
 
   return (
-    <div className="lg:w-[90%] recently-published-jobs-container  shadow-lg border-1 border-white p-3">
+    <div className="lg:w-full recently-published-jobs-container  shadow-lg border-1 border-white p-3">
       <h2>Full Time Jobs</h2>
       <div className="jobs-grid border-2 border-white shadow-lg rounded-lg p-1">
         {jobs.map((job) => (

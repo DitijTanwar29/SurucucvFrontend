@@ -21,7 +21,7 @@ export default function EditCompanyProfile() {
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
     try {
-      dispatch(updateCompanyProfile(token, data))
+      dispatch(updateCompanyProfile(token, data, navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

@@ -41,7 +41,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border bg-black/75 rounded-t-md border-richblack-800 ">
         <Thead>
           <Tr className="flex gap-x-48 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
@@ -76,7 +76,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex gap-x-8 border-b border-richblack-800 px-6 py-8"
+                className="flex gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-300"
               >
                 <Td className="flex  gap-x-4">
                   {/* <img
@@ -92,8 +92,8 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
                         Inactive
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-white">
+                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-black/75 text-white">
                           <FaCheck size={8} />
                         </div>
                         Active
@@ -108,7 +108,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
                 </Td>
                 <Td>
                     {/* <p className="text-sm font-medium text-richblack-100">{job.passport}</p> */}
-                    <p className="text-xs text-richblack-300">
+                    <p className="text-xs text-richblack-5">
                       {job.jobDescription.split(" ").length >
                       TRUNCATE_LENGTH
                         ? job.jobDescription
@@ -119,7 +119,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
                     </p>
                 </Td>
                 <Td>
-                    <p className="text-sm font-medium text-richblack-100">
+                    <p className="text-sm font-medium text-richblack-5">
                         {job.jobLocation}
                     </p>
                 </Td>

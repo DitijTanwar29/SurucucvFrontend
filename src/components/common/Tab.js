@@ -11,18 +11,18 @@ export default function Tab({ tabData, field, setField }) {
         style={{
           boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
         }}
-        className="flex bg-orange-300 p-1 
-            gap-x-1 my-6 rounded-full max-w-max"
+        className="min-w-[max-content] flex bg-orange-300 p-1 
+            gap-x-1 lg:my-6 sm:my-4 rounded-full max-w-max "
       >
         {tabData.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setField(tab.type)}
-            className={`${
+            className={` ${
               field === tab.type
                 ? "bg-orange-500 text-richblack-5"
                 : "bg-transparent text-black"
-            } py-2 px-5 rounded-full transition-all duration-200`}
+            } lg:py-2 lg:px-5 sm:py-1 sm:px-3 rounded-full transition-all duration-200`}
           >
             {tab?.tabName}
           </button>

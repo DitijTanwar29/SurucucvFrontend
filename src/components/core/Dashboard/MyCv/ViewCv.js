@@ -100,7 +100,7 @@ const [resume, setResume] = useState([])
     <>
 
 <div className="mb-14 flex items-center justify-between ">
-        <h1 className="text-3xl font-medium text-richblack-5">Candidate Resume</h1>
+        <h1 className="text-3xl font-medium text-black">Candidate Resume</h1>
         <button className="bg-orange-500 text-white text-bold p-2 w-40 h-20 rounded-sm mb-3"
               onClick={downloadCv}
               disabled={!(loading === false)}>

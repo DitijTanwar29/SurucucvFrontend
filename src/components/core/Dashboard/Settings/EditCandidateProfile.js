@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import Select from 'react-select';
 import { MultiSelect } from "react-multi-select-component";
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { updateCompanyProfile } from "../../../../services/operations/SettingsAPI"
+import { updateCandidateProfile } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
 const options = [
-  { label: "A", value: "grapes" },
-  { label: "B", value: "mango" },
-  { label: "C", value: "strawberry" },
-  { label: "D", value: "pineapple" },
-  { label: "E", value: "banana" },
-
+ "React.js",
+  "Node.js", "MongoDB","Express.js", "C++"
 ];
 
 // const skillsList = ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4']; 
@@ -35,7 +30,7 @@ export default function EditCandidateProfile() {
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
     try {
-      dispatch(updateCompanyProfile(token, data))
+      dispatch(updateCandidateProfile(token, data, navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }
@@ -44,7 +39,7 @@ export default function EditCandidateProfile() {
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-orange-400 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Edit Candidate Profile Information
           </h2>
@@ -99,68 +94,62 @@ export default function EditCandidateProfile() {
               <label htmlFor="about" className="lable-style">
                 About
               </label>
-              {/* <input
+              <input
                 type="text"
                 name="about"
                 id="about"
-                placeholder="Enter about yourself"
-                className="form-style"
-                {...register("about", { required: true })}
+                placeholder="Enter something about you"
+                className="rounded-lg border-black bg-orange-300 p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/50 placeholder:text-white focus:outline-none;
+"
+                {...register("about")}
                 defaultValue={user?.candidateDetails?.about}
-              /> */}
-              <pre>{JSON.stringify(selected)}</pre>
-      <MultiSelect
-        options={options}
-        value={selected}
-        className="text-richblack-500 text-bold"
-        onChange={setSelected}
-        labelledBy="Select"
-      />
+              />
               {errors.about && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter something about yourself.
                 </span>
               )}
             </div>
+             
           </div>
 
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="taxNumber" className="lable-style">
-                province
+              <label htmlFor="province" className="lable-style">
+                Province
               </label>
               <input
                 type="text"
-                name="taxNumber"
-                id="taxNumber"
-                placeholder="Enter tax number "
+                name="province"
+                id="province"
+                placeholder="Enter province "
                 className="form-style"
-                {...register("taxNumber", { required: true })}
-                defaultValue={user?.companyDetails?.taxNumber}
+                {...register("province", { required: true })}
+                defaultValue={user?.candidateDetails?.province}
               />
-              {errors.taxNumber && (
+              {errors.province && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your Post.
+                  Please enter your province.
                 </span>
               )}
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="companyAddress" className="lable-style">
+              <label htmlFor="district" className="lable-style">
                 District
               </label>
               <input
                 type="text"
-                name="companyAddress"
-                id="companyAddress"
-                placeholder="Enter company address"
+                name="district"
+                id="district"
+                placeholder="Enter district"
                 className="form-style"
-                {...register("companyAddress", { required: true })}
-                defaultValue={user?.companyDetails?.companyAddress}
+                {...register("district", { required: true })}
+                defaultValue={user?.candidateDetails?.district}
               />
               {errors.companyAddress && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your company address.
+                  Please enter your district.
                 </span>
               )}
             </div> 
@@ -195,21 +184,21 @@ export default function EditCandidateProfile() {
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="name" className="lable-style">
-                  Degree
+              <label htmlFor="degree" className="lable-style">
+                  Qualifications
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Enter name"
+                name="degree"
+                id="degree"
+                placeholder="Enter qualifications"
                 className="form-style"
-                {...register("name", { required: true })}
-                defaultValue={user?.companyDetails?.name}
+                {...register("degree", { required: true })}
+                defaultValue={user?.candidateDetails?.degree}
               />
               {errors.name && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your name.
+                  Please enter your qualifications.
                 </span>
               )}
             </div>
@@ -218,21 +207,21 @@ export default function EditCandidateProfile() {
           <div className="flex flex-col gap-5 lg:flex-row">
 
           <div className="flex flex-col gap-2 lg:w-[33%]">
-              <label htmlFor="industryName" className="lable-style">
+              <label htmlFor="preferedJobLocation" className="lable-style">
                 Prefered Job Location
               </label>
               <input
                 type="text"
-                name="industryName"
-                id="industryName"
-                placeholder="Enter industry name"
+                name="preferedJobLocation"
+                id="preferedJobLocation"
+                placeholder="Enter prefered job location"
                 className="form-style"
-                {...register("industryName", { required: true })}
-                defaultValue={user?.companyDetails?.industryName}
+                {...register("preferedJobLocation", { required: true })}
+                defaultValue={user?.candidateDetails?.preferedJobLocation}
               />
               {errors.industryName && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your industry name.
+                  Please enter your prefered job location.
                 </span>
               )}
             </div>
@@ -257,6 +246,7 @@ export default function EditCandidateProfile() {
       <MultiSelect
         options={options}
         value={selected}
+        id="skills"
         className="text-richblack-500 text-bold"
         onChange={setSelected}
         labelledBy="Select"
@@ -273,7 +263,7 @@ export default function EditCandidateProfile() {
     </div> */}
               {errors.skills && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your position.
+                  Please enter your skills.
                 </span>
               )}
             </div>
@@ -289,7 +279,7 @@ export default function EditCandidateProfile() {
                 placeholder="Enter date of birth"
                 className="form-style"
                 {...register("dateOfBirth", { required: true })}
-                defaultValue={user?.companyDetails?.dateOfBirth}
+                defaultValue={user?.candidateDetails?.dateOfBirth}
               />
               {errors.dateOfBirth && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

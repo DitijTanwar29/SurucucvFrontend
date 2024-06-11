@@ -68,7 +68,6 @@ export function signup(
 export function login(email, password, navigate) {
     return async (dispatch) => {
         const toastId = toast.loading("Loading...")
-        dispatch(setLoading(true))
         try{
             const response = await apiConnector("POST", LOGIN_API, {
                 email,
@@ -98,7 +97,6 @@ export function login(email, password, navigate) {
             console.log("LOGIN API ERROR................", error)
             toast.error("Login Failed")
         }
-        dispatch(setLoading(false))
         toast.dismiss(toastId)
     }
 }

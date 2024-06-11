@@ -21,7 +21,7 @@ export default function EditAdminProfile() {
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
     try {
-      dispatch(updateAdminProfile(token, data))
+      dispatch(updateAdminProfile(token, data,navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

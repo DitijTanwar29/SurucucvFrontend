@@ -51,6 +51,7 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.COMPANY,
     icon:"VscVm",
   },
+  
   {
     id: 8,
     name: "My Profile",
@@ -103,7 +104,7 @@ export const sidebarLinks = [
   },
   
   // {
-  //   id:13,
+  //   id:15,
   //   name: "Applied Candidates",
   //   path: "/dashboard/applied-candidates",
   //   type: ACCOUNT_TYPE.COMPANY,

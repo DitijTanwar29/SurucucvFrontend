@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { fetchJobDetails, applyForJob } from '../../services/operations/jobPostAPI'; // Implement getJobById function in your job service
 import IconBtn from "../../components/common/IconBtn"
 import { BsBoxArrowRight } from "react-icons/bs";
-
+import { PiSealCheckLight } from "react-icons/pi";
 const JobDetailsPage = ({user}) => {
   const dispatch = useDispatch()
   const { jobId } = useParams();
@@ -14,7 +14,7 @@ const JobDetailsPage = ({user}) => {
   // console.log("userId :", userId)
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [apply, setApply] = useState('Apply');
   console.log("job", job)
   useEffect(() => {
     const fetchJob = async () => {
@@ -35,6 +35,7 @@ const JobDetailsPage = ({user}) => {
       setLoading(true)
       dispatch(applyForJob(token, {jobId:jobId})).then(() => {
         setLoading(false)
+        setApply('Applied')
       })
     }catch(error){
       console.log("ERROR MESSAGE - ", error.message)
@@ -53,16 +54,20 @@ const JobDetailsPage = ({user}) => {
     </button> */}
 
     <IconBtn
-      text={loading ? "Applying..." : "Apply"}
+      text={loading ? "Applying..." : apply}
           onclick={clickHandler}
       >
       {!loading && (
+        apply ?  
         <BsBoxArrowRight className="text-lg text-richblack-900" />
+        : <PiSealCheckLight className='text-lg text-caribbeangreen-500' />
       )}
       </IconBtn>
-      <div className='w-[50%] bg-black rounded-lg shadow-md text-white p-4 '>
-
-      <h1 className="text-3xl font-bold mb-4">{job.jobTitle}</h1>
+      <div className='lg:w-[50%] sm:w-full bg-black rounded-lg shadow-md text-white p-4 '>
+      <div className='w-full flex justify-center items-center'>
+        <h1 className="text-3xl font-bold mb-4">{job.jobTitle}</h1>
+        <img src={job.company.image} className='w-[4rem]' />
+      </div>
       <p className="text-lg font-medium mb-2">Company: {job.companyName}</p>
       <p className="text-lg font-medium mb-2">Location: {job.jobLocation}</p>
       <p className="text-lg font-medium mb-2">Salary Range: {job.rangeOfSalary}</p>
@@ -71,7 +76,7 @@ const JobDetailsPage = ({user}) => {
       </div>
       </div>
 
-      <div className="w-[50%] bg-orange-400 rounded-lg shadow-md p-4">
+      <div className="lg:w-[50%] sm:w-full bg-orange-400 rounded-lg shadow-md p-4">
         <h2 className="text-xl font-semibold mb-4">Requirements</h2>
         <p className="text-lg mb-2">Required Skills: {job.requiredSkills}</p>
         <p className="text-lg mb-2">Required Experience: {job.requiredExperience} years</p>

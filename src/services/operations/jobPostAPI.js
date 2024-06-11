@@ -19,7 +19,8 @@ const {
     GET_RECENTLY_PUBLISHED_JOBS_API,
     GET_FULL_TIME_JOBS_API,
     GET_PART_TIME_JOBS_API,
-    GET_TOP_JOB_LOCATIONS_API
+    GET_TOP_JOB_LOCATIONS_API,
+    FILTER_JOBS_API,
 } = jobEndpoints
 
 
@@ -41,7 +42,7 @@ export const addJobPost = async (data, token) => {
       if (!response?.data?.success) {
         throw new Error("Could Not Add Job Post Details")
       }
-      toast.success("Job Post Details Added Successfully")
+      toast.success("Job Publish Request sent successfully")
       result = response?.data?.data
     } catch (error) {
       console.log("CREATE JOB POST API ERROR............", error)
@@ -401,3 +402,31 @@ export const getPartTimeJobs = async () => {
   toast.dismiss(toastId)
   return result
 }
+
+export const getFilteredJobs = async (filters = {}) => {
+  const toastId = toast.loading("Loading...");
+  let result = [];
+
+  console.log("filters inside api endpoint : ",filters)
+
+  try {
+    // Construct URLSearchParams from filters
+    const params = new URLSearchParams(filters).toString();
+    const url = `${FILTER_JOBS_API}?${params}`;
+    console.log('Request URL:', url);
+
+    const response = await apiConnector("GET", url);
+
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch Filtered Jobs");
+    }
+
+    result = response?.data?.data;
+  } catch (error) {
+    console.log("FILTER_JOBS_API ERROR............", error);
+    toast.error(error.message);
+  }
+
+  toast.dismiss(toastId);
+  return result;
+};

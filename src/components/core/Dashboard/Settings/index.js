@@ -11,7 +11,7 @@ export default function Settings() {
     console.log("account type: ", user.accountType);
     return (
         <>
-            <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+            <h1 className="mb-14 text-3xl font-medium text-black sm:text-center">
                 Edit Profile
             </h1>
             {/* Change Profile Picture */}

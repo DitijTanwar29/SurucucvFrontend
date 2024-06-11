@@ -46,12 +46,12 @@ const CompanyProfile = () => {
  
       {/* </div> */}
      
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+      <h1 className="mb-14 text-3xl font-medium text-black text-center">
         My Profile
       </h1>
       
       {/* Image Section */}
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -76,7 +76,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Company Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -144,7 +144,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Personal Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">

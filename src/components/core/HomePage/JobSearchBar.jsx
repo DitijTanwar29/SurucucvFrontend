@@ -34,8 +34,8 @@ const JobSearchBar = () => {
   };
 
   return (
-    <div className='flex flex-col sm:w-[75%]' >
-      <div className='flex gap-14'>
+    <div className='flex flex-col sm:w-[90%]' >
+      <div className='flex lg:gap-14 sm:gap-3'>
         <input
           type="text"
           value={searchTerm}
@@ -44,9 +44,9 @@ const JobSearchBar = () => {
           onBlur={() => setShowServices(false)}
           placeholder="Search for job titles..."
           onClick={() => setOpen(true)}
-          className="w-[80%]"
+          className="w-[80%] sm:w-[80%]"
         />
-        <button onClick={handleSearch} className='w-[20%] p-2 rounded-md bg-richblue-200'>Search</button>
+        <button onClick={handleSearch} className='lg:w-[20%] p-2 rounded-md bg-richblue-200'>Search</button>
       </div>
       
         {showServices && (

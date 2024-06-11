@@ -13,13 +13,14 @@ import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
 import  ConfirmationModal  from "../../../../components/common/ConfirmationModal"
 import IconBtn from "../../../common/IconBtn"
+// import { format } from 'date-fns';
 import { addDays, addYears, format, parseISO, isAfter } from "date-fns";
 import {
 
   fetchResumeDetails,
 } from "../../../../services/operations/resumeAPI"
 import { SERVICE_STATUS } from "../../../../utils/constants"
-
+import moment from 'moment';
 
 export default function MyCv() {
   const dispatch = useDispatch()
@@ -63,8 +64,6 @@ export default function MyCv() {
 //     setLoading(false)
 //   }
 
- 
-
 const [resume, setResume] = useState([])
 
   useEffect(() => {
@@ -72,15 +71,27 @@ const [resume, setResume] = useState([])
       const result = await fetchResumeDetails()
       console.log("result : ",result);
       if (result) {
-        console.log("result?.[0]:",result?.[0])
+        // console.log("result?.[0]:",result?.[0])
         // console.log("result?.[0]?.[0]",result?.[0]?.[0])
-        setResume(result?.[0])
+        // setResume(result?.[0])
+          setResume(result)
       }
     }
     fetchResume()
     // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
+// const adr = {resume.adrDriverLicence}
+// const psychotecnic = 
+// const parsedAdrLicense = new Date(resume.adrDriverLicenseDate);
+// const formattedADRDate = parsedAdrLicense.toISOString().split('T')[0];
+// const parsedPsikoteknik = new Date(resume.psikoteknik);
+// const formattedPsikoteknik = parsedPsikoteknik.toISOString().split('T')[0];
 
+// console.log(formattedADRDate)
+// console.log(formattedPsikoteknik)
+
+console.log(resume.isCode95Document)
+console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes" : "No")
   const downloadCv = () => {
     const capture = document.querySelector(".resume")
     setLoading(true)
@@ -97,11 +108,37 @@ const [resume, setResume] = useState([])
 
   }
 
+  // const formatDate = (dateString) => {
+  //   const date = new Date(dateString);
+  //   return format(date, 'yyyy-MM-dd'); // Customize the format as needed
+  // };
+
+  // const formatDate2 = (dateString) => {
+  //   return moment(dateString).format('YYYY-MM-DD'); // Customize the format as needed
+  // };
+
+
+  const formatMongoDate = (mongoDate) => {
+    // Ensure the date is a valid Date object
+    const dateObj = new Date(mongoDate);
+  
+    if (isNaN(dateObj.getTime())) {
+      return 'Invalid Date';
+    }
+  
+    // Get parts of the date
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(dateObj.getDate()).padStart(2, '0');
+  
+    return `${year}-${month}-${day}`; // Format as YYYY-MM-DD
+  };
+
   return (
     <>
 
-<div className="mb-14 flex items-center justify-between ">
-        <h1 className="text-3xl font-medium text-richblack-5">My Resume</h1>
+<div className="mb-14 sm:-translate-y-10 lg:translate-y-0 lg:mt-12 flex items-center lg:justify-between sm:justify-center">
+        <h1 className="text-3xl font-medium text-black">My Resume</h1>
         <IconBtn
           text="Add Resume"
           onclick={() => navigate("/dashboard/create-cv")}
@@ -109,15 +146,15 @@ const [resume, setResume] = useState([])
           <VscAdd />
         </IconBtn>
       </div>
-      <Table className="rounded-xl border border-richblack-800 resume ">
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
-              
+      <Table className="w-full sm:w-[full] resume">
+        {/* <Thead>
+          <Tr className="flex rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+            <Th className="text-left text-sm font-medium bg-transparent uppercase text-black">
+             Resume
             </Th>
             
           </Tr>
-        </Thead>
+        </Thead> */}
         <Tbody>
           {resume === null ? (
             <Tr>
@@ -127,9 +164,9 @@ const [resume, setResume] = useState([])
               </Td>
             </Tr>
           ) : (
-            <Tr>
-                <Td>
-                    <div className="sm:w-[full] lg:flex flex-col gap-3 justify-start items-start p-3 bg-white text-black border-1 border-orange-600 rounded-md " >
+          
+                <div className="w-[90%] p-2 lg:flex lg:flex-col sm:flex-row sm:justify-start sm:items-start gap-3 lg:justify-start lg:items-start  lg:p-3 bg-white text-black rounded-md ">
+                    
                        {/* 
                        tcNumber, firstName="",lastName="", age,gsm,city,state,
             licenseType="",isSrc1,isSrc2,isSrc3,isSrc4,psikoteknik,adrDriverLicense,
@@ -140,87 +177,105 @@ const [resume, setResume] = useState([])
             turkicRepublicsExperiencePeriod,
             southExperienceTime
              */}
-                        <div>
+                          <p className="text-[8px] lg:text-[16px] font-semibold ">Personal Information</p> 
+                        <div className="w-[100%] sm:flex">
 
-                        <h3>Personal Information</h3> 
-                        
-                        <div className="flex gap-60">
+                          
+                          <div className="sm:w-[100%] flex lg:gap-48 sm:gap-8">
 
-                          <div className="flex flex-col ">
-                            <p>Name: {resume.firstName} {resume.lastName}</p>
-                            <p>TC Number: {resume.tcNumber}</p>
-                            <p>Date Of Birth: {resume.age}</p>
-                            <p>Passport: {resume.passport}</p>
-                            <p>Visa: {resume.visa}</p>
-                          </div>
+                            <div className="flex flex-col ">
+                              <p className="text-[8px] lg:text-[16px]">Name: {resume.firstName} {resume.lastName}</p>
+                              <p className="text-[8px] lg:text-[16px]">TC Number: {resume.tcNumber}</p>
+                              <p className="text-[8px] lg:text-[16px]">Date Of Birth: {resume.age}</p>
+                              <p className="text-[8px] lg:text-[16px]">Passport: {resume.passport}</p>
+                              <p className="text-[8px] lg:text-[16px]">Visa: {resume.visa}</p>
+                            </div>
 
-                          <div className="flex flex-col">
-                            <p>GSM: {resume.gsm}</p>
-                            <p>City: {resume.city}</p>
-                            <p>State: {resume.state}</p>
-                            <p>email: {resume.email}</p>
-                            <p>licenseType: {resume.licenseType}</p>
+                            <div className="flex flex-col">
+                              <p className="text-[8px] lg:text-[16px]">GSM: {resume.gsm}</p>
+                              <p className="text-[8px] lg:text-[16px]">City: {resume.city}</p>
+                              <p className="text-[8px] lg:text-[16px]">State: {resume.state}</p>
+                              <p className="text-[8px] lg:text-[16px]">email: {resume.email}</p>
+                              <p className="text-[8px] lg:text-[16px]">licenseType: {resume.licenseType}</p>
+                            </div>
+
                           </div>
 
                         </div>
 
-
-
-                        </div>
-
-                          <h3>Main Certifications</h3>
+                          <p className="text-[8px] lg:text-[16px] font-semibold">Main Certifications</p>
                           
 
-                        <div className="flex gap-20">
+                        <div className="flex lg:gap-80 sm:gap-24">
 
-                          <div className="flex gap-16">
-                            <p>Src1: {resume.isSrc1}</p>
-                            <p>Src2: {resume.isSrc2}</p> 
-                            <p>Src3: {resume.isSrc3}</p>
-                            <p>Src4: {resume.isSrc4}</p>
+                          <div className="flex flex-col">
+                            <p className="text-[8px] lg:text-[16px]">Src1: {resume.isSrc1 === true ? "Yes" : "No"}</p>
+                            <p className="text-[8px] lg:text-[16px]" >Src2: {resume.isSrc2 === true ? "Yes" : "No"}</p> 
+                            <p className="text-[8px] lg:text-[16px]">Src3: {resume.isSrc3 === true ? "Yes" : "No"}</p>
+                            <p className="text-[8px] lg:text-[16px]">Src4: {resume.isSrc4 === true ? "Yes" : "No"}</p>
 
                           </div>
 
                           <div className="flex flex-col ">
-                            <p>Code 95 Document: {resume.isCode95Document}</p>
-                            <p>ADR Driving License: {resume.adrDrivingLicense} </p> 
-                            <p>Psychotechnical: {resume.psikoteknik} </p>    
+                            <p className="text-[8px] lg:text-[16px]">Code 95 Document: {resume.isCode95Document === true ? "Yes" : "No"}</p>
+                            {/* <p>ADR Driving License: {formattedADRDate} </p>  */}
+                            <p className="text-[8px] lg:text-[16px]">ADR Driving License :{formatMongoDate(resume.adrDrivingLicense)}</p>
+                            {/* <p className="text-[8px]">ADR Driving License : {resume.adrDrivingLicense}</p> */}
+                            {/* const parsedDate = new Date(adrDriverLicenseDate);
+                            const formattedDate = parsedDate.toISOString().split('T')[0]; */}
+                            {/* {job.jobDescription.split(" ").length >
+                      TRUNCATE_LENGTH
+                        ? job.jobDescription
+                            .split(" ")
+                            .slice(0, TRUNCATE_LENGTH)
+                            .join(" ") + "..."
+                        : job.jobDescription} */}
+                            {/* <p>Psychotechnical: {formattedPsikoteknik} </p>     */}
+                            <p className="text-[8px] lg:text-[16px]">Psychotechnical: {formatMongoDate(resume.psikoteknik)}</p>
                           </div>
+
+                          {/* {job.jobDescription.split(" ").length >
+                      TRUNCATE_LENGTH
+                        ? job.jobDescription
+                            .split(" ")
+                            .slice(0, TRUNCATE_LENGTH)
+                            .join(" ") + "..."
+                        : job.jobDescription} */}
                         </div>
 
-                        <h3>Experience Period</h3>
+                        <p className="text-[8px] lg:text-[16px] font-semibold">Experience Period</p>
                         
-                        <div className="flex gap-48">
+                        <div className="flex lg:gap-40 sm:gap-8">
 
 
                           <div className="flex flex-col ">
-                            <p>Abroad Experience: {resume.abroadExperience}</p>
-                            <p>European Experience Period: {resume.europeanExperiencePeriod}</p>
-                            <p>Russia Experience Period: {resume.russiaExperiencePeriod}</p>
+                            <p className="text-[8px] lg:text-[16px]">Abroad Experience: {resume.abroadExperience}</p>
+                            <p className="text-[8px] lg:text-[16px]">European Experience Period: {resume.europeanExperiencePeriod}</p>
+                            <p className="text-[8px] lg:text-[16px]">Russia Experience Period: {resume.russiaExperiencePeriod}</p>
                           </div>
 
-                          <div className="flex flex-col ml-1">
-                            <p>Turkic Republics Experience Period: {resume.turkicRepublicsExperiencePeriod}</p>
-                            <p>South Experience Time: {resume.southExperienceTime}</p>
+                          <div className="flex flex-col lg:ml-1">
+                            <p className="text-[8px] lg:text-[16px]">Turkic Republics Experience Period: {resume.turkicRepublicsExperiencePeriod}</p>
+                            <p className="text-[8px] lg:text-[16px]">South Experience Time: {resume.southExperienceTime}</p>
                           </div>
 
                         </div>
 
-                        <h3>Advance Training And Certificates</h3>
+                        <p className="text-[8px] lg:text-[16px] font-semibold">Advance Training And Certificates</p>
                         
 
-                        <div className="flex gap-60 ">
+                        <div className="flex sm:gap-10 lg:gap-52">
 
 
 
                           <div className="flex flex-col ">
 
-                            <p>Blind Spot Training: {resume.isBlindSpotTraining}</p>
-                            <p>Safe Driving Training: {resume.isSafeDrivingTraining}</p>
+                            <p className="text-[8px] lg:text-[16px] ">Blind Spot Training: {resume.isBlindSpotTraining  === true ? "Yes" : "No"}</p>
+                            <p className="text-[8px] lg:text-[16px]">Safe Driving Training: {resume.isSafeDrivingTraining === true ? "Yes" : "No"}</p>
                           </div>
 
                           <div className="flex flex-col ">
-                            <p>Fuel Driving Trainiing: {resume.isFuelDrivingTrainiing}</p>
+                            <p className="text-[8px] lg:text-[16px]">Fuel Driving Trainiing: {resume.isFuelDrivingTraining === true ? "Yes" : "No"}</p>
 
                           </div>
                         </div>
@@ -229,9 +284,9 @@ const [resume, setResume] = useState([])
                         {/* <p>Duration: {resume.duration}</p> */}
                         
                         
-                    </div>
-                </Td>
-            </Tr>
+                    
+                </div>
+            
           )}
         </Tbody>
       </Table>

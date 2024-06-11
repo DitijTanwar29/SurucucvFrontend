@@ -39,31 +39,45 @@ const PostJob = () => {
 
   const watchedValues = watch();
 
-  const handleSrc1Change = () => {
-    setSrc1Checked(!src1Checked);
-    if (!src1Checked) {
-        setSrc2Checked(true);
-    } else {
-        setSrc2Checked(false);
+  const handleSrc1Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc1', checked);
+    if (checked) {
+      setValue('isSrc2', true);
+      setValue('isSrc3', false);
+      setValue('isSrc4', false);
     }
-};
+  };
 
-const handleSrc2Change = () => {
-    setSrc2Checked(!src2Checked);
-};
-
-const handleSrc3Change = () => {
-    setSrc3Checked(!src3Checked);
-    if (!src3Checked) {
-        setSrc4Checked(true);
-    } else {
-        setSrc4Checked(false);
+  const handleSrc2Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc2', checked);
+    if (checked) {
+      setValue('isSrc1', false);
+      setValue('isSrc3', false);
+      setValue('isSrc4', false);
     }
-};
+  };
 
-const handleSrc4Change = () => {
-    setSrc4Checked(!src4Checked);
-};
+  const handleSrc3Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc3', checked);
+    if (checked) {
+      setValue('isSrc4', true);
+      setValue('isSrc1', false);
+      setValue('isSrc2', false);
+    }
+  };
+
+  const handleSrc4Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc4', checked);
+    if (checked) {
+      setValue('isSrc3', false);
+      setValue('isSrc1', false);
+      setValue('isSrc2', false);
+    }
+  };
 
   useEffect(() => {
     const getServices = async () => {
@@ -107,10 +121,10 @@ const handleSrc4Change = () => {
   return (
     <form onSubmit={handleSubmit(submitJobPostForm)}>
       {/* jJob Information */}
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+      <h1 className="mb-14 text-3xl text-center font-medium text-black">
         Create Job Post
       </h1>
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Basic Details
         </h2>
@@ -440,7 +454,7 @@ const handleSrc4Change = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
             Main Certificates
         </h2>
@@ -489,9 +503,9 @@ const handleSrc4Change = () => {
                     <input
                         type="checkbox"
                         name="isSrc1"
-                        value="SRC 1"
+                        value="isSrc1"
                         onChange={handleSrc1Change}
-                        checked={src1Checked}
+                        checked={watchedValues.isSrc1 || false}
                     />
                 </label>
 
@@ -500,9 +514,9 @@ const handleSrc4Change = () => {
                     <input
                         type="checkbox"
                         name="isSrc2"
-                        value="SRC 2"
+                        value="isSrc2"
                         onChange={handleSrc2Change}
-                        checked={src2Checked}
+                        checked={watchedValues.isSrc2 || false}
                     />
                 </label>
               </div>
@@ -513,9 +527,10 @@ const handleSrc4Change = () => {
                       <input
                           type="checkbox"
                           name="isSrc3"
-                          value="SRC 3"
+                          value="isSrc3"
                           onChange={handleSrc3Change}
-                          checked={src3Checked}
+                          checked={watchedValues.isSrc3 || false}
+                      
                       />
                   </label>
               
@@ -525,9 +540,9 @@ const handleSrc4Change = () => {
                       <input
                           type="checkbox"
                           name="isSrc4"
-                          value="SRC 4"
+                          value="isSrc4"
                           onChange={handleSrc4Change}
-                          checked={src4Checked}
+                          checked={watchedValues.isSrc4 || false}
                       />
                   </label>
               </div>
@@ -578,7 +593,7 @@ const handleSrc4Change = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Required Abilities
         </h2>

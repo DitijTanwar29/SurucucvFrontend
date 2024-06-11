@@ -30,8 +30,8 @@ console.log("job Id Inside Applied Candidates :",jobId)
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between">
-        <h1 className="text-3xl font-medium text-richblack-5">Candidates Applied</h1>
+      <div className="mb-14 flex items-center justify-center">
+        <h1 className="text-3xl font-medium text-black">Candidates Applied</h1>
         
       </div>
 

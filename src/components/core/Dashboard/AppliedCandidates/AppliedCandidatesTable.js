@@ -43,7 +43,7 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border border-richblack-800 bg-black/75 ">
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
@@ -68,8 +68,8 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
         </Thead>
         <Tbody>
           {appliedCandidates?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+            <Tr className=" bg-richblack-300">
+              <Td className="py-10 text-center text-2xl font-medium text-black">
                 No Candidates found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -78,30 +78,11 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
             appliedCandidates?.map((appliedCandidate) => (
               <Tr
                 key={appliedCandidate._id}
-                className="flex gap-x-6 border-b border-richblack-800 px-3 py-8"
+                className="flex gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-300"
               >
-                  
+                     
                 <Td>
-                <div className="flex flex-col gap-y-4">
-                  <div className="text-lg flex flex-row font-semibold text-richblack-5">{appliedCandidate.companyName}</div>
-
-                  {/* {job.status === SERVICE_STATUS.INACTIVE ? (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
-                        <HiClock size={14} />
-                        Inactive
-                      </p>
-                    ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
-                          <FaCheck size={8} />
-                        </div>
-                        Active
-                      </p>
-                    )} */}
-                </div>
-                </Td>    
-                <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-white">
                         {appliedCandidate.name}
                     </p>
                 </Td>
@@ -117,10 +98,10 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
                     </p>
                 </Td> */}
                 <Td>
-                    <p className="text-sm font-medium text-richblack-100">{appliedCandidate.email}</p>
+                    <p className="text-md font-medium text-white">{appliedCandidate.email}</p>
                 </Td>
                 <Td>
-                  <p className="text-sm font-medium text-richblack-100">
+                  <p className="text-md font-medium text-white">
                     {appliedCandidate.contactNumber}
                   </p>
                 </Td>

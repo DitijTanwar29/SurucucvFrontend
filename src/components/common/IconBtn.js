@@ -12,13 +12,13 @@ export default function IconBtn({
         disabled={disabled}
         onClick={onclick}
         className={`flex items-center ${
-          outline ? "border border-yellow-50 bg-transparent" : "bg-yellow-50"
-        } cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 ${customClasses}`}
+          outline ? "border border-orange-400 bg-transparent" : "bg-orange-400"
+        } cursor-pointer gap-x-2 rounded-md sm:w-18 lg:py-2 lg:px-5 sm:py-1 sm:px-2 font-semibold text-white ${customClasses}`}
         type={type}
       >
         {children ? (
           <>
-            <span className={`${outline && "text-yellow-50"}`}>{text}</span>
+            <span className={`${outline && "text-orange-400"}`}>{text}</span>
             {children}
           </>
         ) : (

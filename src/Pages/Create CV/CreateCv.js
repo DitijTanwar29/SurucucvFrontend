@@ -1,23 +1,36 @@
 import React from "react";
 import { MultiSelect } from "react-multi-select-component";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import IconBtn from "../../components/common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createResume } from "../../services/operations/resumeAPI";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { getAllServices } from "../../services/operations/serviceDetailsAPI";
 import { Country, State, City }  from 'country-state-city';
 import _ from 'lodash';
 
 import Footer from "../Footer/Footer";
-const options = [
-  { label: "A", value: "A" },
-  { label: "B", value: "B" },
-  { label: "C", value: "C" },
-  { label: "D", value: "D" },
-  { label: "E", value: "E" },
 
+
+const licenseCategories = [
+  { id: 'M', value: 'M', label: 'M' },
+  { id: 'A1', value: 'A1', label: 'A1' },
+  { id: 'A2', value: 'A2', label: 'A2' },
+  { id: 'A', value: 'A', label: 'A' },
+  { id: 'B1', value: 'B1', label: 'B1' },
+  { id: 'B', value: 'B', label: 'B' },
+  { id: 'C1', value: 'C1', label: 'C1' },
+  { id: 'C', value: 'C', label: 'C' },
+  { id: 'D1', value: 'D1', label: 'D1' },
+  { id: 'D', value: 'D', label: 'D' },
+  { id: 'BE', value: 'BE', label: 'BE' },
+  { id: 'C1E', value: 'C1E', label: 'C1E' },
+  { id: 'CE', value: 'CE', label: 'CE' },
+  { id: 'D1E', value: 'D1E', label: 'D1E' },
+  { id: 'DE', value: 'DE', label: 'DE' },
+  { id: 'F', value: 'F', label: 'F' },
+  { id: 'G', value: 'G', label: 'G' },
 ];
 const CreateCv = () => {
     const [states, setStates] = useState([]);
@@ -25,23 +38,135 @@ const CreateCv = () => {
   const [selectedState, setSelectedState] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedStateIsoCode , setSelectedStateIsoCode] = useState('');
+
+
+  // const [selectedLicenses, setSelectedLicenses] = useState([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue, 
+    watch, 
+    control
+  } = useForm();
+
+  const watchedValues = watch();
+const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValue:[]});
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleLicenseCheckboxChange = (e) => {  
+    const { id, checked } = e.target;
+
+    let newSelectedLicenses = [...selectedLicenses];
+
+    const updateSelection = (add, remove = []) => {
+      add.forEach((item) => {
+        if (!newSelectedLicenses.includes(item)) newSelectedLicenses.push(item);
+      });
+      remove.forEach((item) => {
+        newSelectedLicenses = newSelectedLicenses.filter((license) => license !== item);
+      });
+    };
+
+    switch (id) {
+      // case 'DE':
+      //   updateSelection(
+      //     checked ? licenseCategories.filter((category) => category.id !== 'A').map((category) => category.id) : [],
+      //     checked ? [] : ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G']
+      //   );
+      //   break;
+      case 'A':
+        updateSelection(
+          checked ? ['A', 'A1','A2'] : [],
+          checked ? [] : ['A','A1','A2']
+        );
+        break;
+      case 'C':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'C1', 'F','C','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'C1', 'F','C','A1']
+        );
+        break;
+      case 'B':
+        updateSelection(
+          checked ? ['M', 'B1', 'F','B','A1'] : [],
+          checked ? [] : ['M', 'B1', 'F','B','A1']
+        );
+        break;
+      case 'D1':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'F','D1','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'F','D1','A1']
+        );
+        break;
+      case 'D':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'D1', 'F','D','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D','A1']
+        );
+        break;
+      case 'D1E':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'D1', 'F','D1E','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D1E','A1']
+        );
+        break;
+      case 'CE':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1']
+        );
+        break;
+      default:
+        if (checked) {
+          newSelectedLicenses.push(id);
+        } else {
+          newSelectedLicenses = newSelectedLicenses.filter((license) => license !== id);
+        }
+        break;
+    }
+
+    // setSelectedLicenses(newSelectedLicenses);
+    setValue('selectedLicenses', newSelectedLicenses);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
   useEffect(() => {
     // const turkey = Country.getCountryByShortName('TR');
     const turkeyStates = State.getStatesOfCountry('TR');
     setStates(turkeyStates);
   }, []);
 
-  console.log("selectedCity :",selectedCity)
+  // console.log("selectedCity :",selectedCity)
 
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
     setSelectedCity('');
     const selectedStateObject = states.find((state) => state.name === e.target.value);
-    console.log("selectedStateObject :",selectedStateObject)
+    // console.log("selectedStateObject :",selectedStateObject)
     const isoCode = selectedStateObject?.isoCode
-    console.log("IsoCode :", selectedStateObject?.isoCode)
+    // console.log("IsoCode :", selectedStateObject?.isoCode)
     setSelectedStateIsoCode(isoCode)
-    console.log(" selectedStateIsoCode :",selectedStateIsoCode)
+    // console.log(" selectedStateIsoCode :",selectedStateIsoCode)
 
     if (selectedStateObject) {
       const stateCities = City.getCitiesOfState('TR',isoCode);
@@ -67,15 +192,17 @@ const CreateCv = () => {
 // console.log("isCode95Document", isCode95Document)
   const { user } = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)
+  const {userId} = useSelector((state) => state.profile)
   // console.log("city: ", City.getCitiesOfCountry("TR"))
   // console.log("state: ", JSON.stringify(State.getStatesOfCountry("TR")))
-  let stateCode="";
-  console.log("stateCode here: ",stateCode)
-  let specificCity = City.getCitiesOfState("TR", "05")
-  console.log("specific City : ",specificCity)
+  // let stateCode="";
+  // console.log("stateCode here: ",stateCode)
+  // let specificCity = City.getCitiesOfState("TR", "05")
+  // console.log("specific City : ",specificCity)
   // console.log("state: ",JSON.stringify(State.getAllStates()))
   // console.log(Country.getAllCountries())
 
+  
     
 
   
@@ -93,40 +220,58 @@ const CreateCv = () => {
   const [src3Checked, setSrc3Checked] = useState(false);
   const [src4Checked, setSrc4Checked] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue, 
-    watch,
-  } = useForm();
 
-  const watchedValues = watch();
 
-  const handleSrc1Change = () => {
-    setSrc1Checked(!src1Checked);
-    if (!src1Checked) {
-        setSrc2Checked(true);
-    } else {
-        setSrc2Checked(false);
+  const handleSrc1Change = (e) => {
+    // setSrc1Checked(!src1Checked);
+    // if (!src1Checked) {
+    //     setSrc2Checked(true);
+    // } else {
+    //     setSrc2Checked(false);
+    // }
+    const checked = e.target.checked;
+    setValue('isSrc1', checked);
+    if (checked) {
+      setValue('isSrc2', true);
+      setValue('isSrc3', false);
+      setValue('isSrc4', false);
     }
 };
 
-const handleSrc2Change = () => {
-    setSrc2Checked(!src2Checked);
+const handleSrc2Change = (e) => {
+  const checked = e.target.checked;
+  setValue('isSrc2', checked);
+  if (checked) {
+    // setValue('isSrc1', true);
+    // setValue('isSrc3', false);
+    // setValue('isSrc4', false);
+  }
 };
 
-const handleSrc3Change = () => {
-    setSrc3Checked(!src3Checked);
-    if (!src3Checked) {
-        setSrc4Checked(true);
-    } else {
-        setSrc4Checked(false);
+const handleSrc3Change = (e) => {
+    // setSrc3Checked(!src3Checked);
+    // if (!src3Checked) {
+    //     setSrc4Checked(true);
+    // } else {
+    //     setSrc4Checked(false);
+    // }
+    const checked = e.target.checked;
+    setValue('isSrc3', checked);
+    if (checked) {
+      setValue('isSrc4', true);
+      setValue('isSrc1', false);
+      setValue('isSrc2', false);
     }
 };
 
-const handleSrc4Change = () => {
-    setSrc4Checked(!src4Checked);
+const handleSrc4Change = (e) => {
+  const checked = e.target.checked;
+  setValue('isSrc4', checked);
+  if (checked) {
+    // setValue('isSrc3', true);
+    // setValue('isSrc1', false);
+    // setValue('isSrc2', false);
+  }
 };
 
 
@@ -134,25 +279,38 @@ const handleSrc4Change = () => {
   const submitResumeForm = async (data) => {
     console.log("Form Data - ", data);
     // console.log("token - ", token)
-
+// licenseTypes: selectedLicenses
+console.log("licenseTyes : ",selectedLicenses)
+const filteredLicenses = selectedLicenses.filter(license => license !== "");
+console.log("filteredLicenses : " ,filteredLicenses)
+    // const payload = {
+    //   ...data,
+    //   licenseType: filteredLicenses,
+      
+    // }
+    // console.log("payload : ",payload)
+    // console.log({...data, licenseType: selectedLicenses})
+    console.log({...data, licenseType: selectedLicenses})
     try {
       dispatch(
-        createResume(data, token)
+        createResume({...data, licenseType: data.selectedLicenses.join(',')}, token)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
     }
   };
+
+
   return (
       <div className="w-full flex flex-col">
         
-      <h1 className="mt-14 text-3xl font-medium text-center text-richblack-5">
+      <h1 className="mt-14 text-3xl font-medium text-center text-black">
         Create CV
       </h1>
       
     <form onSubmit={handleSubmit(submitResumeForm)}>
       {/* CV Information */}
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Personal Information
         </h2>
@@ -388,18 +546,24 @@ const handleSrc4Change = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
             Main Certificates
         </h2>
 
         {/* ROW 1 */}
-        <div className="flex flex-col gap-5 lg:flex-row">
+        <div className="flex flex-col gap-5 ">
         {/* Driving License Type */}
-            <div className="flex flex-col gap-2 lg:w-[25%]">
-                <label htmlFor="licenseType" className="lable-style">
+            {/* <fieldset className="flex flex-col gap-2 lg:w-[25%]">
+                <legend htmlFor="licenseType" className="lable-style">
                   License Type
-                </label>
+                </legend>
+
+                <div>
+                  <input type="checkbox" id="coding" name="licenseType" value="coding" />
+                  <label for="coding">Coding</label>
+                </div>
+
                 <select
                   type="text"
                   name="licenseType"
@@ -408,7 +572,7 @@ const handleSrc4Change = () => {
                   className="form-style"
                   {...register("licenseType", { required: true })}
                   // defaultValue={user?.adminDetails?.post}
-
+                  
                 >
                   <option value="" disabled >Choose License Type</option>
                   <option value="Type 1" >Type 1</option>
@@ -421,7 +585,52 @@ const handleSrc4Change = () => {
                     Please select your license type.
                   </span>
                 )}
+            </fieldset> */}
+            {/* {licenseCategories.map((category) => (
+        <div key={category.id}>
+          <input
+            type="checkbox"
+            id={category.id}
+            value={category.value}
+            onChange={handleLicenseCheckboxChange}
+          />
+          <label htmlFor={category.id} className="ml-2">
+            {category.label}
+          </label>
+        </div>
+      ))} */}
+
+      <div className="relative" ref={dropdownRef}>
+        <button type="button" className="form-style" onClick={toggleDropdown}>
+          Choose License Type
+        </button>
+        {dropdownOpen && (
+          <div className="absolute mt-1 lg:w-[25%] sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
+            <div className="flex flex-col p-2 max-h-60 overflow-auto">
+              {licenseCategories.map((category) => (
+                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                  <input
+                    type="checkbox"
+                    id={category.id}
+                    value={category.value}
+                    checked={selectedLicenses.includes(category.id)}
+                    onChange={handleLicenseCheckboxChange}
+                    className=""
+                    // name="licenseType"
+                    // {...register({selectedLicenses}, { required: true })}
+                    // checked={watchedValues.licenseType}
+                    {...register('selectedLicenses')}       
+
+                  />
+                  <label htmlFor={category.id} className="w-full">
+                    {category.label}
+                  </label>
+                </div>
+              ))}
             </div>
+          </div>
+        )}
+      </div>
         {/* SRC CERTIFICATES INFO */}
             <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
               <label
@@ -437,11 +646,13 @@ const handleSrc4Change = () => {
                     <input
                         type="checkbox"
                         name="isSrc1"
-                        value="SRC 1"
-                        onChange={handleSrc1Change}
-                        checked={src1Checked}
+                        value="isSrc1"
+                        // onChange={handleSrc1Change}
+                        // checked={src1Checked}
                         // onChange={(e) => setValue('isBlindSpotTraining', e.target.checked)}
                         // checked={watchedValues.isBlindSpotTraining}
+                        onChange={handleSrc1Change}
+            checked={watchedValues.isSrc1 || false}
                     />
                 </label>
 
@@ -450,9 +661,11 @@ const handleSrc4Change = () => {
                     <input
                         type="checkbox"
                         name="isSrc2"
-                        value="SRC 2"
+                        value="isSrc2"
+                        // onChange={handleSrc2Change}
+                        // checked={src2Checked}
                         onChange={handleSrc2Change}
-                        checked={src2Checked}
+            checked={watchedValues.isSrc2 || false}
                     />
                 </label>
               </div>
@@ -463,9 +676,11 @@ const handleSrc4Change = () => {
                       <input
                           type="checkbox"
                           name="isSrc3"
-                          value="SRC 3"
+                          value="isSrc3"
+                          // onChange={handleSrc3Change}
+                          // checked={src3Checked}
                           onChange={handleSrc3Change}
-                          checked={src3Checked}
+            checked={watchedValues.isSrc3 || false}
                       />
                   </label>
               
@@ -475,9 +690,12 @@ const handleSrc4Change = () => {
                       <input
                           type="checkbox"
                           name="isSrc4"
-                          value="SRC 4"
-                          onChange={handleSrc4Change}
-                          checked={src4Checked}
+                          value="isSrc4"
+                          // onChange={handleSrc4Change}
+                          // checked={src4Checked}
+                          // {...register('isSrc4')}
+            onChange={handleSrc4Change}
+            checked={watchedValues.isSrc4 || false}
                       />
                   </label>
               </div>
@@ -526,7 +744,7 @@ const handleSrc4Change = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Required Abilities
         </h2>
@@ -587,7 +805,7 @@ const handleSrc4Change = () => {
             Duration
             </label>
             <input
-              type="date"
+              type="number"
               name="duration"
               id="duration"
               placeholder="Select duration"
@@ -708,7 +926,8 @@ const handleSrc4Change = () => {
         </div>
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Experience
         </h2>

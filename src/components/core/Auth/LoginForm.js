@@ -35,11 +35,11 @@ const LoginForm = () => {
         }
         return (
             <form onSubmit={submitHandler}
-            className="mt-6 flex w-[50%] mx-auto flex-col gap-y-4"
+            className="lg:mt-24 sm:mt-4 flex w-[50%] mx-auto flex-col gap-y-4"
             >
         
         <label className='w-full'>
-            <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5'>
+            <p className='mb-1 text-[0.875rem] leading-[1.375rem] form-label'>
                 Email Address<sup className='text-pink-200'>*</sup>
             </p>
             <input
@@ -52,12 +52,12 @@ const LoginForm = () => {
                 style={{
                     boxShadow: "inset 0px -1px 0px rgba(225, 225, 225, 0.18)",
                 }}
-                className='w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5'
+                className='w-full rounded-[0.5rem] bg-orange-300 p-[12px] text-richblack-5 form-style'
             />
         </label>
 
         <label className='relative'>
-            <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5'>
+            <p className='mb-1 text-[0.875rem] leading-[1.375rem] form-label'>
                 Password<sup className='text-pink-200'>*</sup>
             </p>
             <input
@@ -72,14 +72,14 @@ const LoginForm = () => {
                 style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
-                className='w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5'
+                className='w-full rounded-[0.5rem] bg-orange-300 p-[12px] text-richblack-5 form-style'
             />
 
             <span onClick={() => setShowPassword((prev) => !prev)} 
             className='absolute right-3 top-[38px] z-[10] cursor-pointer'>
-                 {showPassword? (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/>
+                 {showPassword? (<AiOutlineEyeInvisible fontSize={24} fill="#0B0B0B"/>
                  ) : (
-                 <AiOutlineEye fontSize={24} fill='#AFB2BF'/>
+                 <AiOutlineEye fontSize={24} fill='#0B0B0B'/>
                  )}
             </span>
 
@@ -92,7 +92,7 @@ const LoginForm = () => {
         </label>
                     
         <button type='submit'
-            className='mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900'>
+            className='mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-black'>
           <p>Sign In</p>
         </button>
 

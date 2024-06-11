@@ -8,6 +8,7 @@ const {
 } = resumeEndpoints
 
 export const createResume = async (data, token) => {
+    console.log("data : ",data)
     let result = null
     const toastId = toast.loading("Loading...")
     try {

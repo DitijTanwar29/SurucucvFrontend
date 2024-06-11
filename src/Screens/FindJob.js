@@ -18,6 +18,7 @@ const FindJob = () => {
       <div>
         <Exam2 />
       </div>
+      
       <FindJobs/>
       <div>
         {/* <Car1 /> */}

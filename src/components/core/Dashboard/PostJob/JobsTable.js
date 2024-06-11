@@ -41,9 +41,9 @@ export default function JobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border border-richblack-800  bg-black/75 rounded-t-md ">
         <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
               Company Name
             </Th>
@@ -56,9 +56,9 @@ export default function JobsTable({ jobs, setJobs }) {
             <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
               Job Location
             </Th>
-            <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
+            {/* <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
               Description
-            </Th>
+            </Th> */}
             <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
               Action
             </Th>
@@ -67,7 +67,7 @@ export default function JobsTable({ jobs, setJobs }) {
         <Tbody>
           {jobs?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium text-black">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -77,7 +77,7 @@ export default function JobsTable({ jobs, setJobs }) {
               <div className="relative">
           {/* <Link to={`/dashboard/applied-candidates/${job._id}`} key={job._id}> */}
 
-              <button className="text-richblack-500 translate-y-24 cursor-pointer translate-x-96 absolute"
+              <button className="text-orange-400 font-semibold translate-y-24  translate-x-96 cursor-pointer  absolute"
               onClick={() => {
                       navigate(`/dashboard/applied-candidates/${job._id}`)
                     }}>Click To View Number Of Applicants</button>
@@ -85,7 +85,7 @@ export default function JobsTable({ jobs, setJobs }) {
 
               <Tr
                 key={job._id}
-                className="flex gap-x-6 border-b border-richblack-800 px-3 py-8  hover:bg-richblack-800"
+                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-300 "
               >
                   
                 <Td>
@@ -98,8 +98,8 @@ export default function JobsTable({ jobs, setJobs }) {
                         Inactive
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-white">
+                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-black/75 text-white">
                           <FaCheck size={8} />
                         </div>
                         Active
@@ -115,14 +115,14 @@ export default function JobsTable({ jobs, setJobs }) {
                     </p>
                 </Td>
                 <Td className="flex gap-8">
-                    <p className="text-sm font-medium text-richblack-100">{job.passport}</p>
+                    <p className="text-md font-medium text-richblack-5">{job.passport}</p>
                 </Td>
                 <Td>
-                    <p className="text-sm font-medium text-richblack-100">
+                    <p className="text-md font-medium text-richblack-5">
                         {job.jobLocation}
                     </p>
                 </Td>
-                <Td className="flex justify-between">                  
+                {/* <Td className="flex justify-between">                  
                     <p className="text-xs text-richblack-300">
                       {job.jobDescription.split(" ").length >
                       TRUNCATE_LENGTH
@@ -132,8 +132,8 @@ export default function JobsTable({ jobs, setJobs }) {
                             .join(" ") + "..."
                         : job.jobDescription}
                     </p>
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100 z-30 ">
+                </Td> */}
+                <Td className="text-md font-medium text-richblack-5 z-30 ">
                   <button
                     disabled={loading}
                     onClick={() => {

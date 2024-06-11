@@ -22,11 +22,11 @@ const RecentlyPublishedJobs = () => {
   const TRUNCATE_LENGTH = 8
 
   return (
-    <div className="lg:w-[90%] recently-published-jobs-container shadow-lg border-1 border-white p-3">
+    <div className="lg:w-full recently-published-jobs-container shadow-lg border-1 border-white p-3">
       <h2>Recently Published Jobs</h2>
       <div className="jobs-grid border-2 border-white shadow-lg rounded-lg p-1">
         {jobs.map((job) => (
-          <Link to={`/job/${job._id}`} key={job._id} className="job-card">
+          <Link to={`/job/${job._id}`} key={job._id} className="job-card border-1 border-white shadow-lg">
             <div className='flex gap-2'>
                 
               <img

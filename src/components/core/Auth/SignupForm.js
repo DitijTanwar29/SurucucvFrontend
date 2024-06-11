@@ -83,7 +83,7 @@ const SignupForm = () => {
     ]
 
   return (
-    <div className="mt-4 flex justify-center items-center w-[50%] mx-auto flex-col gap-y-2">
+    <div className="lg:mt-24 sm:mt-4 flex justify-center items-center w-[50%] mx-auto flex-col gap-y-2">
     {/* candidate-company tab */}
     <Tab tabData={tabData} field={accountType} setField={setAccountType} />
     {/* form */}
@@ -223,10 +223,10 @@ const SignupForm = () => {
     </div>
         
          {/* create password and confirm password */}
-         <div className='w-full sm:flex sm:flex-wrap lg:flex-row  gap-5 mb-5'>
+         <div className='w-full sm:flex lg:flex-row sm:flex-wrap lg:gap-5 sm:gap-y-14 mb-5'>
             <label >
                 <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>Create Password<sup className='text-pink-200'>*</sup></p>
-                <div className='flex flex-row justify-between relative'>
+                <div className=' flex flex-row justify-between relative'>
 
                     <input
                         required
@@ -248,7 +248,7 @@ const SignupForm = () => {
                 </div>
             </label>
 
-            <label >
+            <label className='sm:-translate-x-20'>
                 <p className='text-black font-inter translate-x-20 mb-1 text-[0.875rem] leading-[1.375rem]'>Confirm Password<sup className='text-pink-200'>*</sup></p>
                 
                 <div className='flex flex-row

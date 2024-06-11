@@ -6,7 +6,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, Scrollbar } from 'swiper/modules';
 
 const FullTimeJobsSlider = () => {
   const [jobs, setJobs] = useState([]);
@@ -28,7 +28,7 @@ const FullTimeJobsSlider = () => {
 
 
   return (
-<div className='mt-40 flex flex-col gap-3 w-full justify-center items-center'>
+<div className='mt-20 flex flex-col gap-3 w-full justify-center items-center mx-auto'>
             <h1>Full Time Jobs</h1>
     {
         jobs?.length !== 0 ? (
@@ -36,36 +36,37 @@ const FullTimeJobsSlider = () => {
             slidesPerView={1}
             spaceBetween={30}
             loop={true}
-            freeMode={true}
-            autoplay={{
-            delay: 2200,
-            disableOnInteraction: false,
-            }}
-            pagination={{
-            clickable: true,
+            // freeMode={true}
+            // autoplay={{
+            // delay: 2200,
+            // disableOnInteraction: false,
+            // }}
+            scrollbar={{
+              hide:true,
             }}
             // navigation={true}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
+            modules={[Scrollbar]}
+            className="mySwiper w-[100%] p-3 flex bg-richblack-100 gap-8 justify-center items-center "
             
             // modules={[FreeMode, Pagination, Autoplay]}
             >
 
             {jobs?.map((job) => (
                 <SwiperSlide key={job._id}>
-            <div className=' w-[100%] h-[11rem] '>
+            <div>
                 <Link to={`/job/${job._id}`} key={job._id} 
-                className="w-[100%] mx-20 p-3 flex bg-richblack-100 gap-8 justify-between items-center ">
+                className="p-3 flex flex-col gap-2  justify-center items-center border-1 border-white text-white font-bold mx-auto">
+
                 
               <img
                 alt={job.companyName}
-                className="h-[125px] w-[100px] ml-20 rounded-lg object-cover"
+                className="h-[125px] w-[100px] rounded-lg object-cover"
                 src={job.company.image}
               />
 
-              <div className=' w-full flex flex-col gap-[1px] mr-8 '>
+              <div className=' w-full flex flex-col justify-center items-center gap-[1px] '>
                 <h3>{job.jobTitle}</h3>
-                <p>{
+                <p className='text-center'>{
                 job.jobDescription.split(" ").length >
                           TRUNCATE_LENGTH
                             ? job.jobDescription
