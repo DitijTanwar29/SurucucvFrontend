@@ -1,13 +1,13 @@
-const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
-// const BASE_URL = process.env.REACT_APP_BASE_URL
+// const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 //AUTH ENDPOINTS
 export const endpoints = {
     // SENDOTP_API: BASE_URL + "/auth/sendotp",
-    // SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
-    // LOGIN_API: "http://localhost:1200/api/v1/auth/login",
-    SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
-    LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
+    SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
+    LOGIN_API: "http://localhost:1200/api/v1/auth/login",
+    // SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
+    // LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
     // RESETPASSTOKEN_API: BASE_URL + "/auth/reset-password-token",
     // RESETPASSWORD_API: BASE_URL + "/auth/reset-password"
 }

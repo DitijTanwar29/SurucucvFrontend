@@ -1,13 +1,33 @@
 import { useState, useEffect } from "react";
-import React from "react";
+import React, {useRef} from "react";
 
 import IconBtn from "../../../../components/common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobPost } from "../../../../services/operations/jobPostAPI";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { getActiveServices } from "../../../../services/operations/serviceDetailsAPI";
 import { Country, State, City }  from 'country-state-city';
+
+const licenseCategories = [
+  { id: 'M', value: 'M', label: 'M' },
+  { id: 'A1', value: 'A1', label: 'A1' },
+  { id: 'A2', value: 'A2', label: 'A2' },
+  { id: 'A', value: 'A', label: 'A' },
+  { id: 'B1', value: 'B1', label: 'B1' },
+  { id: 'B', value: 'B', label: 'B' },
+  { id: 'C1', value: 'C1', label: 'C1' },
+  { id: 'C', value: 'C', label: 'C' },
+  { id: 'D1', value: 'D1', label: 'D1' },
+  { id: 'D', value: 'D', label: 'D' },
+  { id: 'BE', value: 'BE', label: 'BE' },
+  { id: 'C1E', value: 'C1E', label: 'C1E' },
+  { id: 'CE', value: 'CE', label: 'CE' },
+  { id: 'D1E', value: 'D1E', label: 'D1E' },
+  { id: 'DE', value: 'DE', label: 'DE' },
+  { id: 'F', value: 'F', label: 'F' },
+  { id: 'G', value: 'G', label: 'G' },
+];
 const PostJob = () => {
   
   // console.log(Country.getAllCountries())
@@ -24,20 +44,118 @@ const PostJob = () => {
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([]);
 
-  const [src1Checked, setSrc1Checked] = useState(false);
-  const [src2Checked, setSrc2Checked] = useState(false);
-  const [src3Checked, setSrc3Checked] = useState(false);
-  const [src4Checked, setSrc4Checked] = useState(false);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue, 
     watch,
+    control
+
   } = useForm();
 
   const watchedValues = watch();
+
+  const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValue:[]});
+  
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+  
+    const handleLicenseCheckboxChange = (e) => {  
+      const { id, checked } = e.target;
+  
+      let newSelectedLicenses = [...selectedLicenses];
+  
+      const updateSelection = (add, remove = []) => {
+        add.forEach((item) => {
+          if (!newSelectedLicenses.includes(item)) newSelectedLicenses.push(item);
+        });
+        remove.forEach((item) => {
+          newSelectedLicenses = newSelectedLicenses.filter((license) => license !== item);
+        });
+      };
+  
+      switch (id) {
+        // case 'DE':
+        //   updateSelection(
+        //     checked ? licenseCategories.filter((category) => category.id !== 'A').map((category) => category.id) : [],
+        //     checked ? [] : ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G']
+        //   );
+        //   break;
+        case 'A':
+          updateSelection(
+            checked ? ['A', 'A1','A2'] : [],
+            checked ? [] : ['A','A1','A2']
+          );
+          break;
+        case 'C':
+          updateSelection(
+            checked ? ['M', 'B', 'B1', 'C1', 'F','C','A1'] : [],
+            checked ? [] : ['M', 'B', 'B1', 'C1', 'F','C','A1']
+          );
+          break;
+        case 'B':
+          updateSelection(
+            checked ? ['M', 'B1', 'F','B','A1'] : [],
+            checked ? [] : ['M', 'B1', 'F','B','A1']
+          );
+          break;
+        case 'D1':
+          updateSelection(
+            checked ? ['M', 'B', 'B1', 'F','D1','A1'] : [],
+            checked ? [] : ['M', 'B', 'B1', 'F','D1','A1']
+          );
+          break;
+        case 'D':
+          updateSelection(
+            checked ? ['M', 'B', 'B1', 'D1', 'F','D','A1'] : [],
+            checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D','A1']
+          );
+          break;
+        case 'D1E':
+          updateSelection(
+            checked ? ['M', 'B', 'B1', 'D1', 'F','D1E','A1'] : [],
+            checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D1E','A1']
+          );
+          break;
+        case 'CE':
+          updateSelection(
+            checked ? ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1'] : [],
+            checked ? [] : ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1']
+          );
+          break;
+        default:
+          if (checked) {
+            newSelectedLicenses.push(id);
+          } else {
+            newSelectedLicenses = newSelectedLicenses.filter((license) => license !== id);
+          }
+          break;
+      }
+  
+      // setSelectedLicenses(newSelectedLicenses);
+      setValue('selectedLicenses', newSelectedLicenses);
+    };
+  
+    const toggleDropdown = () => {
+      setDropdownOpen(!dropdownOpen);
+    };
+  
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+  
+    useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
+  
+
+  
 
   const handleSrc1Change = (e) => {
     const checked = e.target.checked;
@@ -53,9 +171,9 @@ const PostJob = () => {
     const checked = e.target.checked;
     setValue('isSrc2', checked);
     if (checked) {
-      setValue('isSrc1', false);
-      setValue('isSrc3', false);
-      setValue('isSrc4', false);
+      // setValue('isSrc1', false);
+      // setValue('isSrc3', false);
+      // setValue('isSrc4', false);
     }
   };
 
@@ -73,9 +191,9 @@ const PostJob = () => {
     const checked = e.target.checked;
     setValue('isSrc4', checked);
     if (checked) {
-      setValue('isSrc3', false);
-      setValue('isSrc1', false);
-      setValue('isSrc2', false);
+      // setValue('isSrc3', false);
+      // setValue('isSrc1', false);
+      // setValue('isSrc2', false);
     }
   };
 
@@ -112,7 +230,7 @@ const PostJob = () => {
 
     try {
       dispatch(
-        addJobPost(data, token)
+        addJobPost({...data, licenseType: data.selectedLicenses.join(',')}, token)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
@@ -121,7 +239,7 @@ const PostJob = () => {
   return (
     <form onSubmit={handleSubmit(submitJobPostForm)}>
       {/* jJob Information */}
-      <h1 className="mb-14 text-3xl text-center font-medium text-black">
+      <h1 className="mb-14 mt-14 text-3xl text-center font-medium text-black">
         Create Job Post
       </h1>
       <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
@@ -462,32 +580,37 @@ const PostJob = () => {
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
         {/* License Type */}
-            <div className="flex flex-col gap-2 lg:w-[25%]">
-                <label htmlFor="licenseType" className="lable-style">
-                  License Type
-                </label>
-                <select
-                  type="text"
-                  name="licenseType"
-                  id="licenseType"
-                  placeholder="Choose license type "
-                  className="form-style"
-                  {...register("licenseType", { required: true })}
-                  // defaultValue={user?.adminDetails?.post}
+        <div className="relative" ref={dropdownRef}>
+        <button type="button" className="form-style" onClick={toggleDropdown}>
+          Choose License Type
+        </button>
+        {dropdownOpen && (
+          <div className="absolute mt-1 lg:w-full sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
+            <div className="flex flex-col p-2 max-h-60 overflow-auto">
+              {licenseCategories.map((category) => (
+                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                  <input
+                    type="checkbox"
+                    id={category.id}
+                    value={category.value}
+                    checked={selectedLicenses.includes(category.id)}
+                    onChange={handleLicenseCheckboxChange}
+                    className=""
+                    // name="licenseType"
+                    // {...register({selectedLicenses}, { required: true })}
+                    // checked={watchedValues.licenseType}
+                    // {...register('selectedLicenses')}       
 
-                >
-                  <option value="" disabled >Choose License Type</option>
-                  <option value="Type 1" >Type 1</option>
-                  <option value="Type 2" >Type 2</option>
-                  <option value="Type 3" >Type 3</option>
-
-                </select>
-                {errors.licenseType && (
-                  <span className="-mt-1 text-[12px] text-yellow-100">
-                    Please select your license type.
-                  </span>
-                )}
+                  />
+                  <label htmlFor={category.id} className="w-full">
+                    {category.label}
+                  </label>
+                </div>
+              ))}
             </div>
+          </div>
+        )}
+      </div>
 
             <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
               <label

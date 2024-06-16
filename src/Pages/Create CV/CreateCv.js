@@ -619,7 +619,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
                     // name="licenseType"
                     // {...register({selectedLicenses}, { required: true })}
                     // checked={watchedValues.licenseType}
-                    {...register('selectedLicenses')}       
+                    // {...register('selectedLicenses')}       
 
                   />
                   <label htmlFor={category.id} className="w-full">

@@ -10,11 +10,12 @@ import FullTimeJobs from "../components/core/HomePage/FullTimeJobs"
 import PartTimeJobs from '../components/core/HomePage/PartTimeJobs'
 import JobSliders from '../components/core/HomePage/JobSliders'
 import JobGroups from '../components/core/HomePage/JobGroups'
-import Vs from '../Assests/Images/Vs.jpg'
+import Vs from '../Assests/Images/Driver pro logo.jfif'
 import { useMediaQuery } from 'react-responsive'
 import { TopLocations } from '../components/core/HomePage/TopLocations'
 import CountUp from 'react-countup';
-// import Footer from "../Pages/Footer"
+import JobSidebar from '../components/core/HomePage/JobSidebar'
+import Footer from './Footer/Footer'
 const Home = () => {
 
 	const countUpRef = React.useRef(null);
@@ -22,7 +23,7 @@ const Home = () => {
 		query: '(min-width: 1024px)'
 	  })
 	const isTablet = useMediaQuery({
-		query: '(min-width: 768px)'
+		query: '(max-width: 768px)'
 	})
 	const isMobile = useMediaQuery({
 		query: '(max-width: 425px)'
@@ -30,38 +31,44 @@ const Home = () => {
 	
 	  
   return (
-    <div>
+    <div className='  bg-pure-greys-25/80 '>
     
 			{/* Section 1 */}
-			<div className='lg:mt-20 sm:-mt-60 w-11/12 max-w-maxContent mx-auto flex lg:flex-row sm:flex-col  justify-center items-center gap-2 '>
+			<div className='lg:mt-24 bg-whit  w-11/12 max-w-maxContent mx-auto flex lg:flex-row sm:flex-col justify-center items-center gap-2 '>
 
 				{/* <div className="  flex justify-center items-center gap-2 " > */}
 
-					<div className='w-full flex flex-col lg:gap-3 sm:gap-7 lg:justify-between lg:items-start mx-auto  p-2 '>
+					<div className='w-full flex flex-col sm:gap-7 -space-y-16 lg:items-start   p-2 '>
 						{/* heading */}
-						<div className="w-[80%] flex flex-col justify-center items-center gap-2 m-6 ">
-							<h1 className='text-center'>Discover Driving Opportunities</h1>
-							<p className='text-center'><span className='font-bold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
+						<div className="w-[80%] h-36 flex flex-col items-left gap-1  ">
+							<h2 className='font-edu-sa font-bold text-left'>Discover Driving Opportunities</h2>
+							<p><span className='font-bold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
 						</div>
 						
 						{/* Job Search Bar */}
 						<JobSearchBar/>
 
 						{/* Button Group */}
-						<div className=" lg:w-[60%] lg:h-[500px] flex flex-col gap-3 justify-between items-center mx-auto lg:space-y-4 p-2 " >
-							<h2 className='text-center'>Top Job Postings</h2>
-							<TopJobPostings/>
+						<div className=" w-full h-[300px] flex flex-col justify-center  items-left gap-6
+						 p-2 " >
+						 <div>
+							<h4 className='text-left font-edu-sa'>Top Job Postings</h4>
+							<TopJobPostings/> 
+						 </div>
 
 							{/* <div className='w-[50%] border-[1px] border-black absolute'></div> */}
-							<h2 className='text-center'>Top Job Locations</h2>
-							<TopLocations/>	
+							<div>
+								<h4 className='text-left font-edu-sa'>Top Job Locations</h4>
+								<TopLocations/>	
+							</div>
+
 						</div>
 					</div>
 
 			
 					<img  
 					src={Vs}
-					className="lg:w-[500px] lg:h-[500px] lg:-mt-36 rounded-lg object-fit"></img>
+					className="lg:w-[500px] lg:h-[400px]  rounded-lg object-contain"></img>
 				{/* </div> */}
 			</div>
 				
@@ -104,15 +111,15 @@ const Home = () => {
 				{/* </div> */}
     		{/* </div> */}
 
-		<div className='w-[90%] lg:h-36 flex justify-center items-center lg:gap-3 sm:gap-8 flex-wrap bg-richblue-50 p-3 mt-5 mx-auto sm:border sm:border-black'>
+		<div className='w-[full] lg:h-36 flex justify-center items-center lg:gap-3 sm:gap-8  bg-richblue-50 p-3 mt-28 mx-auto '>
 				
 		<CountUp start={0} end={4500000} delay={0} duration={2.75}
  				>
 			{({ countUpRef }) => (
-				<div className='w-full sm:w-[30%] flex justify-center items-center '>
+				<div className='w-full lg:w-[25%] sm:w-[30%] flex justify-center items-center '>
 				<div className='flex flex-col  gap-y-1'>
-					<span ref={countUpRef} />
-					<h6>Türkiye'deki sürücü sayısı</h6>
+					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl ' />
+					<h6 className='font-bold font-edu-sa text-2xl'>Türkiye'deki sürücü sayısı</h6>
 				</div>
 				</div>
 			)}
@@ -121,10 +128,10 @@ const Home = () => {
 		<CountUp start={0} end={3000000} delay={0} duration={2.75}
  				>
 			{({ countUpRef }) => (
-				<div className='w-full sm:w-[30%] flex justify-center items-center'>
-				<div className='flex flex-col gap-y-1'>
-					<span ref={countUpRef} />
-					<h6>drivers in the freight transport sector</h6>
+				<div className='w-full lg:w-[25%] sm:w-[30%] flex justify-center items-center'>
+				<div className='flex flex-col gap-y-1 '>
+					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl '/>
+					<h6 className='font-bold font-edu-sa text-2xl'>drivers in the freight transport sector</h6>
 				</div>
 				</div>
 			)}
@@ -133,10 +140,10 @@ const Home = () => {
 		<CountUp start={0} end={1500000} delay={0} duration={2.75}
  				>
 			{({ countUpRef }) => (
-				<div className='w-full sm:w-[30%] flex justify-center items-center '>
+				<div className='w-full sm:w-[30%] lg:w-[25%] flex justify-center items-center '>
 				<div className='flex flex-col gap-y-1'>
-					<span ref={countUpRef} />
-					<h6>drivers in the passenger transport sector</h6>
+					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl ' />
+					<h6 className='font-bold font-edu-sa text-2xl '>drivers in the passenger transport sector</h6>
 				</div>
 				</div>
 			)}
@@ -145,10 +152,10 @@ const Home = () => {
 		<CountUp start={0} end={1000000} delay={0} duration={2.75}
  				>
 			{({ countUpRef }) => (
-				<div className='w-full sm:w-[30%] flex justify-center items-center '>
+				<div className='w-full sm:w-[30%] lg:w-[25%] flex justify-center items-center '>
 				<div className='flex flex-col gap-y-1'>
-					<span ref={countUpRef} />
-					<h6>drivers in the moto-couriers sector</h6>
+					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl ' />
+					<h6 className='font-bold font-edu-sa text-2xl '>drivers in the moto-couriers sector</h6>
 				</div>
 				</div>
 			)}
@@ -160,16 +167,16 @@ const Home = () => {
 		{
 			isMobile && <JobSliders/>
 		}
-		<div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col lg:flex items-center justify-center ">
+		<div className="relative mx-auto flex w-screen bg- max-w-maxContent flex-col lg:flex items-center justify-center ">
 
 				{/* {
 					isMobile && 
 				} */}
-				{/* {
-					isTablet && 
-				} */}
 				{
-					isDesktopOrLaptop && <JobGroups/>
+					isTablet && <JobGroups/>
+				}
+				{
+					isDesktopOrLaptop && <JobSidebar/>
 				}
 
 				{/* <RecentlyPublishedJobs/>			
@@ -177,7 +184,7 @@ const Home = () => {
 				<PartTimeJobs/> */}
 		</div>
 
-		{/* <Footer/> */}
+		<Footer/>
 
 		</div>
   )

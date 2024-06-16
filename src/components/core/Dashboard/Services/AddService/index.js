@@ -12,7 +12,7 @@ const AddService = () => {
   const { user } = useSelector((state) => state.profile)
   const [loading, setLoading] = useState(false)
 
-  
+  const {setService} = useSelector((state) => state.service)  
 
 
   // const { token } = useSelector((state) => state.auth)
@@ -49,7 +49,7 @@ const AddService = () => {
     // console.log("token - ", token)
 
     try {
-      dispatch(addServiceDetails({...data, serviceIcon:data.serviceIcon[0]},token))
+      dispatch(addServiceDetails({...data, serviceIcon:data.serviceIcon[0]}, token, navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

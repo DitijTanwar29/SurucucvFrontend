@@ -34,7 +34,7 @@ const JobSearchBar = () => {
   };
 
   return (
-    <div className='flex flex-col sm:w-[90%]' >
+    <div className='flex flex-col w-[90%] h-20 ' >
       <div className='flex lg:gap-14 sm:gap-3'>
         <input
           type="text"
@@ -44,16 +44,16 @@ const JobSearchBar = () => {
           onBlur={() => setShowServices(false)}
           placeholder="Search for job titles..."
           onClick={() => setOpen(true)}
-          className="w-[80%] sm:w-[80%]"
+          className="w-[80%] h-14"
         />
-        <button onClick={handleSearch} className='lg:w-[20%] p-2 rounded-md bg-richblue-200'>Search</button>
+        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-orange-400 font-bold'>Search</button>
       </div>
       
         {showServices && (
           <ul className='w-full m-0 p-0 bg-white rounded-md z-10 '
           ref={ref}>
             {jobs.map((job, index) => (
-              <li className='w-full p-2 mx-auto rounded-md hover:cursor-pointer text-black hover:bg-black'
+              <li className='w-full p-2 mx-auto rounded-md hover:cursor-pointer bg-richblack-100 text-black hover:bg-black'
               key={index}>
               <Link  
                 key={job._id}

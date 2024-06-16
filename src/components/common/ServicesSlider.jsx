@@ -33,7 +33,7 @@ function ServicesSlider() {
             {
                 services?.length !== 0 ? (
                     <Swiper
-                    slidesPerView={1}
+                    slidesPerView={3}
                     spaceBetween={20}
                     loop={true}
                     freeMode={true}
@@ -56,21 +56,21 @@ function ServicesSlider() {
 
                     {services?.map((service) => (
                         <SwiperSlide key={service._id}>
-                            <div className="flex flex-col gap-3 sm:w-[90%] md:w-[full] lg:w-[60%] 
-                            mx-auto bg-orange-400 hover:bg-orange-500 hover:cursor-grab
-                             p-3 rounded-lg border-1 border-black">
-                                <div className=" md:min-w-[65%] sm:w-full w-[700px] h-30 flex justify-evenly items-center gap-4 ">
+                            <div className="flex flex-col gap-3 sm:w-[90%] md:w-[full] lg:w-full h-60
+                            mx-auto hover:border-orange-400 bg-richblack-100  hover:cursor-grab
+                             p-3 rounded-lg border-1 border-richblack-50">
+                                <div className=" md:min-w-[65%] sm:w-full w-[700px] lg:h-full flex justify-evenly items-center gap-4 ">
                                     <img
                                         src={service?.icon}
                                         alt={service?.serviceName}
-                                        className="md:h-[148px] md:w-[220px] sm:w-[6rem] sm:h-[5rem] object-fill rounded-lg"
+                                        className="md:h-[148px] md:w-[220px] sm:w-[6rem] sm:h-[5rem]   object-fill rounded-lg"
                                     />
                                     <div className="flex flex-col justify-center items-center lg:gap-y-4  ">
                                         <h2 className="font-semibold text-richblack-5 sm:text-[14px] lg:text-[40px] lg:text-center ">{service.serviceName}</h2>
                                         {/* <h2 className="text-[12px] sm:text-[16px] lg:text-[30px] font-medium text-black">
                                             {service?.serviceName}
                                         </h2> */}
-                                    <p className="font-medium text-richblack-25 sm:text-[12px] lg:text-[20px] lg:text-center">
+                                    <p className="font-medium text-richblack-25  sm:text-[12px] lg:text-[20px] lg:text-center">
                                         {service?.serviceDescription.split(" ").length > truncateWords
                                             ? service?.serviceDescription
                                                 .split(" ")

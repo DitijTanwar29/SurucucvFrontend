@@ -41,6 +41,11 @@ import ViewCv from "./components/core/Dashboard/MyCv/ViewCv"
 import Sectors from "./components/core/Dashboard/Sectors"
 import AddSector from './components/core/Dashboard/Sectors/AddSector';
 import EditSector from "./components/core/Dashboard/Sectors/EditSector"
+// import FullTimeJobs from './components/core/HomePage/FullTimeJobs';
+// import PartTimeJobs from './components/core/HomePage/PartTimeJobs';
+// import RecentlyPublishedJobs from './components/core/HomePage/RecentlyPublishedJobs';
+// import JobSearchBar from './components/core/HomePage/JobSearchBar';
+
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -58,11 +63,11 @@ function App(){
             <Route exact path='/find-job' element= {<FindJob/>} />
             <Route exact path='/contact' element= {<Contact/>} />
             <Route exact path='/about' element= {<AboutUs/>} />
-
+            
 
             <Route exact path='/login' element= {<OpenRoute><Login/></OpenRoute>} />
             <Route exact path='/signup' element= {<OpenRoute><Signup/></OpenRoute>} />
-       
+            
             <Route exact path='/job/:jobId' element= {<JobDetailsPage user={user}/>} />
             <Route exact path='/find-driver' element= {<FindDriver/>}/>
             <Route exact path='/create-cv' element= {<CreateCv user={user} token={token} />} />
@@ -72,10 +77,19 @@ function App(){
             <Route exact path='/faq' element= {<OpenRoute><FAQ/></OpenRoute>} />
             <Route exact path='/vision' element= {<OpenRoute><Vision/></OpenRoute>} />
             <Route exact path='/our-publication' element={<OpenRoute><OurPublication/></OpenRoute>}/>
+            {/* <Route exact path="/" element={<OpenRoute><JobSidebar/></OpenRoute>}>
+
+
+            <Route path="full-time-jobs" element={<FullTimeJobs/>} />
+
+            <Route path="part-time-jobs" element={<PartTimeJobs/>} />
+            <Route path="recently-published-jobs" element={<RecentlyPublishedJobs/>} />
+
+            </Route> */}
+
+
 
             <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}>
-
-
 
             <Route path="admin" element={<HomePage/>} />
             {/* Route for admin profile */}

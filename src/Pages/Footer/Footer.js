@@ -21,7 +21,7 @@ const Footer = () => {
                   </Link>
                   </li>
               <li className="nav-item ion-ios-arrow-right">
-                  <Link className="nav-link ion-ios-arrow-right" to="/about-us">
+                  <Link className="nav-link ion-ios-arrow-right" to="/about">
                      About Us 
                   </Link>
                   </li>

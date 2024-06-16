@@ -70,14 +70,15 @@
 
 
 
-import { useState } from "react";
-import { VscSignOut, VscChevronLeft, VscChevronRight, VscMenu } from "react-icons/vsc";
+import { useState, useRef } from "react";
+import { VscSignOut, VscChevronLeft, VscChevronRight, VscClose  } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { sidebarLinks } from "../../../data/dashboard-links";
 import { logout } from "../../../services/operations/authAPI";
 import ConfirmationModal from "../../../components/common/ConfirmationModal";
 import SidebarLink from "./SidebarLink";
+import useOnClickOutside from "../../../hook/useOnClickOutside"
 
 export default function Sidebar() {
   const { user, loading: profileLoading } = useSelector(
@@ -91,10 +92,11 @@ export default function Sidebar() {
   const [confirmationModal, setConfirmationModal] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // const ref = useRef(null)
+  const ref = useRef(null)
     
     
-    // useOnClickOutside(ref, () => setIsSidebarOpen(false))
+    useOnClickOutside(ref, () => setIsSidebarOpen(false))
+
   if (profileLoading || authLoading) {
     return (
       <div className="grid h-full min-w-[220px] items-center border-r-[1px] border-r-richblack-700 bg-orange-300">
@@ -103,28 +105,37 @@ export default function Sidebar() {
     );
   }
 
+
   return (
     <>
       <div className="relative">
         <button
-          className={`fixed top-24 -left-3 z-50  mt-[1px]
+          className={`fixed top-[70px] -left-3 z-50  mt-[1px]
           flex items-center justify-center w-10 h-10 bg-orange-400 rounded-md shadow-md shadow-richblack-600
-          ${isSidebarOpen ? "sm:translate-x-48 lg:translate-x-80" : ""} transition-transform duration-300 ease-in-out`}
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          ${isSidebarOpen ? "sm:translate-x-48 lg:translate-x-30" : ""} transition-transform duration-300 ease-in-out`}
+          // onClick={() => isSidebarOpen(!isSidebarOpen)}
+          onClick={() => setIsSidebarOpen(true)}
           // ref={ref}
         >
           {isSidebarOpen ? (
-            <VscChevronLeft className="text-white font-semibold  " />
+            <VscClose  className="text-red-600 font-semibold  " onClick={() => setIsSidebarOpen(true)} />
           ) : (
-            <VscChevronRight className="text-white font-semibold" />
+            <VscChevronRight className="text-white font-semibold" onClick={() => setIsSidebarOpen(false)} />
           )}
         </button>
-        <div
-          className={`fixed top-24 left-0 h-full min-w-[200px] sm:w-[30%] bg-black/75 py-10 transform ${
+        
+          <div
+          className={`fixed top-[70px] left-0 h-full min-w-[200px] sm:w-[30%] lg:w-[10%] bg-black/75 py-10 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out z-10`}
+          } transition-transform duration-300 ease-in-out z-40`}
+
+          onClick={(e) => e.stopPropagation()}
+          ref={ref}
         >
-          <div className="flex flex-col ">
+        
+          <div className="flex flex-col "
+          onClick={(e) => e.stopPropagation()}
+          ref={ref}>
             {sidebarLinks.map((link) => {
               if (link.type && user?.accountType !== link.type) return null;
               return (
@@ -158,6 +169,7 @@ export default function Sidebar() {
             </button>
           </div>
         </div>
+        
       </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>

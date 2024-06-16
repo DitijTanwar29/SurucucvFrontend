@@ -1,15 +1,35 @@
 import { useState, useEffect } from "react";
-import React from "react";
+import React, {useRef} from "react";
 
 import IconBtn from "../../../../common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJobDetails, editJobPostDetails } from "../../../../../services/operations/jobPostAPI";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { getActiveServices } from "../../../../../services/operations/serviceDetailsAPI";
 import { Country, State, City }  from 'country-state-city';
 import { useParams } from "react-router-dom"
 import { setJob, setEditJob } from "../../../../../slices/jobPostSlice"
+
+const licenseCategories = [
+  { id: 'M', value: 'M', label: 'M' },
+  { id: 'A1', value: 'A1', label: 'A1' },
+  { id: 'A2', value: 'A2', label: 'A2' },
+  { id: 'A', value: 'A', label: 'A' },
+  { id: 'B1', value: 'B1', label: 'B1' },
+  { id: 'B', value: 'B', label: 'B' },
+  { id: 'C1', value: 'C1', label: 'C1' },
+  { id: 'C', value: 'C', label: 'C' },
+  { id: 'D1', value: 'D1', label: 'D1' },
+  { id: 'D', value: 'D', label: 'D' },
+  { id: 'BE', value: 'BE', label: 'BE' },
+  { id: 'C1E', value: 'C1E', label: 'C1E' },
+  { id: 'CE', value: 'CE', label: 'CE' },
+  { id: 'D1E', value: 'D1E', label: 'D1E' },
+  { id: 'DE', value: 'DE', label: 'DE' },
+  { id: 'F', value: 'F', label: 'F' },
+  { id: 'G', value: 'G', label: 'G' },
+];
 const EditPostJob = () => {
     const { jobId } = useParams()
     console.log("job id: ",jobId)
@@ -29,107 +49,162 @@ const EditPostJob = () => {
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([]);
 
-  const [src1Checked, setSrc1Checked] = useState(false);
-  const [src2Checked, setSrc2Checked] = useState(false);
-  const [src3Checked, setSrc3Checked] = useState(false);
-  const [src4Checked, setSrc4Checked] = useState(false);
 
-  const {
+const {
     register,
     handleSubmit,
     formState: { errors },
     setValue, 
     watch,
-  } = useForm();
+    control
 
-  const watchedValues = watch();
+} = useForm();
 
-  const handleSrc1Change = () => {
-    setSrc1Checked(!src1Checked);
-    if (!src1Checked) {
-        setSrc2Checked(true);
-    } else {
-        setSrc2Checked(false);
+const watchedValues = watch();
+  
+const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValue:[]});
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleLicenseCheckboxChange = (e) => {  
+    const { id, checked } = e.target;
+
+    let newSelectedLicenses = [...selectedLicenses];
+
+    const updateSelection = (add, remove = []) => {
+      add.forEach((item) => {
+        if (!newSelectedLicenses.includes(item)) newSelectedLicenses.push(item);
+      });
+      remove.forEach((item) => {
+        newSelectedLicenses = newSelectedLicenses.filter((license) => license !== item);
+      });
+    };
+
+    switch (id) {
+      // case 'DE':
+      //   updateSelection(
+      //     checked ? licenseCategories.filter((category) => category.id !== 'A').map((category) => category.id) : [],
+      //     checked ? [] : ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G']
+      //   );
+      //   break;
+      case 'A':
+        updateSelection(
+          checked ? ['A', 'A1','A2'] : [],
+          checked ? [] : ['A','A1','A2']
+        );
+        break;
+      case 'C':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'C1', 'F','C','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'C1', 'F','C','A1']
+        );
+        break;
+      case 'B':
+        updateSelection(
+          checked ? ['M', 'B1', 'F','B','A1'] : [],
+          checked ? [] : ['M', 'B1', 'F','B','A1']
+        );
+        break;
+      case 'D1':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'F','D1','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'F','D1','A1']
+        );
+        break;
+      case 'D':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'D1', 'F','D','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D','A1']
+        );
+        break;
+      case 'D1E':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'D1', 'F','D1E','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D1E','A1']
+        );
+        break;
+      case 'CE':
+        updateSelection(
+          checked ? ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1'] : [],
+          checked ? [] : ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1']
+        );
+        break;
+      default:
+        if (checked) {
+          newSelectedLicenses.push(id);
+        } else {
+          newSelectedLicenses = newSelectedLicenses.filter((license) => license !== id);
+        }
+        break;
     }
-};
 
-const handleSrc2Change = () => {
-    setSrc2Checked(!src2Checked);
-};
+    // setSelectedLicenses(newSelectedLicenses);
+    setValue('selectedLicenses', newSelectedLicenses);
+  };
 
-const handleSrc3Change = () => {
-    setSrc3Checked(!src3Checked);
-    if (!src3Checked) {
-        setSrc4Checked(true);
-    } else {
-        setSrc4Checked(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false);
     }
-};
+  };
 
-const handleSrc4Change = () => {
-    setSrc4Checked(!src4Checked);
-};
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
-// useEffect( () => {
-//     ;(async () => {
-//         setLoading(true)
-//         console.log("job id inside useEffect() :", jobId)
-//         const result = await fetchJobDetails(jobId, token)
-//         // console.log("result : ",result)
-//         console.log("result.[0] : ",result?.[0])
-//         console.log("result of fetchJoDetails api: ",result)
-//         // console.log("result.[0].serviceName : ",result?.[0].serviceName)
-//           console.log("result of result?.[0]?.companyName : ",result?.[0]?.companyName)
+
+
 
   
-//         if(result?.jobDetails){
-          
-//           dispatch(setEditJob(true))
-//           dispatch(setJob(result?.[0]))
-//         }
-//         setLoading(false)
-// })()
 
-// // if form is in edit mode
-// if (editJob) {
-//     // console.log("data populated", editJob)
-//     setValue("jobId", job._id)
-//     setValue("title", job.title)
-//     setValue("description", job.description)
-//     setValue("service", job.service)
-//     setValue("skills", job.skills)
-//     setValue("requiredExperience", job.requiredExperience)
-//     setValue("location", job.location)
-//     setValue("companyName", job.companyName)
-//     setValue("salaryRange", job.salaryRange)
-//     setValue("salaryType", job.salaryType)
-//     setValue("vacancy", job.vacancy)
-//     setValue("startDate", job.startDate)
-//     setValue("endDate", job.endDate)
-//     setValue("jobType", job.jobType)
-//     setValue("status", job.status)
-//     setValue("isSrc1", job.isSrc1)
-//     setValue("isSrc2", job.isSrc2)
-//     setValue("isSrc3", job.isSrc3)
-//     setValue("isSrc4", job.isSrc4)
-//     setValue("psikoteknik", job.psikoteknik)
-//     setValue("adrDriverLicence", job.adrDriverLicence)
-//     setValue("passport", job.passport)
-//     setValue("visa", job.visa)
-//     setValue("abroadExperience", job.abroadExperience)
-//     setValue("isBlindSpotTraining", job.isBlindSpotTraining)
-//     setValue("isSafeDrivingTraining", job.isSafeDrivingTraining)
-//     setValue("isFuelEconomyTraining", job.isFuelEconomyTraining)
-//   }
-//   // title, description, service, skills, requiredExperience, 
-//   //           location,companyName, salaryRange, salaryType, 
-//   //           vacancy, startDate, endDate, jobType, status,
-//   //           licenseType,srcBox,isSrc1,isSrc2,isSrc3,isSrc4,psikoteknik,adrDriverLicence,
-//   //           passport,visa,abroadExperience,
-//   //           isBlindSpotTraining,isSafeDrivingTraining,isFuelEconomyTraining
+  const handleSrc1Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc1', checked);
+    if (checked) {
+      setValue('isSrc2', true);
+      setValue('isSrc3', false);
+      setValue('isSrc4', false);
+    }
+  };
 
+  const handleSrc2Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc2', checked);
+    if (checked) {
+      // setValue('isSrc1', false);
+      // setValue('isSrc3', false);
+      // setValue('isSrc4', false);
+    }
+  };
 
-// },[])
+  const handleSrc3Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc3', checked);
+    if (checked) {
+      setValue('isSrc4', true);
+      setValue('isSrc1', false);
+      setValue('isSrc2', false);
+    }
+  };
+
+  const handleSrc4Change = (e) => {
+    const checked = e.target.checked;
+    setValue('isSrc4', checked);
+    if (checked) {
+      // setValue('isSrc3', false);
+      // setValue('isSrc1', false);
+      // setValue('isSrc2', false);
+    }
+  };
+
 
 
   useEffect(() => {
@@ -142,18 +217,7 @@ const handleSrc4Change = () => {
       }
       setLoading(false);
     };
-    // if form is in edit mode
-    // if (editCourse) {
-    //   // console.log("data populated", editCourse)
-    //   setValue("courseTitle", course.courseName)
-    //   setValue("courseShortDesc", course.courseDescription)
-    //   setValue("coursePrice", course.price)
-    //   setValue("courseTags", course.tag)
-    //   setValue("courseBenefits", course.whatYouWillLearn)
-    //   setValue("courseCategory", course.category)
-    //   setValue("courseRequirements", course.instructions)
-    //   setValue("courseImage", course.thumbnail)
-    // }
+    
     getServices();
 
       
@@ -166,7 +230,7 @@ const onSubmit = async (data) => {
     // console.log("token - ", token)
 
     try {
-        dispatch(editJobPostDetails({...data, jobId:jobId}, token));
+        dispatch(editJobPostDetails({...data, jobId:jobId,licenseType: data.selectedLicenses.join(',')}, token));
         // SERVICE SELECT KRKNA IMPORTANT H YAHA TAB HI JOB POST UPDATE HOGII
     } catch (error) {
     console.log("ERROR MESSAGE - ", error.message);
@@ -176,7 +240,7 @@ const onSubmit = async (data) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* jJob Information */}
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+      <h1 className="mb-14 mt-14 text-3xl font-medium text-richblack-5">
         Edit Job Post
       </h1>
       <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
@@ -521,35 +585,39 @@ const onSubmit = async (data) => {
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
         
-            <div className="flex flex-col gap-2 lg:w-[25%]">
-                <label htmlFor="licenseType" className="lable-style">
-                  License Type
-                </label>
-                <select
-                  type="text"
-                  name="licenseType"
-                  id="licenseType"
-                  placeholder="Choose license type "
-                  className="form-style"
-                  {...register("licenseType")}
-                  defaultValue={job?.licenseType}
-                  
+        <div className="relative" ref={dropdownRef}>
+        <button type="button" className="form-style" onClick={toggleDropdown}>
+          Choose License Type
+        </button>
+        {dropdownOpen && (
+          <div className="absolute mt-1 lg:w-full sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
+            <div className="flex flex-col p-2 max-h-60 overflow-auto">
+              {licenseCategories.map((category) => (
+                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                  <input
+                    type="checkbox"
+                    id={category.id}
+                    value={category.value}
+                    checked={selectedLicenses.includes(category.id)}
+                    onChange={handleLicenseCheckboxChange}
+                    className=""
+                    // name="licenseType"
+                    // {...register({selectedLicenses}, { required: true })}
+                    // checked={watchedValues.licenseType}
+                    // {...register('selectedLicenses')}       
 
-                >
-                  <option value="" disabled >Choose License Type</option>
-                  <option value="Type 1" >Type 1</option>
-                  <option value="Type 2" >Type 2</option>
-                  <option value="Type 3" >Type 3</option>
-
-                </select>
-                {errors.licenseType && (
-                  <span className="-mt-1 text-[12px] text-yellow-100">
-                    Please select your license type.
-                  </span>
-                )}
+                  />
+                  <label htmlFor={category.id} className="w-full">
+                    {category.label}
+                  </label>
+                </div>
+              ))}
             </div>
+          </div>
+        )}
+      </div>
 
-            <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
+      <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
               <label
                 className="lable-style"
               >
@@ -563,11 +631,9 @@ const onSubmit = async (data) => {
                     <input
                         type="checkbox"
                         name="isSrc1"
-                        value="SRC 1"
+                        value="isSrc1"
                         onChange={handleSrc1Change}
-                        checked={src1Checked}
-                        defaultValue={job?.isSrc1}
-                        
+                        checked={watchedValues.isSrc1 || false}
                     />
                 </label>
 
@@ -576,11 +642,9 @@ const onSubmit = async (data) => {
                     <input
                         type="checkbox"
                         name="isSrc2"
-                        value="SRC 2"
+                        value="isSrc2"
                         onChange={handleSrc2Change}
-                        checked={src2Checked}
-                        defaultValue={job?.isSrc2}
-
+                        checked={watchedValues.isSrc2 || false}
                     />
                 </label>
               </div>
@@ -591,11 +655,10 @@ const onSubmit = async (data) => {
                       <input
                           type="checkbox"
                           name="isSrc3"
-                          value="SRC 3"
+                          value="isSrc3"
                           onChange={handleSrc3Change}
-                          checked={src3Checked}
-                        defaultValue={job?.isSrc3}
-
+                          checked={watchedValues.isSrc3 || false}
+                      
                       />
                   </label>
               
@@ -605,16 +668,14 @@ const onSubmit = async (data) => {
                       <input
                           type="checkbox"
                           name="isSrc4"
-                          value="SRC 4"
+                          value="isSrc4"
                           onChange={handleSrc4Change}
-                          checked={src4Checked}
-                        defaultValue={job?.isSrc4}
-
+                          checked={watchedValues.isSrc4 || false}
                       />
                   </label>
               </div>
 
-            </div>     
+            </div>    
 
 
             {/* Psikoteknik No Of Validity Years*/}

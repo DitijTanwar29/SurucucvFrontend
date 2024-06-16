@@ -45,10 +45,10 @@ const MyProfile = () => {
  
       {/* </div> */}
      
-      <h1 className="mb-14 text-3xl font-medium text-black">
+
+      <h1 className="mb-14 text-3xl font-medium text-black text-center">
         My Profile
       </h1>
-
       <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-black p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img

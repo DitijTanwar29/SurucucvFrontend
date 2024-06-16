@@ -6,6 +6,7 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
       "edu-sa": ["Edu SA Beginner", "cursive"],
       mono: ["Roboto Mono", "monospace"],
+      
     },
     screens: {
       'sm': '320px',
@@ -29,6 +30,13 @@ module.exports = {
         700: "#2C333F",
         800: "#161D29",
         900: "#000814",
+      },
+
+      stone: {
+        100:"#f5f5f4",
+        200:"#e7e5e4",
+        300:"#d6d3d1",
+        400:"#a8a29e"
       },
       richblue: {
         5: "#ECF5FF",
@@ -152,6 +160,31 @@ module.exports = {
         800: "#171717",
         900: "#141414",
       },
+      "purple": {
+        50: "#CCCCCC",
+        100: "#f3e8ff",
+        200: "#e9d5ff",
+        300: "#d8b4fe",
+        400: "#c084fc",
+        500: "#a855f7",
+        600: "#9333ea",
+        700: "#7e22ce",
+        800: "#6b21a8",
+        900: "#581c87",
+        950: "#3b0764",
+      },
+      "rose":{
+        100:"#ffe4e6",
+        200:"#fecdd3",
+        300:"#fda4af",
+        400:"#fb7185",
+        500:"#f43f5e",
+        600:"#e11d48",
+        700:"#be123c",
+        800:"#9f1239",
+        900:"#881337",
+        950:"#4c0519",
+      }
     },
     extend: {
       maxWidth: {

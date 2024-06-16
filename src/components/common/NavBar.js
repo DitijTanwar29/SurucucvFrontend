@@ -26,12 +26,12 @@ export default function NavBar()  {
 
   return (
     <>
-    <div className="sm:relative lg:fixed lg:top-0 w-full z-50">
+    <div className="sm:relative lg:fixed lg:top-0 w-full z-30">
 
 <button
-          className={`lg:hidden sm:flex fixed top-5  right-8 z-50  mt-[1px]
+          className={`lg:hidden sm:flex fixed top-5  right-8 z-30  mt-[1px]
            items-center justify-center w-10 h-10 bg-orange-400 rounded-full shadow-md shadow-richblack-600
-          ${isSidebarOpen ? "sm:translate-y-72 " : "sm:translate-y-0"} transition-transform duration-200 ease-in-out`}
+          ${isSidebarOpen ? "sm:translate-y-72 " : "sm:translate-y-0"} transition-transform duration-300 ease-in-out`}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           {isSidebarOpen ? (
@@ -42,14 +42,13 @@ export default function NavBar()  {
         </button>
 
     <div 
-    className={`lg:h-20 md:h-20 sm:h-full items-center lg:sticky lg:top-0 z-50 justify-between lg:border-b-[1px] bg-orange-400 border-b-black ${
-      location.pathname !== "/" ? " text-orange-400" : ""
-    }
-    
-    transform ${
-            isSidebarOpen ? "sm:translate-y-0 lg:translate-y-0" : "sm:-translate-y-full lg:translate-y-0"
-          }  ease-in-out
-     transition-all duration-200 `}
+    className={`lg:h-20 md:h-20 sm:h-full flex lg:flex items-center lg:sticky lg:top-0 z-30 justify-between 
+    lg:border-b-[1px] bg-black/75 border-b-pure-greys-100 
+       
+     ${
+            isSidebarOpen ? "sm:translate-y-0 lg:translate-y-0 sm:h-full flex" : "sm:-translate-y-full lg:translate-y-0 sm:h-0 hidden"
+          }  
+     transition-transform duration-300 ease-in-out `}
     
     >
 
@@ -71,7 +70,7 @@ export default function NavBar()  {
                           
                             <Link to={link?.path}>
                             {/* sm:text-[12px] md:text-[20px] lg:text-[1rem] */}
-                              <p className={`${matchRoute(link?.path) ? "text-white" : "text-black" } text-center 
+                              <p className={`${matchRoute(link?.path) ? "text-orange-400" : "text-white" } text-center 
                               `}>
                                 {link.title}
                               </p>

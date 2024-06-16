@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast"
 
 import { apiConnector } from "../apiConnector"
 import { serviceEndpoints } from "../apis"
-import { setEditService } from "../../slices/serviceSlice"
+import { setEditService, setService } from "../../slices/serviceSlice"
 
 const {
     SERVICE_DETAILS_API,
@@ -58,7 +58,8 @@ export const fetchServiceDetails = async (serviceId) => {
 }
 
 // add the service details
-export const addServiceDetails = async (data, token) => {
+export function addServiceDetails(data, token, navigate) {
+  return async (dispatch) => {
     let result = null
     const toastId = toast.loading("Loading...")
     try {
@@ -72,16 +73,19 @@ export const addServiceDetails = async (data, token) => {
       }
       toast.success("Service Details Added Successfully")
       result = response?.data?.data
+      dispatch(setService(result))
+      navigate("/dashboard/my-services")
     } catch (error) {
       console.log("CREATE SERVICE API ERROR............", error)
       toast.error(error.message)
     }
     toast.dismiss(toastId)
-    return result
+  }
 }
 
 //edit the service details
-export const editServiceDetails = async (data, token) => {
+export function editServiceDetails(data, token, navigate) {
+  return async (dispatch) => {
     let result = null
     const toastId = toast.loading("Loading...")
     try {
@@ -95,13 +99,14 @@ export const editServiceDetails = async (data, token) => {
       }
       toast.success("Service Details Updated Successfully")
       result = response?.data?.data
-      
+      dispatch(setService(result))
+      navigate("/dashboard/my-services")
     } catch (error) {
       console.log("EDIT SERVICE API ERROR............", error)
       toast.error(error.message)
     }
     toast.dismiss(toastId)
-    return result
+  }
 }
 
 //delete service 

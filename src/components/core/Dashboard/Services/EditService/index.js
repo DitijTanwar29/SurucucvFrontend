@@ -24,8 +24,8 @@ const EditService = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.profile)
-  const { service, editService } = useSelector((state) => state.service)
-  
+  const { service } = useSelector((state) => state.service)
+  console.log("service in slice :",service)
   const [loading, setLoading] = useState(false)
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;
@@ -60,22 +60,22 @@ const EditService = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const onSubmit = async (data) => {
     console.log("Form Data after form submission - ", data)
     
-
-
-
+    
+    
+    
     try {
-      dispatch(editServiceDetails({...data, serviceIcon:data.serviceIcon[0], serviceId:serviceId},token))
+      dispatch(editServiceDetails({...data, serviceIcon:data.serviceIcon[0], serviceId:serviceId},token,navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }
   }
   return (
+    // console.log(service?.sector)
     
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
         {/* Service Information */}
         <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">

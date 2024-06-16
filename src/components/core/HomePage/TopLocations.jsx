@@ -20,7 +20,7 @@ export const TopLocations = () => {
     {/* <Link to={`/job/${job._id}`} key={job._id} >
     </Link> */}
   return (
-    <div  className='w-full flex-col lg:justify-center items-center  gap-32 sm:flex-wrap lg:mt-44 sm:space-x-6 sm:space-y-6'>
+    <div  className='w-full flex-col lg:justify-center items-center  gap-32 sm:flex-wrap  sm:space-x-6 sm:space-y-6'>
         {
             topJobLocations?.length === 0 ? (
                 <p>No Job Post Available yet</p>
@@ -28,8 +28,8 @@ export const TopLocations = () => {
                 topJobLocations?.map((topJobLocation, index) => (
                   
 
-                            <button key={index} className='lg:w-28 lg:h-16  rounded-full p-2  font-mono text-black 
-                             border-1 border-richblue-100 hover-b-orange-600 shadow-lg'>
+                            <button key={index} className='lg:w-28 sm:text-xs lg:h-10 rounded-full lg:px-3 lg:py-2 sm:p-3 font-bold 
+                             border-1 border-richblack-50 hover:border-orange-400 text-orange-400 text-center'>
                                 {topJobLocation?._id}
                             </button>
                             
