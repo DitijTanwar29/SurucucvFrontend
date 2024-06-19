@@ -31,8 +31,8 @@ const licenseCategories = [
 const PostJob = () => {
   
   // console.log(Country.getAllCountries())
-  console.log("state: ",JSON.stringify(State.getAllStates()))
-  console.log("city: ", City.getCitiesOfCountry("TR"))
+  // console.log("state: ",JSON.stringify(State.getAllStates()))
+  // console.log("city: ", City.getCitiesOfCountry("TR"))
 
   const { user } = useSelector((state) => state.profile);
   // const { token } = useSelector((state) => state.auth)
@@ -249,7 +249,7 @@ const PostJob = () => {
 
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
-        {/* JOb Title service  */}
+        {/* JOb Title   */}
           <div className="flex flex-col gap-2 lg:w-[25%]">
             <label htmlFor="title" className="lable-style">
               Job Title

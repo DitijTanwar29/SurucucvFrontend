@@ -403,30 +403,49 @@ export const getPartTimeJobs = async () => {
   return result
 }
 
-export const getFilteredJobs = async (filters = {}) => {
-  const toastId = toast.loading("Loading...");
-  let result = [];
+// export const getFilteredJobs = async (filters = {}) => {
+//   const toastId = toast.loading("Loading...");
+//   let result = [];
 
-  console.log("filters inside api endpoint : ",filters)
+//   console.log("filters inside api endpoint : ",filters)
 
+//   try {
+//     // Construct URLSearchParams from filters
+//     const params = new URLSearchParams(filters).toString();
+//     const url = `${FILTER_JOBS_API}?${params}`;
+//     console.log('Request URL:', url);
+
+//     const response = await apiConnector("GET", url);
+
+//     if (!response?.data?.success) {
+//       throw new Error("Could Not Fetch Filtered Jobs");
+//     }
+
+//     result = response?.data?.data;
+//     toast.success("Jobs fetched Successfully")
+//   } catch (error) {
+//     console.log("FILTER_JOBS_API ERROR............", error);
+//     toast.error(error.message);
+//   }
+
+//   toast.dismiss(toastId);
+//   return result;
+// };
+
+
+export const getFilteredJobs = async (queryString) => {
+  const toastId = toast.loading("Loading...")
+  let result = []
   try {
-    // Construct URLSearchParams from filters
-    const params = new URLSearchParams(filters).toString();
-    const url = `${FILTER_JOBS_API}?${params}`;
-    console.log('Request URL:', url);
-
-    const response = await apiConnector("GET", url);
-
+    const response = await apiConnector("GET", `${FILTER_JOBS_API}?${queryString}`)
     if (!response?.data?.success) {
-      throw new Error("Could Not Fetch Filtered Jobs");
+      throw new Error("Could Not Fetch Filtered Jobs")
     }
-
-    result = response?.data?.data;
+    result = response?.data?.data
   } catch (error) {
-    console.log("FILTER_JOBS_API ERROR............", error);
-    toast.error(error.message);
+    console.log("GET_JOBS_API ERROR............", error)
+    toast.error(error.message)
   }
-
-  toast.dismiss(toastId);
-  return result;
-};
+  toast.dismiss(toastId)
+  return result
+}

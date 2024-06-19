@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createResume } from "../../services/operations/resumeAPI";
 import { useForm, useWatch } from "react-hook-form";
-import { getAllServices } from "../../services/operations/serviceDetailsAPI";
+
 import { Country, State, City }  from 'country-state-city';
 import _ from 'lodash';
 
