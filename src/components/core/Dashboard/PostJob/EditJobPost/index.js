@@ -855,6 +855,22 @@ const onSubmit = async (data) => {
                     />
             </div>
         </div>
+        {/* ROW 3 */}
+        <div className="flex flex-col gap-5 lg:flex-row text-white">
+            <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
+                <label>
+                    Is International Job
+                </label>
+                    <input
+                        type="checkbox"
+                        name="isInternationalJob"
+                        onChange={(e) => setValue('isInternationalJob', e.target.checked)}
+                        checked={watchedValues.isInternationalJob}
+                        defaultValue={job?.isInternationalJob}
+
+                    />
+            </div>
+        </div>
       </div>
 
       <div className="flex justify-end gap-2">

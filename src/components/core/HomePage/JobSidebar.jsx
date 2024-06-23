@@ -3,10 +3,10 @@ import SidebarForJobs from './SidebarForJobs';
 import FullTimeJobs from './FullTimeJobs';
 import PartTimeJobs from './PartTimeJobs';
 import RecentlyPublishedJobs from './RecentlyPublishedJobs';
-
+import InternationalJobs from './InternationalJobs';
 const JobSidebar = () => {
   const [selectedJobType, setSelectedJobType] = useState('full-time-jobs');
-
+  
   const renderJobComponent = () => {
     switch (selectedJobType) {
       case 'full-time-jobs':
@@ -15,6 +15,8 @@ const JobSidebar = () => {
         return <PartTimeJobs />;
       case 'recently-published-jobs':
         return <RecentlyPublishedJobs />;
+      case 'international-jobs':
+        return <InternationalJobs />;
       default:
         return <FullTimeJobs />;
     }

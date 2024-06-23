@@ -51,6 +51,13 @@ const SidebarForJobs = ({ setSelectedJobType, selectedJobType }) => {
       ${ selectedJobType === "recently-published-jobs" ? "opacity-100 border-l-2 border-l-orange-400 " : ""} `} 
       
       >Recently Published Jobs</div>
+
+      <div onClick={() => setSelectedJobType('recently-published-jobs')} style={linkStyle} 
+      className={`text-black border-b border-pure-greys-100 
+      px-2
+      ${ selectedJobType === "international-jobs" ? "opacity-100 border-l-2 border-l-orange-400 " : ""} `} 
+      
+      >International Jobs</div>
       {/* Add more links here for other job groups */}
     </div>
   );

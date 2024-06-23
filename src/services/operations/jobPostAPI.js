@@ -21,6 +21,7 @@ const {
     GET_PART_TIME_JOBS_API,
     GET_TOP_JOB_LOCATIONS_API,
     FILTER_JOBS_API,
+    GET_INTERNATIONAL_JOBS_API,
 } = jobEndpoints
 
 
@@ -397,6 +398,23 @@ export const getPartTimeJobs = async () => {
     result = response?.data?.data
   } catch (error) {
     console.log("GET_PART_TIME_JOBS_API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const getInternationalJobs = async () => {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    const response = await apiConnector("GET", GET_INTERNATIONAL_JOBS_API)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch PInternational Jobs")
+    }
+    result = response?.data?.data
+  } catch (error) {
+    console.log("GET_INTERNATIONSL_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
   toast.dismiss(toastId)
