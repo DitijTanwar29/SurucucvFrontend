@@ -13,7 +13,7 @@ const InternationalJobs = () => {
         console.log("INTERNATIONAL JOBS :",response);
         setJobs(response);
       } catch (error) {
-        console.error('Error fetching full time jobs:', error.message);
+        console.error('Error fetching international jobs:', error.message);
       }
     };
     fetchJobs();
@@ -30,7 +30,7 @@ const InternationalJobs = () => {
       <div className="jobs-grid  rounded-lg p-1 ">
         {jobs.map((job) => (
           <Link to={`/job/${job._id}`} key={job._id} className="job-card">
-            <div className='flex gap-2 shadow-sm p-1 shadow-pure-greys-500 h-[130px]'>
+            <div className='flex gap-2 shadow-sm p-1 shadow-pure-greys-500 h-[200px]'>
                 
               <img
                 alt={job.companyName}
@@ -38,7 +38,7 @@ const InternationalJobs = () => {
                 src={job?.company?.image}
               />
 
-              <div className='flex flex-col   space-y-1 p-1'>
+              <div className='flex flex-col space-y-1 p-1'>
                 <div className='space-y-1'>
 
                   <h5 className='text-black'>{job.jobTitle}</h5>
@@ -50,14 +50,13 @@ const InternationalJobs = () => {
                                   .slice(0, TRUNCATE_LENGTH)
                                   .join(" ") + "..."
                               : job?.jobDescription}</p>
-                  <p>Number Of Vacancies :{job.numberOfVacancy}</p>
+                  <p>Vacancies : {job.numberOfVacancy}</p>
                 </div>
                 <div className='flex justify-evenly gap-8 '>
-                <div className='flex gap-10 '>
-                <p> Job Location : {job.jobLocation}</p>
+                
+                <p className='font-mono font-light text-sm'> Job Location : {job.jobLocation}</p>
                 <p className='font-mono font-light text-sm'>{job.jobType}</p>
 
-                </div>
                 
               </div>
             </div>
