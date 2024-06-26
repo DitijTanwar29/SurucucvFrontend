@@ -58,7 +58,7 @@ const AddService = () => {
     
       <form onSubmit={handleSubmit(submitServiceForm)}>
         {/* Service Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-orange-400 p-8 px-12">
+        <div className="my-10 lg:mt-14 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Create Service
           </h2>
@@ -221,7 +221,7 @@ const AddService = () => {
                     onClick={() => {
                     navigate("/dashboard/my-services")
                     }}
-                    className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+                    className="cursor-pointer rounded-md bg-richblack-200 py-2 px-5 font-semibold text-richblack-50"
                 >
                     Cancel
                 </button>

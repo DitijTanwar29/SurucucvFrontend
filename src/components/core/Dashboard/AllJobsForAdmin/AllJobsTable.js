@@ -42,33 +42,33 @@ export default function AllJobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
         <Thead>
-          <Tr className="flex gap-x-14 justify-evenly rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
+          <Tr className="flex gap-x-28 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+            <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Title
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Passport type
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Location
             </Th>
-            <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase  bg-transparent text-richblack-5">
               Manage Status
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Action
             </Th>
           </Tr>
         </Thead>
         <Tbody>
           {jobs?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-white bg-orange-400">
+            <Tr className="bg-richblack-200">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -77,9 +77,9 @@ export default function AllJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex gap-x-10 justify-evenly border-b border-richblack-800 py-8 bg-black"
+                className="flex gap-x-16 justify-between border-b border-richblack-800 px-6 py-8 bg-richblack-200"
               >
-                <Td className="flex flex-col gap-y-4">
+                <Td className="flex flex-col gap-x-4">
                   {/* <img
                     src={service?.icon}
                     alt={service?.serviceName}
@@ -93,8 +93,8 @@ export default function AllJobsTable({ jobs, setJobs }) {
                         Inactive
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-white">
+                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-black/75 text-white">
                           <FaCheck size={8} />
                         </div>
                         Active
@@ -108,10 +108,10 @@ export default function AllJobsTable({ jobs, setJobs }) {
                     </p>
                 </Td>
                 <Td>
-                    <p className="text-sm font-medium text-richblack-100">{job.passport}</p>
+                    <p className="text-xs text-richblack-5">{job.passport}</p>
                 </Td>
                 <Td>
-                    <p className="text-sm font-medium text-richblack-100">
+                    <p className="text-xs text-richblack-5">
                         {job.jobLocation}
                     </p>
                     
@@ -119,7 +119,7 @@ export default function AllJobsTable({ jobs, setJobs }) {
                 <Td>
                     <ApproveJobButton job={job}/>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="text-xs text-richblack-5">
                   <button
                     disabled={loading}
                     onClick={() => {

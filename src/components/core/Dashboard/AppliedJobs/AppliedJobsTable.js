@@ -41,22 +41,22 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/75 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
         <Thead>
           <Tr className="flex gap-x-48 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
+            <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-5">
               Job Title
             </Th>
-            <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-5">
               Description
             </Th>
             {/* <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
               Passport type
             </Th> */}
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-5">
               Job Location
             </Th>
             {/* <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
@@ -67,7 +67,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
         <Tbody>
           {jobs?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl bg-richblack-400 font-medium text-richblack-5">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -76,9 +76,9 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-300"
+                className="flex justify-between gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-200"
               >
-                <Td className="flex  gap-x-4">
+                <Td className="flex flex-col gap-x-4">
                   {/* <img
                     src={service?.icon}
                     alt={service?.serviceName}

@@ -242,7 +242,7 @@ const PostJob = () => {
       <h1 className="mb-14 mt-14 text-3xl text-center font-medium text-black">
         Create Job Post
       </h1>
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Basic Details
         </h2>
@@ -352,6 +352,7 @@ const PostJob = () => {
               type="number"
               name="requiredExperience"
               id="requiredExperience"
+              min="0" max="20"
               placeholder="Enter required experience "
               className="form-style"
               {...register("requiredExperience", { required: true })}
@@ -406,7 +407,7 @@ const PostJob = () => {
               <option value="" disabled >Choose Job Type</option>
               <option value="Full Time" >Full Time</option>
               <option value="Part Time" >Part Time</option>
-              <option value="Internship" >Internship</option>
+              <option value="Temporary Job" >Temporary Job</option>
 
             </select>
             {errors.jobType && (
@@ -431,7 +432,7 @@ const PostJob = () => {
 
             >
               <option value="" disabled >Choose Salary Type</option>
-              <option value="Hourly" >Hourly</option>
+              <option value="Daily" >Daily</option>
               <option value="Weekly" >Weekly</option>
               <option value="Monthly" >Monthly</option>
               <option value="Yearly" >Yearly</option>
@@ -572,7 +573,7 @@ const PostJob = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
             Main Certificates
         </h2>
@@ -681,6 +682,7 @@ const PostJob = () => {
                 type="number"
                 name="psikoteknik"
                 id="psikoteknik"
+                min="0" max="5"
                 className="form-style"
               placeholder="Required Validity of Psychotecnical "
                 {...register("psikoteknik", { required: true })}
@@ -701,6 +703,7 @@ const PostJob = () => {
                 type="number"
                 name="adrDriverLicence"
                 id="adrDriverLicence"
+                min="0" max="5"
                 className="form-style"
               placeholder="Required Validity of ADR Licence "
                 {...register("adrDriverLicence", { required: true })}
@@ -716,7 +719,7 @@ const PostJob = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Required Abilities
         </h2>
@@ -864,7 +867,7 @@ const PostJob = () => {
           onClick={() => {
             navigate("/dashboard/my-services");
           }}
-          className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+          className="cursor-pointer rounded-md bg-richblack-200 py-2 px-5 font-semibold text-richblack-50"
         >
           Cancel
         </button>

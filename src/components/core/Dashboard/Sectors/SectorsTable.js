@@ -43,27 +43,27 @@ export default function SectorsTable({ sectors, setSectors }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
         <Thead>
-          <Tr className="flex gap-x-24 rounded-t-md border-b bg-orange-400 border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             
-            <Th className=" text-left text-sm font-medium text-black bg-orange-400 uppercasebg-transparent">
+            <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Service Name
             </Th>
             
-            <Th className="text-left text-sm font-medium uppercase bg-orange-400 text-black bg-transparent">
+            <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Status
             </Th>
 
-            <Th className="text-left text-sm font-medium uppercase text-black bg-transparent">
+            <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Action
             </Th>
           </Tr>
         </Thead>
         <Tbody>
           {sectors?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl bg-orange-300 font-medium text-black">
+            <Tr className="bg-richblack-200">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
                 No sectors found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -72,11 +72,11 @@ export default function SectorsTable({ sectors, setSectors }) {
             sectors?.map((sector) => (
               <Tr
                 key={sector._id}
-                className="flex gap-x-10 border-b bg-yellow-300 border-richblack-800 px-6 py-8"
+                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-200 "
               >
                 
                   <Td>
-                    <p className=" text-lg font-semibold text-black">
+                    <p className=" text-lg flex flex-row font-semibold text-richblack-5">
                       {sector.sectorName}
                     </p>
                   </Td>                  
@@ -87,7 +87,7 @@ export default function SectorsTable({ sectors, setSectors }) {
                 <Td className="text-sm font-medium text-richblack-100">
                   {sector.action}
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="text-md font-medium text-richblack-5 ">
                   <button
                     disabled={loading}
                     onClick={() => {

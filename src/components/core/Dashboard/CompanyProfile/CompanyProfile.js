@@ -46,12 +46,12 @@ const CompanyProfile = () => {
  
       {/* </div> */}
      
-      <h1 className="mb-14 text-3xl font-medium text-black text-center">
+      <h1 className="mb-14 lg:mt-14 text-3xl font-medium text-black text-center">
         My Profile
       </h1>
       
       {/* Image Section */}
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -62,7 +62,7 @@ const CompanyProfile = () => {
             <p className="text-lg font-semibold text-richblack-5">
               {user?.name}
             </p>
-            <p className="text-sm text-richblack-300">{user?.email}</p>
+            <p className="text-sm text-richblack-5">{user?.email}</p>
           </div>
         </div>
         <IconBtn
@@ -76,7 +76,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Company Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -92,11 +92,11 @@ const CompanyProfile = () => {
             </IconBtn>
         </div>
         {/* companyTitle="", industryName="", taxAdministration="",taxNumber, companyAddress=""  */}
-        <div className="flex max-w-[500px] justify-between">
+        <div className="flex justify-between">
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Company Title</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Company Title</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.companyTitle  ?? "Add Company Title"}
                 </p>
@@ -104,7 +104,7 @@ const CompanyProfile = () => {
 
               
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Industry Name</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Industry Name</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.industryName  ?? "Add Industry Name"}
                 </p>
@@ -114,14 +114,14 @@ const CompanyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Tax Administration</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Tax Administration</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.taxAdministration ?? "Add Tax Administration"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Tax Number</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Tax Number</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.taxNumber  ?? "Add Tax Number"}
                 </p>
@@ -132,7 +132,7 @@ const CompanyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Company Address</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Company Address</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.companyAddress ?? "Add Company Address"}
                 </p>
@@ -144,7 +144,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Personal Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -160,11 +160,11 @@ const CompanyProfile = () => {
             </IconBtn>
         </div>
 
-        <div className="flex max-w-[500px] justify-between">
+        <div className="flex  justify-between">
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Name</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Name</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.name  ?? "Add Name"}
                 </p>
@@ -173,7 +173,7 @@ const CompanyProfile = () => {
               
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Email</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Email</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.email ?? "Add Email "}
                 </p>
@@ -184,14 +184,14 @@ const CompanyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Position</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Position</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.position ?? "Add Position"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Contact Number</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Contact Number</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.contactNumber  ?? "Add Contact Number"}
                 </p>
@@ -202,7 +202,7 @@ const CompanyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Date Of Birth</p>
                 <p className="text-sm font-medium text-richblack-5">
                   {user?.companyDetails?.dateOfBirth ?? "Add Date Of Birth"}
                 </p>

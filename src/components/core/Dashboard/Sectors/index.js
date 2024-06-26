@@ -26,7 +26,7 @@ export default function MySectors() {
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between">
+      <div className="mb-14 lg:mt-14 flex items-center justify-between">
         <h1 className="text-3xl font-medium text-black">My Sectors</h1>
         <IconBtn
           text="Add Sector"

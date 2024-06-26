@@ -146,7 +146,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
           <VscAdd />
         </IconBtn>
       </div>
-      <Table className="w-full sm:w-[full] resume">
+      <Table className="w-full sm:w-[full]">
         {/* <Thead>
           <Tr className="flex rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className="text-left text-sm font-medium bg-transparent uppercase text-black">
@@ -165,7 +165,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
             </Tr>
           ) : (
           
-                <div className="w-[90%] p-2 lg:flex lg:flex-col sm:flex-row sm:justify-start sm:items-start gap-3 lg:justify-start lg:items-start  lg:p-3 bg-white text-black rounded-md ">
+                <div className="w-[70%] resume mx-auto p-2 lg:flex lg:flex-col sm:flex-row sm:justify-start sm:items-start gap-3 lg:justify-start lg:items-start  lg:p-3  text-black">
                     
                        {/* 
                        tcNumber, firstName="",lastName="", age,gsm,city,state,
@@ -219,7 +219,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
                           <div className="flex flex-col ">
                             <p className="text-[8px] lg:text-[16px]">Code 95 Document: {resume.isCode95Document === true ? "Yes" : "No"}</p>
                             {/* <p>ADR Driving License: {formattedADRDate} </p>  */}
-                            <p className="text-[8px] lg:text-[16px]">ADR Driving License :{formatMongoDate(resume.adrDrivingLicense)}</p>
+                            <p className="text-[8px] lg:text-[16px]">ADR Driving License Expiry :{formatMongoDate(resume.adrExpiryDate)}</p>
                             {/* <p className="text-[8px]">ADR Driving License : {resume.adrDrivingLicense}</p> */}
                             {/* const parsedDate = new Date(adrDriverLicenseDate);
                             const formattedDate = parsedDate.toISOString().split('T')[0]; */}
@@ -231,7 +231,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
                             .join(" ") + "..."
                         : job.jobDescription} */}
                             {/* <p>Psychotechnical: {formattedPsikoteknik} </p>     */}
-                            <p className="text-[8px] lg:text-[16px]">Psychotechnical: {formatMongoDate(resume.psikoteknik)}</p>
+                            <p className="text-[8px] lg:text-[16px]">Psychotechnical Expiry: {formatMongoDate(resume.psikoteknikExpiryDate)}</p>
                           </div>
 
                           {/* {job.jobDescription.split(" ").length >
@@ -275,7 +275,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
                           </div>
 
                           <div className="flex flex-col ">
-                            <p className="text-[8px] lg:text-[16px]">Fuel Driving Trainiing: {resume.isFuelDrivingTraining === true ? "Yes" : "No"}</p>
+                            <p className="text-[8px] lg:text-[16px]">Fuel Economy Training: {resume.isFuelEconomyTraining === true ? "Yes" : "No"}</p>
 
                           </div>
                         </div>

@@ -39,7 +39,7 @@ console.log(jobs)
   return (
     <div>
     
-<h3  className='text-3xl font-medium  text-center text-black'>Applied Jobs</h3>
+<h3  className='text-3xl font-medium  text-center text-black lg:mt-14'>Applied Jobs</h3>
       {/* <div className="mb-14 flex items-center justify-between">
         <h1 className="text-3xl font-medium text-richblack-5">My Jobs</h1>
         <IconBtn

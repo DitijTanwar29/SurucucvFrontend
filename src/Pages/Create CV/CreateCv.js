@@ -1,5 +1,4 @@
 import React from "react";
-import { MultiSelect } from "react-multi-select-component";
 import { useState, useEffect, useRef } from "react";
 import IconBtn from "../../components/common/IconBtn";
 import { useNavigate } from "react-router-dom";
@@ -293,7 +292,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
     console.log({...data, licenseType: selectedLicenses})
     try {
       dispatch(
-        createResume({...data, licenseType: data.selectedLicenses.join(',')}, token)
+        createResume({...data, licenseType: data.selectedLicenses.join(',')}, token, navigate)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
@@ -310,7 +309,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
       
     <form onSubmit={handleSubmit(submitResumeForm)}>
       {/* CV Information */}
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Personal Information
         </h2>
@@ -546,7 +545,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
             Main Certificates
         </h2>
@@ -723,20 +722,20 @@ console.log("filteredLicenses : " ,filteredLicenses)
             </div>
         {/* ADR DRIVING LICENSE DATE  */}
             <div className="flex flex-col gap-2 lg:w-[33%]">
-              <label htmlFor="adrDriverLicence" className="lable-style">
-                ADR Driver Licence
+              <label htmlFor="adrDriverLicense" className="lable-style">
+                ADR Driver License
               </label>
               <input
                 type="date"
-                name="adrDriverLicence"
-                id="adrDriverLicence"
+                name="adrDriverLicense"
+                id="adrDriverLicense"
                 className="form-style"
-                {...register("adrDriverLicence", { required: true })}
+                {...register("adrDriverLicense", { required: true })}
                 // defaultValue={user?.adminDetails?.lastName}
               />
-              {errors.adrDriverLicence && (
+              {errors.adrDriverLicense && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please select ADR Driver Licence date.
+                  Please select ADR Driver License date.
                 </span>
               )}
             </div>
@@ -744,7 +743,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Required Abilities
         </h2>
@@ -927,7 +926,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
       </div>
 
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <h2 className="text-lg font-semibold text-richblack-5">
           Experience
         </h2>
@@ -1021,12 +1020,12 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
         </div>
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mb-2">
         <button
           onClick={() => {
             navigate("/dashboard/my-profile");
           }}
-          className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+          className="cursor-pointer rounded-md bg-richblack-400 py-2 px-5 font-semibold text-richblack-50"
         >
           Cancel
         </button>
@@ -1034,13 +1033,8 @@ console.log("filteredLicenses : " ,filteredLicenses)
       </div>
     </form>
 
-
-
-          <section>
-            <div className="pt-5">
-              <Footer />
-            </div>
-          </section>
+            
+              <Footer/>
        
       </div>
    

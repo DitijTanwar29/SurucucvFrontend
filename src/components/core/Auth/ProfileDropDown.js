@@ -34,14 +34,14 @@ const ProfileDropDown = () => {
                 <div
                     onClick={(e) => e.stopPropagation()}
                     className='absolute top-[118%] right-0 z-[1000] divide-y-[1px]
-                    divide-red-700 overflow-hidden rounded-md lg:border-[1px]
-                    border-red-700 bg-red-800 '
+                    divide-orange-500 overflow-hidden rounded-md lg:border-[1px]
+                    border-orange-500 bg-orange-400 '
                     ref={ref}
                 >
                     <Link to='dashboard/my-profile' onClick={() => setOpen(false)}>
                         <div className='flex w-full items-center gap-x-1 py-[10px]
-                        px-[12px] text-sm text-richblack-100 hover:bg-red-700
-                        hover:text-richblack-25'>
+                        px-[12px] text-sm text-richblack-25 hover:bg-orange-500
+                        hover:text-richblack-5'>
                         <VscDashboard className="text-lg" />
                         Dashboard
                         </div>
@@ -55,8 +55,8 @@ const ProfileDropDown = () => {
                                 setOpen(false)
                             }}
                             className='flex w-full items-center gap-x-1 py-[10px]
-                            px-[12px] text-sm text-richblack-100 hover:bg-red-700
-                            hover:text-richblack-25'
+                            px-[12px] text-sm text-richblack-25 hover:bg-orange-500
+                            hover:text-richblack-5'
                         >
                             <VscSignOut className="text-lg" />
                             Logout

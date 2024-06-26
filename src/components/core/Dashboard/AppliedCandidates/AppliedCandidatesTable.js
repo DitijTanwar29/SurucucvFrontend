@@ -43,19 +43,19 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 bg-black/75 ">
+      <Table className="rounded-xl border border-richblack-800 bg-black/55 ">
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
+            <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Candidate Name
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Email
             </Th>
-            <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase  bg-transparent text-richblack-5">
               Contact Number
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Resume
             </Th>
             {/* <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
@@ -69,7 +69,7 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
         <Tbody>
           {appliedCandidates?.length === 0 ? (
             <Tr className=" bg-richblack-300">
-              <Td className="py-10 text-center text-2xl font-medium text-black">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
                 No Candidates found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -78,7 +78,7 @@ export default function AppliedCandidatesTable({ appliedCandidates, setAppliedCa
             appliedCandidates?.map((appliedCandidate) => (
               <Tr
                 key={appliedCandidate._id}
-                className="flex gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-300"
+                className="flex gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-200"
               >
                      
                 <Td>

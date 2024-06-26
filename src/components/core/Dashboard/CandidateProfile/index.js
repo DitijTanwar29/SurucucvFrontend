@@ -46,13 +46,13 @@ const CandidateProfile = () => {
  
       {/* </div> */}
      
-      <h1 className="mb-14 text-3xl font-medium text-black text-center">
+      <h1 className="mb-14 lg:mt-14 text-3xl font-medium text-black text-center">
         My Profile
       </h1>
       
       
       {/* Image Section */}
-      <div className="  sm:flex-col flex lg:flex-row sm:gap-y-4 items-center justify-between rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="  sm:flex-col flex lg:flex-row sm:gap-y-4 items-center justify-between rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
         <div className="sm:flex-col flex lg:flex-row  items-center gap-x-4 ">
           <img
             src={user?.image}
@@ -63,7 +63,7 @@ const CandidateProfile = () => {
             <p className="text-lg font-semibold text-richblack-5 sm:text-center lg:text-left">
               {user?.name}
             </p>
-            <p className="text-sm text-richblack-300">{user?.email}</p>
+            <p className="text-sm text-richblack-5">{user?.email}</p>
           </div>
         </div>
         <IconBtn 
@@ -77,7 +77,7 @@ const CandidateProfile = () => {
       </div>
 
       {/* Company Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -93,20 +93,20 @@ const CandidateProfile = () => {
             </IconBtn>
         </div>
         {/* name, email, contactNumber, dateOfBirth="", about="",  */}
-        <div className="flex sm:flex-col lg:flex-row max-w-[500px] justify-between">
+        <div className="flex sm:flex-col lg:flex-row  justify-between">
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Name</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Name</p>
+                <p className="text-sm  text-richblack-5">
                   {user?.candidateDetails?.name  ?? "Add Your Name"}
                 </p>
               </div>
 
               
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Date Of Birth</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Date Of Birth</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.dateOfBirth ?? "Add Date Of Birth"}
                   
                 </p>
@@ -116,15 +116,15 @@ const CandidateProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Email</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Email</p>
+                <p className="text-sm  text-richblack-5">
                   {user?.candidateDetails?.email  ?? "Add Your Email"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Contact Number</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Contact Number</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.contactNumber  ?? "Add Contact Number"}
                 </p>
               </div>
@@ -134,8 +134,8 @@ const CandidateProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-300">About</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">About</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.about ?? "Tell About Yourself"}
                 </p>
               </div>
@@ -146,7 +146,7 @@ const CandidateProfile = () => {
       </div>
 
       {/* Personal Details */}
-      <div className="my-10 flex sm:flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-700 p-8 px-12">
+      <div className="my-10 flex sm:flex-col gap-y-10 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -163,21 +163,21 @@ const CandidateProfile = () => {
         </div>
 {/* skill="", preferedJobLocation, 
             degree, province, district */}
-        <div className="flex sm:flex-col lg:flex-row max-w-[500px] justify-between">
+        <div className="flex sm:flex-col lg:flex-row  justify-between">
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Skills</p>
-                <p className="text-sm font-semibold text-richblack-5">
-                  {user?.candidateDetails?.skills  ?? "Add Skills"}
+                <p className="mb-2 text-md text-richblack-700 font-semibold ">Prefered Job Location</p>
+                <p className="text-sm text-richblack-5">
+                  {user?.candidateDetails?.preferedJobLocation  ?? "Add Prefered Job Location"}
                 </p>
               </div>
 
               
 
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Province</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Province</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.province ?? "Add Province "}
                 </p>
               </div>
@@ -186,15 +186,15 @@ const CandidateProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Prefered Job Location</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Prefered Job Location</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.preferedJobLocation ?? "Add Prefered Job Location"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-300">District</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">District</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.district  ?? "Add District"}
                 </p>
               </div>
@@ -204,8 +204,8 @@ const CandidateProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-300">Degree</p>
-                <p className="text-sm font-semibold text-richblack-5">
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Degree</p>
+                <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.degree ?? "Add Degree"}
                 </p>
               </div>

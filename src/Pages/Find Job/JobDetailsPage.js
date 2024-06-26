@@ -45,7 +45,7 @@ const JobDetailsPage = ({user}) => {
 
 
   return (
-    <div className="container sm:flex-col flex lg:flex  gap-3 mx-auto my-2 py-8 bg-white mt-3 rounded-sm">
+    <div className="container sm:flex-col flex lg:flex  gap-3 mx-auto mt-16 py-8 bg-white rounded-sm">
     {/* <button className='w-24 h-14 p-2 text-white rounded-sm bg-blue-300 hover:bg-orange-600 '
     onClick={clickHandler}
     >
@@ -63,7 +63,7 @@ const JobDetailsPage = ({user}) => {
         : <PiSealCheckLight className='text-lg text-caribbeangreen-500' />
       )}
       </IconBtn>
-      <div className='lg:w-[50%] sm:w-full bg-black rounded-lg shadow-md text-white p-4 '>
+      <div className='lg:w-[70%] sm:w-full bg-black rounded-lg shadow-md text-white p-4 '>
       <div className='w-full flex justify-center items-center'>
         <h1 className="text-3xl font-bold mb-4">{job.jobTitle}</h1>
         <img src={job.company.image} className='w-[4rem]' />
@@ -76,7 +76,7 @@ const JobDetailsPage = ({user}) => {
       </div>
       </div>
 
-      <div className="lg:w-[50%] sm:w-full bg-orange-400 rounded-lg shadow-md p-4">
+      <div className="lg:w-[70%] sm:w-full bg-orange-400 rounded-lg shadow-md p-4">
         <h2 className="text-xl font-semibold mb-4">Requirements</h2>
         <p className="text-lg mb-2">Required Skills: {job.requiredSkills}</p>
         <p className="text-lg mb-2">Required Experience: {job.requiredExperience} years</p>

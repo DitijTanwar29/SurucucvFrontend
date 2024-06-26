@@ -354,6 +354,7 @@ const onSubmit = async (data) => {
               type="number"
               name="requiredExperience"
               id="requiredExperience"
+              min="0" max="20"
               placeholder="Enter required experience "
               className="form-style"
               {...register("requiredExperience")}
@@ -409,7 +410,7 @@ const onSubmit = async (data) => {
               <option value="Full Time" >Full Time</option>
               <option value="Part Time" >Part Time</option>
               <option value="Internship" >Internship</option>
-
+              <option value="Temporary Job" >Temporary Job</option>
             </select>
             {errors.jobType && (
               <span className="-mt-1 text-[12px] text-yellow-100">
@@ -433,7 +434,7 @@ const onSubmit = async (data) => {
 
             >
               <option value="" disabled >Choose Salary Type</option>
-              <option value="Hourly" >Hourly</option>
+              <option value="Daily" >Daily</option>
               <option value="Weekly" >Weekly</option>
               <option value="Monthly" >Monthly</option>
               <option value="Yearly" >Yearly</option>
@@ -687,6 +688,7 @@ const onSubmit = async (data) => {
                 type="number"
                 name="psikoteknik"
                 id="psikoteknik"
+                min="0" max="5"
                 className="form-style"
               placeholder="Required Validity of Psychotecnical "
                 {...register("psikoteknik")}
@@ -707,6 +709,7 @@ const onSubmit = async (data) => {
                 type="number"
                 name="adrDriverLicence"
                 id="adrDriverLicence"
+                min="0" max="5"
                 className="form-style"
               placeholder="Required Validity of ADR Licence "
                 {...register("adrDriverLicence")}

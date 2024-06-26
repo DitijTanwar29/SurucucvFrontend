@@ -41,33 +41,33 @@ export default function JobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800  bg-black/75 rounded-t-md ">
+      <Table className="rounded-xl border border-richblack-800  bg-black/55 rounded-t-md ">
         <Thead>
           <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-100">
+            <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Title
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Passport type
             </Th>
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Location
             </Th>
             {/* <Th className="text-left text-sm font-medium uppercase  bg-transparent text-richblack-100">
               Description
             </Th> */}
-            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Action
             </Th>
           </Tr>
         </Thead>
         <Tbody>
           {jobs?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-black">
+            <Tr className="bg-richblack-200">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -85,7 +85,7 @@ export default function JobsTable({ jobs, setJobs }) {
 
               <Tr
                 key={job._id}
-                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-300 "
+                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-200 "
               >
                   
                 <Td>

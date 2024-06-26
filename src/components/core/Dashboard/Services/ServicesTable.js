@@ -24,7 +24,7 @@ export default function CoursesTable({ services, setServices }) {
   const { token } = useSelector((state) => state.auth)
   const [loading, setLoading] = useState(false)
   const [confirmationModal, setConfirmationModal] = useState(null)
-  const TRUNCATE_LENGTH = 30
+  const TRUNCATE_LENGTH = 15
 // console.log("services : ",services)
 
   const handleServiceDelete = async (serviceId) => {
@@ -41,30 +41,30 @@ export default function CoursesTable({ services, setServices }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
         <Thead>
-          <Tr className="flex gap-x-24 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100 bg-transparent">
+          <Tr className="flex gap-x-40 items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+            <Th className="text-left text-sm font-semibold  uppercase text-richblack-5 bg-transparent">
               Icon
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100 bg-transparent">
+            <Th className="text-left text-sm font-semibold  text-center uppercase text-richblack-5 bg-transparent">
               Service Name
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100 bg-transparent">
+            <Th className="text-left text-sm font-semibold uppercase text-richblack-5 bg-transparent">
               Description
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100 bg-transparent">
+            <Th className="text-left text-sm font-semibold uppercase text-richblack-5 bg-transparent">
               Status
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100 bg-transparent">
+            <Th className="text-left text-sm font-semibold uppercase text-richblack-5 bg-transparent">
               Action
             </Th>
           </Tr>
         </Thead>
         <Tbody>
           {services?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-black bg-orange-300">
+            <Tr className="bg-richblack-200">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
                 No services found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -73,9 +73,9 @@ export default function CoursesTable({ services, setServices }) {
             services?.map((service) => (
               <Tr
                 key={service._id}
-                className="flex gap-x-10 border-b border-richblack-800 bg-black px-6 py-8"
+                className="flex gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-200"
               >
-                <Td className="flex flex-1 gap-x-4">
+                <Td className="flex gap-x-4">
                   <img
                     src={service?.icon}
                     alt={service?.serviceName}
@@ -83,12 +83,12 @@ export default function CoursesTable({ services, setServices }) {
                   />
                   </Td>
                   <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-5 text-center">
                       {service.serviceName}
                     </p>
                   </Td>
                   <Td>
-                    <p className="text-xs text-richblack-300">
+                    <p className="text-xs text-richblack-5  text-center">
                       {service.serviceDescription.split(" ").length >
                       TRUNCATE_LENGTH
                         ? service.serviceDescription
@@ -121,10 +121,8 @@ export default function CoursesTable({ services, setServices }) {
                 <Td>
                   <ServiceStatusToggle service={service}/>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
-                  {service.action}
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                
+                <Td className="text-xs text-richblack-5 ">
                   <button
                     disabled={loading}
                     onClick={() => {

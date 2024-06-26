@@ -1096,45 +1096,6 @@ const FindJobs = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1 lg:w-[50%]">
-                <label>Company Name: </label>
-                <div className='InputContainer'>
-                  <input type="text" placeholder="Enter Company name" name="companyName" className="input" {...register("companyName")} />
-                </div>
-              </div>
-            </div>
-
-            <div className='w-[33%] sm:w-full md:w-[30%]'>
-              <div className='flex flex-col gap-1'>
-                <label>Job Type: </label>
-                <div className='InputContainer'>
-
-                  <select name="jobType"  {...register('jobType')} 
-                  className='input'>
-                    <option value="">Select</option>
-                    <option value="Full Time">Full Time</option>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Internship">Internship</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1 lg:w-[50%]">
-                <label htmlFor="salaryType">Salary Type</label>
-                <div className='InputContainer'>
-                  <input type="text" name="salaryType" placeholder="Enter salary type" className="input" {...register("salaryType")} />
-                </div>
-              </div>
-            </div>
-
-            <div className='w-[33%] sm:w-full md:w-[30%]'>
-              <div className="flex flex-col gap-1 lg:w-[50%]">
-                <label htmlFor="requiredSkills">Required Skills</label>
-                <div className='InputContainer'>
-                  <input type="text" name="requiredSkills" placeholder="Enter required skills" className="input" {...register("requiredSkills")} />
-                </div>
-              </div>
-
               <div className="flex flex-col gap-2">
                 <label htmlFor="jobLocation" >
                 Job Location
@@ -1163,17 +1124,68 @@ const FindJobs = () => {
                 </div>
                 
               </div>
+              
             </div>
+
+            <div className='w-[33%] sm:w-full md:w-[30%]'>
+              <div className='flex flex-col gap-1'>
+                <label>Job Type: </label>
+                <div className='InputContainer'>
+
+                  <select name="jobType"  {...register('jobType')} 
+                  className='input'>
+                    <option value="">Select</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Temporary Job">Temporary Job</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1 lg:w-[50%]">
+                <label htmlFor="salaryType">Salary Type</label>
+                <div className='InputContainer'>
+                  {/* <input type="text" name="salaryType" placeholder="Enter salary type" className="input" {...register("salaryType")} /> */}
+                  <select name="salaryType" className="input" {...register("salaryType")}>
+                    <option value="">Select salary type</option>
+                    <option value="">Select</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+
+                  </select>
+                
+                </div>
+              </div>
+            </div>
+
+            {/* <div className='w-[33%] sm:w-full md:w-[30%]'>
+              <div className="flex flex-col gap-1 lg:w-[50%]">
+                <label htmlFor="requiredSkills">Required Skills</label>
+                <div className='InputContainer'>
+                  <input type="text" name="requiredSkills" placeholder="Enter required skills" className="input" {...register("requiredSkills")} />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1 lg:w-[50%]">
+                <label>Company Name: </label>
+                <div className='InputContainer'>
+                  <input type="text" placeholder="Enter Company name" name="companyName" className="input" {...register("companyName")} />
+                </div>
+              </div>
+            </div> */}
           </div>
 
-          <div className='flex gap-1 lg:flex-row sm:flex-col md:flex-row '>
+          {/* <div className='flex gap-1 lg:flex-row sm:flex-col md:flex-row '>
             <div className='w-[33%] sm:w-full md:w-[30%]'>
-              {/* <div className="flex flex-col gap-1 lg:w-[50%]">
+              <div className="flex flex-col gap-1 lg:w-[50%]">
                 <label htmlFor="publishedDate">Published Date</label>
                 <div className='InputContainer'>
                   <input type="date" name="publishedDate" className="input" {...register("publishedDate")} />
                 </div>
-              </div> */}
+              </div>
 
               <div className="flex flex-col gap-1 lg:w-[50%]">
                 <label htmlFor="isFuelEconomyTraining">Fuel Economy Training</label>
@@ -1245,11 +1257,11 @@ const FindJobs = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
        
 
-          <div className='w-[67%] sm:w-full lg:w-[30%] lg:mt-4'>
+          {/* <div className='w-[67%] sm:w-full lg:w-[30%] lg:mt-4'>
             <div className=" inline-block text-left  w-full">
               <button type="button" className="inline-flex  justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={toggleDropdown}>
                 Select License Type
@@ -1286,7 +1298,7 @@ const FindJobs = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
       
 
           <div className="flex justify-between mt-4">

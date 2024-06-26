@@ -46,10 +46,10 @@ const MyProfile = () => {
       {/* </div> */}
      
 
-      <h1 className="mb-14 text-3xl font-medium text-black text-center">
+      <h1 className="mb-14 text-3xl font-medium text-black lg:mt-14 text-center">
         My Profile
       </h1>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-black p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -60,7 +60,7 @@ const MyProfile = () => {
             <p className="text-lg font-semibold text-richblack-5">
               {user?.adminDetails?.firstName + " " + user?.adminDetails?.lastName}
             </p>
-            <p className="text-sm text-richblack-300">{user?.email}</p>
+            <p className="text-sm text-richblack-5">{user?.email}</p>
           </div>
         </div>
         <IconBtn
@@ -73,7 +73,7 @@ const MyProfile = () => {
         </IconBtn>
       </div>
 
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-black p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-richblack-5">
@@ -89,12 +89,12 @@ const MyProfile = () => {
             </IconBtn>
         </div>
 
-        <div className="flex max-w-[500px] justify-between">
+        <div className="flex justify-between">
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">First Name</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">First Name</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.adminDetails?.firstName  ?? "Add First Name"}
                 </p>
               </div>
@@ -102,8 +102,8 @@ const MyProfile = () => {
               
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Bio</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">Bio</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.adminDetails?.bio ?? "Add Bio "}
                 </p>
               </div>
@@ -112,15 +112,15 @@ const MyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Middle Name</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">Middle Name</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.adminDetails?.middleName ?? "Add Middle Name"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Post</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">Post</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.adminDetails?.post  ?? "Add Post"}
                 </p>
               </div>
@@ -130,15 +130,15 @@ const MyProfile = () => {
 
             <div className="flex flex-col gap-y-5">
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Last Name</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">Last Name</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.adminDetails?.lastName ?? "Add Last Name"}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-sm text-richblack-600">Contact Number</p>
-                <p className="text-sm font-medium text-richblack-5">
+                <p className="mb-2 text-sm text-richblack-700 font-semibold">Contact Number</p>
+                <p className="text-sm font-medium text-richblack-5 font-semibold">
                   {user?.contactNumber ?? "Add Contact Number"}
                 </p>
               </div>

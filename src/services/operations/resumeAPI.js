@@ -7,7 +7,7 @@ const {
     GET_RESUME_DETAILS_API,
 } = resumeEndpoints
 
-export const createResume = async (data, token) => {
+export const createResume = async (data, token,navigate) => {
     console.log("data : ",data)
     let result = null
     const toastId = toast.loading("Loading...")
@@ -21,6 +21,7 @@ export const createResume = async (data, token) => {
         throw new Error("Could Not Create Resume")
       }
       toast.success("Resume Created Successfully")
+      navigate("/dashboard/my-cv")
       result = response?.data?.data
     } catch (error) {
       console.log("CREATE RESUME API ERROR............", error)

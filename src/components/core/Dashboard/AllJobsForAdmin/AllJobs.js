@@ -27,8 +27,8 @@ export default function AllJobs() {
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between">
-        <h1 className="text-3xl font-medium text-richblack-5">My Jobs</h1>
+      <div className="mb-14 lg:mt-14 flex items-center justify-between">
+        <h1 className="text-3xl font-medium text-black">My Jobs</h1>
         <IconBtn
           text="Add Job Post"
           onclick={() => navigate("/dashboard/post-job")}

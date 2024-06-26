@@ -27,7 +27,7 @@ export default function AddJobs() {
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between">
+      <div className="mb-14 flex items-center lg:mt-14 justify-between">
         <h1 className="text-3xl font-medium text-black">My Jobs</h1>
         <IconBtn
           text="Add Job Post"
