@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Pages/Body.css'
 
 import Footer from '../Pages/Footer/Footer';
 

@@ -1,6 +1,8 @@
 import { toast } from "react-hot-toast"
 import { apiConnector } from "../apiConnector"
 import { jobEndpoints } from "../apis"
+import { BASE_URL} from '../apis'
+import { setEditJob, setJob } from "../../slices/jobPostSlice"
 
 
 const {
@@ -22,6 +24,9 @@ const {
     GET_TOP_JOB_LOCATIONS_API,
     FILTER_JOBS_API,
     GET_INTERNATIONAL_JOBS_API,
+    GET_JOBS_BY_PROVINCE,
+    GET_JOBS_BY_JOB_TITLE,
+    GET_JOBS_BY_SECTOR
 } = jobEndpoints
 
 
@@ -29,10 +34,9 @@ const {
 
 
 
-
-
-export const addJobPost = async (data, token) => {
-    let result = null
+export function addJobPost (data, token,navigate) {
+  return async (dispatch) => {  
+  let result = null
     const toastId = toast.loading("Loading...")
     try {
       const response = await apiConnector("POST", CREATE_JOB_API, data, {
@@ -45,12 +49,15 @@ export const addJobPost = async (data, token) => {
       }
       toast.success("Job Publish Request sent successfully")
       result = response?.data?.data
+      dispatch(setJob(result))
+      navigate("/dashboard/my-jobs")
+
     } catch (error) {
       console.log("CREATE JOB POST API ERROR............", error)
       toast.error(error.message)
     }
     toast.dismiss(toastId)
-    return result
+  }
 }
 
 export const getAllJobs = async () => {
@@ -466,4 +473,22 @@ export const getFilteredJobs = async (queryString) => {
   }
   toast.dismiss(toastId)
   return result
+}
+
+export const getJobsByProvince = async () => {
+  return apiConnector("GET", `${BASE_URL}/job/by-province`)
+  .then(response => response)
+  .catch(error => { throw new Error('Could Not Fetch Jobs By Province') });
+}
+
+export const getJobsByService = async () => {
+  return apiConnector("GET", `${BASE_URL}/job/by-service`)
+  .then(response => response)
+  .catch(error => { throw new Error('Could Not Fetch Jobs By Service') }); 
+}
+
+export const getJobsBySector = async () => {
+  return apiConnector("GET", `${BASE_URL}/job/by-sector`)
+        .then(response => response)
+        .catch(error => { throw new Error('Could Not Fetch Jobs By Sector') });
 }

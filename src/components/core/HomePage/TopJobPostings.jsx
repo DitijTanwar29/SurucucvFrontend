@@ -15,7 +15,7 @@ export const TopJobPostings = () => {
         fetchServices()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+console.log(topJobPostings)
     //Todo: how can we implement this here to redirect user coz we are not getting job._id in apii response
     {/* <Link to={`/job/${job._id}`} key={job._id} >
     </Link> */}
@@ -29,10 +29,12 @@ export const TopJobPostings = () => {
                 topJobPostings?.map((topJobPosting, index) => (
                   
 
-                            <button key={index} className='lg:w-[max-content] sm:text-xs lg:h-10 rounded-full lg:px-3 lg:py-2 sm:p-3  font-bold
+                            <button key={index} className='lg:w-28 sm:text-xs lg:h-10 rounded-full lg:px-3 lg:py-2 sm:p-3  font-bold
                             text-orange-400 border-1 border-richblack-50 hover:border-orange-400 text-center'>
-                            
+                          
                                 {topJobPosting?.jobTitle}
+
+                            
                             </button>
                             
                         

@@ -67,12 +67,13 @@ export function addServiceDetails(data, token, navigate) {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       })
-      console.log("CREATE COURSE API RESPONSE............", response)
+      console.log("CREATE SERVICE API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error("Could Not Add Service Details")
       }
       toast.success("Service Details Added Successfully")
       result = response?.data?.data
+      console.log("new service detail from api result :", result)
       dispatch(setService(result))
       navigate("/dashboard/my-services")
     } catch (error) {

@@ -23,7 +23,7 @@ const JobSidebar = () => {
   };
 
   return (
-    <div className=" flex w-full items-start mt-[50px] mb-[50px] bg-white/35 p-2">
+    <div className="hidden lg:flex w-full items-start mt-[50px] mb-[50px] bg-white/35 p-2">
       <SidebarForJobs setSelectedJobType={setSelectedJobType} selectedJobType={selectedJobType} />
       <div className="content ml-[10px] p-2 ">
         {renderJobComponent()}

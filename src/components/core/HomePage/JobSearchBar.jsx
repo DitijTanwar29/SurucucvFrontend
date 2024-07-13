@@ -44,7 +44,7 @@ const JobSearchBar = () => {
           onBlur={() => setShowServices(false)}
           placeholder="Search for job titles..."
           onClick={() => setOpen(true)}
-          className="w-[80%] h-14"
+          className="w-[80%] h-14 bg-white rounded-full p-3"
         />
         <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-orange-400 font-bold'>Search</button>
       </div>

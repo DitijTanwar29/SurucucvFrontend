@@ -26,6 +26,8 @@ const EditService = () => {
   const { user } = useSelector((state) => state.profile)
   const { service } = useSelector((state) => state.service)
   console.log("service in slice :",service)
+
+  
   const [loading, setLoading] = useState(false)
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;

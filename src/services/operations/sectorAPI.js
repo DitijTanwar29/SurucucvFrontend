@@ -9,6 +9,7 @@ const {
     UPDATE_SECTOR_STATUS_API,
     EDIT_SECTOR_API,
     DELETE_SECTOR_API,
+    ACTIVE_SECTORS_API
 } = sectorEndpoints
 
 
@@ -111,6 +112,24 @@ export const updateSectorStatus = async (data, token) => {
       
     } catch (error) {
       console.log("UPDATE SECTOR STATUS API ERROR............", error)
+      toast.error(error.message)
+    }
+    toast.dismiss(toastId)
+    return result
+  }
+
+
+  export const getActiveSectors = async () => {
+    const toastId = toast.loading("Loading...")
+    let result = []
+    try {
+      const response = await apiConnector("GET", ACTIVE_SECTORS_API )
+      if (!response?.data?.success) {
+        throw new Error("Could Not Fetch Active Sectors")
+      }
+      result = response?.data?.data
+    } catch (error) {
+      console.log("GET_ACTIVE_SECTORS_API ERROR............", error)
       toast.error(error.message)
     }
     toast.dismiss(toastId)

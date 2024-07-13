@@ -5,15 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import IconBtn from '../../../../common/IconBtn';
 import { useForm } from "react-hook-form"
 import { useState, useEffect } from "react";
-import { getAllSectors } from '../../../../../services/operations/sectorAPI';
+import { getActiveSectors } from '../../../../../services/operations/sectorAPI';
 
 
 const AddService = () => {
   const { user } = useSelector((state) => state.profile)
   const [loading, setLoading] = useState(false)
-
-  const {setService} = useSelector((state) => state.service)  
-
 
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;
@@ -26,7 +23,7 @@ const AddService = () => {
   useEffect(() => {
     const getSectors = async () => {
       setLoading(true);
-      const sectors = await getAllSectors();
+      const sectors = await getActiveSectors();
       if (sectors.length > 0) {
         console.log("sectors", sectors)
         setSectors(sectors);

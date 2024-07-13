@@ -48,7 +48,7 @@ export default function SectorsTable({ sectors, setSectors }) {
           <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             
             <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
-              Service Name
+              Sector Name
             </Th>
             
             <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">

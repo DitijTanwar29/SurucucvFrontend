@@ -1,5 +1,5 @@
 const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
-// const BASE_URL = process.env.REACT_APP_BASE_URL
+// export const BASE_URL = process.env.REACT_APP_BASE_URL
 
 //AUTH ENDPOINTS
 export const endpoints = {
@@ -63,6 +63,7 @@ export const sectorEndpoints = {
     UPDATE_SECTOR_STATUS_API : BASE_URL + "/sector/updateSectorStatus",
     EDIT_SECTOR_API : BASE_URL + "/sector/editSector",
     DELETE_SECTOR_API : BASE_URL + "/sector/deleteSector",
+    ACTIVE_SECTORS_API: BASE_URL + "/sector/getActiveSectors",
 }
 
 //JOBS ENDPOINTS
@@ -85,6 +86,10 @@ export const jobEndpoints = {
     GET_PART_TIME_JOBS_API : BASE_URL + "/job/partTimeJobs",
     GET_INTERNATIONAL_JOBS_API : BASE_URL + "/job/internationalJobs",
     FILTER_JOBS_API : BASE_URL + "/job/filterJobs",
+    GET_JOBS_BY_PROVINCE : BASE_URL + "/job/by-province",
+    GET_JOBS_BY_JOB_TITLE : BASE_URL + "/job/by-job-title",
+    GET_JOBS_BY_SECTOR : BASE_URL + "/job/by-sector",
+
 }
 
 export const resumeEndpoints = {

@@ -230,7 +230,7 @@ const PostJob = () => {
 
     try {
       dispatch(
-        addJobPost({...data, licenseType: data.selectedLicenses.join(',')}, token)
+        addJobPost({...data, licenseType: data.selectedLicenses.join(',')}, token,navigate)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
