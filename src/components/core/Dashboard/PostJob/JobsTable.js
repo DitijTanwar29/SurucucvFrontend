@@ -50,9 +50,9 @@ export default function JobsTable({ jobs, setJobs }) {
             <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Title
             </Th>
-            <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
+            {/* <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Passport type
-            </Th>
+            </Th> */}
             <Th className="text-left text-sm font-semibold uppercase bg-transparent text-richblack-5">
               Job Location
             </Th>
@@ -114,11 +114,11 @@ export default function JobsTable({ jobs, setJobs }) {
                         {job.jobTitle}
                     </p>
                 </Td>
-                <Td className="flex gap-8">
+                {/* <Td className="flex gap-8">
                     <p className="text-md font-medium text-richblack-5">{job.passport}</p>
-                </Td>
+                </Td> */}
                 <Td>
-                    <p className="text-md font-medium text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-5">
                         {job.jobLocation}
                     </p>
                 </Td>

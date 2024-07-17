@@ -739,6 +739,27 @@ console.log("filteredLicenses : " ,filteredLicenses)
                 </span>
               )}
             </div>
+
+            <div className="flex flex-col gap-2 lg:w-[33%]">
+              <label htmlFor="mykCertificate" className="lable-style">
+              MYK Certificate
+              </label>
+              <input
+                type="date"
+                name="mykCertificate"
+                id="mykCertificate"
+                min="0" max="5"
+                className="form-style"
+              placeholder="Required Validity of MYK Certificate "
+                {...register("mykCertificate", { required: true })}
+                // defaultValue={user?.adminDetails?.lastName}
+              />
+              {errors.mykCertificate && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                Please select driver's myk certificate validity years .
+                </span>
+              )}
+            </div>
         </div>
 
       </div>

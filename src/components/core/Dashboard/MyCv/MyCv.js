@@ -40,29 +40,6 @@ export default function MyCv() {
 
 
 
-//   addDays(
-//     parseISO(resume?.isCode),
-//     -1
-//   )
-//    format(
-// addYears(
-// addDays(parseISO(res?.data?.createdAt), -1),
-// res?.data.productkey?.tenure
-// // -1
-// ),
-// "dd-MM-yyyy"
-// )
- 
-//   const handleJobDelete = async (resumeId) => {
-//     setLoading(true)
-//     await deleteJob({ jobId: resumeId }, token)
-//     const result = await getAllJobs(token)
-//     if (result) {
-//       setJobs(result)
-//     }
-//     setConfirmationModal(null)
-//     setLoading(false)
-//   }
 
 const [resume, setResume] = useState([])
 
@@ -80,15 +57,6 @@ const [resume, setResume] = useState([])
     fetchResume()
     // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
-// const adr = {resume.adrDriverLicence}
-// const psychotecnic = 
-// const parsedAdrLicense = new Date(resume.adrDriverLicenseDate);
-// const formattedADRDate = parsedAdrLicense.toISOString().split('T')[0];
-// const parsedPsikoteknik = new Date(resume.psikoteknik);
-// const formattedPsikoteknik = parsedPsikoteknik.toISOString().split('T')[0];
-
-// console.log(formattedADRDate)
-// console.log(formattedPsikoteknik)
 
 console.log(resume.isCode95Document)
 console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes" : "No")
@@ -108,14 +76,6 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
 
   }
 
-  // const formatDate = (dateString) => {
-  //   const date = new Date(dateString);
-  //   return format(date, 'yyyy-MM-dd'); // Customize the format as needed
-  // };
-
-  // const formatDate2 = (dateString) => {
-  //   return moment(dateString).format('YYYY-MM-DD'); // Customize the format as needed
-  // };
 
 
   const formatMongoDate = (mongoDate) => {
@@ -217,21 +177,11 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
                           </div>
 
                           <div className="flex flex-col ">
-                            <p className="text-[8px] lg:text-[16px]">Code 95 Document: {resume.isCode95Document === true ? "Yes" : "No"}</p>
-                            {/* <p>ADR Driving License: {formattedADRDate} </p>  */}
                             <p className="text-[8px] lg:text-[16px]">ADR Driving License Expiry :{formatMongoDate(resume.adrExpiryDate)}</p>
-                            {/* <p className="text-[8px]">ADR Driving License : {resume.adrDrivingLicense}</p> */}
-                            {/* const parsedDate = new Date(adrDriverLicenseDate);
-                            const formattedDate = parsedDate.toISOString().split('T')[0]; */}
-                            {/* {job.jobDescription.split(" ").length >
-                      TRUNCATE_LENGTH
-                        ? job.jobDescription
-                            .split(" ")
-                            .slice(0, TRUNCATE_LENGTH)
-                            .join(" ") + "..."
-                        : job.jobDescription} */}
-                            {/* <p>Psychotechnical: {formattedPsikoteknik} </p>     */}
                             <p className="text-[8px] lg:text-[16px]">Psychotechnical Expiry: {formatMongoDate(resume.psikoteknikExpiryDate)}</p>
+                            <p className="text-[8px] lg:text-[16px]">Code 95 Document: {resume.isCode95Document === true ? "Yes" : "No"}</p>
+                            <p className="text-[8px] lg:text-[16px]">MYK Certificate Expiry: {formatMongoDate(resume.mykExpiryDate)}</p>
+
                           </div>
 
                           {/* {job.jobDescription.split(" ").length >

@@ -184,6 +184,10 @@ a:hover { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:active { text-decoration: none; }
 
+link:link {text-decoration: none}
+link:hover {text-decoration: none}
+link:visited { text-decoration: none}
+link:active {text-decoration: none}
 
 
 /* css which i used */

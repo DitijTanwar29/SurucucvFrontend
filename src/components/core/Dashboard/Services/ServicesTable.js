@@ -47,7 +47,7 @@ export default function CoursesTable({ services, setServices }) {
             <Th className="text-left text-sm font-semibold  uppercase text-richblack-5 bg-transparent">
               Icon
             </Th>
-            <Th className="text-left text-sm font-semibold  text-center uppercase text-richblack-5 bg-transparent">
+            <Th className="text-left text-sm font-semibold  uppercase text-richblack-5 bg-transparent">
               Service Name
             </Th>
             <Th className="text-left text-sm font-semibold uppercase text-richblack-5 bg-transparent">

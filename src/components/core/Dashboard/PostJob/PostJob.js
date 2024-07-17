@@ -580,40 +580,40 @@ const PostJob = () => {
 
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
-        {/* License Type */}
-        <div className="relative" ref={dropdownRef}>
-        <button type="button" className="form-style" onClick={toggleDropdown}>
-          Choose License Type
-        </button>
-        {dropdownOpen && (
-          <div className="absolute mt-1 lg:w-full sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
-            <div className="flex flex-col p-2 max-h-60 overflow-auto">
-              {licenseCategories.map((category) => (
-                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
-                  <input
-                    type="checkbox"
-                    id={category.id}
-                    value={category.value}
-                    checked={selectedLicenses.includes(category.id)}
-                    onChange={handleLicenseCheckboxChange}
-                    className=""
-                    // name="licenseType"
-                    // {...register({selectedLicenses}, { required: true })}
-                    // checked={watchedValues.licenseType}
-                    // {...register('selectedLicenses')}       
+            {/* License Type */}
+            <div className="relative " ref={dropdownRef}>
+            <button type="button" className="form-style" onClick={toggleDropdown}>
+              Choose License Type
+            </button>
+            {dropdownOpen && (
+              <div className="absolute mt-1 lg:w-full sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                <div className="flex flex-col p-2 max-h-60 overflow-auto">
+                  {licenseCategories.map((category) => (
+                    <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                      <input
+                        type="checkbox"
+                        id={category.id}
+                        value={category.value}
+                        checked={selectedLicenses.includes(category.id)}
+                        onChange={handleLicenseCheckboxChange}
+                        className=""
+                        // name="licenseType"
+                        // {...register({selectedLicenses}, { required: true })}
+                        // checked={watchedValues.licenseType}
+                        // {...register('selectedLicenses')}       
 
-                  />
-                  <label htmlFor={category.id} className="w-full">
-                    {category.label}
-                  </label>
+                      />
+                      <label htmlFor={category.id} className="w-full">
+                        {category.label}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+            )}
             </div>
-          </div>
-        )}
-      </div>
 
-            <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
+            <div className="flex flex-col space-y-2 lg:w-[33%] lg:ml-32 text-white">
               <label
                 className="lable-style"
               >
@@ -621,7 +621,7 @@ const PostJob = () => {
               </label>
 
               
-              <div className="flex-col gap-4">
+              <div className="flex-col gap-4 space-x-8">
                 <label htmlFor="isSrc1">
                     SRC 1
                     <input
@@ -645,7 +645,7 @@ const PostJob = () => {
                 </label>
               </div>
 
-              <div className="flex-col gap-4">
+              <div className="flex-col gap-4 space-x-8">
                   <label htmlFor="isSrc3">
                       SRC 3
                       <input
@@ -673,6 +673,49 @@ const PostJob = () => {
 
             </div>
 
+            
+            {/* Code 95 Document */}
+            <div className="flex flex-col gap-2 lg:w-[33%] text-white  items-center">
+                <label>
+                    Code 95 Document
+                </label>
+                    <input
+                        type="checkbox"
+                        name="isCode95Document"
+                        onChange={(e) => setValue('isCode95Document', e.target.checked)}
+                        checked={watchedValues.isCode95Document}
+
+                    />
+            </div>
+
+
+            
+        </div>
+        
+        {/* ROW 2 */}
+        <div className="flex flex-col gap-5 lg:flex-row">
+            {/* ADR Driver Licence validity years */}
+            <div className="flex flex-col gap-2 lg:w-[33%]">
+              <label htmlFor="adrDriverLicence" className="lable-style">
+                ADR Driver Licence
+              </label>
+              <input
+                type="number"
+                name="adrDriverLicence"
+                id="adrDriverLicence"
+                min="0" max="5"
+                className="form-style"
+              placeholder="Required Validity of ADR Licence "
+                {...register("adrDriverLicence", { required: true })}
+                // defaultValue={user?.adminDetails?.lastName}
+              />
+              {errors.adrDriverLicence && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                Please select driver's adr licence validity years .
+                </span>
+              )}
+            </div>  
+
             {/* Psikoteknik No Of Validity Years*/}
             <div className="flex flex-col gap-2 lg:w-[33%]">
               <label htmlFor="psikoteknik" className="lable-style">
@@ -694,27 +737,28 @@ const PostJob = () => {
                 </span>
               )}
             </div>
-            {/* ADR Driver Licence validity years */}
+              {/* MYK CERTIFICATE VALIDITY YEARS */}
             <div className="flex flex-col gap-2 lg:w-[33%]">
-              <label htmlFor="adrDriverLicence" className="lable-style">
-                ADR Driver Licence
+              <label htmlFor="mykCertificate" className="lable-style">
+              MYK Certificate
               </label>
               <input
                 type="number"
-                name="adrDriverLicence"
-                id="adrDriverLicence"
+                name="mykCertificate"
+                id="mykCertificate"
                 min="0" max="5"
                 className="form-style"
-              placeholder="Required Validity of ADR Licence "
-                {...register("adrDriverLicence", { required: true })}
+              placeholder="Required Validity of MYK Certificate "
+                {...register("mykCertificate", { required: true })}
                 // defaultValue={user?.adminDetails?.lastName}
               />
-              {errors.adrDriverLicence && (
+              {errors.mykCertificate && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                Please select driver's adr licence validity years .
+                Please select driver's myk certificate validity years .
                 </span>
               )}
             </div>
+            
         </div>
 
       </div>
