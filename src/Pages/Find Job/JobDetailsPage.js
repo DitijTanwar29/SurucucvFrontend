@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux"
 import { fetchJobDetails, applyForJob } from '../../services/operations/jobPostAPI'; // Implement getJobById function in your job service
 import IconBtn from "../../components/common/IconBtn"
 import { BsBoxArrowRight } from "react-icons/bs";
 import { PiSealCheckLight } from "react-icons/pi";
+import { Navigate } from 'react-router-dom';
+
 const JobDetailsPage = ({user}) => {
   const dispatch = useDispatch()
   const { jobId } = useParams();
+  const navigate = useNavigate();
   console.log("jobId :", jobId);
   // const { user } = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)
@@ -63,7 +66,7 @@ const JobDetailsPage = ({user}) => {
       İş tanımı : {job.jobDescription}
       </div>
 
-      <IconBtn customClasses={" text-center absolute z-50"}
+      <IconBtn customClasses={" text-center absolute "}
       text={loading ? "Applying..." : apply}
           onclick={clickHandler}
       >
@@ -73,6 +76,14 @@ const JobDetailsPage = ({user}) => {
         : <PiSealCheckLight className='text-lg text-caribbeangreen-500' />
       )}
       </IconBtn>
+
+      <button
+                    onClick={() => {
+                    navigate("/")
+                    }}
+                    className="cursor-pointer lg:ml-28 lg:w-24 rounded-md bg-richblack-700 py-2 px-4 font-semibold text-richblack-50 text-center"
+                >Back
+      </button>
       </div>
 
       <div className="lg:w-[full] sm:w-full  bg-gradient-to-tr  from-slate-50 via-slate-50 to-gray-300

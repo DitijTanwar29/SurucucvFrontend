@@ -12,7 +12,6 @@ import FindDriver from './Screens/FindDriver.js';
 import Contact from './Screens/Contact.js';
 import AboutUs from './Pages/Footer/AboutUs.js';
 import PrivacyPolicy from './Pages/Footer/PrivacyPolicy.js';
-import Terms from './Pages/Terms.js'
 import FAQ from './Pages/Footer/FAQ.js'
 import Vision from './Pages/Footer/Vision.js';
 import Signup from './Pages/Signup.js';
@@ -27,7 +26,6 @@ import AddService from "./components/core/Dashboard/Services/AddService"
 import Settings from './components/core/Dashboard/Settings';
 import Services from "./components/core/Dashboard/Services"
 import EditService from "./components/core/Dashboard/Services/EditService"
-import HomePage from "./components/core/Dashboard/MainPage/HomePage"
 import  PostJob  from "./components/core/Dashboard/PostJob/PostJob"
 import MyJobs from "./components/core/Dashboard/PostJob/MyJobs"
 import EditJobPost from "./components/core/Dashboard/PostJob/EditJobPost"
@@ -45,7 +43,8 @@ import EditSector from "./components/core/Dashboard/Sectors/EditSector"
 // import PartTimeJobs from './components/core/HomePage/PartTimeJobs';
 // import RecentlyPublishedJobs from './components/core/HomePage/RecentlyPublishedJobs';
 // import JobSearchBar from './components/core/HomePage/JobSearchBar';
-
+import VerifyEmail from "./Pages/VerifyEmail"
+import VerifyOtp from './Pages/VerifyOtp';
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -67,7 +66,24 @@ function App(){
 
             <Route exact path='/login' element= {<OpenRoute><Login/></OpenRoute>} />
             <Route exact path='/signup' element= {<OpenRoute><Signup/></OpenRoute>} />
-            
+            <Route
+              path="verify-email"
+              element={
+                <OpenRoute>
+                  <VerifyEmail />
+                </OpenRoute>
+              }
+            />
+
+            <Route
+              path="verify-otp"
+              element={
+                <OpenRoute>
+                  <VerifyOtp />
+                </OpenRoute>
+              }
+            />
+
             <Route exact path='/job/:jobId' element= {<JobDetailsPage user={user}/>} />
             <Route exact path='/find-driver' element= {<FindDriver/>}/>
             <Route exact path='/create-cv' element= {<CreateCv user={user} token={token} />} />
@@ -91,7 +107,7 @@ function App(){
 
             <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}>
 
-            <Route path="admin" element={<HomePage/>} />
+            
             {/* Route for admin profile */}
 
             {user?.accountType === ACCOUNT_TYPE.ADMIN && (

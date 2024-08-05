@@ -125,7 +125,7 @@ const FindJobs = () => {
   };
 
   return (
-    <div className="bg-pure-greys-25/80 w-full mx-auto p-5 lg:mt-10">
+    <div className="bg-pure-greys-25/80 w-full h-screen mx-auto p-5 lg:mt-10">
       <h1 className="text-3xl font-bold text-center mb-8">Filter Jobs</h1>
       <form onSubmit={handleSubmit(handleSubmitForm)} className='flex sm:flex-col lg:flex-col gap-1 mb-2'>
         <div className='flex sm:flex-col lg:flex-row md:flex-row gap-1'>
@@ -201,8 +201,15 @@ const FindJobs = () => {
           </div>
         </div>
         <div className='flex lg:flex-row sm:w-full md:w-[30%] sm:justify-between lg:justify-center lg:gap-3 lg:mt-7'>
-          <button type="submit" className="lg:px-4 lg:py-2 sm:py-2 sm:px-2 bg-orange-400 text-white rounded-lg hover:bg-orange-500 lg:w-1/2 sm:w-[49%]">Apply Filters</button>
-          <button type="button" onClick={handleResetFilters} className="lg:px-4 lg:py-2 sm:py-2 sm:px-2 bg-gray-500 text-richblack-100 bg-richblack-25 rounded-lg hover:text-orange-500 hover:bg-white lg:w-1/2 sm:w-[49%]">Reset Filters</button>
+          <button type="submit" className="lg:px-4 lg:py-2 sm:py-2 sm:px-2 bg-orange-400 text-white rounded-lg hover:bg-orange-500 lg:w-1/3 sm:w-[33%]">Apply Filters</button>
+          <button type="button" onClick={handleResetFilters} className="lg:px-4 lg:py-2 sm:py-2 sm:px-2  text-richblack-100 bg-richblack-25 rounded-lg hover:text-orange-500 hover:bg-white lg:w-1/3 sm:w-[33%]">Reset Filters</button>
+          <button
+                    onClick={() => {
+                    navigate("/")
+                    }}
+                    className="lg:w-1/3 sm:w-[33%] cursor-pointer lg:px-4 lg:py-2 sm:py-2 sm:px-2 rounded-md bg-richblack-700  font-semibold text-richblack-50 text-center"
+                >Back
+                </button>
         </div>
       </form>
       

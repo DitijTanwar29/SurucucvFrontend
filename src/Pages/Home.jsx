@@ -18,6 +18,10 @@ import JobSidebar from '../components/core/HomePage/JobSidebar'
 import Footer from './Footer/Footer'
 import { getJobsByProvince, getJobsBySector, getJobsByService } from '../services/operations/jobPostAPI';
 import JobDropdown from '../components/core/HomePage/JobDropdown/JobDrpodown'
+import { MdGroups } from "react-icons/md";
+import { BsTrainFreightFront } from "react-icons/bs";
+import { BsBusFront } from "react-icons/bs";
+import { FaMotorcycle } from "react-icons/fa6";
 const Home = () => {
 
 	const [selectedSectorId, setSelectedSectorId] = useState(null);
@@ -48,7 +52,7 @@ const Home = () => {
 					<div className='w-full flex flex-col sm:gap-7 -space-y-16 lg:items-start   p-2 '>
 						{/* heading */}
 						<div className="w-[80%] h-36 flex flex-col items-left gap-1 sm:mb-20 m-0 ">
-							<h2 className='font-edu-sa font-bold text-left'>Discover Driving Opportunities</h2>
+							<h2 className='font-edu-sa font-bold text-left '>Discover Driving Opportunities</h2>
 							<p><span className='font-bold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
 						</div>
 						
@@ -118,55 +122,67 @@ const Home = () => {
 				{/* </div> */}
     		{/* </div> */}
 
-		<div className='w-[full] sm:hidden lg:h-36 lg:flex justify-center items-center lg:gap-3  bg-richblue-50 p-3 mt-28 mx-auto '>
-				
-		<CountUp start={0} end={4500000} delay={0} duration={2.75}
- 				>
-			{({ countUpRef }) => (
-				<div className='w-full lg:w-[25%] sm:hidden lg:flex justify-center items-center '>
-				<div className='flex flex-col  gap-y-1'>
-					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  ' />
-					<h6 className='font-bold font-edu-sa text-2xl '>Türkiye'deki sürücü sayısı</h6>
-				</div>
-				</div>
-			)}
-		</CountUp>
+		<div className='w-[full] sm:hidden lg:h-52 lg:flex justify-center items-center lg:gap-3  bg-richblue-50 p-3 mt-28 mx-auto '>
 
-		<CountUp start={0} end={3000000} delay={0} duration={2.75}
- 				>
-			{({ countUpRef }) => (
-				<div className='w-full lg:w-[25%] sm:hidden lg:flex justify-center items-center'>
-				<div className='flex flex-col gap-y-1 '>
-					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  '/>
-					<h6 className='font-bold font-edu-sa text-2xl'>drivers in the freight transport sector</h6>
-				</div>
-				</div>
-			)}
-		</CountUp>
+			<div className='flex flex-col w-[25%] justify-center items-center'>
+				<MdGroups className='w-32 h-20'  />
+				<CountUp start={0} end={4500000} delay={0} duration={2.75}
+						>
+					{({ countUpRef }) => (
+						<div className='w-full lg:w-full sm:hidden lg:flex  '>
+						<div className='flex flex-col  gap-y-1 justify-center items-center'>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl text-white ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Türkiye'deki Mevcut Sürücü Sayısı</h6>
+						</div>
+						</div>
+					)}
+				</CountUp>
+			</div>	
 
-		<CountUp start={0} end={1500000} delay={0} duration={2.75}
- 				>
-			{({ countUpRef }) => (
-				<div className='w-full sm:hidden lg:flex lg:w-[25%] justify-center items-center '>
-				<div className='flex flex-col gap-y-1'>
-					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl ' />
-					<h6 className='font-bold font-edu-sa text-2xl  '>drivers in the passenger transport sector</h6>
-				</div>
-				</div>
-			)}
-		</CountUp>
+			<div className='flex flex-col w-[25%] justify-center items-center'>
+				<BsTrainFreightFront className='w-32 h-20'  />
+				<CountUp start={0} end={3000000} delay={0} duration={2.75}
+						>
+					{({ countUpRef }) => (
+						<div className='w-full lg:w-full sm:hidden lg:flex '>
+						<div className='flex flex-col gap-y-1 justify-center items-center'>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white   '/>
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Yük taşımacılığı sektöründeki sürücüler</h6>
+						</div>
+						</div>
+					)}
+				</CountUp>
+			</div>
 
-		<CountUp start={0} end={1000000} delay={0} duration={2.75}
- 				>
-			{({ countUpRef }) => (
-				<div className='w-full sm:hidden lg:w-[25%] lg:flex justify-center items-center '>
-				<div className='flex flex-col gap-y-1'>
-					<span ref={countUpRef} className='font-bold font-edu-sa text-2xl ' />
-					<h6 className='font-bold font-edu-sa text-2xl '>drivers in the moto-couriers sector</h6>
-				</div>
-				</div>
-			)}
-		</CountUp>
+			<div className='flex flex-col w-[25%] justify-center items-center'>
+				<BsBusFront className='w-32 h-20' />
+				<CountUp start={0} end={1500000} delay={0} duration={2.75}
+						>
+					{({ countUpRef }) => (
+						<div className='w-full sm:hidden lg:flex lg:w-full '>
+						<div className='flex flex-col gap-y-1 justify-center items-center'>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent '>Yolcu taşımacılığı sektöründeki sürücüler</h6>
+						</div>
+						</div>
+					)}
+				</CountUp>
+			</div>
+
+			<div className='flex flex-col w-[25%] justify-center items-center'>
+				<FaMotorcycle className='w-32 h-20' />
+				<CountUp start={0} end={1000000} delay={0} duration={2.75}
+						>
+					{({ countUpRef }) => (
+						<div className='w-full sm:hidden lg:w-full lg:flex  '>
+						<div className='flex flex-col gap-y-1 justify-center items-center'>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white  ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Moto kurye sektöründeki sürücüler</h6>
+						</div>
+						</div>
+					)}
+				</CountUp>
+			</div>
 
 		</div>
 

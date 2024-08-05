@@ -16,7 +16,7 @@ const FindJob = () => {
         {/* <Car1 /> */}
       </div>
       
-        <Footer />
+        {/* <Footer /> */}
       
     </>
   );

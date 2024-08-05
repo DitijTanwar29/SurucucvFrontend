@@ -104,9 +104,9 @@ const CompanyProfile = () => {
 
               
               <div>
-                <p className="mb-2 text-md text-richblack-700 font-semibold">Industry Name</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Sector</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.companyDetails?.industryName  ?? "Add Industry Name"}
+                  {user?.companyDetails?.sector  ?? "Add Sector"}
                 </p>
               </div>
             </div>

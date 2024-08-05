@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
+import { useState, useEffect } from "react";
 import { updateCompanyProfile } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
+import { getActiveSectors } from '../../../../services/operations/sectorAPI';
 
 
 export default function EditCompanyProfile() {
@@ -11,6 +12,24 @@ export default function EditCompanyProfile() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const [sectors, setSectors] = useState([]);
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const getSectors = async () => {
+      setLoading(true);
+      const sectors = await getActiveSectors();
+      if (sectors.length > 0) {
+        console.log("sectors", sectors)
+        setSectors(sectors);
+      }
+      setLoading(false);
+    };
+    getSectors();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     register,
@@ -30,7 +49,7 @@ export default function EditCompanyProfile() {
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Edit Company Profile Information
           </h2>
@@ -48,7 +67,7 @@ export default function EditCompanyProfile() {
                 placeholder="Enter company title"
                 className="form-style"
                 {...register("companyTitle", { required: true })}
-                defaultValue={user?.companyProfileDetails?.companyTitle}
+                defaultValue={user?.companyDetails?.companyTitle}
               />
               {errors.companyTitle && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
@@ -57,22 +76,32 @@ export default function EditCompanyProfile() {
               )}
             </div>
 
-            <div className="flex flex-col gap-2 lg:w-[33%]">
-              <label htmlFor="industryName" className="lable-style">
-                Industry Name
+            <div className="flex flex-col space-y-2 lg:w-[48%] ">
+              <label
+                className="lable-style"
+                htmlFor="sector"
+              >
+                Sector <sup className="text-pink-200">*</sup>
               </label>
-              <input
-                type="text"
-                name="industryName"
-                id="industryName"
-                placeholder="Enter industry name"
-                className="form-style"
-                {...register("industryName", { required: true })}
-                defaultValue={user?.companyDetails?.industryName}
-              />
-              {errors.industryName && (
-                <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your industry name.
+              <select
+                {...register("sector", { required: true })}
+                // defaultValue={user?companyProfileDetails?.sector}
+                id="sector"
+                className="form-style w-full"
+              >
+                <option value="" disabled>
+                  Choose a Sector
+                </option>
+                {!loading &&
+                  sectors?.map((sector, indx) => (
+                    <option key={indx} value={sector?._id}>
+                      {sector?.sectorName}
+                    </option>
+                  ))}
+              </select>
+              {errors.sector && (
+                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                  Sector is required
                 </span>
               )}
             </div>
@@ -202,7 +231,7 @@ export default function EditCompanyProfile() {
                 placeholder="Enter email"
                 className="form-style"
                 {...register("email", { required: true })}
-                defaultValue={user?.companyProfileDetails?.email}
+                defaultValue={user?.companyDetails?.email}
               />
               {errors.email && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

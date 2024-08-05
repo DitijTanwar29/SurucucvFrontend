@@ -12,74 +12,66 @@ import { getAllSectors } from '../../../../../services/operations/sectorAPI';
 
 
 const EditService = () => {
-  const { serviceId } = useParams()
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    getValues,
-    formState: { errors },
-  } = useForm()
+  const { serviceId } = useParams();
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.profile)
-  const { service } = useSelector((state) => state.service)
-  console.log("service in slice :",service)
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.profile);
+  const { service } = useSelector((state) => state.service);
+  console.log("service in slice:", service);
   
-  const [loading, setLoading] = useState(false)
-  // const { token } = useSelector((state) => state.auth)
+  const [loading, setLoading] = useState(false);
   const token = user.token;
-  // console.log("token : ",token)
   const [sectors, setSectors] = useState([]);
+
+  useEffect(() => {
+    const getServiceDetails = async () => {
+      setLoading(true);
+      const result = await fetchServiceDetails(serviceId);
+      console.log("fetch service details result:", result?.[0]);
+      if (result?.[0] !== null) {
+        dispatch(setEditService(true));
+        dispatch(setService(result?.[0]));
+        const serviceDetails = result?.[0];
+        setValue("serviceName", serviceDetails?.serviceName);
+        setValue("serviceDescription", serviceDetails?.serviceDescription);
+        setValue("status", serviceDetails?.status);
+        setValue("sector", serviceDetails?.sector);
+        console.log("value of set service:", setService);
+        dispatch(setEditService(false));
+      }
+      setLoading(false);
+    };
+    getServiceDetails();
+  }, [dispatch, serviceId, setValue]);
 
   useEffect(() => {
     const getSectors = async () => {
       setLoading(true);
       const sectors = await getAllSectors();
       if (sectors.length > 0) {
-        // console.log("categories", categories)
         setSectors(sectors);
       }
       setLoading(false);
     };
-    // if form is in edit mode
-    // if (editCourse) {
-    //   // console.log("data populated", editCourse)
-    //   setValue("courseTitle", course.courseName)
-    //   setValue("courseShortDesc", course.courseDescription)
-    //   setValue("coursePrice", course.price)
-    //   setValue("courseTags", course.tag)
-    //   setValue("courseBenefits", course.whatYouWillLearn)
-    //   setValue("courseCategory", course.category)
-    //   setValue("courseRequirements", course.instructions)
-    //   setValue("courseImage", course.thumbnail)
-    // }
     getSectors();
-
-      
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const onSubmit = async (data) => {
-    console.log("Form Data after form submission - ", data)
-    
-    
-    
-    
+    console.log("Form Data after form submission - ", data);
     try {
-      dispatch(editServiceDetails({...data, serviceIcon:data.serviceIcon[0], serviceId:serviceId},token,navigate))
+      dispatch(editServiceDetails({...data, serviceIcon: data.serviceIcon[0], serviceId: serviceId}, token, navigate));
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
+      console.log("ERROR MESSAGE - ", error.message);
     }
-  }
+  };
   return (
     // console.log(service?.sector)
     
     <form onSubmit={handleSubmit(onSubmit)}>
         {/* Service Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
+        <div className="my-10 flex flex-col lg:mt-20 gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Edit Service
           </h2>
@@ -96,7 +88,7 @@ const EditService = () => {
                 placeholder="Enter service name"
                 className="form-style"
                 {...register("serviceName")}
-                defaultValue={service?.serviceName}
+                
               />
               {errors.serviceName && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
@@ -116,7 +108,7 @@ const EditService = () => {
                 placeholder="Enter service description"
                 className="form-style"
                 {...register("serviceDescription")}
-                defaultValue={service?.serviceDescription}
+                
               />
               {errors.serviceDescription && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
@@ -161,7 +153,7 @@ const EditService = () => {
                 placeholder="Enter Bio Details"
                 className="form-style"
                 {...register("status")}
-                defaultValue={service?.status}
+           
                 
               >
                 <option value="" disabled>Choose status</option>

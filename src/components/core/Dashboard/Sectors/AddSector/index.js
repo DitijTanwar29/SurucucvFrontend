@@ -28,7 +28,7 @@ const AddSector = () => {
     // console.log("token - ", token)
 
     try {
-      dispatch(addSectorDetails(data,token))
+      dispatch(addSectorDetails(data,token,navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

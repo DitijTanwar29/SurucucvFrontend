@@ -31,7 +31,7 @@ const RecentlyPublishedSlider = () => {
 
   return (
 <div className='mt-20 flex flex-col gap-3 w-full justify-center items-center mx-auto'>
-            <h1>Recently Published Jobs</h1>
+            <h2>Recently Published Jobs</h2>
     {
         jobs?.length !== 0 ? (
             <Swiper

@@ -46,7 +46,7 @@ const AddService = () => {
     // console.log("token - ", token)
 
     try {
-      dispatch(addServiceDetails({...data, serviceIcon:data.serviceIcon[0]}, token, navigate))
+      dispatch(addServiceDetails({...data, serviceIcon:data.serviceIcon[0]}, token, navigate, dispatch))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

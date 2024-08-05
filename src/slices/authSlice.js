@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-
+// import { sendOtp, verifyOtp } from "../services/operations/authAPI";
 const initialState = {
     signupData:null,
     loading:false,
@@ -20,6 +20,27 @@ const authSlice = createSlice({
             state.token = value.payload;
         },
     },
+    // extraReducers: (builder) => {
+    //     builder
+    //       .addCase(sendOtp.pending, (state) => {
+    //         state.loading = true;
+    //       })
+    //       .addCase(sendOtp.fulfilled, (state) => {
+    //         state.loading = false;
+    //       })
+    //       .addCase(sendOtp.rejected, (state) => {
+    //         state.loading = false;
+    //       })
+    //       .addCase(verifyOtp.pending, (state) => {
+    //         state.loading = true;
+    //       })
+    //       .addCase(verifyOtp.fulfilled, (state) => {
+    //         state.loading = false;
+    //       })
+    //       .addCase(verifyOtp.rejected, (state) => {
+    //         state.loading = false;
+    //       });
+    //   },
 });
 
 console.log(authSlice);

@@ -30,7 +30,7 @@ const PartTimeJobsSlider = () => {
 
   return (
 <div className='mt-20 flex flex-col gap-3 w-full justify-center items-center mx-auto'>
-            <h1>Part Time Jobs</h1>
+            <h2>Part Time Jobs</h2>
     {
         jobs?.length !== 0 ? (
             <Swiper

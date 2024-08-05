@@ -3,7 +3,8 @@ export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
 
 //AUTH ENDPOINTS
 export const endpoints = {
-    // SENDOTP_API: BASE_URL + "/auth/sendotp",
+    SENDOTP_API: BASE_URL + "/auth/sendotp",
+    SEND_SMS_OTP_API: BASE_URL + "/auth/send-sms-otp",
     // SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
     // LOGIN_API: "http://localhost:1200/api/v1/auth/login",
     SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
@@ -42,7 +43,7 @@ export const settingsEndpoints = {
     UPDATE_CANDIDATE_PROFILE_API: BASE_URL + "/candidateProfile/updateCandidateProfile",
 
     // CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
-    // DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
+    DELETE_COMPANY_PROFILE_API: BASE_URL + "/companyProfile/deleteAccount",
 }
 
 
@@ -60,6 +61,7 @@ export const serviceEndpoints = {
 export const sectorEndpoints = {
     CREATE_SECTOR_API : BASE_URL + "/sector/createSector",
     GET_ALL_SECTORS_API : BASE_URL + "/sector/showAllSectors",
+    SECTOR_DETAILS_API : BASE_URL + "/sector/getSectorDetails",
     UPDATE_SECTOR_STATUS_API : BASE_URL + "/sector/updateSectorStatus",
     EDIT_SECTOR_API : BASE_URL + "/sector/editSector",
     DELETE_SECTOR_API : BASE_URL + "/sector/deleteSector",

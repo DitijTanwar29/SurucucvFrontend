@@ -35,7 +35,7 @@ const JobSearchBar = () => {
 
   return (
     <div className='flex flex-col w-[90%] h-20 ' >
-      <div className='flex lg:gap-14 sm:gap-3'>
+      <div className='flex lg:gap-14 sm:gap-3 sm:mt-6'>
         <input
           type="text"
           value={searchTerm}
