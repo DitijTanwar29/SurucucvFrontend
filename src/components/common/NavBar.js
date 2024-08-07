@@ -7,8 +7,6 @@ import { useSelector } from "react-redux"
 import logo from "../../Assests/Icons/logo.png"
 import NavbarLinks  from "../../data/navbar-links"
 import ProfileDropDown from "../core/Auth/ProfileDropDown"
-import { AiOutlineMenu } from "react-icons/ai"
-import { useMediaQuery } from 'react-responsive'
 
 export default function NavBar()  {
 
@@ -41,9 +39,10 @@ export default function NavBar()  {
           )}
         </button>
 
+{/* bg-black/75 last nav bg used  */}
     <div 
     className={`lg:h-20 md:h-20 sm:h-full flex lg:flex items-center lg:sticky lg:top-0 z-30 justify-between 
-    lg:border-b-[1px] bg-black/75 border-b-pure-greys-100 
+    lg:border-b-[1px]  bg-pure-greys-25/80 border-b-pure-greys-100 
        
      ${
             isSidebarOpen ? "sm:translate-y-0 lg:translate-y-0 sm:h-full flex" : "sm:-translate-y-full lg:translate-y-0 sm:h-0 hidden"

@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
-import truck from "../Assests/Images/truck.jpg"
-import bustext from "../Assests/Images/bustext.Com.png"
 import ServiceSlider from '../components/common/ServicesSlider'
-import Banner from "../Assests/Images/Banner.mp4"
 import { TopJobPostings } from '../components/core/HomePage/TopJobPostings'
 import JobSearchBar from '../components/core/HomePage/JobSearchBar'
-import RecentlyPublishedJobs from "../components/core/HomePage/RecentlyPublishedJobs"
-import FullTimeJobs from "../components/core/HomePage/FullTimeJobs"
-import PartTimeJobs from '../components/core/HomePage/PartTimeJobs'
 import JobSliders from '../components/core/HomePage/JobSliders'
 import JobGroups from '../components/core/HomePage/JobGroups'
 import Vs from '../Assests/Images/Driver pro logo.jfif'
@@ -79,6 +73,7 @@ const Home = () => {
 			
 					<img  
 					src={Vs}
+					alt='hero_Section_img'
 					className="lg:w-[500px] sm:hidden md:hidden lg:h-[400px] lg:flex rounded-lg object-contain"></img>
 				{/* </div> */}
 			</div>
@@ -131,8 +126,8 @@ const Home = () => {
 					{({ countUpRef }) => (
 						<div className='w-full lg:w-full sm:hidden lg:flex  '>
 						<div className='flex flex-col  gap-y-1 justify-center items-center'>
-							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl text-white ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Türkiye'deki Mevcut Sürücü Sayısı</h6>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl text-orange-500 ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Türkiye'deki Mevcut Sürücü Sayısı</h6>
 						</div>
 						</div>
 					)}
@@ -140,14 +135,14 @@ const Home = () => {
 			</div>	
 
 			<div className='flex flex-col w-[25%] justify-center items-center'>
-				<BsTrainFreightFront className='w-32 h-20'  />
+				<BsTrainFreightFront className='w-32 h-20' />
 				<CountUp start={0} end={3000000} delay={0} duration={2.75}
 						>
 					{({ countUpRef }) => (
 						<div className='w-full lg:w-full sm:hidden lg:flex '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
-							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white   '/>
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Yük taşımacılığı sektöründeki sürücüler</h6>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500   '/>
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Yük taşımacılığı sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}
@@ -155,14 +150,14 @@ const Home = () => {
 			</div>
 
 			<div className='flex flex-col w-[25%] justify-center items-center'>
-				<BsBusFront className='w-32 h-20' />
+				<BsBusFront className='w-32 h-20'  />
 				<CountUp start={0} end={1500000} delay={0} duration={2.75}
 						>
 					{({ countUpRef }) => (
 						<div className='w-full sm:hidden lg:flex lg:w-full '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
-							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent '>Yolcu taşımacılığı sektöründeki sürücüler</h6>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500 ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent '>Yolcu taşımacılığı sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}
@@ -176,8 +171,8 @@ const Home = () => {
 					{({ countUpRef }) => (
 						<div className='w-full sm:hidden lg:w-full lg:flex  '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
-							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-white  ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent'>Moto kurye sektöründeki sürücüler</h6>
+							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500  ' />
+							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Moto kurye sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}

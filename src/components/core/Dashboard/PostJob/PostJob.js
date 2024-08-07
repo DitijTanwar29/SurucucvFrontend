@@ -162,8 +162,8 @@ const PostJob = () => {
     setValue('isSrc1', checked);
     if (checked) {
       setValue('isSrc2', true);
-      setValue('isSrc3', false);
-      setValue('isSrc4', false);
+      // setValue('isSrc3', false);
+      // setValue('isSrc4', false);
     }
   };
 
@@ -182,8 +182,8 @@ const PostJob = () => {
     setValue('isSrc3', checked);
     if (checked) {
       setValue('isSrc4', true);
-      setValue('isSrc1', false);
-      setValue('isSrc2', false);
+      // setValue('isSrc1', false);
+      // setValue('isSrc2', false);
     }
   };
 

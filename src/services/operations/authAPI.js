@@ -3,9 +3,8 @@ import { setLoading, setToken } from "../../slices/authSlice"
 import { apiConnector } from "../apiConnector"
 import { endpoints } from "../apis"
 import { setUser } from "../../slices/profileSlice"
-import {ACCOUNT_TYPE} from "../../utils/constants"
 import { setSignupData } from "../../slices/authSlice"
-import { createAsyncThunk } from "@reduxjs/toolkit";
+
 const { 
     SIGNUP_API,
     LOGIN_API,
@@ -85,7 +84,7 @@ export const sendSmsOtp = async (otpData,navigate) => {
 
 };
 
-export function signup({name, email, password, confirmPassword, contactNumber, date, city, accountType, otp}, navigate) {
+export function signup({name, email, password, confirmPassword, contactNumber, date, city, accountType, otp, navigate}) {
     return async (dispatch) => {
         const toastId = toast.loading("Loading...");
         console.log("signup endpoint req data: ",name,email,password,confirmPassword,contactNumber,date,city,accountType,otp)
@@ -107,6 +106,10 @@ export function signup({name, email, password, confirmPassword, contactNumber, d
             //     navigate("/verify-email");
             // }
 
+            if( !response.status.status === "401"){
+                toast.error("User is already registered, please try to login now")
+                navigate("/login")
+            }
             toast.success("Signup Successful")
             navigate("/login")
         } catch (error) {

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { MultiSelect } from "react-multi-select-component";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { State, City }  from 'country-state-city';
 
 import { updateCandidateProfile } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
@@ -17,15 +17,46 @@ export default function EditCandidateProfile() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedStateIsoCode , setSelectedStateIsoCode] = useState('');
+
+  const handleStateChange = (e) => {
+    setSelectedState(e.target.value);
+    setSelectedCity('');
+    const selectedStateObject = states.find((state) => state.name === e.target.value);
+    // console.log("selectedStateObject :",selectedStateObject)
+    const isoCode = selectedStateObject?.isoCode
+    // console.log("IsoCode :", selectedStateObject?.isoCode)
+    setSelectedStateIsoCode(isoCode)
+    // console.log(" selectedStateIsoCode :",selectedStateIsoCode)
+
+    if (selectedStateObject) {
+      const stateCities = City.getCitiesOfState('TR',isoCode);
+      setCities(stateCities);
+    } else {
+      setCities([]);
+    }
+  };
+
+  const handleCityChange = (e) => {
+    setSelectedCity(e.target.value);
+  };
+
+  useEffect(() => {
+    // const turkey = Country.getCountryByShortName('TR');
+    const turkeyStates = State.getStatesOfCountry('TR');
+    setStates(turkeyStates);
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const [selectedOption, setSelectedOption] = useState(null);
-  
-  const [selected, setSelected] = useState([]);
+
 
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
@@ -113,46 +144,66 @@ export default function EditCandidateProfile() {
              
           </div>
 
+          
+
           <div className="flex flex-col gap-5 lg:flex-row">
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+          {/* Province */}
+            <div className="flex flex-col gap-2 ">
               <label htmlFor="province" className="lable-style">
-                Province
+              Province
               </label>
-              <input
-                type="text"
+    
+            <select 
+        
                 name="province"
                 id="province"
-                placeholder="Enter province "
+                placeholder="Choose province "
                 className="form-style"
                 {...register("province", { required: true })}
                 defaultValue={user?.candidateDetails?.province}
-              />
-              {errors.province && (
-                <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your province.
+                value={selectedState} onChange={handleStateChange}>
+
+          <option value="" disabled>
+              Choose a province
+            </option>
+          {states.map((state) => (
+            <option key={state.id} value={state.name}>
+              {state.name}
+            </option>
+          ))}
+            </select>
+
+        {errors.province && (
+                <span className="-mt-1 text-[12px] text-red-200">
+                  Please select your residential province.
                 </span>
-              )}
+        )}
+
             </div>
 
-            <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="district" className="lable-style">
-                District
-              </label>
-              <input
-                type="text"
+            {/* District */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="district" className="lable-style">District</label>
+              <select
                 name="district"
                 id="district"
-                placeholder="Enter district"
                 className="form-style"
-                {...register("district", { required: true })}
-                defaultValue={user?.candidateDetails?.district}
-              />
-              {errors.companyAddress && (
-                <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your district.
-                </span>
-              )}
-            </div> 
+                defaultValue={user?.candidateDetails?.district}                
+                  {...register("district", { required: true })}
+                  value={selectedCity} onChange={handleCityChange}>
+                <option value="">Select District</option>
+                {cities.map((city) => (
+                  <option key={city.id} value={city.name}>
+                    {city.name}
+                  </option>
+                ))}
+              </select>
+              {errors.district && (
+                  <span className="-mt-1 text-[12px] text-red-200">
+                    Please select your residential district.
+                  </span>
+                )}
+            </div>
           </div>
 
           <div className="flex flex-col gap-5 lg:flex-row">
@@ -228,20 +279,11 @@ export default function EditCandidateProfile() {
             
 
 {/* name="", email, position="", contactNumber, dateOfBirth="", */}
-            <div className="flex flex-col gap-2 lg:w-[33%]">
+            {/* <div className="flex flex-col gap-2 lg:w-[33%]">
               <label htmlFor="skills" className="lable-style">
                 Skills
               </label>
-              {/* <input
-                type="text"
-                name="position"
-                id="position"
-                className="form-style"
-                {...register("position", { required: true })}
-                defaultValue={user?.companyDetails?.position}
-              /> */}
-
-              {/* <h1>Select Fruits</h1> */}
+              
       <pre>{JSON.stringify(selected)}</pre>
       <MultiSelect
         options={options}
@@ -251,29 +293,20 @@ export default function EditCandidateProfile() {
         onChange={setSelected}
         labelledBy="Select"
       />
-      {/* <div className="form-style">
-      <Select
-      placeholder="Select Skills"
-      isMulti={true}
-      className="text-richblack-500 text-bold"
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={options}
-      />
-    </div> */}
+      
               {errors.skills && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter your skills.
                 </span>
               )}
-            </div>
+            </div> */}
             
             <div className="flex flex-col gap-2 lg:w-[33%]">
               <label htmlFor="dateOfBirth" className="lable-style">
                 Date Of Birth
               </label>
               <input
-                type="text"
+                type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
                 placeholder="Enter date of birth"

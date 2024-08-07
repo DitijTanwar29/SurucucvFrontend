@@ -163,44 +163,24 @@ const CandidateProfile = () => {
         </div>
 {/* skill="", preferedJobLocation, 
             degree, province, district */}
-        <div className="flex sm:flex-col lg:flex-row  justify-between">
-            <div className="flex flex-col gap-y-5">
-
-              <div>
-                <p className="mb-2 text-md text-richblack-700 font-semibold ">Prefered Job Location</p>
-                <p className="text-sm text-richblack-5">
-                  {user?.candidateDetails?.preferedJobLocation  ?? "Add Prefered Job Location"}
-                </p>
-              </div>
-
-              
-
+        <div className="w-full flex sm:flex-col lg:flex-row   justify-between">
+            <div className="flex flex-col gap-y-5">             
               <div>
                 <p className="mb-2 text-md text-richblack-700 font-semibold">Province</p>
                 <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.province ?? "Add Province "}
                 </p>
               </div>
-            </div>
 
-
-            <div className="flex flex-col gap-y-5">
-              <div>
-                <p className="mb-2 text-md text-richblack-700 font-semibold">Prefered Job Location</p>
-                <p className="text-sm text-richblack-5">
-                  {user?.candidateDetails?.preferedJobLocation ?? "Add Prefered Job Location"}
-                </p>
-              </div>
-
+              
+              
               <div>
                 <p className="mb-2 text-md text-richblack-700 font-semibold">District</p>
                 <p className="text-sm text-richblack-5">
                   {user?.candidateDetails?.district  ?? "Add District"}
                 </p>
               </div>
-
             </div>
-        
 
             <div className="flex flex-col gap-y-5">
               <div>
@@ -210,6 +190,19 @@ const CandidateProfile = () => {
                 </p>
               </div>
             </div>
+
+            <div className="flex flex-col gap-y-5">
+              <div>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Prefered Job Location</p>
+                <p className="text-sm text-richblack-5">
+                  {user?.candidateDetails?.preferedJobLocation ?? "Add Prefered Job Location"}
+                </p>
+              </div>
+
+            </div>
+
+        
+            
         
         </div>
 

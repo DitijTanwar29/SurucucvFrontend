@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { useEffect } from "react";
 import IconBtn from "../../components/common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +39,13 @@ const CreateCv = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedStateIsoCode , setSelectedStateIsoCode] = useState('');
 
+  useEffect(() => {
+    // const turkey = Country.getCountryByShortName('TR');
+    const turkeyStates = State.getStatesOfCountry('TR');
+    setStates(turkeyStates);
+  }, []);
 
+  
   // const [selectedLicenses, setSelectedLicenses] = useState([]);
   const {
     register,
@@ -149,11 +156,7 @@ const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValu
   }, []);
 
 
-  useEffect(() => {
-    // const turkey = Country.getCountryByShortName('TR');
-    const turkeyStates = State.getStatesOfCountry('TR');
-    setStates(turkeyStates);
-  }, []);
+
 
   // console.log("selectedCity :",selectedCity)
 
@@ -232,8 +235,8 @@ const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValu
     setValue('isSrc1', checked);
     if (checked) {
       setValue('isSrc2', true);
-      setValue('isSrc3', false);
-      setValue('isSrc4', false);
+      // setValue('isSrc3', false);
+      // setValue('isSrc4', false);
     }
 };
 
@@ -258,8 +261,8 @@ const handleSrc3Change = (e) => {
     setValue('isSrc3', checked);
     if (checked) {
       setValue('isSrc4', true);
-      setValue('isSrc1', false);
-      setValue('isSrc2', false);
+      // setValue('isSrc1', false);
+      // setValue('isSrc2', false);
     }
 };
 

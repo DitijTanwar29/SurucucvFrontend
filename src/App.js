@@ -5,7 +5,6 @@ import Home from "./Pages/Home"
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { ACCOUNT_TYPE } from "./utils/constants";
 import NavBar from './components/common/NavBar';
-import Login from './Pages/Login';
 import FindJob from './Screens/FindJob.js';
 import JobDetailsPage from "./Pages/Find Job/JobDetailsPage";
 import FindDriver from './Screens/FindDriver.js';
@@ -14,7 +13,6 @@ import AboutUs from './Pages/Footer/AboutUs.js';
 import PrivacyPolicy from './Pages/Footer/PrivacyPolicy.js';
 import FAQ from './Pages/Footer/FAQ.js'
 import Vision from './Pages/Footer/Vision.js';
-import Signup from './Pages/Signup.js';
 import CreateCv from './Pages/Create CV/CreateCv.js';
 import OurPublication from './Pages/Footer/OurPublication.js';
 import OpenRoute from "./components/core/Auth/OpenRoute"
@@ -45,6 +43,8 @@ import EditSector from "./components/core/Dashboard/Sectors/EditSector"
 // import JobSearchBar from './components/core/HomePage/JobSearchBar';
 import VerifyEmail from "./Pages/VerifyEmail"
 import VerifyOtp from './Pages/VerifyOtp';
+import LoginForm from './components/core/Auth/LoginForm';
+import SignupForm from './components/core/Auth/SignupForm';
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -64,8 +64,8 @@ function App(){
             <Route exact path='/about' element= {<AboutUs/>} />
             
 
-            <Route exact path='/login' element= {<OpenRoute><Login/></OpenRoute>} />
-            <Route exact path='/signup' element= {<OpenRoute><Signup/></OpenRoute>} />
+            <Route exact path='/login' element= {<OpenRoute><LoginForm/></OpenRoute>} />
+            <Route exact path='/signup' element= {<OpenRoute><SignupForm/></OpenRoute>} />
             <Route
               path="verify-email"
               element={

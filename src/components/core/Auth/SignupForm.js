@@ -680,11 +680,11 @@ const SignupForm = () => {
     ];
 
     return (
-        <div className="lg:mt-24 sm:mt-12 flex justify-center items-center mx-auto flex-col gap-y-2">
+        <div className="lg:mt-20 sm:pt-12 bg-pure-greys-25/80  flex justify-center items-center mx-auto flex-col gap-y-2">
             <Tab tabData={tabData} field={accountType} setField={setAccountType} />
-            <form onSubmit={submitHandler} className="flex w-[50%] bg-richblack-200 pb-4 flex-col justify-center items-center mx-auto gap-y-2">
-                <div className=' w-full sm:flex sm:flex-wrap lg:flex-row gap-5'>
-                    <label className="w-[50%] flex flex-col mx-auto">
+            <form onSubmit={submitHandler} className="flex w-[50%] sm:w-full pb-4 flex-col justify-center items-center mx-auto gap-y-2">
+                <div className=' w-full lg:w-[40%] sm:flex sm:flex-wrap lg:flex-row gap-5'>
+                    <label className="lg:w-[50%] sm:w-[80%] flex flex-col mx-auto">
                         <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>Name<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -698,8 +698,8 @@ const SignupForm = () => {
                         />
                     </label>
                 </div>
-                <div className=' w-full flex sm:flex sm:flex-wrap lg:flex-row gap-5 mx-auto justify-evenly'>
-                    <label className='w-[40%]'>
+                <div className=' w-full lg:w-[40%] flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row gap-5 mx-auto justify-evenly'>
+                    <label className='lg:w-[40%] sm:w-[80%]'>
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Email Address<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -712,7 +712,7 @@ const SignupForm = () => {
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                     </label>
-                    <label className='w-[40%]'>
+                    <label className='lg:w-[40%] sm:w-[80%]'>
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Contact Number<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -725,8 +725,8 @@ const SignupForm = () => {
                         />
                     </label>
                 </div>
-                <div className=' w-full flex sm:flex sm:flex-wrap lg:flex-row gap-5 mx-auto justify-evenly'>
-                    <label className='w-[40%]'>
+                <div className=' w-full lg:w-[40%] flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row gap-5 mx-auto justify-evenly'>
+                    <label className='lg:w-[40%] sm:w-[80%]'>
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Date<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -738,7 +738,7 @@ const SignupForm = () => {
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                     </label>
-                    <label className='w-[40%]'>
+                    <label className='lg:w-[40%] sm:w-[80%]'>
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>City<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -751,8 +751,8 @@ const SignupForm = () => {
                         />
                     </label>
                 </div>
-                <div className=' w-full flex sm:flex sm:flex-wrap lg:flex-row gap-5 mx-auto justify-evenly'>
-                    <label className="relative w-[40%]">
+                <div className=' w-full lg:w-[40%] flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row gap-5 mx-auto justify-evenly'>
+                    <label className="relative lg:w-[40%] sm:w-[80%]">
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Password<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -765,10 +765,10 @@ const SignupForm = () => {
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                         <span onClick={() => setShowPassword(prev => !prev)} className="absolute right-3 top-[38px] z-10 cursor-pointer">
-                            {showPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" /> : <AiOutlineEye fontSize={24} fill="#AFB2BF" />}
+                            {showPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#fafafa" /> : <AiOutlineEye fontSize={24} fill="#fafafa" />}
                         </span>
                     </label>
-                    <label className="relative w-[40%]">
+                    <label className="relative lg:w-[40%] sm:w-[80%]">
                         <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Confirm Password<sup className='text-pink-200'>*</sup></p>
                         <input
                             required
@@ -781,11 +781,11 @@ const SignupForm = () => {
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                         <span onClick={() => setShowConfirmPassword(prev => !prev)} className="absolute right-3 top-[38px] z-10 cursor-pointer">
-                            {showConfirmPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" /> : <AiOutlineEye fontSize={24} fill="#AFB2BF" />}
+                            {showConfirmPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#fafafa" /> : <AiOutlineEye fontSize={24} fill="#fafafa" />}
                         </span>
                     </label>
                 </div>
-                <button type="submit" className='mx-auto text-center rounded-md bg-orange-300 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
+                <button type="submit" className='mx-auto text-center rounded-md bg-orange-500 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
            Create Account
          </button>
       </form>

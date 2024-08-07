@@ -35,10 +35,10 @@ const LoginForm = () => {
         }
         return (
             <form onSubmit={submitHandler}
-            className="lg:mt-24 sm:mt-4 flex w-[50%] mx-auto flex-col gap-y-4"
+            className="sm:w-full lg:w-[50%] my-auto lg:mt-20 bg-pure-greys-25/80 sm:pt-10 flex w-[50%] mx-auto flex-col lg:justify-center lg:items-center gap-y-4"
             >
         
-        <label className='w-full'>
+        <label>
             <p className='mb-1 text-[0.875rem] leading-[1.375rem] form-label'>
                 Email Address<sup className='text-pink-200'>*</sup>
             </p>
@@ -49,10 +49,8 @@ const LoginForm = () => {
                 onChange={changeHandler}
                 placeholder='Enter email address'
                 name="email"
-                style={{
-                    boxShadow: "inset 0px -1px 0px rgba(225, 225, 225, 0.18)",
-                }}
-                className='w-full rounded-[0.5rem] bg-orange-300 p-[12px] text-richblack-5 form-style'
+                className=' sm:w-full placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+                            style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
             />
         </label>
 
@@ -69,17 +67,15 @@ const LoginForm = () => {
                 onChange={changeHandler}
                 placeholder='Enter Password'
                 name="password"
-                style={{
-                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
-                className='w-full rounded-[0.5rem] bg-orange-300 p-[12px] text-richblack-5 form-style'
+                className='sm:w-full placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+                            style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
             />
 
             <span onClick={() => setShowPassword((prev) => !prev)} 
             className='absolute right-3 top-[38px] z-[10] cursor-pointer'>
-                 {showPassword? (<AiOutlineEyeInvisible fontSize={24} fill="#0B0B0B"/>
+                 {showPassword? (<AiOutlineEyeInvisible fontSize={24} fill="#fafafa"/>
                  ) : (
-                 <AiOutlineEye fontSize={24} fill='#0B0B0B'/>
+                 <AiOutlineEye fontSize={24} fill='#fafafa'/>
                  )}
             </span>
 
@@ -92,7 +88,7 @@ const LoginForm = () => {
         </label>
                     
         <button type='submit'
-            className='mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-black'>
+            className='mt-6 rounded-[8px] bg-orange-500 py-[8px] px-[12px] font-medium text-black'>
           <p>Sign In</p>
         </button>
 
