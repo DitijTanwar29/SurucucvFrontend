@@ -266,7 +266,7 @@ export default function EditCompanyProfile() {
                 Date Of Birth
               </label>
               <input
-                type="text"
+                type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
                 placeholder="Enter date of birth"

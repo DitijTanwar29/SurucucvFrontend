@@ -67,7 +67,7 @@ function ServicesSlider() {
                     {services?.map((service) => (
                         <SwiperSlide key={service._id}>
                             <div className="flex flex-col gap-3 sm:w-[90%] md:w-[full] lg:w-full h-60 mt-20
-                            mx-auto hover:border-orange-400 bg-richblack-100  hover:cursor-grab
+                            mx-auto hover:border-orange-400 bg-pure-greys-50  hover:cursor-grab
                              p-3 rounded-lg border-1 border-richblack-50"
                              
                              onClick={() => handleChange(service._id)}

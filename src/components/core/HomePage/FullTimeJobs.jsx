@@ -19,18 +19,18 @@ const FullTimeJobs = () => {
     fetchJobs();
   }, []);
 
-  const TRUNCATE_LENGTH = 8
+  const TRUNCATE_LENGTH = 4
 
   return (
-    <div className="lg:w-full  shadow-lg  p-3 bg-white rounded-lg ">
+    <div className="lg:w-full shadow-lg  p-3 bg-white rounded-lg ">
       <div className='flex justify-between p-2'>
-        <h4>FULL TIME JOBS</h4>
+        <h4 className='leading-4'>FULL TIME JOBS</h4>
       <Link to="/find-job" className='text-orange-400 font-semibold hover:text-orange-400'>All Jobs</Link>
       </div>
-      <div className="jobs-grid  rounded-lg p-1 ">
+      <div className=" jobs-grid rounded-lg p-1 ">
         {jobs.map((job) => (
-          <Link to={`/job/${job._id}`} key={job._id} className="job-card">
-            <div className='flex gap-2 shadow-sm p-1 shadow-pure-greys-500  h-[130px]'>
+          <Link to={`/job/${job._id}`} key={job._id} className="job-card ">
+            <div className='flex gap-2 shadow-sm p-1 shadow-pure-greys-500  h-[130px] '>
                 
               <img
                 alt={job.companyName}
@@ -38,24 +38,24 @@ const FullTimeJobs = () => {
                 src={job?.company?.image}
               />
 
-              <div className='flex flex-col  space-y-1 p-1'>
-              <div className='space-y-1'>
-                <h5 className='text-black'>{job.jobTitle}</h5>
-                <p className='text-[16px] '>{
-                job?.jobDescription.split(" ").length >
-                          TRUNCATE_LENGTH
-                            ? job?.jobDescription
-                                .split(" ")
-                                .slice(0, TRUNCATE_LENGTH)
-                                .join(" ") + "..."
-                            : job?.jobDescription}</p>
+              <div className='w-full h-full flex flex-col  space-y-1 p-1'>
+                <div className='w-full space-y-1'>
+                  <h5 className='text-black'>{job.jobTitle}</h5>
+                  <p className='text-[16px] '>{
+                  job?.jobDescription.split(" ").length >
+                            TRUNCATE_LENGTH
+                              ? job?.jobDescription
+                                  .split(" ")
+                                  .slice(0, TRUNCATE_LENGTH)
+                                  .join(" ") + "..."
+                              : job?.jobDescription}</p>
 
-                <p className='text-[14px]   '>Number Of Vacancies :{job.numberOfVacancy}</p>
-              </div>
+                  <p className='text-[16px]'>Number of vacancies : {job.numberOfVacancy}</p>
+                </div>
                 
-                <div className='flex gap-10 '>
-                <p className='text-[14px]'>Job Location : {job.jobLocation}</p>
-                <p className='font-mono font-light text-sm text-[14px]'>{job.jobType}</p>
+                <div className='flex justify-evenly gap-8 w-[100%]'>
+                  <p className='text-[14px]'>{job.jobLocation}</p>
+                  <p className='font-mono font-light text-sm text-[14px]'>{job.jobType}</p>
                 </div>
               </div>
             </div>

@@ -36,17 +36,17 @@ const Home = () => {
 	console.log("jobs by sector : ", getJobsBySector)
 	  
   return (
-    <div className='  bg-pure-greys-25/80 '>
+    <div className='  bg-pure-greys-25/80  '>
     
 			{/* Section 1 */}
-			<div className='lg:mt-24 bg-whit  w-11/12 max-w-maxContent mx-auto flex lg:flex-row sm:flex-col justify-center items-center gap-2 '>
+			<div className='lg:mt-24 sm:mt-28 w-11/12 max-w-maxContent mx-auto flex lg:flex-row sm:flex-col justify-center items-center gap-2 '>
 
 				{/* <div className="  flex justify-center items-center gap-2 " > */}
 
-					<div className='w-full flex flex-col sm:gap-7 -space-y-16 lg:items-start   p-2 '>
+					<div className='w-full flex flex-col sm:gap-12 -space-y-16 lg:items-start sm:items-center  p-2 '>
 						{/* heading */}
 						<div className="w-[80%] h-36 flex flex-col items-left gap-1 sm:mb-20 m-0 ">
-							<h2 className='font-edu-sa font-bold text-left '>Discover Driving Opportunities</h2>
+							<h2 className='font-edu-sa lg:text-left sm:text-center'>Discover Driving Opportunities</h2>
 							<p><span className='font-bold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
 						</div>
 						
@@ -54,10 +54,10 @@ const Home = () => {
 						<JobSearchBar/>
 
 						{/* Button Group */}
-						<div className=" w-full h-[300px] flex flex-col justify-center  items-left gap-6
+						<div className=" w-full h-[350px] flex flex-col justify-center lg:mt-10 items-left gap-6
 						 p-2 " >
 						 <div>
-							<h4 className='text-left font-edu-sa sm:mt-60 lg:mt-10 '>Top Job Postings</h4>
+							<h4 className='text-left font-edu-sa mb-7 sm:mt-36 lg:mt-0 md:mt-0 '>Top Job Postings</h4>
 							<TopJobPostings/> 
 						 </div>
 
@@ -83,7 +83,7 @@ const Home = () => {
 					
 					
 			{/* Section 2 */}
-			<div className=" w-11/12  mx-auto sm:mt-32 lg:mt-10">
+			<div className=" w-full  mx-auto sm:mt-32 lg:mt-10">
 				<ServiceSlider/>
 			</div>
 			
@@ -117,7 +117,7 @@ const Home = () => {
 				{/* </div> */}
     		{/* </div> */}
 
-		<div className='w-[full] sm:hidden lg:h-52 lg:flex justify-center items-center lg:gap-3  bg-richblue-50 p-3 mt-28 mx-auto '>
+		<div className='w-[full] sm:hidden lg:h-72 lg:flex justify-center items-center lg:gap-3  bg-pure-greys-50 p-3 mt-28 mx-auto '>
 
 			<div className='flex flex-col w-[25%] justify-center items-center'>
 				<MdGroups className='w-32 h-20'  />
@@ -127,7 +127,7 @@ const Home = () => {
 						<div className='w-full lg:w-full sm:hidden lg:flex  '>
 						<div className='flex flex-col  gap-y-1 justify-center items-center'>
 							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl text-orange-500 ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Türkiye'deki Mevcut Sürücü Sayısı</h6>
+							<h6 className='font-bold font-edu-sa text-2xl text-center text-black'>Türkiye'deki Mevcut Sürücü Sayısı</h6>
 						</div>
 						</div>
 					)}
@@ -142,7 +142,7 @@ const Home = () => {
 						<div className='w-full lg:w-full sm:hidden lg:flex '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
 							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500   '/>
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Yük taşımacılığı sektöründeki sürücüler</h6>
+							<h6 className='font-bold font-edu-sa text-2xl text-center text-black'>Yük taşımacılığı sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}
@@ -157,7 +157,7 @@ const Home = () => {
 						<div className='w-full sm:hidden lg:flex lg:w-full '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
 							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500 ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent '>Yolcu taşımacılığı sektöründeki sürücüler</h6>
+							<h6 className='font-bold font-edu-sa text-2xl text-center text-black'>Yolcu taşımacılığı sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}
@@ -172,7 +172,7 @@ const Home = () => {
 						<div className='w-full sm:hidden lg:w-full lg:flex  '>
 						<div className='flex flex-col gap-y-1 justify-center items-center'>
 							<span ref={countUpRef} className='font-bold font-edu-sa text-2xl  text-orange-500  ' />
-							<h6 className='font-bold font-edu-sa text-2xl text-center bg-gradient-to-r from-purple-400 to-orange-300 bg-clip-text text-transparent'>Moto kurye sektöründeki sürücüler</h6>
+							<h6 className='font-bold font-edu-sa text-2xl text-center text-black'>Moto kurye sektöründeki sürücüler</h6>
 						</div>
 						</div>
 					)}

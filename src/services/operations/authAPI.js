@@ -225,7 +225,7 @@ export function login(email, password, navigate) {
             }
 
             toast.success("Login Successful")
-            dispatch(setToken(response.data.token))
+            dispatch(setToken(response.data.user.token))
             const userImage = response.data?.user?.image
                 ? response.data.user.image
                 : `http://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.name}`

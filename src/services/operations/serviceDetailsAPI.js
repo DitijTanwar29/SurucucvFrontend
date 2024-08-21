@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast"
 
 import { apiConnector } from "../apiConnector"
 import { serviceEndpoints } from "../apis"
-import { setEditService, setService } from "../../slices/serviceSlice"
+import {  setService } from "../../slices/serviceSlice"
 
 const {
     SERVICE_DETAILS_API,

@@ -19,7 +19,7 @@ const RecentlyPublishedJobs = () => {
     fetchJobs();
   }, []);
 
-  const TRUNCATE_LENGTH = 8
+  const TRUNCATE_LENGTH = 4
 
   return (
     <div className="lg:w-full  shadow-lg  p-3 bg-white rounded-lg">
@@ -38,11 +38,11 @@ const RecentlyPublishedJobs = () => {
                 src={job.company.image}
               />
 
-              <div className='flex h-full flex-col space-y-1 p-1'>
-              <div className='space-y-1'>
+              <div className='flex w-full h-full flex-col space-y-1 p-1'>
+              <div className='space-y-1 w-full'>
 
                 <h5 className='text-black'>{job.jobTitle}</h5>
-                <p className='text-[16px] font-mono'>{
+                <p className='text-[16px] '>{
                 job.jobDescription.split(" ").length >
                           TRUNCATE_LENGTH
                             ? job.jobDescription
@@ -51,10 +51,10 @@ const RecentlyPublishedJobs = () => {
                                 .join(" ") + "..."
                             : job.jobDescription}</p>
               </div>
-                            <div className='flex justify-evenly gap-8 '>
-                <p className='text-[14px]   '>Number Of Vacancies :{job.numberOfVacancy}</p>
-                <p className='text-[14px] ' > Job Location : {job.jobLocation}</p>
-                            </div>
+                <div className='flex justify-evenly gap-8 w-[100%]'>
+                  <p className='text-[14px]   '>Vacancies :{job.numberOfVacancy}</p>
+                  <p className='text-[14px] ' >{job.jobLocation}</p>
+                </div>
               </div>
             </div>
               {/* Render other job details here */}

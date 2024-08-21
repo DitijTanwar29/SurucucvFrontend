@@ -34,7 +34,7 @@ const JobSearchBar = () => {
   };
 
   return (
-    <div className='flex flex-col w-[90%] h-20 ' >
+    <div className='flex flex-col w-[90%] h-20 lg:-translate-y-8 ' >
       <div className='flex lg:gap-14 sm:gap-3 sm:mt-6'>
         <input
           type="text"
@@ -46,7 +46,7 @@ const JobSearchBar = () => {
           onClick={() => setOpen(true)}
           className="w-[80%] h-14 bg-white rounded-full p-3"
         />
-        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-orange-400 font-bold'>Search</button>
+        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-orange-200 font-bold'>Search</button>
       </div>
       
         {showServices && (

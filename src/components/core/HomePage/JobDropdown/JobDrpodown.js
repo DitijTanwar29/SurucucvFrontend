@@ -68,7 +68,7 @@ const JobDropdown = ({ fetchData, title, filterKey, setSelectedSectorId, setSele
                     }`}
                 >
                     <div className="mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                        <div className="grid grid-cols-4 gap-2 p-4 max-h-60 overflow-auto">
+                        <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-2 p-4 max-h-60 overflow-auto">
                             {options.length > 0 ? options.map(option => (
                                 <div
                                     key={option.sectorId || option.serviceId || option._id}

@@ -41,6 +41,9 @@ import EditSector from "./components/core/Dashboard/Sectors/EditSector"
 // import PartTimeJobs from './components/core/HomePage/PartTimeJobs';
 // import RecentlyPublishedJobs from './components/core/HomePage/RecentlyPublishedJobs';
 // import JobSearchBar from './components/core/HomePage/JobSearchBar';
+import AddPackage from './components/core/Dashboard/Packages/AddPackage/index'
+import EditPackage from './components/core/Dashboard/Packages/EditPackage/index'
+import Packages from './components/core/Dashboard/Packages'
 import VerifyEmail from "./Pages/VerifyEmail"
 import VerifyOtp from './Pages/VerifyOtp';
 import LoginForm from './components/core/Auth/LoginForm';
@@ -131,6 +134,12 @@ function App(){
                   element={<EditSector />}
                 />
 
+              <Route path="add-package" element={<AddPackage/>} />
+              <Route path="my-packages" element={<Packages />} />
+              <Route
+                  path="edit-package/:packageId"
+                  element={<EditPackage />}
+                />
               
               {/* <Route
                   path="approve-job/:jobId"

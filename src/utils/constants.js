@@ -13,3 +13,8 @@ export const SECTOR_STATUS = {
     ACTIVE: "Active",
     INACTIVE: "Inactive",
 }
+
+export const PACKAGE_STATUS = {
+    ACTIVE: "Active",
+    INACTIVE: "Inactive",
+}

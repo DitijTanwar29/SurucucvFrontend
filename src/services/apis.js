@@ -47,6 +47,18 @@ export const settingsEndpoints = {
 }
 
 
+// PACKAGES ENDPOINTS
+export const packageEndpoints = {
+    PACKAGE_DETAILS_API : BASE_URL + "/package/getPackageDetails",
+    CREATE_PACKAGE_API : BASE_URL + "/package/createPackage",
+    EDIT_PACKAGE_API : BASE_URL + "/package/updatePackage",
+    GET_ALL_PACKAGES_API : BASE_URL + "/package/showAllPackages",
+    DELETE_PACKAGE_API : BASE_URL + "/package/deletePackage",
+    UPDATE_PACKAGE_STATUS_API: BASE_URL + "/package/updatePackageStatus",
+    ACTIVE_PACKAGES_API: BASE_URL + "/package/getActiveSPackage",
+}
+
+
 // SERVICES ENDPOINTS
 export const serviceEndpoints = {
     SERVICE_DETAILS_API : BASE_URL + "/service/getServiceDetails",

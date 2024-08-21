@@ -95,7 +95,20 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscAdd"
   },
-  
+  {
+    id: 15,
+    name: "Add Packages",
+    path: "/dashboard/add-package",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscExtensions"
+  },
+  {
+    id: 16,
+    name: "My Packages",
+    path: "/dashboard/my-packages",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscPackage"
+  }
   // {
   //   id:15,
   //   name: "Applied Candidates",
