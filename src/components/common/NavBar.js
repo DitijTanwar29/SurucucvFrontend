@@ -198,7 +198,7 @@ export default function NavBar()  {
 
             
             <nav className="">
-                <ul className='flex sm:flex-col lg:flex-row md:flex-row lg:gap-x-6 sm:gap-x-2 text-richblack-25 mx-auto my-auto'>
+                <ul className='flex sm:flex-col lg:flex-row md:flex-row lg:gap-x-6 sm:gap-x-2 text-richblack-25 text-xl font-medium mx-auto my-auto '>
                  { 
                     NavbarLinks.map( (link, index) => (
                       <li key={index}>
@@ -206,7 +206,7 @@ export default function NavBar()  {
                           
                             <Link to={link?.path}>
                             {/* sm:text-[12px] md:text-[20px] lg:text-[1rem] */}
-                              <p className={`${matchRoute(link?.path) ? "text-orange-400" : "text-white" } text-center 
+                              <p className={`${matchRoute(link?.path) ? "text-orange-400" : "text-white hover:drop-shadow-lg" } text-center 
                               `}>
                                 {link.title}
                               </p>
@@ -227,6 +227,17 @@ export default function NavBar()  {
                 </ul>
             </nav>
 
+            <div className='sm:items-center sm:justify-center gap-x-4 flex '>
+            <Link to="/packages">
+
+              <button className="lg:w-full lg:h-full  md:w-full md:h-full border border-pink-400 bg-orange-600 px-[12px] py-[8px]  
+                        text-white  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
+                          ">
+                Get Package
+              </button>
+            </Link>
+
+            </div>
             {/* Login - SignUp - LogOut - Dashboard */}
             <div className='sm:items-center sm:justify-center gap-x-4 flex '>
               

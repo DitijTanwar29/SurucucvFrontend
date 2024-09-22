@@ -195,9 +195,51 @@ const AddPackage = () => {
                 )}
             </div>
           
+            <div className="flex flex-col gap-2 lg:w-[48%]">
+                <label htmlFor="resumeViews" className="lable-style">
+                Resume Views
+                </label>
+                <input
+                type="number"
+                name="resumeViews"
+                id="resumeViews"
+                min="0" max="1000"
+                placeholder="Enter resume views limit "
+                className="form-style"
+                {...register("resumeViews", { required: true })}
+                // defaultValue={user?.adminDetails?.post}
+                />
+                {errors.resumeViews && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                    Please select your resume views limit.
+                </span>
+                )}
+            </div>
           </div>
 
+          <div className="flex flex-col gap-5 lg:flex-row">
+            <div className="flex flex-col gap-2 lg:w-[48%]">
+                <label htmlFor="packageDuration" className="lable-style">
+                Package Duration In Months
+                </label>
+                <input
+                type="number"
+                name="packageDuration"
+                id="packageDuration"
+                min="1" max="12"
+                placeholder="Enter package duration limit "
+                className="form-style"
+                {...register("packageDuration", { required: true })}
+                // defaultValue={user?.adminDetails?.post}
+                />
+                {errors.packageDuration && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                    Please select your package duration limit.
+                </span>
+                )}
+            </div>
           
+          </div>
           
 
           
@@ -213,7 +255,7 @@ const AddPackage = () => {
             <div className="flex justify-end gap-2">
                 <button
                     onClick={() => {
-                    navigate("/dashboard/my-services")
+                    navigate("/dashboard/my-packages")
                     }}
                     className="cursor-pointer rounded-md bg-richblack-200 py-2 px-5 font-semibold text-richblack-50"
                 >

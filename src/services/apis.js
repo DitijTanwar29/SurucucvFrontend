@@ -1,14 +1,14 @@
-export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
-// export const BASE_URL = process.env.REACT_APP_BASE_URL
+// export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
+export const BASE_URL = process.env.REACT_APP_BASE_URL
 
 //AUTH ENDPOINTS
 export const endpoints = {
     SENDOTP_API: BASE_URL + "/auth/sendotp",
     SEND_SMS_OTP_API: BASE_URL + "/auth/send-sms-otp",
-    // SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
-    // LOGIN_API: "http://localhost:1200/api/v1/auth/login",
-    SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
-    LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
+    SIGNUP_API: "http://localhost:1200/api/v1/auth/signup",
+    LOGIN_API: "http://localhost:1200/api/v1/auth/login",
+    // SIGNUP_API: "https://surucucvbackend.onrender.com/api/v1/auth/signup",
+    // LOGIN_API: "https://surucucvbackend.onrender.com/api/v1/auth/login",
     // RESETPASSTOKEN_API: BASE_URL + "/auth/reset-password-token",
     // RESETPASSWORD_API: BASE_URL + "/auth/reset-password"
 }
@@ -56,6 +56,7 @@ export const packageEndpoints = {
     DELETE_PACKAGE_API : BASE_URL + "/package/deletePackage",
     UPDATE_PACKAGE_STATUS_API: BASE_URL + "/package/updatePackageStatus",
     ACTIVE_PACKAGES_API: BASE_URL + "/package/getActiveSPackage",
+    SEND_PAYMENT_APPROVAL_SMS: BASE_URL + "/package/confirm-payment"
 }
 
 

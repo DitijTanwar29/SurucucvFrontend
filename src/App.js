@@ -48,6 +48,9 @@ import VerifyEmail from "./Pages/VerifyEmail"
 import VerifyOtp from './Pages/VerifyOtp';
 import LoginForm from './components/core/Auth/LoginForm';
 import SignupForm from './components/core/Auth/SignupForm';
+import AdPackages from './components/core/AdPackages/AdPackages';
+import PaymentPage from "./components/core/AdPackages/PaymentPage";
+
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -69,6 +72,8 @@ function App(){
 
             <Route exact path='/login' element= {<OpenRoute><LoginForm/></OpenRoute>} />
             <Route exact path='/signup' element= {<OpenRoute><SignupForm/></OpenRoute>} />
+            <Route exact path='/packages' element= {<AdPackages/>} />
+            <Route exact path='/payment/:packageId' element= {<PaymentPage/>} />
             <Route
               path="verify-email"
               element={

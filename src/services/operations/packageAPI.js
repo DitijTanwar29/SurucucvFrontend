@@ -11,7 +11,8 @@ const {
     GET_ALL_PACKAGES_API,
     DELETE_PACKAGE_API,
     UPDATE_PACKAGE_STATUS_API,
-    ACTIVE_PACKAGES_API
+    ACTIVE_PACKAGES_API,
+    SEND_PAYMENT_APPROVAL_SMS,
 } = packageEndpoints
 
 
@@ -35,7 +36,7 @@ export const getAllPackages = async () => {
 export const fetchPackageDetails = async (packageId) => {
     const toastId = toast.loading("Loading...")
 
-    console.log("inside endpoint :",packageId)
+    console.log("PACKAGE ID inside endpoint :",packageId)
     //   dispatch(setLoading(true));
     let result = null
     try {
@@ -168,5 +169,39 @@ export const getActivePackages = async () => {
     toast.error(error.message)
   }
   toast.dismiss(toastId)
+  return result
+}
+
+
+export const sendPaymentApprovalSms = async (packageName, user) => {
+  const toastId = toast.loading("Loading...")
+
+
+  console.log("inside endpoint :",packageName)
+  console.log("user: ", user)
+  //   dispatch(setLoading(true));
+  let result = null
+  try {
+    const response = await apiConnector("POST", SEND_PAYMENT_APPROVAL_SMS, {
+      packageName, user
+    })
+    console.log("SEND_PAYMENT_APPROVAL_SMS API RESPONSE............", response)
+
+    if (!response?.data?.success) {
+      throw new Error(response.data.message)
+    }
+    toast.success("Payment approval request sent to admin!")
+    result = response.data.data
+    console.log(response.data)
+    console.log(response.data.data)
+    
+    console.log("SEND_PAYMENT_APPROVAL_SMS API RESPONSE result : ",result)    
+  } catch (error) {
+    console.log("SEND_PAYMENT_APPROVAL_SMS ERROR............", error)
+    result = error.response.data
+    // toast.error(error.response.data.message);
+  }
+  toast.dismiss(toastId)
+    // dispatch(setLoading(false));
   return result
 }
