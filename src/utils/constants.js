@@ -18,3 +18,8 @@ export const PACKAGE_STATUS = {
     ACTIVE: "Active",
     INACTIVE: "Inactive",
 }
+
+export const PAYMENT_STATUS = {
+    REQUESTED: "Requested",
+    APPROVED: "Approved",
+}

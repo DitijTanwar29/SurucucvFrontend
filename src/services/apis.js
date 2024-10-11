@@ -56,7 +56,11 @@ export const packageEndpoints = {
     DELETE_PACKAGE_API : BASE_URL + "/package/deletePackage",
     UPDATE_PACKAGE_STATUS_API: BASE_URL + "/package/updatePackageStatus",
     ACTIVE_PACKAGES_API: BASE_URL + "/package/getActiveSPackage",
-    SEND_PAYMENT_APPROVAL_SMS: BASE_URL + "/package/confirm-payment"
+    SEND_PAYMENT_APPROVAL_SMS: BASE_URL + "/package/payment-approval-sms",
+    GET_COMPANIES_WITH_REQUESTED_STATUS: BASE_URL + "/package/getCompaniesWithRequestedStatus",
+    APPROVE_PAYMENT_REQUEST: BASE_URL + "/package/approvePaymentRequest",
+    REJECT_PAYMENT_REQUEST: BASE_URL + "/package/rejectPaymentApprovalRequest"
+
 }
 
 

@@ -13,6 +13,9 @@ const {
     UPDATE_PACKAGE_STATUS_API,
     ACTIVE_PACKAGES_API,
     SEND_PAYMENT_APPROVAL_SMS,
+    GET_COMPANIES_WITH_REQUESTED_STATUS,
+    APPROVE_PAYMENT_REQUEST,
+    REJECT_PAYMENT_REQUEST
 } = packageEndpoints
 
 
@@ -173,7 +176,7 @@ export const getActivePackages = async () => {
 }
 
 
-export const sendPaymentApprovalSms = async (packageName, user) => {
+export const sendPaymentApprovalSms = async (packageName, user, packageId, companyProfileId) => {
   const toastId = toast.loading("Loading...")
 
 
@@ -183,7 +186,7 @@ export const sendPaymentApprovalSms = async (packageName, user) => {
   let result = null
   try {
     const response = await apiConnector("POST", SEND_PAYMENT_APPROVAL_SMS, {
-      packageName, user
+      packageName, user, packageId, companyProfileId
     })
     console.log("SEND_PAYMENT_APPROVAL_SMS API RESPONSE............", response)
 
@@ -191,17 +194,157 @@ export const sendPaymentApprovalSms = async (packageName, user) => {
       throw new Error(response.data.message)
     }
     toast.success("Payment approval request sent to admin!")
-    result = response.data.data
+    result = response.data
     console.log(response.data)
-    console.log(response.data.data)
+    
     
     console.log("SEND_PAYMENT_APPROVAL_SMS API RESPONSE result : ",result)    
   } catch (error) {
     console.log("SEND_PAYMENT_APPROVAL_SMS ERROR............", error)
-    result = error.response.data
+    toast.error(error.message)
     // toast.error(error.response.data.message);
   }
   toast.dismiss(toastId)
     // dispatch(setLoading(false));
   return result
 }
+
+// export const approvePaymentRequest = async (companyId,packageId) => {
+//   const toastId = toast.loading("Loading...")
+
+//   //   dispatch(setLoading(true));
+//   let result = null
+//   try {
+//     const response = await apiConnector("POST", APPROVE_PAYMENT_REQUEST, {
+//       companyId,packageId, 
+//     })
+//     console.log("APPROVE_PAYMENT_REQUEST API RESPONSE............", response)
+
+//     if (!response.data.success) {
+//       throw new Error(response.data.message)
+//     }
+//     toast.success("Payment Request Approved Successfully")  
+//     result = response.data.data
+    
+//   } catch (error) {
+//     console.log("APPROVE_PAYMENT_REQUEST ERROR............", error)
+//     result = error.response.data
+//     // toast.error(error.response.data.message);
+//   }
+//   toast.dismiss(toastId)
+//   //   dispatch(setLoading(false));
+//   return result
+// }
+
+export const approvePaymentRequest = async (companyId, packageId) => {
+  const toastId = toast.loading("Loading...");
+
+  let result = null;
+  try {
+    const response = await apiConnector("PUT", APPROVE_PAYMENT_REQUEST, {
+      companyId, packageId,
+    });
+
+    console.log("APPROVE_PAYMENT_REQUEST API RESPONSE............", response);
+
+    // Check if the response object and data exist before proceeding
+    if (!response || !response.data || !response.data.success) {
+      throw new Error(response?.data?.message || "Unknown error occurred");
+    }
+
+    toast.success("Payment Request Approved Successfully");
+    result = response.data.data;
+  } catch (error) {
+    console.log("APPROVE_PAYMENT_REQUEST ERROR............", error);
+    toast.error(error.message)
+
+  }
+
+  toast.dismiss(toastId);
+  return result;
+};
+
+
+// export const rejectPaymentRequest = async (companyId,packageId) => {
+//   const toastId = toast.loading("Loading...")
+
+//   //   dispatch(setLoading(true));
+//   let result = null
+//   try {
+//     const response = await apiConnector("PUT", REJECT_PAYMENT_REQUEST, {
+//       companyId,packageId, 
+//     })
+//     console.log("REJECT_PAYMENT_REQUEST API RESPONSE............", response)
+
+//     if (!response.data.success) {
+//       throw new Error(response.data.message)
+//     }
+//     toast.success("Payment Request Rejected Successfully")  
+//     result = response.data.data
+//   } catch (error) {
+//     console.log("REJECT_PAYMENT_REQUEST ERROR............", error)
+//     result = error.response.data
+//     // toast.error(error.response.data.message);
+//   }
+//   toast.dismiss(toastId)
+//   //   dispatch(setLoading(false));
+//   return result
+// }
+
+export const rejectPaymentRequest = async (companyId, packageId) => {
+  const toastId = toast.loading("Loading...");
+
+  let result = null;
+  try {
+    // Send request to API to reject payment
+    const response = await apiConnector("PUT", REJECT_PAYMENT_REQUEST, {
+      companyId,
+      packageId,
+    });
+
+    // Log the response for debugging
+    console.log("REJECT_PAYMENT_REQUEST API RESPONSE:", response);
+
+    // Check for success in the API response
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+
+    // Show success message if payment request is successfully rejected
+    toast.success("Payment Request Rejected Successfully");
+    
+    // Set result to the API response data
+    result = response.data.data;
+  } catch (error) {
+    // Log the error and show appropriate toast message
+    console.log("REJECT_PAYMENT_REQUEST ERROR:", error);
+    toast.error(error.message)
+  }
+  
+  // Dismiss the loading toast
+  toast.dismiss(toastId);
+  return result;
+};
+
+
+export const getCompaniesWithRequestedStatus = async () => {
+  const toastId = toast.loading("Loading...");
+  let result = null;
+
+  try {
+    const response = await apiConnector("POST", GET_COMPANIES_WITH_REQUESTED_STATUS);
+    console.log("GET_COMPANIES_WITH_REQUESTED_STATUS API RESPONSE............", response);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    result = response.data.data;
+
+  } catch (error) {
+    console.log("GET_COMPANIES_WITH_REQUESTED_STATUS ERROR............", error);
+    result = error.response?.data || { message: "Error fetching companies" };
+  }
+
+  toast.dismiss(toastId);
+  return result;
+};

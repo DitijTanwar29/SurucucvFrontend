@@ -50,6 +50,7 @@ import LoginForm from './components/core/Auth/LoginForm';
 import SignupForm from './components/core/Auth/SignupForm';
 import AdPackages from './components/core/AdPackages/AdPackages';
 import PaymentPage from "./components/core/AdPackages/PaymentPage";
+import PaymentApprovalPage from './components/core/Dashboard/PaymentApprovalAdminPage/PaymentApprovalPage';
 
 function App(){
 
@@ -150,7 +151,11 @@ function App(){
                   path="approve-job/:jobId"
                   element={<ApproveJobPost />}
                 />     */}
-          
+                
+                <Route
+                  path="company-payment-approval-page"
+                  element={<PaymentApprovalPage />}
+                />
               </>
             )}
             <Route path="settings" element={<Settings />} />

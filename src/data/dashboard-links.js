@@ -108,6 +108,13 @@ export const sidebarLinks = [
     path: "/dashboard/my-packages",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscPackage"
+  },
+  {
+    id: 17,
+    name: "Companies Approval",
+    path: "/dashboard/company-payment-approval-page",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscFeedback"
   }
   // {
   //   id:15,

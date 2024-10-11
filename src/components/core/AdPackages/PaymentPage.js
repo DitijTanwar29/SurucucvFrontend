@@ -32,6 +32,8 @@ export default function PaymentPage() {
 console.log("here is the package name : ",packageName)
   console.log(token)
   console.log(user)
+  console.log("user?.companyDetails?.companyProfileId : ", user?.companyDetails?._id)
+  const companyProfileId = user?.companyDetails?._id
   useEffect(() => {
     // Check if the user is logged in and has a company account type
     if (!token) {
@@ -50,7 +52,7 @@ console.log("here is the package name : ",packageName)
       // Ensure the token exists before sending the SMS
       if (token) {
         // console.log("inside handler func : ",packageId)
-        await sendPaymentApprovalSms( packageName ,user?.name); // Call the function to send the SMS
+        await sendPaymentApprovalSms( packageName ,user?.name, packageId, user?.companyDetails?._id); // Call the function to send the SMS
         // alert("Payment confirmation SMS sent to the admin!");
         navigate("/"); // Redirect to the homepage after confirmation
       } else {
