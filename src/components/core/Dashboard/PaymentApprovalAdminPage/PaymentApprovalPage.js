@@ -97,7 +97,7 @@ const PaymentApprovalPage = () => {
     setPackId(packageId)
     try {
       await approvePaymentRequest(companyId, packageId);
-      alert("Payment approved, company enrolled!");
+      // alert("Payment approved, company enrolled!");
       setCompanies(companies.filter(c => c._id !== companyId)); // Remove the approved company from the list
     } catch (error) {
       console.error("Error approving payment:", error);

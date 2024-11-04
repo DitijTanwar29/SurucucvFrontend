@@ -41,6 +41,8 @@ export default function Settings() {
                 user?.accountType === ACCOUNT_TYPE.CANDIDATE && (
                     <>
                         <EditCandidateProfile/>
+                        <DeleteAccount/>
+
                     </>
                 )
             }

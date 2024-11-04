@@ -5,6 +5,7 @@ import serviceReducer from "../slices/serviceSlice";
 import jobReducer from "../slices/jobPostSlice"
 import sectorReducer from "../slices/sectorSlice"
 import packageReducer from "../slices/packageSlice"
+import adsReducer from "../slices/adsSlice";
 const rootReducer = combineReducers({
     auth: authReducer,
     profile: profileReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     job: jobReducer,
     sector: sectorReducer,
     package:packageReducer,
+    ads:adsReducer
 })
 
 export default rootReducer;

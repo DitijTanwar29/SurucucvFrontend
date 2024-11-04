@@ -115,14 +115,28 @@ export const sidebarLinks = [
     path: "/dashboard/company-payment-approval-page",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscFeedback"
-  }
-  // {
-  //   id:15,
-  //   name: "Applied Candidates",
-  //   path: "/dashboard/applied-candidates",
-  //   type: ACCOUNT_TYPE.COMPANY,
-  //   icon: "VscPersonAdd"
-  // }
+  },
+  {
+    id:18,
+    name: "Post Ads",
+    path: "/dashboard/post-ads",
+    type: ACCOUNT_TYPE.COMPANY,
+    icon: "VscAdd"
+  },
+  {
+    id:19,
+    name: "My Ads",
+    path: "/dashboard/my-ads",
+    type: ACCOUNT_TYPE.COMPANY,
+    icon: "VscPreview"
+  },
+  {
+    id: 20,
+    name: "All Ads",
+    path: "/dashboard/all-ads",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscPreview"
+  },
   // {
   //   id: 5,
   //   name: "Enrolled Courses",

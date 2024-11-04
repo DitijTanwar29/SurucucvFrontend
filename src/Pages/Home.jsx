@@ -16,6 +16,7 @@ import { MdGroups } from "react-icons/md";
 import { BsTrainFreightFront } from "react-icons/bs";
 import { BsBusFront } from "react-icons/bs";
 import { FaMotorcycle } from "react-icons/fa6";
+import AdsSlider from "../components/core/HomePage/AdsSlider"
 const Home = () => {
 
 	const [selectedSectorId, setSelectedSectorId] = useState(null);
@@ -87,7 +88,10 @@ const Home = () => {
 				<ServiceSlider/>
 			</div>
 			
-
+			{/* ADS SLIDER */}
+			<div className=" w-full  mx-auto sm:mt-32 lg:mt-10">
+			<AdsSlider/>
+			</div>
 			
 
 			

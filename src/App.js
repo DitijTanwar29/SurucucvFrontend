@@ -51,7 +51,10 @@ import SignupForm from './components/core/Auth/SignupForm';
 import AdPackages from './components/core/AdPackages/AdPackages';
 import PaymentPage from "./components/core/AdPackages/PaymentPage";
 import PaymentApprovalPage from './components/core/Dashboard/PaymentApprovalAdminPage/PaymentApprovalPage';
-
+import PostAdvertisement from "./components/core/Dashboard/PostAds/PostAdvertisement"
+import MyAds from './components/core/Dashboard/PostAds/MyAds'
+import AdDetails from "./components/core/Dashboard/PostAds/AdDetails"
+import AllAds from "./components/core/Dashboard/AllAdsForAdmin/AllAds"
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -151,7 +154,10 @@ function App(){
                   path="approve-job/:jobId"
                   element={<ApproveJobPost />}
                 />     */}
-                
+              
+                {/* Advertisement status toggle route for admin  */}
+              <Route path="all-ads" element={<AllAds />} />
+
                 <Route
                   path="company-payment-approval-page"
                   element={<PaymentApprovalPage />}
@@ -178,6 +184,16 @@ function App(){
               {/* <Route exact path='/job/:jobId' element= {<JobDetailsPage user={user}/>} /> */}
               <Route path="view-cv" element={<ViewCv />} />
               
+              {/* Advertisements */}
+              <Route
+                path="post-ads"
+                element={<PostAdvertisement />}
+              />
+              <Route path="my-ads" element={<MyAds />} />
+              <Route
+                  path="ad-details/:adId"
+                  element={<AdDetails/>}
+                />
             </>
           )}
 

@@ -322,25 +322,7 @@ const onSubmit = async (data) => {
             )}
           </div>
 
-          <div className="flex flex-col gap-2 lg:w-[25%]">
-            <label htmlFor="skills" className="lable-style">
-              Required Skills
-            </label>
-            <input
-              type=""
-              name="skills"
-              id="skills"
-              placeholder="Enter required skills"
-              className="form-style"
-              {...register("skills")}
-              defaultValue={job?.skills}
-            />
-            {errors.skills && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
-                Please enter required skills.
-              </span>
-            )}
-          </div>
+          
         </div>
 
         {/* ROW 2 */}

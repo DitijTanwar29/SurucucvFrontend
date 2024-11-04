@@ -241,7 +241,7 @@ export const approvePaymentRequest = async (companyId, packageId) => {
 
   let result = null;
   try {
-    const response = await apiConnector("PUT", APPROVE_PAYMENT_REQUEST, {
+    const response = await apiConnector("POST", APPROVE_PAYMENT_REQUEST, {
       companyId, packageId,
     });
 

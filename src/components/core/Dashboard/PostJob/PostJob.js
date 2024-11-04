@@ -8,6 +8,7 @@ import { addJobPost } from "../../../../services/operations/jobPostAPI";
 import { useForm, useWatch } from "react-hook-form";
 import { getActiveServices } from "../../../../services/operations/serviceDetailsAPI";
 import { Country, State, City }  from 'country-state-city';
+import {  fetchCompanyById } from "../../../../services/operations/profileAPI";
 
 const licenseCategories = [
   { id: 'M', value: 'M', label: 'M' },
@@ -35,6 +36,8 @@ const PostJob = () => {
   // console.log("city: ", City.getCitiesOfCountry("TR"))
 
   const { user } = useSelector((state) => state.profile);
+  console.log("user in post job : ",user)
+  const companyId = user._id;
   // const { token } = useSelector((state) => state.auth)
   const token = user.token;
   console.log("token : ", token);
@@ -43,7 +46,27 @@ const PostJob = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([]);
+  const [contactPersons, setContactPersons] = useState([]);
+  const [selectedContact, setSelectedContact] = useState(null);
 
+  useEffect(() => {
+    // Get the list of employees marked as contact persons
+    const employees = user?.companyDetails?.employees || [];
+    const contactPerson = employees.filter((employee) => employee.contactPerson);
+    
+    // If form-filling person is marked as contact person, use their data
+    if (user?.companyDetails?.name && user?.companyDetails?.contactPerson) {
+      setSelectedContact({
+        name: user?.companyDetails?.name,
+        position: user?.companyDetails?.position,
+        contactNumber: user?.companyDetails?.contactNumber,
+      });
+    } else if (contactPerson.length > 0) {
+      setContactPersons(contactPerson);
+    }
+  }, [user]);
+
+  
   const {
     register,
     handleSubmit,
@@ -224,6 +247,9 @@ const PostJob = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
+  
+
   const submitJobPostForm = async (data) => {
     console.log("Form Data - ", data);
     // console.log("token - ", token)
@@ -319,25 +345,28 @@ const PostJob = () => {
               </span>
             )}
           </div>
-        {/* Required Skills */}
+
+
           <div className="flex flex-col gap-2 lg:w-[25%]">
-            <label htmlFor="skills" className="lable-style">
-              Required Skills
-            </label>
-            <input
-              type="text"
-              name="skills"
-              id="skills"
-              placeholder="Enter required skills"
-              className="form-style"
-              {...register("skills", { required: true })}
-              // defaultValue={user?.adminDetails?.lastName}
-            />
-            {errors.skills && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
-                Please enter required skills.
-              </span>
-            )}
+          <label className="block text-md font-medium text-gray-700">Contact Person:</label>
+      {selectedContact ? (
+        <div>
+          <p>{selectedContact.name} - {selectedContact.position}</p>
+          <p>Contact Number: {selectedContact.contactNumber}</p>
+        </div>
+      ) : (
+        <select
+          className="form-select mt-1 block w-full"
+          onChange={(e) => setSelectedContact(contactPersons[e.target.value])}
+        >
+          <option value="">Select Contact Person</option>
+          {contactPersons.map((person, index) => (
+            <option key={index} value={index}>
+              {person.name} - {person.position}
+            </option>
+          ))}
+        </select>
+      )}
           </div>
         </div>
 

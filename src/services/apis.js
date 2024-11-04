@@ -23,7 +23,7 @@ export const profileEndpoints = {
     
     //company
     GET_COMPANY_DETAILS_API: BASE_URL + "/companyProfile/getCompanyDetails",
-
+    GET_COMPANY_BY_ID: BASE_URL + "/companyProfile/getCompanyById",
 
 
 
@@ -110,7 +110,15 @@ export const jobEndpoints = {
     GET_JOBS_BY_SECTOR : BASE_URL + "/job/by-sector",
 
 }
-
+export const adsEndpoints = {
+    CREATE_AD_API : BASE_URL + "/advertisement/createAdvertisement",
+    GET_ALL_ADS : BASE_URL + "/advertisement/showAllAds",
+    DELETE_AD_POST_API : BASE_URL + "/advertisement/deleteAdvertisement",
+    AD_DETAILS_API : BASE_URL + "/advertisement/getAdDetails",
+    UPDATE_AD_STATUS_API : BASE_URL + "/advertisement/approveAnAdPost",
+    ACTIVE_ADS_API: BASE_URL + "/advertisement/getActiveAds",
+    
+}
 export const resumeEndpoints = {
     CREATE_RESUME_API : BASE_URL + "/resume/createResume",
     GET_RESUME_DETAILS_API : BASE_URL + "/resume/getResumeDetails",

@@ -1,31 +1,27 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateJobStatus } from '../../../../services/operations/jobPostAPI'; 
+import { updateAdStatus } from '../../../../services/operations/adsAPI'; // Replace with the correct API path
 import { SERVICE_STATUS } from '../../../../utils/constants';
 
-const ApproveJobButton = ({ job }) => {
+const ApproveAdButton = ({ ad }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(job.status);
-  const { token } = useSelector((state) => state.auth)
-  console.log("token",token);
-
-  console.log("job inside approvejobbutton : ", job)
+  const [status, setStatus] = useState(ad.status);
+  const { token } = useSelector((state) => state.auth);
 
   const handleToggleStatus = async () => {
     setLoading(true);
     try {
       const newStatus = status === SERVICE_STATUS.ACTIVE ? SERVICE_STATUS.INACTIVE : SERVICE_STATUS.ACTIVE;
-      const data = {jobId:job._id, status:newStatus}
-      console.log("token inside try:", token)
-      const updatedJobStatus = await updateJobStatus(data,token); // Call your API function to update the status
+      const data = { adId: ad._id, status: newStatus };
+      const updatedAdStatus = await updateAdStatus(data, token); // Call your API function to update the ad status
       
-      if(updatedJobStatus){
-        setStatus(newStatus)
+      if (updatedAdStatus) {
+        setStatus(newStatus);
       }
       setLoading(false);
     } catch (error) {
-      console.error('Error toggling service status:', error);
+      console.error('Error toggling ad status:', error);
       setLoading(false);
     }
   };
@@ -43,4 +39,4 @@ const ApproveJobButton = ({ job }) => {
   );
 };
 
-export default ApproveJobButton;
+export default ApproveAdButton;
