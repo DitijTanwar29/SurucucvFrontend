@@ -70,7 +70,25 @@ export default function PostAdvertisement() {
 
   const token = user.token;
   const onSubmit = (data) => {
-    dispatch(createAdvertisementPost(data, token, navigate));
+
+    console.log(data)
+    // Ensure that `adIcon` is being accessed properly and is treated as a file
+  const formData = new FormData();
+  formData.append("title", data.title);
+  formData.append("description", data.description);
+  formData.append("startDate", data.startDate);
+  formData.append("publicationPeriod", data.publicationPeriod);
+  formData.append("homePageDuration", data.homePageDuration);
+  formData.append("canViewCandidateContacts", data.canViewCandidateContacts);
+  formData.append("cvOpeningLimit", data.cvOpeningLimit);
+  formData.append("candidateMatchFee", data.candidateMatchFee);
+
+  // Append file
+  if (data.adIcon && data.adIcon[0]) {
+    formData.append("adIcon", data.adIcon[0]);  // Append file
+  }
+
+    dispatch(createAdvertisementPost({...data, adIcon:data.adIcon[0]}, token, navigate));
   };
 
   return (
@@ -119,6 +137,31 @@ export default function PostAdvertisement() {
             <input type="number" className="form-style " {...register("publicationPeriod", { required: true })} placeholder="Publication Period (Days)" />
             {errors.publicationPeriod && <span>This field is required</span>}
           </div>
+        </div>
+
+        <div className="flex flex-col gap-2 lg:w-[50%]">
+
+        <div className="flex flex-col gap-2 lg:w-[50%]">
+              <label htmlFor="adIcon" className="lable-style">
+                Advertisement Icon
+              </label>
+              <input
+                type="file"
+                name="adIcon"
+                accept=".jpg, .jpeg, .png"
+                id="adIcon"
+                placeholder="Choose service Icon "
+                className="form-style"
+                {...register("adIcon", { required: true })}
+                // defaultValue={user?.adminDetails?.post}
+              />
+              {errors.adIcon && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please select your Advertisement icon.
+                </span>
+              )}
+            </div>
+
         </div>
 
         {/* Home Page Duration and Can View Candidate Contacts */}

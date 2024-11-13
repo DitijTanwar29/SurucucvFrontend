@@ -68,6 +68,12 @@ function AdsSlider() {
                                 className="flex flex-col gap-3 sm:w-[90%] lg:w-full h-60 mt-20 mx-auto hover:border-orange-400 bg-pure-greys-50 hover:cursor-grab p-3 rounded-lg border-1 border-richblack-50"
                                 onClick={() => handleChange(ad._id)}
                             >
+                            <div className=" md:min-w-[65%] sm:w-full w-[700px] lg:h-full sm:flex-row lg:flex justify-evenly items-center gap-4 sm:space-y-2 ">
+                                    <img
+                                        src={ad?.icon}
+                                        alt={ad?.title}
+                                        className="md:h-[148px] md:w-[220px] sm:w-[7rem] sm:h-[3rem] lg:w-[180px] lg:h-[120px] object-fill rounded-lg"
+                                    />
                                 <div className="lg:w-full flex flex-col justify-center items-center lg:gap-y-1">
                                     <h2 className="font-semibold text-richblack-5 sm:text-[14px] lg:text-[30px] text-center leading-tight">
                                         {ad.title}
@@ -82,6 +88,7 @@ function AdsSlider() {
                                     </p>
                                 </div>
                                 {/* 6715607eec4c8d00dce8f9fd */}
+                                </div>
                             </div>
                         </SwiperSlide>
                     ))}

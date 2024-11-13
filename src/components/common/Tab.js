@@ -12,7 +12,7 @@ export default function Tab({ tabData, field, setField }) {
           boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
         }}
         className="min-w-[max-content] flex bg-orange-300 p-1 
-            gap-x-1 lg:my-6 sm:my-4 rounded-full max-w-max "
+             lg:my-6 sm:my-4 rounded-full max-w-max "
       >
         {tabData.map((tab) => (
           <button
