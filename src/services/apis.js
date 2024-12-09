@@ -24,8 +24,8 @@ export const profileEndpoints = {
     //company
     GET_COMPANY_DETAILS_API: BASE_URL + "/companyProfile/getCompanyDetails",
     GET_COMPANY_BY_ID: BASE_URL + "/companyProfile/getCompanyById",
-
-
+    GET_COMPANY_PACKAGES_API: BASE_URL + "/companyProfile/getCompanyPackages",
+    UNENROLL_COMPANY_FROM_PACKAGE_API: BASE_URL + "/companyProfile/unenrollCompanyFromPackage",
 
     //candidate
     GET_CANDIDATE_DETAILS_API: BASE_URL + "/candidateProfile/getCandidateDetails",
@@ -89,6 +89,7 @@ export const sectorEndpoints = {
 export const jobEndpoints = {
     CREATE_JOB_API : BASE_URL + "/job/createJob",
     GET_ALL_JOBS : BASE_URL + "/job/showAllJobs",
+    JOBS_BY_COMPANY_API : BASE_URL + "/job/showAllJobsByCompany",
     JOB_DETAILS_API : BASE_URL + "/job/getJobDetails",
     UPDATE_JOB_POST_API : BASE_URL + "/job/editJob",
     DELETE_JOB_POST_API : BASE_URL + "/job/deleteJob",
@@ -108,11 +109,12 @@ export const jobEndpoints = {
     GET_JOBS_BY_PROVINCE : BASE_URL + "/job/by-province",
     GET_JOBS_BY_JOB_TITLE : BASE_URL + "/job/by-job-title",
     GET_JOBS_BY_SECTOR : BASE_URL + "/job/by-sector",
-
+    
 }
 export const adsEndpoints = {
     CREATE_AD_API : BASE_URL + "/advertisement/createAdvertisement",
     GET_ALL_ADS : BASE_URL + "/advertisement/showAllAds",
+    ADS_BY_COMPANY_API : BASE_URL + "/advertisement/getAdvertisementsByCompany",
     DELETE_AD_POST_API : BASE_URL + "/advertisement/deleteAdvertisement",
     AD_DETAILS_API : BASE_URL + "/advertisement/getAdDetails",
     UPDATE_AD_STATUS_API : BASE_URL + "/advertisement/approveAnAdPost",

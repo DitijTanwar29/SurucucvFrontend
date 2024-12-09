@@ -114,6 +114,7 @@ export function signup({name, email, password, confirmPassword, contactNumber, d
             navigate("/login")
         } catch (error) {
             toast.error("Signup Failed");
+            console.log(error)
             navigate("/signup")
 
         }

@@ -9,6 +9,8 @@ const {
     GET_ADMIN_DETAILS_API,
     GET_COMPANY_DETAILS_API,
     GET_COMPANY_BY_ID,
+    GET_COMPANY_PACKAGES_API,
+    UNENROLL_COMPANY_FROM_PACKAGE_API
 } = profileEndpoints
 
 
@@ -86,6 +88,59 @@ export const fetchCompanyById = async (companyId) => {
     console.log("GET_COMPANY_BY_ID_API ERROR............", error)
     result = error.response.data
     // toast.error(error.response.data.message);
+  }
+  toast.dismiss(toastId)
+  //   dispatch(setLoading(false));
+  return result
+}
+
+export const fetchCompanyPackages = async (companyId) => {
+  console.log("companyId inside endpoint",companyId)
+  const toastId = toast.loading("Loading...")
+  //   dispatch(setLoading(true));
+  let result = null
+  try {
+    const response = await apiConnector("POST", GET_COMPANY_PACKAGES_API, {
+      companyId,
+    })
+    console.log("GET_COMPANY_PACKAGES_API RESPONSE............", response)
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response.data
+    
+  } catch (error) {
+    console.log("GET_COMPANY_PACKAGES_API ERROR............", error)
+    result = error.response.data
+    // toast.error(error.response.data.message);
+  }
+  toast.dismiss(toastId)
+  //   dispatch(setLoading(false));
+  return result
+}
+
+export const unenrollCompanyFromPackage = async ({companyId, packageId}) => {
+  console.log("companyId inside endpoint",companyId)
+  console.log("package Id inside endpoint : ", packageId)
+  const toastId = toast.loading("Loading...")
+  //   dispatch(setLoading(true));
+  let result = null
+  try {
+    const response = await apiConnector("POST", UNENROLL_COMPANY_FROM_PACKAGE_API, {
+      companyId,packageId
+    })
+    console.log("UNENROLL_COMPANY_FROM_PACKAGE_API RESPONSE............", response)
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response.data.data
+    toast.success("Company Unenrolled From Package Successfully")
+  } catch (error) {
+    console.log("UNENROLL_COMPANY_FROM_PACKAGE_API............", error)
+    result = error.response.data
+    toast.error(error.response.data.message);
   }
   toast.dismiss(toastId)
   //   dispatch(setLoading(false));

@@ -46,7 +46,7 @@ import { useEffect, useState } from "react";
 import { VscAdd } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchAllAds } from "../../../../services/operations/adsAPI";
+import { getAllAdsByCompanyId } from "../../../../services/operations/adsAPI";
 import IconBtn from "../../../common/IconBtn";
 import AdsTable from "./AdsTable";
 
@@ -54,10 +54,11 @@ export default function MyAds() {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [ads, setAds] = useState([]);
+  const { user } = useSelector((state) => state.profile)
 
   useEffect(() => {
     const fetchAds = async () => {
-      const result = await fetchAllAds(token);
+      const result = await getAllAdsByCompanyId(user._id);
       console.log("result My Ads:", result);
       if (result) {
         setAds(result);

@@ -3,7 +3,7 @@ import { VscAdd } from "react-icons/vsc"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { getAllJobs } from "../../../../services/operations/jobPostAPI"
+import { getAllJobs, getAllJobsByCompanyId } from "../../../../services/operations/jobPostAPI"
 import IconBtn from "../../../common/IconBtn"
 
 import JobsTable from "./JobsTable"
@@ -12,13 +12,16 @@ export default function AddJobs() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const [jobs, setJobs] = useState([])
+  const { user } = useSelector((state) => state.profile)
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const result = await getAllJobs(token)
+      const result = await getAllJobsByCompanyId(user._id)
       console.log("result My Jobs : ",result);
-      if (result) {
-        setJobs(result)
+      console.log("result My Jobs : ",result?.data);
+
+      if (result?.data) {
+        setJobs(result?.data)
       }
     }
     fetchJobs()

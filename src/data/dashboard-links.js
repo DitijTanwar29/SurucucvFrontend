@@ -137,6 +137,13 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscPreview"
   },
+  {
+    id: 21,
+    name: "Acquired Packages",
+    path: "/dashboard/packages-for-company",
+    type: ACCOUNT_TYPE.COMPANY,
+    icon: "VscLayersActive"
+  }
   // {
   //   id: 5,
   //   name: "Enrolled Courses",

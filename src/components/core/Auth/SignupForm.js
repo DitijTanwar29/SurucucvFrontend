@@ -709,6 +709,8 @@ const SignupForm = () => {
         <div className="lg:mt-20 sm:pt-12 bg-pure-greys-25/80 lg:w-[50%] sm:w-full flex justify-center items-center mx-auto flex-col gap-y-2">
             
             <form onSubmit={submitHandler} className="flex   pb-4 flex-col justify-center items-center mx-auto gap-y-2">
+                
+
                 <div className=' w-full sm:flex sm:flex-wrap lg:flex-row gap-5'>
                     <label className="lg:w-full sm:w-[80%] flex flex-col mx-auto">
                         <p className='text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]'>Name<sup className='text-pink-200'>*</sup></p>
@@ -780,7 +782,7 @@ const SignupForm = () => {
             onChange={handlePhoneNumberChange}
             placeholder="Enter Contact Number"
             value={contactNumber}
-            className='bg-orange-300 rounded-r-md text-black text-sm h-12 w-full px-4 py-4'
+            className='placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
         />
     </div>
 </label>
@@ -874,9 +876,11 @@ const SignupForm = () => {
                 </div>
                 
                 <Tab tabData={tabData} field={accountType} setField={setAccountType} />
-                <button type="submit" className='mx-auto text-center rounded-md bg-orange-500 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
-           Create Account
-         </button>
+                
+
+                <button type="submit" className='mx-auto  text-center rounded-md bg-orange-500 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
+                    Create Account
+                </button>
       </form>
     </div>
   );

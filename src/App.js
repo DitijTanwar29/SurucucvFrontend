@@ -55,6 +55,7 @@ import PostAdvertisement from "./components/core/Dashboard/PostAds/PostAdvertise
 import MyAds from './components/core/Dashboard/PostAds/MyAds'
 import AdDetails from "./components/core/Dashboard/PostAds/AdDetails"
 import AllAds from "./components/core/Dashboard/AllAdsForAdmin/AllAds"
+import CompanyPackages from "./components/core/Dashboard/Packages/PackagesForCompany"
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -176,6 +177,8 @@ function App(){
               />
               <Route path="my-profile" element={<CompanyProfile/>} />
               <Route path="my-jobs" element={<MyJobs />} />
+              <Route path="packages-for-company" element={<CompanyPackages />} />
+
               <Route
                   path="edit-job/:jobId"
                   element={<EditJobPost />}

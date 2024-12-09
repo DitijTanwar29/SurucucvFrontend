@@ -12,7 +12,8 @@ const {
     DELETE_AD_POST_API,
     AD_DETAILS_API,
     UPDATE_AD_STATUS_API,
-    ACTIVE_ADS_API
+    ACTIVE_ADS_API,
+    ADS_BY_COMPANY_API
 } = adsEndpoints
 
 
@@ -56,6 +57,31 @@ export function createAdvertisementPost (data, token,navigate) {
       toast.error(error.message)
     }
     toast.dismiss(toastId)
+    return result
+  }
+
+  export const getAllAdsByCompanyId = async (companyId) => {
+    const toastId = toast.loading("Loading...")
+    //   dispatch(setLoading(true));
+    let result = null
+    try {
+      const response = await apiConnector("POST", ADS_BY_COMPANY_API, {
+        companyId,
+      })
+      console.log("ADS_BY_COMPANY_API API RESPONSE............", response)
+  
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+      result = response.data.data
+      
+    } catch (error) {
+      console.log("ADS_BY_COMPANY_API ERROR............", error)
+      result = error.response.data
+      // toast.error(error.response.data.message);
+    }
+    toast.dismiss(toastId)
+    //   dispatch(setLoading(false));
     return result
   }
 

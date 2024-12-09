@@ -660,7 +660,7 @@ export default function EditCompanyProfile() {
                 placeholder="Enter email"
                 className="form-style"
                 {...register("email", { required: true })}
-                defaultValue={user?.companyDetails?.email}
+                defaultValue={user?.email}
               />
               {errors.email && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

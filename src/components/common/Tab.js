@@ -16,6 +16,7 @@ export default function Tab({ tabData, field, setField }) {
       >
         {tabData.map((tab) => (
           <button
+          type="button"
             key={tab.id}
             onClick={() => setField(tab.type)}
             className={` ${

@@ -26,7 +26,8 @@ const {
     GET_INTERNATIONAL_JOBS_API,
     GET_JOBS_BY_PROVINCE,
     GET_JOBS_BY_JOB_TITLE,
-    GET_JOBS_BY_SECTOR
+    GET_JOBS_BY_SECTOR,
+    JOBS_BY_COMPANY_API
 } = jobEndpoints
 
 
@@ -74,6 +75,31 @@ export const getAllJobs = async () => {
     toast.error(error.message)
   }
   toast.dismiss(toastId)
+  return result
+}
+
+export const getAllJobsByCompanyId = async (userId) => {
+  const toastId = toast.loading("Loading...")
+  //   dispatch(setLoading(true));
+  let result = null
+  try {
+    const response = await apiConnector("POST", JOBS_BY_COMPANY_API, {
+      userId,
+    })
+    console.log("JOBS_BY_COMPANY_API API RESPONSE............", response)
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response.data.data
+    
+  } catch (error) {
+    console.log("JOBS_BY_COMPANY_API ERROR............", error)
+    result = error.response.data
+    // toast.error(error.response.data.message);
+  }
+  toast.dismiss(toastId)
+  //   dispatch(setLoading(false));
   return result
 }
 
