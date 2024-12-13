@@ -304,8 +304,9 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
 
   return (
+  
       <div className="w-full flex flex-col">
-        
+        <section className="mt-10 lg:mt-18">
       <h1 className="mt-14 text-3xl font-medium text-center text-black">
         Create CV
       </h1>
@@ -1056,9 +1057,11 @@ console.log("filteredLicenses : " ,filteredLicenses)
         <IconBtn type="submit" text="Save" />
       </div>
     </form>
+    </section>
 
-            
-              <Footer/>
+    <section className="mt-8 lg:mt-14">
+          <Footer />
+        </section>
        
       </div>
    

@@ -6,8 +6,8 @@ const AboutUs = () => {
     <>
       <div>
         
-        <section className="section">
-          <div className="container pt-3">
+        <section className="section mt-14 lg:mt-24">
+          <div className="container max-w-full sm:max-w-5xl lg:max-w-7xl pt-3">
             <div className="card shadow">
               <div className="card-body">
                 <div className="row">
@@ -50,6 +50,7 @@ const AboutUs = () => {
                     <h5 className="main-heading">
                       CVs Are Reviewed By Businesses In Two Ways{" "}
                     </h5>
+                    <hr />
                     <p>
                       <strong>1).</strong>Our Drivers Can Participate In The
                       Advertisements Published By Our Member Businesses Free Of
@@ -80,7 +81,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section>
+        <section className="mt-8 lg:mt-14">
           <Footer />
         </section>
       </div>
