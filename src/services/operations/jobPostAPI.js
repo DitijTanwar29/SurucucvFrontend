@@ -45,6 +45,8 @@ export function addJobPost (data, token,navigate) {
         Authorization: `Bearer ${token}`,
       })
       console.log("CREATE JOB POST API RESPONSE............", response)
+      
+      
       if (!response?.data?.success) {
         throw new Error("Could Not Add Job Post Details")
       }
@@ -52,7 +54,6 @@ export function addJobPost (data, token,navigate) {
       result = response?.data?.data
       dispatch(setJob(result))
       navigate("/dashboard/my-jobs")
-
     } catch (error) {
       console.log("CREATE JOB POST API ERROR............", error)
       toast.error(error.message)

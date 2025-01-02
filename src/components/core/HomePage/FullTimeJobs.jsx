@@ -35,7 +35,7 @@ const FullTimeJobs = () => {
               <img
                 alt={job.companyName}
                 className="h-[78px] w-[78px] rounded-lg object-cover"
-                src={job?.company?.image}
+                src={job?.companyImage}
               />
 
               <div className='w-full h-full flex flex-col  space-y-1 p-1'>

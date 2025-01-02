@@ -18,10 +18,10 @@ export default function AddJobs() {
     const fetchJobs = async () => {
       const result = await getAllJobsByCompanyId(user._id)
       console.log("result My Jobs : ",result);
-      console.log("result My Jobs : ",result?.data);
+      console.log("result My Jobs : ",result);
 
-      if (result?.data) {
-        setJobs(result?.data)
+      if (result) {
+        setJobs(result)
       }
     }
     fetchJobs()

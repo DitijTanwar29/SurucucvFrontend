@@ -47,7 +47,7 @@ const Home = () => {
 					<div className='w-full flex flex-col sm:gap-12 -space-y-16 lg:items-start sm:items-center  p-2 '>
 						{/* heading */}
 						<div className="w-[80%] h-36 flex flex-col items-left gap-1 sm:mb-20 m-0 ">
-							<h2 className='font-edu-sa lg:text-left sm:text-center'>Discover Driving Opportunities</h2>
+							<h2 className='font-inter lg:text-left sm:text-center'>Discover Driving Opportunities</h2>
 							<p><span className='font-bold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
 						</div>
 						

@@ -161,9 +161,9 @@ export default function NavBar()  {
 
   return (
     <>
-    <div className="sm:relative lg:fixed lg:top-0 w-full z-30">
+    <div className="sm:relative lg:fixed lg:top-0 w-full z-30 bg-pure-greys-25/80 ">
 
-<button
+      <button
           className={`lg:hidden sm:flex fixed top-5  right-8 z-30  mt-[1px]
            items-center justify-center w-10 h-10 bg-orange-400 rounded-full shadow-md shadow-richblack-600
           ${isSidebarOpen ? "sm:translate-y-72 " : "sm:translate-y-0"} transition-transform duration-300 ease-in-out`}
@@ -176,104 +176,105 @@ export default function NavBar()  {
           )}
         </button>
 
-{/* bg-black/75 last nav bg used  */}
-    <div 
-    className={`lg:h-20 md:h-20 sm:h-full flex lg:flex items-center lg:sticky lg:top-0 z-30 justify-between 
-    lg:border-b-[1px]  bg-pure-greys-25/80 border-b-pure-greys-100 
-       
-     ${
-            isSidebarOpen ? "sm:translate-y-0 lg:translate-y-0 sm:h-full flex" : "sm:-translate-y-full lg:translate-y-0 sm:h-0 hidden"
-          }  
-     transition-transform duration-300 ease-in-out `}
-    
-    >
+        {/* bg-black/75 last nav bg used  */}
+      <div 
+      className={`lg:h-20 md:h-20 sm:h-full flex lg:flex items-center lg:sticky lg:top-0 z-30 justify-between 
+      lg:border-b-[1px]  border-b-pure-greys-100 
+        
+      ${
+              isSidebarOpen ? "sm:translate-y-0 lg:translate-y-0 sm:h-full flex" : "sm:-translate-y-full lg:translate-y-0 sm:h-0 hidden"
+            }  
+      transition-transform duration-300 ease-in-out `}
+      
+      >
 
-      <div className='flex sm:flex-col lg:flex-row lg:justify-between sm:gap-y-2 lg:items-center lg:w-11/12 max-w-maxContent lg:py-4 sm:p-1 mx-auto '>
-        {/* logo */}
-            <Link to="/">
-            <img src={logo} className="sm:w-28 sm:h-8 sm:mx-auto" alt="logo" width={160} height={42} loading='lazy' />
-            </Link>
-            {/* Nav Links */}
-            {/* <div className="sm:flex sm:flex-wrap sm:gap-x-1 "> */}
+        <div className='flex sm:flex-col lg:flex-row lg:justify-between sm:gap-y-2 lg:items-center lg:w-11/12 max-w-maxContent lg:py-4 sm:p-1 mx-auto '>
+          {/* logo */}
+              <Link to="/">
+              <img src={logo} className="sm:w-28 sm:h-8 sm:mx-auto" alt="logo" width={160} height={42} loading='lazy' />
+              </Link>
+              {/* Nav Links */}
+              {/*HY HOVER IS NOT WORKING HERE TO PUT TEXT PURPLE ON*/ }
+              {/* <div className="sm:flex sm:flex-wrap sm:gap-x-1 "> */}
 
-            
-            <nav className="">
-                <ul className='flex sm:flex-col lg:flex-row md:flex-row lg:gap-x-6 sm:gap-x-2 text-richblack-25 text-xl font-medium mx-auto my-auto '>
-                 { 
-                    NavbarLinks.map( (link, index) => (
-                      <li key={index}>
-                        {
-                          
-                            <Link to={link?.path}>
-                            {/* sm:text-[12px] md:text-[20px] lg:text-[1rem] */}
-                              <p className={`${matchRoute(link?.path) ? "text-orange-400" : "text-white hover:drop-shadow-lg" } text-center 
-                              `}>
-                                {link.title}
-                              </p>
+              <nav className="">
+                  <ul className='flex sm:flex-col lg:flex-row md:flex-row lg:gap-x-6 sm:gap-x-2 text-richblack-25 text-xl font-medium mx-auto my-auto '>
+                  { 
+                      NavbarLinks.map( (link, index) => (
+                        <li key={index}>
+                          {
+                            
+                              <Link to={link?.path}
+                              className={`${matchRoute(link?.path) ? "text-purple-700" : "hover:shadow-xl hover:text-purple-900 text-black"} text-center`}
+                              >
+                              {/* sm:text-[12px] md:text-[20px] lg:text-[1rem] */}
+                                
+                                  {link.title}
+                                
 
-                            </Link>
-                        }
-                      </li>
+                              </Link>
+                          }
+                        </li>
 
-                     ) )
-                  }
+                      ) )
+                    }
 
-                  {/* {
-                    isMobile && <button className="mr-4 md:hidden">
-                                  <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
-                                </button>
-                  } */}
-                    
-                </ul>
-            </nav>
+                    {/* {
+                      isMobile && <button className="mr-4 md:hidden">
+                                    <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+                                  </button>
+                    } */}
+                      
+                  </ul>
+              </nav>
 
-            <div className='sm:items-center sm:justify-center gap-x-4 flex '>
-            <Link to="/packages">
+              <div className='sm:items-center sm:justify-center gap-x-4 flex '>
+              <Link to="/packages">
 
-              <button className="lg:w-full lg:h-full  md:w-full md:h-full border border-pink-400 bg-orange-600 px-[12px] py-[8px]  
+                <button className="lg:w-full lg:h-full  md:w-full md:h-full border border-pink-400 bg-purple-700 px-[12px] py-[8px]  
+                          text-white  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
+                            ">
+                  Get Package
+                </button>
+              </Link>
+
+              </div>
+              {/* Login - SignUp - LogOut - Dashboard */}
+              <div className='sm:items-center sm:justify-center gap-x-4 flex '>
+                
+                {
+                  token === null && (
+                    <Link to='/login'>
+
+                      <button className='lg:w-full lg:h-full  md:w-full md:h-full border border-pink-400 bg-purple-700 px-[12px] py-[8px]  
                         text-white  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
-                          ">
-                Get Package
-              </button>
-            </Link>
+                          '>
+                          Log in
+                      </button>
+                    
+                    </Link>
+                  )
+                }
+                {
+                  token === null && (
+                    <Link to='/signup'>
 
-            </div>
-            {/* Login - SignUp - LogOut - Dashboard */}
-            <div className='sm:items-center sm:justify-center gap-x-4 flex '>
-              
-              {
-                token === null && (
-                  <Link to='/login'>
+                      <button className='lg:w-full lg:h-full md:w-full md:h-full  border border-pink-400 bg-purple-700 px-[12px] py-[8px] md:px-[12px] md:py-[8px]
+                      text-white  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
+                      '>
+                        Sign Up
+                      </button>
+                    </Link>
+                  )
+                }
+                {
+                  token !== null && <ProfileDropDown/>
+                }
 
-                    <button className='lg:w-full lg:h-full  md:w-full md:h-full border border-pink-400 bg-white px-[12px] py-[8px]  
-                      text-orange-600  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
-                        '>
-                        Log in
-                    </button>
-                  
-                  </Link>
-                )
-              }
-              {
-                token === null && (
-                  <Link to='/signup'>
-
-                    <button className='lg:w-full lg:h-full md:w-full md:h-full  border border-pink-400 bg-white px-[12px] py-[8px] md:px-[12px] md:py-[8px]
-                     text-orange-600  rounded-md text-[1rem] md:text-[1rem] lg:translate-y-0 md:translate-y-0
-                     '>
-                      Sign Up
-                    </button>
-                  </Link>
-                )
-              }
-              {
-                token !== null && <ProfileDropDown/>
-              }
-
-            </div> 
-            {/* </div> */}
+              </div> 
+              {/* </div> */}
+        </div>
       </div>
-    </div>
 
     </div>
     </>

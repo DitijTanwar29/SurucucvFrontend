@@ -8,7 +8,7 @@ import { createResume } from "../../services/operations/resumeAPI";
 import { useForm, useWatch } from "react-hook-form";
 
 import { Country, State, City }  from 'country-state-city';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 import Footer from "../Footer/Footer";
 

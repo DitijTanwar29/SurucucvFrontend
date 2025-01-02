@@ -336,8 +336,8 @@ const PostJob = () => {
               id="companyName"
               placeholder="Enter company name"
               className="form-style"
+              defaultValue={user?.companyDetails?.companyTitle}
               {...register("companyName", { required: true })}
-              // defaultValue={user?.adminDetails?.lastName}
             />
             {errors.companyName && (
               <span className="-mt-1 text-[12px] text-yellow-100">

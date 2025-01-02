@@ -46,7 +46,7 @@ const JobSearchBar = () => {
           onClick={() => setOpen(true)}
           className="w-[80%] h-14 bg-white rounded-full p-3"
         />
-        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-orange-200 font-bold'>Search</button>
+        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-purple-800 font-bold'>Search</button>
       </div>
       
         {showServices && (

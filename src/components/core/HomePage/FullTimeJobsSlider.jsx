@@ -61,7 +61,7 @@ const FullTimeJobsSlider = () => {
               <img
                 alt={job.companyName}
                 className="h-[125px] w-[100px] rounded-lg object-cover"
-                src={job.company.image}
+                src={job?.companyImage}
               />
 
               <div className=' w-full flex flex-col justify-center items-center gap-[1px] '>

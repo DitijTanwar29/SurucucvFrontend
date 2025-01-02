@@ -60,8 +60,10 @@ export default function MyAds() {
     const fetchAds = async () => {
       const result = await getAllAdsByCompanyId(user._id);
       console.log("result My Ads:", result);
-      if (result) {
-        setAds(result);
+      if (result?.success && Array.isArray(result.data)) {
+        setAds(result.data);
+      } else {
+        setAds([]);
       }
     };
     fetchAds();
