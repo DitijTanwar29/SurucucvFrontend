@@ -57,7 +57,7 @@ const JobDetailsPage = ({user}) => {
       <div className='lg:w-[full]  lg:h-[465px]  sm:w-full bg-slate-400 rounded-lg shadow-md text-white p-4 '>
       <div className='w-full flex justify-center items-center'>
         <h1 className="text-3xl font-bold mb-4">İş unvanı - {job.jobTitle}</h1>
-        <img src={job.company.image} className='w-[4rem] ml-5 rounded-md' alt='company-logo' />
+        <img src={job.companyImage} className='w-[4rem] ml-5 rounded-md' alt='company-logo' />
       </div>
       <p className="text-lg font-medium mb-2">Firma Adı : {job.companyName}</p>
       <p className="text-lg font-medium mb-2">iş konumu : {job.jobLocation}</p>

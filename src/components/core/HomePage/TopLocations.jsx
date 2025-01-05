@@ -36,7 +36,7 @@ export const TopLocations = () => {
 
                             <button key={index} className='lg:w-28 sm:text-xs lg:h-10 rounded-full 
                             lg:px-3 lg:py-2 sm:p-3 font-bold sm:m-1 sm:w-16
-                             border-1 border-richblack-50 hover:border-orange-400 text-purple-700 text-center'
+                             border-1 border-richblack-50 hover:border-purple-700 text-purple-700 text-center'
                              
                              onClick={() => handleChange(topJobLocation?._id)}>
                                 {topJobLocation?._id}

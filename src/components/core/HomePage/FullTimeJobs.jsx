@@ -38,8 +38,8 @@ const FullTimeJobs = () => {
                 src={job?.companyImage}
               />
 
-              <div className='w-full h-full flex flex-col  space-y-1 p-1'>
-                <div className='w-full space-y-1'>
+              <div className='h-full flex flex-col  space-y-1 p-1'>
+                <div className=' space-y-1'>
                   <h5 className='text-black'>{job.jobTitle}</h5>
                   <p className='text-[16px] '>{
                   job?.jobDescription.split(" ").length >

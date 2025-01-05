@@ -30,7 +30,7 @@ console.log(topJobPostings)
                                   .join(" ") + "..."
                               : job?.jobDescription}</p> */}
   return (
-    <div  className=' w-full flex-col lg:justify-center items-center sm:flex-wrap  sm:space-x-2  '>
+    <div  className=' w-full flex-col lg:justify-center items-center sm:flex-wrap  sm:space-x-2 '>
         
         {
             topJobPostings?.length === 0 ? (
@@ -42,7 +42,7 @@ console.log(topJobPostings)
 
                               <button key={job._id} className='lg:w-28 sm:w-18 sm:text-xs lg:h-10   rounded-full
                                lg:px-3 lg:py-2 sm:p-3 font-bold sm:m-1 sm:my-3
-                              text-purple-700 border-1 border-richblack-50 hover:border-orange-400 text-center'
+                              text-purple-700 border-1 border-richblack-50 hover:border-purple-700 text-center'
                               
                               // onClick={clickHandler()}
                               >

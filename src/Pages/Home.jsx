@@ -58,7 +58,7 @@ const Home = () => {
 						<div className=" w-full h-[350px] flex flex-col justify-center lg:mt-10 items-left gap-6
 						 p-2 " >
 						 <div>
-							<h4 className='text-left font-edu-sa mb-7 sm:mt-36 lg:mt-0 md:mt-0 '>Top Job Postings</h4>
+							<h4 className='text-left font-edu-sa mb-7 sm:mt-36 lg:mt-10 md:mt-0 '>Top Job Postings</h4>
 							<TopJobPostings/> 
 						 </div>
 

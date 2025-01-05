@@ -205,7 +205,7 @@ export default function NavBar()  {
                           {
                             
                               <Link to={link?.path}
-                              className={`${matchRoute(link?.path) ? "text-purple-700" : "hover:shadow-xl hover:text-purple-900 text-black"} text-center`}
+                              className={`${matchRoute(link?.path) ? " hover:text-purple-700" : "unset hover:text-purple-900 hover:border-b-4 hover:border-b-purple-700 pb-4"} text-black text-center`}
                               >
                               {/* sm:text-[12px] md:text-[20px] lg:text-[1rem] */}
                                 

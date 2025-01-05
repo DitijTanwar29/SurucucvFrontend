@@ -260,6 +260,7 @@ const PostJob = () => {
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
+      
     }
   };
   return (
@@ -461,9 +462,9 @@ const PostJob = () => {
 
             >
               <option value="" disabled >Choose Salary Type</option>
+              <option value="Monthly" default >Monthly</option>
               <option value="Daily" >Daily</option>
               <option value="Weekly" >Weekly</option>
-              <option value="Monthly" >Monthly</option>
               <option value="Yearly" >Yearly</option>
 
             </select>

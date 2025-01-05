@@ -55,8 +55,12 @@ export function addJobPost (data, token,navigate) {
       dispatch(setJob(result))
       navigate("/dashboard/my-jobs")
     } catch (error) {
-      console.log("CREATE JOB POST API ERROR............", error)
-      toast.error(error.message)
+      if (error?.response?.status === 429) {
+        toast.error("Job Creation Limit Reached, Please Upgrade Your Package!")
+      }else{
+        console.log("CREATE JOB POST API ERROR............", error)
+        toast.error(error.message)
+      }
     }
     toast.dismiss(toastId)
   }
@@ -373,7 +377,7 @@ export const searchJobs = async (searchTerm) => {
       toast.error("Could Not Get Searched Jobs")
     }
 
-    if(response?.data?.data.length == 0){
+    if(response?.data?.data.length === 0){
       toast.error("Jobs not available for this search")
     }
 
