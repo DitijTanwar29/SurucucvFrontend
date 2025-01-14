@@ -1,12 +1,23 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/**/.{js,ts,jsx,tsx}",
+    "./src/Pages/**/**/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
       "edu-sa": ["Edu SA Beginner", "cursive"],
       mono: ["Roboto Mono", "monospace"],
-      
+      rubik: ["Rubik-Regular", "sans-serif"],
+      "rubik-bold": ["Rubik-Bold", "sans-serif"],
+      "rubik-extrabold": ["Rubik-ExtraBold", "sans-serif"],
+      "rubik-medium": ["Rubik-Medium", "sans-serif"],
+      "rubik-semibold": ["Rubik-SemiBold", "sans-serif"],
+      "rubik-light": ["Rubik-Light", "sans-serif"],
+
     },
     screens: {
       'sm': '320px',
@@ -38,13 +49,13 @@ module.exports = {
         400: "#22d3ee"
       },
       violet: {
-        200:"#ddd6fe",
+        200: "#ddd6fe",
       },
       stone: {
-        100:"#f5f5f4",
-        200:"#e7e5e4",
-        300:"#d6d3d1",
-        400:"#a8a29e"
+        100: "#f5f5f4",
+        200: "#e7e5e4",
+        300: "#d6d3d1",
+        400: "#a8a29e"
       },
       richblue: {
         5: "#ECF5FF",
@@ -88,8 +99,8 @@ module.exports = {
         800: "#01321F",
         900: "#001B0D",
       },
-      red:{
-        50: "#fef2f2",       
+      red: {
+        50: "#fef2f2",
         100: "#fee2e2",
         200: "#fecaca",
         300: "#fca5a5",
@@ -100,8 +111,8 @@ module.exports = {
         800: "#991b1b",
         900: "#7f1d1d",
       },
-      orange:{
-        50: "#fff7ed",       
+      orange: {
+        50: "#fff7ed",
         100: "#ffedd5",
         200: "#fed7aa",
         300: "#fdba74",
@@ -181,40 +192,40 @@ module.exports = {
         900: "#581c87",
         950: "#3b0764",
       },
-      "gray":{
-        100:"#f3f4f6",
-        300:"#d1d5db",
-        400:"#9ca3af",
-        500:"#6b7280",
-        600:"#4b5563",
-        700:"#374151",
-        800:"#1f2937",
-        900:"#111827"
+      "gray": {
+        100: "#f3f4f6",
+        300: "#d1d5db",
+        400: "#9ca3af",
+        500: "#6b7280",
+        600: "#4b5563",
+        700: "#374151",
+        800: "#1f2937",
+        900: "#111827"
       },
-      "slate":{
-        50:"#f8fafc",
-        100:"#f1f5f9",
-        200:"#e2e8f0",
-        300:"#cbd5e1",
-        400:"#94a3b8",
-        500:"#64748b",
-        700:"#334155",
-        800:"#1e293b"
+      "slate": {
+        50: "#f8fafc",
+        100: "#f1f5f9",
+        200: "#e2e8f0",
+        300: "#cbd5e1",
+        400: "#94a3b8",
+        500: "#64748b",
+        700: "#334155",
+        800: "#1e293b"
       },
-      "cyan":{
-        500:"#06b6d4",
+      "cyan": {
+        500: "#06b6d4",
       },
-      "rose":{
-        100:"#ffe4e6",
-        200:"#fecdd3",
-        300:"#fda4af",
-        400:"#fb7185",
-        500:"#f43f5e",
-        600:"#e11d48",
-        700:"#be123c",
-        800:"#9f1239",
-        900:"#881337",
-        950:"#4c0519",
+      "rose": {
+        100: "#ffe4e6",
+        200: "#fecdd3",
+        300: "#fda4af",
+        400: "#fb7185",
+        500: "#f43f5e",
+        600: "#e11d48",
+        700: "#be123c",
+        800: "#9f1239",
+        900: "#881337",
+        950: "#4c0519",
       }
     },
     extend: {
@@ -235,20 +246,19 @@ module.exports = {
         bounce: 'bounce 1s infinite',
       },
       keyframes: {
-        bounce :{
-        '0%, 100%' : {
-          transform: 'translateY(-10%)',
-          'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
-        },
-        '50%': {
-          'transform': 'translateY(0)',
-          'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(-10%)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            'transform': 'translateY(0)',
+            'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+          }
         }
       }
-}
     },
-    
+
   },
   plugins: [],
 }
-

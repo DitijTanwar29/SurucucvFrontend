@@ -17,10 +17,10 @@ const JobSearchBar = () => {
   useOnClickOutside(ref, () => setJobs([]))
   const handleSearch = async () => {
     try {
-      console.log("searched term is : ",searchTerm)
+      console.log("searched term is : ", searchTerm)
       const response = await searchJobs(searchTerm); // Pass searchTerm to the function
-      console.log("search bar response :",response)
-      if(response.length === 0){
+      console.log("search bar response :", response)
+      if (response.length === 0) {
         setJobs([])
         toast.error("Jobs not available for this search")
         setShowServices(false);
@@ -34,8 +34,8 @@ const JobSearchBar = () => {
   };
 
   return (
-    <div className='flex flex-col w-[90%] h-20 lg:-translate-y-8 ' >
-      <div className='flex lg:gap-14 sm:gap-3 sm:mt-6'>
+    <div className='flex flex-col h-20 mt-4 ' >
+      <div className='flex gap-x-12 '>
         <input
           type="text"
           value={searchTerm}
@@ -44,34 +44,39 @@ const JobSearchBar = () => {
           onBlur={() => setShowServices(false)}
           placeholder="Search for job titles..."
           onClick={() => setOpen(true)}
-          className="w-[80%] h-14 bg-white rounded-full p-3"
+          className="flex flex-1  max-w-[500px] h-14 bg-white-100 rounded-full p-3 outline-none border-none focus-visible:ring-1 ring-[#000]"
         />
-        <button onClick={handleSearch} className='lg:w-[20%] h-14 p-2 rounded-md bg-purple-800 text-white font-bold'>Search</button>
+        <button 
+        onClick={handleSearch}
+          className='px-10  text-md rounded-md bg-purple-800 text-white font-rubik-semibold'
+        >
+          Search
+        </button>
       </div>
-      
-        {showServices && (
-          <ul className='w-full m-0 p-0 bg-white rounded-md z-10 '
+
+      {showServices && (
+        <ul className='w-full m-0 p-0 bg-white rounded-md z-10 '
           ref={ref}>
-            {jobs.map((job, index) => (
-              <li className='w-full p-2 mx-auto rounded-md hover:cursor-pointer bg-richblack-100 text-black hover:bg-black'
+          {jobs.map((job, index) => (
+            <li className='w-full p-2 mx-auto rounded-md hover:cursor-pointer bg-richblack-100 text-black hover:bg-black'
               key={index}>
-              <Link  
+              <Link
                 key={job._id}
                 onClick={() => setOpen(false)}
                 to={`/job/${job._id}`}
 
               >
-              <div className='text-orange-500 '>
+                <div className='text-orange-500 '>
 
-              {job.jobTitle}
-              </div>
-                </Link>
+                  {job.jobTitle}
+                </div>
+              </Link>
 
-              </li>
-            ))}
-          </ul>
-        )}
-      
+            </li>
+          ))}
+        </ul>
+      )}
+
     </div>
   );
 };

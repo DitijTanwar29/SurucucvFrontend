@@ -121,7 +121,7 @@ import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
-import { sendOtp, signup, verifyOtp } from "../services/operations/authAPI";
+import { sendOtp, signup } from "../services/operations/authAPI";
 import { useNavigate } from "react-router-dom";
 
 function VerifyOtp() {

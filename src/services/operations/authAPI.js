@@ -32,7 +32,7 @@ const {
 // ) {
 //     return async (dispatch) => {
 //         console.log("email inside SIGNUP authAPI : ",email);
-//         const toastId = toast.loading("Loading...")
+//         const toastId = toast.loading("Loading.F..")
 //         dispatch(setLoading(true))
 //         try{
 //             const response = await apiConnector("POST", SIGNUP_API, {

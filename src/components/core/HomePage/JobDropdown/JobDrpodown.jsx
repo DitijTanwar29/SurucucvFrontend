@@ -59,7 +59,7 @@ const JobDropdown = ({ fetchData, title, filterKey, setSelectedSectorId, setSele
                     className="border rounded-lg py-2 w-full bg-white flex justify-between items-center px-4"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <h5>{title}</h5>
+                    <p>{title}</p>
                     <FaAngleDown />
                 </button>
                 <div

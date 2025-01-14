@@ -9,14 +9,14 @@ import { FiEdit2 } from "react-icons/fi"
 import { HiClock } from "react-icons/hi"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
-import  ConfirmationModal  from "../../../../components/common/ConfirmationModal"
+import  ConfirmationModal  from "../../../common/ConfirmationModal"
 // import { formatDate } from "../../../../../services/formatDate"
 import {
   deleteService,
   getAllServices,
 } from "../../../../services/operations/serviceDetailsAPI"
 import { SERVICE_STATUS } from "../../../../utils/constants"
-import  ServiceStatusToggle  from "../Services/ServiceStatusToggle"
+import  ServiceStatusToggle  from "./ServiceStatusToggle"
 
 export default function CoursesTable({ services, setServices }) {
   const dispatch = useDispatch()

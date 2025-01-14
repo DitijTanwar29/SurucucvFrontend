@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React, {useRef} from "react";
 
-import IconBtn from "../../../../components/common/IconBtn";
+import IconBtn from "../../../common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobPost } from "../../../../services/operations/jobPostAPI";

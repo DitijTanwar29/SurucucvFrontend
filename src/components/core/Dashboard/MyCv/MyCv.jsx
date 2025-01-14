@@ -11,7 +11,7 @@ import { FiEdit2 } from "react-icons/fi"
 import { HiClock } from "react-icons/hi"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
-import  ConfirmationModal  from "../../../../components/common/ConfirmationModal"
+import  ConfirmationModal  from "../../../common/ConfirmationModal"
 import IconBtn from "../../../common/IconBtn"
 // import { format } from 'date-fns';
 import { addDays, addYears, format, parseISO, isAfter } from "date-fns";

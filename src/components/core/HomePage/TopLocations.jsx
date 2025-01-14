@@ -26,7 +26,7 @@ export const TopLocations = () => {
 
     
   return (
-    <div  className='w-full flex-col lg:justify-center items-center  gap-32 sm:flex-wrap  sm:space-x-2 sm:space-y-6'>
+    <div  className='w-full flex gap-x-2.5'>
         {
             topJobLocations?.length === 0 ? (
                 <p>No Job Post Available yet</p>
@@ -34,10 +34,9 @@ export const TopLocations = () => {
                 topJobLocations?.map((topJobLocation, index) => (
                   
 
-                            <button key={index} className='lg:w-28 sm:text-xs lg:h-10 rounded-full 
-                            lg:px-3 lg:py-2 sm:p-3 font-bold sm:m-1 sm:w-16
-                             border-1 border-richblack-50 hover:border-purple-700 text-purple-700 text-center'
-                             
+                            <button key={index} className='text-sm px-4 py-2 rounded-full font-rubik 
+                            text-purple-700  border-rich-50 bg-white hover:ring-1 hover:ring-purple-700 hover:bg-white text-center'
+                            
                              onClick={() => handleChange(topJobLocation?._id)}>
                                 {topJobLocation?._id}
                             </button>

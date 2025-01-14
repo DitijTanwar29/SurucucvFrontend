@@ -5,45 +5,45 @@ import Home from "./Pages/Home"
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { ACCOUNT_TYPE } from "./utils/constants";
 import NavBar from './components/common/NavBar';
-import FindJob from './Screens/FindJob.js';
+import FindJob from './Screens/FindJob';
 import JobDetailsPage from "./Pages/Find Job/JobDetailsPage";
-import FindDriver from './Screens/FindDriver.js';
-import Contact from './Screens/Contact.js';
-import AboutUs from './Pages/Footer/AboutUs.js';
-import PrivacyPolicy from './Pages/Footer/PrivacyPolicy.js';
-import FAQ from './Pages/Footer/FAQ.js'
-import Vision from './Pages/Footer/Vision.js';
-import CreateCv from './Pages/Create CV/CreateCv.js';
-import OurPublication from './Pages/Footer/OurPublication.js';
+import FindDriver from './Screens/FindDriver';
+import Contact from './Screens/Contact';
+import AboutUs from './Pages/Footer/AboutUs';
+import PrivacyPolicy from './Pages/Footer/PrivacyPolicy';
+import FAQ from './Pages/Footer/FAQ'
+import Vision from './Pages/Footer/Vision';
+import CreateCv from './Pages/Create CV/CreateCv';
+import OurPublication from './Pages/Footer/OurPublication';
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import MyProfile  from "./components/core/Dashboard/MyProfile/MyProfile"
 import CompanyProfile from "./components/core/Dashboard/CompanyProfile/CompanyProfile"
 import Dashboard from "./components/core/Dashboard/MainPage/Dashboard"
-import AddService from "./components/core/Dashboard/Services/AddService"
-import Settings from './components/core/Dashboard/Settings';
-import Services from "./components/core/Dashboard/Services"
-import EditService from "./components/core/Dashboard/Services/EditService"
+import AddService from "./components/core/Dashboard/Services/AddService/index"
+import Settings from './components/core/Dashboard/Settings/index';
+import Services from "./components/core/Dashboard/Services/index"
+import EditService from "./components/core/Dashboard/Services/EditService/index"
 import  PostJob  from "./components/core/Dashboard/PostJob/PostJob"
 import MyJobs from "./components/core/Dashboard/PostJob/MyJobs"
-import EditJobPost from "./components/core/Dashboard/PostJob/EditJobPost"
-import CandidateProfile from "./components/core/Dashboard/CandidateProfile"
+import EditJobPost from "./components/core/Dashboard/PostJob/EditJobPost/index"
+import CandidateProfile from "./components/core/Dashboard/CandidateProfile/index"
 import MyCv from "./components/core/Dashboard/MyCv/MyCv"
 import AppliedJobs from "./components/core/Dashboard/AppliedJobs/AppliedJobs"
 // import ApproveJobPost from "./components/core/Dashboard/PostJob/ApproveJobPost"
 import AllJobs from "./components/core/Dashboard/AllJobsForAdmin/AllJobs"
 import AppliedCandidates from './components/core/Dashboard/AppliedCandidates/AppliedCandidates';
 import ViewCv from "./components/core/Dashboard/MyCv/ViewCv"
-import Sectors from "./components/core/Dashboard/Sectors"
-import AddSector from './components/core/Dashboard/Sectors/AddSector';
-import EditSector from "./components/core/Dashboard/Sectors/EditSector"
+import Sectors from "./components/core/Dashboard/Sectors/index"
+import AddSector from './components/core/Dashboard/Sectors/AddSector/index';
+import EditSector from "./components/core/Dashboard/Sectors/EditSector/index"
 // import FullTimeJobs from './components/core/HomePage/FullTimeJobs';
 // import PartTimeJobs from './components/core/HomePage/PartTimeJobs';
 // import RecentlyPublishedJobs from './components/core/HomePage/RecentlyPublishedJobs';
 // import JobSearchBar from './components/core/HomePage/JobSearchBar';
 import AddPackage from './components/core/Dashboard/Packages/AddPackage/index'
 import EditPackage from './components/core/Dashboard/Packages/EditPackage/index'
-import Packages from './components/core/Dashboard/Packages'
+import Packages from './components/core/Dashboard/Packages/index'
 import VerifyEmail from "./Pages/VerifyEmail"
 import VerifyOtp from './Pages/VerifyOtp';
 import LoginForm from './components/core/Auth/LoginForm';
@@ -61,10 +61,11 @@ function App(){
   const { user } = useSelector((state) => state.profile)
   const token = user?.token
   const { serviceId } = useSelector((state) => state.service)
-// console.log("serviceId inside app.js ",serviceId)
+// console.log("serviceId inside app ",serviceId)
+
   return (
     // bg-orange-400
-         <div className='w-screen min-h-screen flex flex-col font-inter bg-white '>
+         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-white overflow-x-hidden '>
           <NavBar/>
           <Routes>
 
