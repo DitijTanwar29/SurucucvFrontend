@@ -721,7 +721,7 @@ const SignupForm = () => {
                             onChange={changeHandler}
                             placeholder='Enter Name'
                             value={name}
-                            className='w-full placeholder-white bg-orange-300 rounded-[0.5rem] text-black text-sm font-inter h-12 px-4 py-4 shadow-sm shadow-richblack-200'
+                            className='w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg'
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                     </label>
@@ -736,7 +736,7 @@ const SignupForm = () => {
                             onChange={changeHandler}
                             placeholder='Enter Email Address'
                             value={email}
-                            className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+                            className='w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg'
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                     </label>
@@ -765,7 +765,7 @@ const SignupForm = () => {
         <select
             value={countryCode}
             onChange={(e) => setCountryCode(e.target.value)}
-            className='bg-gray-200 text-black w-[60%] font-inter text-sm h-12 flex items-center justify-center px-3 rounded-l-md'
+            className='w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg'
         >
             <option value="+90">🇹🇷 +90 (Turkey)</option>
             <option value="+1">🇺🇸 +1 (USA)</option>
@@ -782,7 +782,7 @@ const SignupForm = () => {
             onChange={handlePhoneNumberChange}
             placeholder="Enter Contact Number"
             value={contactNumber}
-            className='placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+            className='w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg'
         />
     </div>
 </label>
@@ -802,7 +802,8 @@ const SignupForm = () => {
                             onChange={changeHandler}
                             placeholder='Enter Password'
                             value={password}
-                            className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+                            className='w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg'
+
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                         <span onClick={() => setShowPassword(prev => !prev)} className="absolute right-3 top-[38px] z-10 cursor-pointer">
@@ -818,7 +819,8 @@ const SignupForm = () => {
                             onChange={changeHandler}
                             placeholder='Confirm Password'
                             value={confirmPassword}
-                            className=' placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+                            className='w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg'
+
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
                         />
                         <span onClick={() => setShowConfirmPassword(prev => !prev)} className="absolute right-3 top-[38px] z-10 cursor-pointer">
@@ -847,7 +849,8 @@ const SignupForm = () => {
             </label>
             <select
               placeholder="Choose city"
-            className=' bg-orange-300 placeholder-white rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
+            className=' w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg'
+
                             style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
               type="text"
               name="city"
@@ -868,7 +871,7 @@ const SignupForm = () => {
             </select>
             
             {errors.city && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
+              <span className="-mt-1 text-[12px] text-pink-200">
                 Please select your city.
               </span>
             )}
@@ -878,7 +881,7 @@ const SignupForm = () => {
                 <Tab tabData={tabData} field={accountType} setField={setAccountType} />
                 
 
-                <button type="submit" className='mx-auto  text-center rounded-md bg-orange-500 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
+                <button type="submit" className='mx-auto  text-center rounded-md bg-purple-700 px-[12px] py-[8px] mt-6 text-black w-[30%]'>
                     Create Account
                 </button>
       </form>

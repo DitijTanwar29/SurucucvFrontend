@@ -11,7 +11,7 @@ export default function Tab({ tabData, field, setField }) {
         style={{
           boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
         }}
-        className="min-w-[max-content] flex bg-orange-300 p-1 
+        className="min-w-[max-content] flex bg-purple-500 p-1 
              lg:my-6 sm:my-4 rounded-full max-w-max "
       >
         {tabData.map((tab) => (
@@ -21,7 +21,7 @@ export default function Tab({ tabData, field, setField }) {
             onClick={() => setField(tab.type)}
             className={` ${
               field === tab.type
-                ? "bg-orange-500 text-richblack-5"
+                ? "bg-purple-700 text-richblack-5"
                 : "bg-transparent text-black"
             } lg:py-2 lg:px-5 sm:py-1 sm:px-3 rounded-full transition-all duration-200`}
           >
