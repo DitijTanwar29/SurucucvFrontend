@@ -8,3 +8,16 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.lable-style {
+  @apply text-[14px] text-white;
+}
+.form-style {
+  @apply rounded-lg border-black  p-3 text-[16px] leading-[24px]  bg-black/55 text-white shadow-[0_1px_0_0] shadow-white/50 placeholder:text-white focus:outline-none;
+}
+
+a {
+  text-decoration: none; /* Removes underline */
+}
+link {
+    text-decoration: none; /* Removes underline */  
+}
