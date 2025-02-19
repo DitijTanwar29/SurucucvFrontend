@@ -38,7 +38,7 @@ export default function PackagesTable({ packages, setPackages }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
           <Tr className="flex gap-x-28 items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className="text-center text-sm font-semibold  uppercase text-richblack-5 bg-transparent">
@@ -60,8 +60,8 @@ export default function PackagesTable({ packages, setPackages }) {
         </Thead>
         <Tbody>
           {packages?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No packages found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -70,7 +70,7 @@ export default function PackagesTable({ packages, setPackages }) {
             packages?.map((pack) => (
               <Tr
                 key={pack._id}
-                className="flex gap-x-1 border-b border-richblack-800 px-6 py-8 bg-richblack-200 justify-between"
+                className="flex gap-x-1 border-b border-purple-700 px-6 py-8 bg-richblack-25 justify-between"
               >
                 {/* <Td className="flex gap-x-4">
                   <img
@@ -80,17 +80,17 @@ export default function PackagesTable({ packages, setPackages }) {
                   />
                   </Td> */}
                   <Td>
-                    <p className="text-lg font-semibold text-richblack-5 text-center">
+                    <p className="text-lg font-semibold text-richblack-900 text-center">
                       {pack.packageName}
                     </p>
                   </Td>
                   <Td>
-                    <p className="text-lg font-semibold text-richblack-5 text-center">
+                    <p className="text-lg font-semibold text-richblack-900 text-center">
                     {pack.packagePrice}
                     </p>
                   </Td>
                   <Td>
-                    <p className="text-lg font-semibold text-richblack-5  text-center">
+                    <p className="text-lg font-semibold text-richblack-900  text-center">
                       {pack.discountedPrice}
                     </p>
                   </Td>
@@ -118,7 +118,7 @@ export default function PackagesTable({ packages, setPackages }) {
                   <PackageStatusToggle pack={pack}/>
                 </Td>
                 
-                <Td className="text-xs text-richblack-5 ">
+                <Td className="text-xs text-richblack-900 ">
                   <button
                     disabled={loading}
                     onClick={() => {

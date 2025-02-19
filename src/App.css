@@ -9,10 +9,10 @@ body {
 }
 
 .lable-style {
-  @apply text-[14px] text-white;
+  @apply text-[14px] text-black text-lg font-rubik-medium; 
 }
 .form-style {
-  @apply rounded-lg border-black  p-3 text-[16px] leading-[24px]  bg-black/55 text-white shadow-[0_1px_0_0] shadow-white/50 placeholder:text-white focus:outline-none;
+  @apply px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg;
 }
 
 a {

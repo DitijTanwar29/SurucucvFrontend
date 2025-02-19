@@ -70,8 +70,8 @@ export default function EditCandidateProfile() {
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
-          <h2 className="text-lg font-semibold text-richblack-5">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+          <h2 className="text-lg font-semibold text-richblack-900">
             Edit Candidate Profile Information
           </h2>
 
@@ -130,8 +130,7 @@ export default function EditCandidateProfile() {
                 name="about"
                 id="about"
                 placeholder="Enter something about you"
-                className="rounded-lg border-black bg-orange-300 p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/50 placeholder:text-white focus:outline-none;
-"
+                className="form-style"
                 {...register("about")}
                 defaultValue={user?.candidateDetails?.about}
               />

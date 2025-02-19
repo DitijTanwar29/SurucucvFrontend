@@ -31,9 +31,9 @@ export default function AllAdsTable({ ads, setAds }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700">
         <Thead>
-          <Tr className="flex gap-x-28 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-28 items-center text-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
@@ -56,8 +56,8 @@ export default function AllAdsTable({ ads, setAds }) {
         </Thead>
         <Tbody>
           {ads?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No advertisements found
               </Td>
             </Tr>
@@ -65,10 +65,10 @@ export default function AllAdsTable({ ads, setAds }) {
             ads?.map((ad) => (
               <Tr
                 key={ad._id}
-                className="flex gap-x-16 justify-between border-b border-richblack-800 px-6 py-8 bg-richblack-200"
+                className="flex gap-x-16 justify-between border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
                 <Td className="flex flex-col gap-x-4">
-                  <div className="text-lg font-semibold text-richblack-5">{ad.companyName}</div>
+                  <div className="text-lg font-semibold text-richblack-900">{ad.companyName}</div>
                   <div className="flex flex-col justify-between">
                     {ad.status === "Inactive" ? (
                       <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
@@ -86,18 +86,18 @@ export default function AllAdsTable({ ads, setAds }) {
                   </div>
                 </Td>
                 <Td>
-                  <p className="text-lg font-semibold text-richblack-5">{ad.title}</p>
+                  <p className="text-lg font-semibold text-richblack-900">{ad.title}</p>
                 </Td>
                 <Td>
-                  <p className="text-xs text-richblack-5">{new Date(ad.startDate).toLocaleDateString()}</p>
+                  <p className="text-lg text-richblack-900">{new Date(ad.startDate).toLocaleDateString()}</p>
                 </Td>
                 <Td>
-                  <p className="text-xs text-richblack-5">{new Date(ad.endDate).toLocaleDateString()}</p>
+                  <p className="text-lg text-richblack-900">{new Date(ad.endDate).toLocaleDateString()}</p>
                 </Td>
                 <Td>
                   <ApproveAdButton ad={ad} />
                 </Td>
-                <Td className="text-xs text-richblack-5">
+                <Td className="text-xs text-richblack-900">
                   <button
                     disabled={loading}
                     onClick={() => {

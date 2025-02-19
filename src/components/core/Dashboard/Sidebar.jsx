@@ -99,7 +99,7 @@ export default function Sidebar() {
 
   if (profileLoading || authLoading) {
     return (
-      <div className="grid h-full min-w-[220px] items-center border-r-[1px] border-r-richblack-700 bg-orange-300">
+      <div className="grid h-full min-w-[220px] items-center border-r-[1px] border-r-purple-700 bg-purple-700">
         <div className="spinner"></div>
       </div>
     );
@@ -111,7 +111,7 @@ export default function Sidebar() {
       <div className="relative">
         <button
           className={`fixed top-[70px] -left-3 z-50  mt-[1px]
-          flex items-center justify-center w-10 h-10 bg-orange-400 rounded-md shadow-md shadow-richblack-600
+          flex items-center justify-center w-10 h-10 bg-purple-700 rounded-md shadow-md shadow-richblack-600
           ${isSidebarOpen ? "sm:translate-x-48 lg:translate-x-30" : ""} transition-transform duration-300 ease-in-out`}
           // onClick={() => isSidebarOpen(!isSidebarOpen)}
           onClick={() => setIsSidebarOpen(true)}

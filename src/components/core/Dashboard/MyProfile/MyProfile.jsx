@@ -49,7 +49,7 @@ const MyProfile = () => {
       <h1 className="mb-14 text-3xl font-medium text-black lg:mt-14 text-center">
         My Profile
       </h1>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -57,10 +57,10 @@ const MyProfile = () => {
             className="aspect-square w-[78px] rounded-full object-cover"
           />
           <div className="space-y-1">
-            <p className="text-lg font-semibold text-richblack-5">
+            <p className="text-lg font-semibold text-black">
               {user?.adminDetails?.firstName + " " + user?.adminDetails?.lastName}
             </p>
-            <p className="text-sm text-richblack-5">{user?.email}</p>
+            <p className="text-sm text-black">{user?.email}</p>
           </div>
         </div>
         <IconBtn
@@ -73,10 +73,10 @@ const MyProfile = () => {
         </IconBtn>
       </div>
 
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
-            <p className="text-lg font-semibold text-richblack-5">
+            <p className="text-lg font-semibold text-black">
               Personal Details
             </p>
             <IconBtn
@@ -94,7 +94,7 @@ const MyProfile = () => {
 
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">First Name</p>
-                <p className="text-sm  text-richblack-5 font-semibold">
+                <p className="text-sm  text-purple-700 font-semibold">
                   {user?.adminDetails?.firstName  ?? "Add First Name"}
                 </p>
               </div>
@@ -103,7 +103,7 @@ const MyProfile = () => {
 
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">Bio</p>
-                <p className="text-sm  text-richblack-5 font-semibold">
+                <p className="text-sm  text-purple-700 font-semibold">
                   {user?.adminDetails?.bio ?? "Add Bio "}
                 </p>
               </div>
@@ -113,14 +113,14 @@ const MyProfile = () => {
             <div className="flex flex-col gap-y-5">
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">Middle Name</p>
-                <p className="text-sm text-richblack-5 font-semibold">
+                <p className="text-sm text-purple-700 font-semibold">
                   {user?.adminDetails?.middleName ?? "Add Middle Name"}
                 </p>
               </div>
 
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">Post</p>
-                <p className="text-sm text-richblack-5 font-semibold">
+                <p className="text-sm text-purple-700 font-semibold">
                   {user?.adminDetails?.post  ?? "Add Post"}
                 </p>
               </div>
@@ -131,14 +131,14 @@ const MyProfile = () => {
             <div className="flex flex-col gap-y-5">
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">Last Name</p>
-                <p className="text-sm text-richblack-5 font-semibold">
+                <p className="text-sm text-purple-700 font-semibold">
                   {user?.adminDetails?.lastName ?? "Add Last Name"}
                 </p>
               </div>
 
               <div>
                 <p className="mb-2 text-sm text-richblack-700 font-semibold">Contact Number</p>
-                <p className="text-sm text-richblack-5 font-semibold">
+                <p className="text-sm text-purple-700 font-semibold">
                   {user?.contactNumber ?? "Add Contact Number"}
                 </p>
               </div>

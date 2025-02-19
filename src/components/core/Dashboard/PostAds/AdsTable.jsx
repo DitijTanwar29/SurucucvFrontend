@@ -86,9 +86,9 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
   };
 
   return (
-    <Table className="rounded-xl border border-richblack-800  bg-black/55 rounded-t-md ">
+    <Table className="rounded-xl border border-purple-700  bg-purple-700 rounded-t-md ">
       <Thead>
-        <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+        <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
           <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">Ad Title</Th>
           <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">Start Date</Th>
           <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">End Date</Th>
@@ -98,8 +98,8 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
       </Thead>
       <Tbody>
         {ads?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No Advertisement found, start creating
                 {/* TODO: Need to change this state */}
               </Td>

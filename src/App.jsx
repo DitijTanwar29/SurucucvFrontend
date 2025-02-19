@@ -65,7 +65,7 @@ function App(){
 
   return (
     // bg-orange-400
-         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-white overflow-x-hidden '>
+         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-gradient-to-r from-slate-300 to-slate-500 overflow-x-hidden '>
           <NavBar/>
           <Routes>
 

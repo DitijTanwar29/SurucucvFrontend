@@ -35,7 +35,7 @@ const SectorStatusToggle = ({ sector }) => {
     <button
       disabled={loading}
       onClick={handleToggleStatus}
-      className={`px-2 w-14 h-9 py-1 rounded text-white ${
+      className={`px-2 w-20 h-9 py-1 rounded text-white ${
         status === SECTOR_STATUS.ACTIVE ? 'bg-blue-700' : 'bg-red-500'
       } `}
     >

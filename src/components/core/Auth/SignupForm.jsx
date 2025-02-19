@@ -710,15 +710,15 @@ const SignupForm = () => {
   ];
 
   return (
-    <div className="w-full h-full border flex bg-[#f5f5f5] justify-center items-center lg:px-0 px-4">
-      <div className=" lg:w-[450px] w-full  flex bg-white py-4 px-4 rounded-xl shadow-[0_0_5px_rgba(0,0,0,0.1)]">
+    <div className="w-full lg:mt-8 h-full border flex bg-[#f5f5f5] justify-center items-center lg:px-0 px-4">
+      <div className=" lg:w-[550px] w-full  flex bg-white py-4 px-4 rounded-xl shadow-[0_0_5px_rgba(0,0,0,0.1)]">
         <form
           onSubmit={submitHandler}
-          className="flex   pb-4 flex-col justify-center items-center mx-auto gap-y-2"
+          className="flex pb-4 flex-col justify-center items-center mx-auto gap-y-2"
         >
           <div className="w-full flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row  mx-auto justify-evenly">
             <label className=" sm:w-[80%] flex flex-col mx-auto lg:w-[40%]">
-              <p className="text-black font-inter mb-1 text-[0.875rem] leading-[1.375rem]">
+              <p className="text-lg font-rubik-medium">
                 Name<sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -729,25 +729,20 @@ const SignupForm = () => {
                 placeholder="Enter Name"
                 value={name}
                 className="w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
+                
               />
             </label>
 
             <div className="flex flex-col gap-2 lg:w-[50%] w-full sm:flex-wrap sm:flex-col sm:items-center lg:flex-row mx-auto justify-evenly">
             <label
               htmlFor="city"
-              className="mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter lg:w-[40%] sm:w-[80%]"
+              className="mb-1 text-lg font-rubik-medium text-black sm:w-[80%]"
             >
               Choose City<sup className="text-pink-200">*</sup>
             </label>
             <select
               placeholder="Choose city"
               className=" w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg"
-              style={{
-                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-              }}
               type="text"
               name="city"
               id="city"
@@ -775,7 +770,7 @@ const SignupForm = () => {
           </div>
           <div className=" w-full flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row gap-5 mx-auto justify-evenly">
             <label className="lg:w-[40%] sm:w-[80%]">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter">
+              <p className="mb-1 text-lg font-rubik-medium text-black">
                 Email Address<sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -786,36 +781,22 @@ const SignupForm = () => {
                 placeholder="Enter Email Address"
                 value={email}
                 className="w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
+                
               />
             </label>
-            {/* <label className='lg:w-[40%] sm:w-[80%]'>
-                        <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter'>Contact Number<sup className='text-pink-200'>*</sup></p>
-                        <input
-                            required
-                            name="contactNumber"
-                            onChange={changeHandler}
-                            placeholder='Contact Number'
-                            value={contactNumber}
-                            className='placeholder-white bg-orange-300 rounded-md text-black text-sm font-inter h-12 w-full px-4 py-4 shadow-sm shadow-richblack-200'
-                            style={{ boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)" }}
-                        />
-                    </label> */}
 
-            <label className="lg:w-[44%] sm:w-[80%] flex flex-col">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter">
+            <label className="lg:w-[40%] sm:w-[80%] flex flex-col">
+              <p className="mb-1 text-lg font-rubik-medium text-black">
                 Contact Number<sup className="text-pink-200">*</sup>
               </p>
-              <div className="flex items-center">
+              <div className="flex items-evenly">
                 <label className="lg:w-full sm:w-[80%] flex flex-col">
                   <div className="flex items-center">
                     {/* Country Code Dropdown */}
                     <select
                       value={countryCode}
                       onChange={(e) => setCountryCode(e.target.value)}
-                      className="w-full px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg"
+                      className=" w-full lg:w-[50%] mr-2 px-3 py-2.5 border border-purple-700 outline-none focus-visible:ring focus-visible:ring-purple-700  text-lg font-rubik-light  focus:ring-2 focus:ring-purple-700  rounded-lg"
                     >
                       <option value="+90">🇹🇷 +90 (Turkey)</option>
                       <option value="+1">🇺🇸 +1 (USA)</option>
@@ -842,7 +823,7 @@ const SignupForm = () => {
 
           <div className=" w-full  flex sm:flex sm:flex-wrap sm:flex-col sm:items-center lg:flex-row gap-5 mx-auto justify-evenly">
             <label className="relative lg:w-[40%] sm:w-[80%]">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter">
+              <p className="mb-1 text-lg font-rubik-medium text-black">
                 Password<sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -853,9 +834,7 @@ const SignupForm = () => {
                 placeholder="Enter Password"
                 value={password}
                 className="w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
+                
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -869,7 +848,7 @@ const SignupForm = () => {
               </span>
             </label>
             <label className="relative lg:w-[40%] sm:w-[80%]">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black font-inter">
+              <p className="mb-1 text-lg font-rubik-medium text-black">
                 Confirm Password<sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -880,9 +859,7 @@ const SignupForm = () => {
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 className="w-full px-3 py-2.5 border border-purple-700 focus-visible:ring focus-visible:ring-purple-700 outline-none  text-lg font-rubik-light  rounded-lg"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
+                
               />
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}

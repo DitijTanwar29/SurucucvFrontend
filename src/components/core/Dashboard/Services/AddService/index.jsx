@@ -55,8 +55,8 @@ const AddService = () => {
     
       <form onSubmit={handleSubmit(submitServiceForm)}>
         {/* Service Information */}
-        <div className="my-10 lg:mt-14 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-200 p-8 px-12">
-          <h2 className="text-lg font-semibold text-richblack-5">
+        <div className="my-10 lg:mt-14 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+          <h2 className="text-lg font-semibold text-richblack-900">
             Create Service
           </h2>
           <div className="flex flex-col gap-5 lg:flex-row">

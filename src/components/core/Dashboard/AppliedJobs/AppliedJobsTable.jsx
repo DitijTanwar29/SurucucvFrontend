@@ -41,9 +41,9 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
-          <Tr className="flex gap-x-48 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-48 items-center text-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
@@ -67,7 +67,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
         <Tbody>
           {jobs?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl bg-richblack-400 font-medium text-richblack-5">
+              <Td className="py-10 text-center text-3xl bg-richblack-25 font-medium text-richblack-900">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -76,7 +76,7 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex justify-between gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-200"
+                className="flex justify-between gap-x-8 border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
                 <Td className="flex flex-col gap-x-4">
                   {/* <img

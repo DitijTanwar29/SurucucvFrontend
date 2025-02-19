@@ -97,7 +97,7 @@ export default function PostAdvertisement() {
         Create Advertisement Post
       </h1>
       
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
         {/* Ad Title and Description */}
         <div className="flex flex-col gap-5 lg:flex-row">
           <div className="flex flex-col gap-2 lg:w-[50%]">
@@ -111,7 +111,7 @@ export default function PostAdvertisement() {
           
           <div className="flex flex-col gap-2 lg:w-[50%]">
 
-            <label htmlFor="description" className="text-sm text-richblack-5">
+            <label htmlFor="description" className="lable-style">
               Ad Description <sup className="text-pink-200">*</sup>
             </label>
             <textarea className="form-style" {...register("description", { required: true })} placeholder="Ad Description" />
@@ -209,8 +209,8 @@ export default function PostAdvertisement() {
           </div>
         </div>
 
-        <IconBtn type="submit" text="Post Advertisement" />
       </div>
+        <IconBtn type="submit" text="Post Advertisement" />
     </form>
   );
 }

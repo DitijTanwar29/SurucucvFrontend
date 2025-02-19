@@ -43,9 +43,9 @@ export default function SectorsTable({ sectors, setSectors }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
-          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             
             <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Sector Name
@@ -62,8 +62,8 @@ export default function SectorsTable({ sectors, setSectors }) {
         </Thead>
         <Tbody>
           {sectors?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No sectors found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -72,11 +72,11 @@ export default function SectorsTable({ sectors, setSectors }) {
             sectors?.map((sector) => (
               <Tr
                 key={sector._id}
-                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-200 "
+                className="flex justify-between items-center gap-x-6 border-b border-purple-700 px-3 py-8 bg-richblack-25 "
               >
                 
                   <Td>
-                    <p className=" text-lg flex flex-row font-semibold text-richblack-5">
+                    <p className=" text-lg flex flex-row font-semibold text-richblack-900">
                       {sector.sectorName}
                     </p>
                   </Td>                  
@@ -84,10 +84,10 @@ export default function SectorsTable({ sectors, setSectors }) {
                 <Td>
                   <SectorStatusToggle sector={sector}/>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                <Td className="text-sm font-medium text-richblack-900">
                   {sector.action}
                 </Td>
-                <Td className="text-md font-medium text-richblack-5 ">
+                <Td className="text-md font-medium text-richblack-900">
                   <button
                     disabled={loading}
                     onClick={() => {

@@ -313,8 +313,8 @@ console.log("filteredLicenses : " ,filteredLicenses)
       
     <form onSubmit={handleSubmit(submitResumeForm)}>
       {/* CV Information */}
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700  bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-richblack-900">
           Personal Information
         </h2>
 {/* tcNumber, fullName="", age,gsm,country,province,district,
@@ -366,36 +366,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
               </span>
             )}
           </div>
-        {/* Service not needed here */}
-          {/* <div className="flex flex-col space-y-2 lg:w-[25%] ">
-            <label
-              className="lable-style"
-              htmlFor="service"
-            >
-              Service <sup className="text-pink-200">*</sup>
-            </label>
-            <select
-              {...register("service", { required: true })}
-              defaultValue=""
-              id="service"
-              className="form-style w-full"
-            >
-              <option value="" disabled>
-                Choose a Service
-              </option>
-              {!loading &&
-                services?.map((service, indx) => (
-                  <option key={indx} value={service?._id}>
-                    {service?.serviceName}
-                  </option>
-                ))}
-            </select>
-            {errors.service && (
-              <span className="ml-2 text-xs tracking-wide text-pink-200">
-                Service is required
-              </span>
-            )}
-          </div> */}
+        
           {/* age */}
           <div className="flex flex-col gap-2 lg:w-[25%]">
             <label htmlFor="age" className="lable-style">
@@ -417,26 +388,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
             )}
           </div>
           {/* skills  */}
-          {/* <div className="flex flex-col gap-2 lg:w-[25%]">
-            <label htmlFor="skills" className="lable-style">
-              Required Skills
-            </label>
-            <pre>{JSON.stringify(selected)}</pre>
-            <MultiSelect
-              options={options}
-              value={selected}
-              className="text-black form-style text-bold"
-              onChange={setSelected}
-              labelledBy="Select"
-              name="skills"
-                    {...register("skills", { required: true })}
-            />
-            {errors.skills && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
-                Please enter required skills.
-              </span>
-            )}
-          </div> */}
+          
         </div>
 
         {/* ROW 2 */}
@@ -549,69 +501,24 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700  bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-richblack-900">
             Main Certificates
         </h2>
 
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 ">
-        {/* Driving License Type */}
-            {/* <fieldset className="flex flex-col gap-2 lg:w-[25%]">
-                <legend htmlFor="licenseType" className="lable-style">
-                  License Type
-                </legend>
-
-                <div>
-                  <input type="checkbox" id="coding" name="licenseType" value="coding" />
-                  <label for="coding">Coding</label>
-                </div>
-
-                <select
-                  type="text"
-                  name="licenseType"
-                  id="licenseType"
-                  placeholder="Choose license type "
-                  className="form-style"
-                  {...register("licenseType", { required: true })}
-                  // defaultValue={user?.adminDetails?.post}
-                  
-                >
-                  <option value="" disabled >Choose License Type</option>
-                  <option value="Type 1" >Type 1</option>
-                  <option value="Type 2" >Type 2</option>
-                  <option value="Type 3" >Type 3</option>
-
-                </select>
-                {errors.licenseType && (
-                  <span className="-mt-1 text-[12px] text-yellow-100">
-                    Please select your license type.
-                  </span>
-                )}
-            </fieldset> */}
-            {/* {licenseCategories.map((category) => (
-        <div key={category.id}>
-          <input
-            type="checkbox"
-            id={category.id}
-            value={category.value}
-            onChange={handleLicenseCheckboxChange}
-          />
-          <label htmlFor={category.id} className="ml-2">
-            {category.label}
-          </label>
-        </div>
-      ))} */}
+      
 
       <div className="relative" ref={dropdownRef}>
-        <button type="button" className="form-style" onClick={toggleDropdown}>
+        <button type="button" className="form-style bg-white" onClick={toggleDropdown}>
           Choose License Type
         </button>
         {dropdownOpen && (
           <div className="absolute mt-1 lg:w-[25%] sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
             <div className="flex flex-col p-2 max-h-60 overflow-auto">
               {licenseCategories.map((category) => (
-                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-purple-700 ">
                   <input
                     type="checkbox"
                     id={category.id}
@@ -635,7 +542,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
         )}
       </div>
         {/* SRC CERTIFICATES INFO */}
-            <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
+            <div className="flex flex-col space-y-2 lg:w-[33%] text-richblack-900">
               <label
                 className="lable-style"
               >
@@ -768,8 +675,8 @@ console.log("filteredLicenses : " ,filteredLicenses)
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900  bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700  bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-richblack-900">
           Required Abilities
         </h2>
         
@@ -895,7 +802,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
             </div>
 {/* Code 95 Document */}
             <div className="flex flex-col gap-2 lg:w-[25%] text-white  items-center">
-                <label>
+                <label className="lable-style">
                     Code 95 Document
                 </label>
                     <input
@@ -913,7 +820,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
         {/* ROW 2 */}
         <div className="flex flex-col gap-5 lg:flex-row text-white">
             <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
-                <label>
+                <label className="lable-style">
                     Is Blind Spot Training
                 </label>
                     <input
@@ -925,7 +832,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className="lable-style">
                     Is Safe Driving Training
                 </label>
                     <input
@@ -937,7 +844,7 @@ console.log("filteredLicenses : " ,filteredLicenses)
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className="lable-style">
                     Is Fuel Economy Training
                 </label>
                     <input
@@ -951,8 +858,8 @@ console.log("filteredLicenses : " ,filteredLicenses)
       </div>
 
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-richblack-900">
           Experience
         </h2>
 {/* - experience period for dormitory

@@ -125,7 +125,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
             </Tr>
           ) : (
           
-                <div className="w-[70%] resume mx-auto p-2 lg:flex lg:flex-col sm:flex-row sm:justify-start sm:items-start gap-3 lg:justify-start lg:items-start  lg:p-3  text-black">
+                <div className="bg-white w-[70%] resume mx-auto p-2 lg:flex lg:flex-col sm:flex-row sm:justify-start sm:items-start gap-3 lg:justify-start lg:items-start  lg:p-3  text-black">
                     
                        {/* 
                        tcNumber, firstName="",lastName="", age,gsm,city,state,
@@ -243,7 +243,7 @@ console.log("resume.isCode95Document : ",resume.isCode95Document === true ? "Yes
       {/* <a href="MyCv" download 
         >
         </a> */}
-            <button className="bg-orange-500 text-white text-bold p-2 w-26 h-20 rounded-sm mb-3"
+            <button className="bg-purple-700 text-white text-bold p-2 w-26 h-20 rounded-sm mb-3"
               onClick={downloadCv}
               disabled={!(loading === false)}>
                 {loading? (<span>Downloading</span>) : (<span>Download</span>)}

@@ -269,8 +269,8 @@ const PostJob = () => {
       <h1 className="mb-14 mt-14 text-3xl text-center font-medium text-black">
         Create Job Post
       </h1>
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
           Basic Details
         </h2>
 
@@ -349,7 +349,7 @@ const PostJob = () => {
 
 
           <div className="flex flex-col gap-2 lg:w-[25%]">
-          <label className="block text-md font-medium text-gray-700">Contact Person:</label>
+          <label className="lable-style">Contact Person</label>
       {selectedContact ? (
         <div>
           <p>{selectedContact.name} - {selectedContact.position}</p>
@@ -582,7 +582,7 @@ const PostJob = () => {
         <div className="flex flex-col gap-5 lg:flex-row">
         {/* Description */}
         <div className="flex flex-col space-y-2 w-full">
-        <label className="text-sm text-richblack-5" htmlFor="description">
+        <label className="text-sm lable-style" htmlFor="description">
           Job Short Description <sup className="text-pink-200">*</sup>
         </label>
         <textarea
@@ -603,8 +603,8 @@ const PostJob = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
             Main Certificates
         </h2>
 
@@ -612,21 +612,20 @@ const PostJob = () => {
         <div className="flex flex-col gap-5 lg:flex-row">
             {/* License Type */}
             <div className="relative " ref={dropdownRef}>
-            <button type="button" className="form-style" onClick={toggleDropdown}>
+            <button type="button" className="form-style bg-white" onClick={toggleDropdown}>
               Choose License Type
             </button>
             {dropdownOpen && (
               <div className="absolute mt-1 lg:w-full sm:w-[100%] bg-white border border-gray-300 rounded-md shadow-lg z-10">
                 <div className="flex flex-col p-2 max-h-60 overflow-auto">
                   {licenseCategories.map((category) => (
-                    <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-orange-600 ">
+                    <div key={category.id} className="flex items-center justify-center gap-8 border-b border-b-purple-700 ">
                       <input
                         type="checkbox"
                         id={category.id}
                         value={category.value}
                         checked={selectedLicenses.includes(category.id)}
                         onChange={handleLicenseCheckboxChange}
-                        className=""
                         // name="licenseType"
                         // {...register({selectedLicenses}, { required: true })}
                         // checked={watchedValues.licenseType}
@@ -643,7 +642,7 @@ const PostJob = () => {
             )}
             </div>
 
-            <div className="flex flex-col space-y-2 lg:w-[33%] lg:ml-32 text-white">
+            <div className="flex flex-col space-y-2 lg:w-[33%] lg:ml-32 text-black">
               <label
                 className="lable-style"
               >
@@ -651,7 +650,7 @@ const PostJob = () => {
               </label>
 
               
-              <div className="flex-col gap-4 space-x-8">
+              <div className="flex-col gap-4 space-x-8 text-black">
                 <label htmlFor="isSrc1">
                     SRC 1
                     <input
@@ -705,8 +704,8 @@ const PostJob = () => {
 
             
             {/* Code 95 Document */}
-            <div className="flex flex-col gap-2 lg:w-[33%] text-white  items-center">
-                <label>
+            <div className="flex flex-col gap-2 lg:w-[33%] text-black  items-center">
+                <label className="lable-style">
                     Code 95 Document
                 </label>
                     <input
@@ -714,7 +713,6 @@ const PostJob = () => {
                         name="isCode95Document"
                         onChange={(e) => setValue('isCode95Document', e.target.checked)}
                         checked={watchedValues.isCode95Document}
-
                     />
             </div>
 
@@ -793,8 +791,8 @@ const PostJob = () => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-900 bg-richblack-200 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
           Required Abilities
         </h2>
         
@@ -882,9 +880,9 @@ const PostJob = () => {
 
         {/* isBlindSpotTraining,isSafeDrivingTraining,isFuelEconomyTraining */}
         {/* ROW 2 */}
-        <div className="flex flex-col gap-5 lg:flex-row text-white">
+        <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
-                <label>
+                <label className='lable-style'>
                     Is Blind Spot Training
                 </label>
                     <input
@@ -896,7 +894,7 @@ const PostJob = () => {
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className='lable-style'>
                     Is Safe Driving Training
                 </label>
                     <input
@@ -908,7 +906,7 @@ const PostJob = () => {
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className='lable-style'>
                     Is Fuel Economy Training
                 </label>
                     <input
@@ -923,7 +921,7 @@ const PostJob = () => {
         <div className="flex flex-col gap-5 lg:flex-row text-white">
               
         <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
-                <label>
+                <label className='lable-style'>
                     Is International Job
                 </label>
                     <input

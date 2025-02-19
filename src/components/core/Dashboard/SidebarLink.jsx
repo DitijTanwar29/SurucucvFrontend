@@ -14,14 +14,14 @@ export default function SidebarLink({ link, iconName }) {
   return (
     <NavLink
       to={link.path}
-      className={`relative px-8 py-2 text-sm font-medium ${
+      className={`relative no-underline px-8 py-2 text-sm font-medium ${
         matchRoute(link.path)
-          ? "bg-white/20 text-orange-400 hover:text-white border-2 border-black"
+          ? "bg-white/20 text-purple-700 hover:text-white border-2 border-black"
           : "bg-opacity-0 text-white"
       } transition-all duration-75`}
     >
       <span
-        className={`absolute left-0 top-0 h-full w-[0.15rem] bg-orange-400 ${
+        className={`absolute left-0 top-0 h-full w-[0.15rem] bg-purple-700 ${
           matchRoute(link.path) ? "opacity-100" : "opacity-0"
         }`}
       ></span>

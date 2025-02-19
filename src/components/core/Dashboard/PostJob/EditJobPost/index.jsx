@@ -240,11 +240,11 @@ const onSubmit = async (data) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* jJob Information */}
-      <h1 className="mb-14 mt-14 text-3xl font-medium text-richblack-5">
+      <h1 className="mb-14 mt-14 text-3xl font-medium text-black">
         Edit Job Post
       </h1>
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25  p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
           Basic Details
         </h2>
 
@@ -538,7 +538,7 @@ const onSubmit = async (data) => {
         <div className="flex flex-col gap-5 lg:flex-row">
 
         <div className="flex flex-col space-y-2 w-full">
-        <label className="text-sm text-richblack-5" htmlFor="description">
+        <label className="lable-style" htmlFor="description">
           Job Short Description <sup className="text-pink-200">*</sup>
         </label>
         <textarea
@@ -560,8 +560,8 @@ const onSubmit = async (data) => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25  p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
             Main Certificates
         </h2>
 
@@ -569,7 +569,7 @@ const onSubmit = async (data) => {
         <div className="flex flex-col gap-5 lg:flex-row">
         
         <div className="relative" ref={dropdownRef}>
-        <button type="button" className="form-style" onClick={toggleDropdown}>
+        <button type="button" className="form-style bg-white" onClick={toggleDropdown}>
           Choose License Type
         </button>
         {dropdownOpen && (
@@ -600,7 +600,7 @@ const onSubmit = async (data) => {
         )}
       </div>
 
-      <div className="flex flex-col space-y-2 lg:w-[33%] text-white">
+      <div className="flex flex-col space-y-2 lg:w-[33%] text-black">
               <label
                 className="lable-style"
               >
@@ -707,8 +707,8 @@ const onSubmit = async (data) => {
 
       </div>
 
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
+      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25  p-8 px-12">
+        <h2 className="text-lg font-semibold text-black">
           Required Abilities
         </h2>
         
@@ -797,9 +797,9 @@ const onSubmit = async (data) => {
 
         {/* isBlindSpotTraining,isSafeDrivingTraining,isFuelEconomyTraining */}
         {/* ROW 2 */}
-        <div className="flex flex-col gap-5 lg:flex-row text-white">
+        <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
-                <label>
+                <label className="lable-style">
                     Is Blind Spot Training
                 </label>
                     <input
@@ -813,7 +813,7 @@ const onSubmit = async (data) => {
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className="lable-style">
                     Is Safe Driving Training
                 </label>
                     <input
@@ -827,7 +827,7 @@ const onSubmit = async (data) => {
             </div>
 
             <div className="flex flex-col gap-2 lg:w-[25%] items-center">
-                <label>
+                <label className="lable-style">
                     Is Fuel Economy Training
                 </label>
                     <input
@@ -841,9 +841,9 @@ const onSubmit = async (data) => {
             </div>
         </div>
         {/* ROW 3 */}
-        <div className="flex flex-col gap-5 lg:flex-row text-white">
+        <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[25%]  items-center">
-                <label>
+                <label className="lable-style">
                     Is International Job
                 </label>
                     <input

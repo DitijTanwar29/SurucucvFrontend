@@ -595,9 +595,9 @@ const PackagesForCompany = () => {
   return (
     <div className=" mx-auto p-6 lg:mt-8">
       <h1 className="text-2xl font-bold mb-4 text-center">Company Packages</h1>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700">
         <Thead>
-          <Tr className="flex gap-x-28 items-center rounded-t-md border-b border-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-28 items-center rounded-t-md border-b border-purple-700 px-6 py-2">
             <Th className="text-center text-sm font-semibold uppercase text-richblack-5 bg-transparent">
               Package Name
             </Th>
@@ -622,30 +622,30 @@ const PackagesForCompany = () => {
           {packages.map((pkg) => (
             <Tr
               key={pkg._id}
-              className="flex gap-x-1 border-b border-richblack-800 px-6 py-8 bg-richblack-200 justify-between"
+              className="flex gap-x-1 border-b border-purple-700 px-6 py-8 bg-richblack-25 justify-between"
             >
               <Td>
-                <p className="text-lg font-semibold text-richblack-5 text-center">
+                <p className="text-lg font-semibold text-richblack-900 text-center">
                   {pkg.packageName}
                 </p>
               </Td>
               <Td>
-                <p className="text-lg font-semibold text-richblack-5 text-center">
+                <p className="text-lg font-semibold text-richblack-900 text-center">
                   {pkg.packagePrice}
                 </p>
               </Td>
               <Td>
-                <p className="text-lg font-semibold text-richblack-5 text-center">
+                <p className="text-lg font-semibold text-richblack-900 text-center">
                   {pkg.discountedPrice}
                 </p>
               </Td>
               <Td>
-                <p className="text-lg font-semibold text-richblack-5 text-center">
+                <p className="text-lg font-semibold text-richblack-900 text-center">
                   {pkg.paymentStatus}
                 </p>
               </Td>
               <Td>
-                <p className="text-lg font-semibold text-richblack-5 text-center">
+                <p className="text-lg font-semibold text-richblack-900 text-center">
                   {pkg.paymentStatus === "Requested"
                     ? new Date(pkg.createdAt).toLocaleDateString()
                     : new Date(pkg.approvedDate).toLocaleDateString()}

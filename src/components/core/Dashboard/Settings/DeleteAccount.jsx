@@ -19,15 +19,15 @@ export default function DeleteAccount() {
 
   return (
     <>
-      <div className="my-10 flex flex-row gap-x-5 rounded-md border-[1px] border-richblack-700 bg-richblack-900 p-8 px-12">
-        <div className="flex aspect-square h-14 w-14 items-center justify-center rounded-full bg-orange-500">
+      <div className="my-10 flex flex-row gap-x-5 rounded-md bg-richblack-25 hover:ring-2 hover:ring-red-700 hover:visible  p-8 px-12">
+        <div className="flex aspect-square h-14 w-14 items-center justify-center rounded-full bg-red-700">
           <FiTrash2 className="text-3xl text-richblack-5" />
         </div>
         <div className="flex flex-col space-y-2">
-          <h2 className="text-lg font-semibold text-richblack-5">
+          <h2 className="text-lg font-semibold text-richblack-900">
             Delete Account
           </h2>
-          <div className="w-3/5 text-orange-200">
+          <div className="w-3/5 text-richblack-900">
             <p>Would you like to delete account?</p>
             <p>
               This account may contain Job Advertisements. Deleting your account is
@@ -36,7 +36,7 @@ export default function DeleteAccount() {
           </div>
           <button
             type="button"
-            className="w-fit cursor-pointer italic text-orange-500 font-semibold"
+            className="w-fit cursor-pointer italic text-red-700 font-semibold"
             onClick={handleDeleteAccount}
           >
             I want to delete my account.

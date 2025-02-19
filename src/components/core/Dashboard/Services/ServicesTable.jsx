@@ -41,9 +41,9 @@ export default function CoursesTable({ services, setServices }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
-          <Tr className="flex gap-x-40 items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-40 items-center rounded-t-md border-b border-b-purple-800 px-6 py-2">
             <Th className="text-left text-sm font-semibold  uppercase text-richblack-5 bg-transparent">
               Icon
             </Th>
@@ -63,8 +63,8 @@ export default function CoursesTable({ services, setServices }) {
         </Thead>
         <Tbody>
           {services?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No services found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -73,7 +73,7 @@ export default function CoursesTable({ services, setServices }) {
             services?.map((service) => (
               <Tr
                 key={service._id}
-                className="flex gap-x-8 border-b border-richblack-800 px-6 py-8 bg-richblack-200"
+                className="flex gap-x-8 border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
                 <Td className="flex gap-x-4">
                   <img
@@ -83,12 +83,12 @@ export default function CoursesTable({ services, setServices }) {
                   />
                   </Td>
                   <Td>
-                    <p className="text-lg font-semibold text-richblack-5 text-center">
+                    <p className="text-lg font-semibold text-richblack-900 text-center">
                       {service.serviceName}
                     </p>
                   </Td>
                   <Td>
-                    <p className="text-xs text-richblack-5  text-center">
+                    <p className="text-lg font-semibold text-richblack-900  text-center">
                       {service.serviceDescription.split(" ").length >
                       TRUNCATE_LENGTH
                         ? service.serviceDescription
@@ -122,7 +122,7 @@ export default function CoursesTable({ services, setServices }) {
                   <ServiceStatusToggle service={service}/>
                 </Td>
                 
-                <Td className="text-xs text-richblack-5 ">
+                <Td className="text-lg text-richblack-900 ">
                   <button
                     disabled={loading}
                     onClick={() => {

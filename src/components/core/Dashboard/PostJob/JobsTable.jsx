@@ -41,9 +41,9 @@ export default function JobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800  bg-black/55 rounded-t-md ">
+      <Table className="rounded-xl border border-purple-700  bg-purple-700 rounded-t-md">
         <Thead>
-          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-10 justify-between items-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             <Th className=" text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
@@ -66,8 +66,8 @@ export default function JobsTable({ jobs, setJobs }) {
         </Thead>
         <Tbody>
           {jobs?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -77,7 +77,7 @@ export default function JobsTable({ jobs, setJobs }) {
               <div className="relative">
           {/* <Link to={`/dashboard/applied-candidates/${job._id}`} key={job._id}> */}
 
-              <button className="text-orange-400 font-semibold translate-y-24  translate-x-96 cursor-pointer  absolute"
+              <button className="text-purple-700 font-semibold translate-y-24  translate-x-96 cursor-pointer  absolute"
               onClick={() => {
                       navigate(`/dashboard/applied-candidates/${job._id}`)
                     }}>Click To View Number Of Applicants</button>
@@ -85,12 +85,12 @@ export default function JobsTable({ jobs, setJobs }) {
 
               <Tr
                 key={job._id}
-                className="flex justify-between items-center gap-x-6 border-b border-richblack-800 px-3 py-8 bg-richblack-200 "
+                className="flex justify-between items-center gap-x-6 border-b border-purple-700 px-3 py-8 bg-richblack-25 "
               >
                   
                 <Td>
                 <div className="flex flex-col gap-y-4">
-                  <div className="text-lg flex flex-row font-semibold text-richblack-5">{job.companyName}</div>
+                  <div className="text-lg flex flex-row font-semibold text-richblack-900">{job.companyName}</div>
 
                   {job.status === SERVICE_STATUS.INACTIVE ? (
                       <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
@@ -110,7 +110,7 @@ export default function JobsTable({ jobs, setJobs }) {
                 </div>
                 </Td>    
                 <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-900">
                         {job.jobTitle}
                     </p>
                 </Td>
@@ -118,7 +118,7 @@ export default function JobsTable({ jobs, setJobs }) {
                     <p className="text-md font-medium text-richblack-5">{job.passport}</p>
                 </Td> */}
                 <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-900">
                         {job.jobLocation}
                     </p>
                 </Td>
@@ -133,7 +133,7 @@ export default function JobsTable({ jobs, setJobs }) {
                         : job.jobDescription}
                     </p>
                 </Td> */}
-                <Td className="text-md font-medium text-richblack-5 z-30 ">
+                <Td className="text-md font-medium text-richblack-900 z-30 ">
                   <button
                     disabled={loading}
                     onClick={() => {

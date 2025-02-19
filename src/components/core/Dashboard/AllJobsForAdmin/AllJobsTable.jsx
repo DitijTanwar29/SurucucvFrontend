@@ -42,9 +42,9 @@ export default function AllJobsTable({ jobs, setJobs }) {
 
   return (
     <>
-      <Table className="rounded-xl border bg-black/55 rounded-t-md border-richblack-800 ">
+      <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
-          <Tr className="flex gap-x-28 items-center text-center rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+          <Tr className="flex gap-x-28 items-center text-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             <Th className="text-left text-sm font-semibold bg-transparent uppercase text-richblack-5">
               Company Name
             </Th>
@@ -67,8 +67,8 @@ export default function AllJobsTable({ jobs, setJobs }) {
         </Thead>
         <Tbody>
           {jobs?.length === 0 ? (
-            <Tr className="bg-richblack-200">
-              <Td className="py-10 text-center text-2xl font-semibold text-richblack-5">
+            <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No jobs found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -77,14 +77,14 @@ export default function AllJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex gap-x-16 justify-between border-b border-richblack-800 px-6 py-8 bg-richblack-200"
+                className="flex gap-x-16 justify-between border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
                 <Td className="flex flex-col gap-x-4">
                   {/* <img
                     src={service?.icon}
                     alt={service?.serviceName}
                     className="h-[148px] w-[220px] rounded-lg object-cover"
-                  /> */}<div className="text-lg font-semibold text-richblack-5">{job.companyName}</div>
+                  /> */}<div className="text-lg font-semibold text-richblack-900">{job.companyName}</div>
                   <div className="flex flex-col justify-between">
                   
                     {job.status === SERVICE_STATUS.INACTIVE ? (
@@ -103,15 +103,15 @@ export default function AllJobsTable({ jobs, setJobs }) {
                   </div>
                 </Td>
                 <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-900">
                         {job.jobTitle}
                     </p>
                 </Td>
                 <Td>
-                    <p className="text-xs text-richblack-5">{job.passport}</p>
+                    <p className="text-lg font-semibold text-richblack-900">{job.passport}</p>
                 </Td>
                 <Td>
-                    <p className="text-xs text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-900">
                         {job.jobLocation}
                     </p>
                     
@@ -119,7 +119,7 @@ export default function AllJobsTable({ jobs, setJobs }) {
                 <Td>
                     <ApproveJobButton job={job}/>
                 </Td>
-                <Td className="text-xs text-richblack-5">
+                <Td className="text-xs text-richblack-900">
                   <button
                     disabled={loading}
                     onClick={() => {
