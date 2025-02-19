@@ -1,5 +1,5 @@
 // export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
-export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1"
+export const BASE_URL = "http://147.79.101.184:3000/api/v1"
 
 //AUTH ENDPOINTS
 export const endpoints = {
