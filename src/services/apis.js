@@ -3,7 +3,7 @@
 // export const BASE_URL = process.env.REACT_APP_BASE_URL
 // export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-export const BASE_URL = "http://147.79.101.184/api/v1"
+export const BASE_URL = "http://surucucv.com/api/v1"
 
 
 //AUTH ENDPOINTS
