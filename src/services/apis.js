@@ -1,7 +1,7 @@
-export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
+// export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
 
 // export const BASE_URL = process.env.REACT_APP_BASE_URL
-// export const BASE_URL = import.meta.env.VITE_BASE_URL;
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // export const BASE_URL = "http://147.79.101.184:1200/api/v1"
 
@@ -22,8 +22,8 @@ export const endpoints = {
 export const profileEndpoints = {
     //admin
     GET_ADMIN_DETAILS_API: BASE_URL + "/adminProfile/getAdminDetails",
-    
-    
+    UPDATE_HERO_SECTION_IMAGE_API: BASE_URL + "/adminProfile/upload-hero-image",
+    GET_HERO_SECTION_IMAGE_API: BASE_URL + "/adminProfile/get-hero-image",
     
     
     //company

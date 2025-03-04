@@ -10,7 +10,6 @@ import rootReducer from './reducer';
 import { configureStore } from '@reduxjs/toolkit';
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 const store = configureStore({
   reducer: rootReducer,
 });

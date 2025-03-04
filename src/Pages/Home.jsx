@@ -17,8 +17,7 @@ import { BsTrainFreightFront } from "react-icons/bs";
 import { BsBusFront } from "react-icons/bs";
 import { FaMotorcycle } from "react-icons/fa6";
 import AdsSlider from "../components/core/HomePage/AdsSlider"
-
-
+import HeroImageComponent from '../components/core/Dashboard/UpdateHeroImage/HeroImageComponent'
 const Home = () => {
 
 	const [selectedSectorId, setSelectedSectorId] = useState(null);
@@ -73,11 +72,12 @@ const Home = () => {
 							</div>
 						</div>
 						<div className='lg:flex hidden h-full justify-center items-start  '>
-							<img
+						<HeroImageComponent/>
+							{/* <img
 								src={Vs}
 								alt='hero_Section_img'
 								className="w-[375px] h-full  rounded-lg object-cover "
-							/>
+							/> */}
 						</div>
 					</div>
 				</div>

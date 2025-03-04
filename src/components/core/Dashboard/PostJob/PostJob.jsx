@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addJobPost } from "../../../../services/operations/jobPostAPI";
 import { useForm, useWatch } from "react-hook-form";
 import { getActiveServices } from "../../../../services/operations/serviceDetailsAPI";
+import { getActiveSectors } from "../../../../services/operations/sectorAPI";
 import { Country, State, City }  from 'country-state-city';
 import {  fetchCompanyById } from "../../../../services/operations/profileAPI";
 
@@ -46,6 +47,7 @@ const PostJob = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([]);
+  const [sectors, setSectors] = useState([]);
   const [contactPersons, setContactPersons] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
 
@@ -247,7 +249,32 @@ const PostJob = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
+  useEffect(() => {
+    const getSectors = async () => {
+      setLoading(true);
+      const sectors = await getActiveSectors();
+      if (sectors.length > 0) {
+        // console.log("categories", categories)
+        setSectors(sectors);
+      }
+      setLoading(false);
+    };
+    // if form is in edit mode
+    // if (editCourse) {
+    //   // console.log("data populated", editCourse)
+    //   setValue("courseTitle", course.courseName)
+    //   setValue("courseShortDesc", course.courseDescription)
+    //   setValue("coursePrice", course.price)
+    //   setValue("courseTags", course.tag)
+    //   setValue("courseBenefits", course.whatYouWillLearn)
+    //   setValue("courseCategory", course.category)
+    //   setValue("courseRequirements", course.instructions)
+    //   setValue("courseImage", course.thumbnail)
+    // }
+    getSectors();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
 
   const submitJobPostForm = async (data) => {
@@ -277,22 +304,32 @@ const PostJob = () => {
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
         {/* JOb Title   */}
-          <div className="flex flex-col gap-2 lg:w-[25%]">
-            <label htmlFor="title" className="lable-style">
-              Job Title
+        <div className="flex flex-col space-y-2 lg:w-[25%] ">
+            <label
+              className="lable-style"
+              htmlFor="jobTitle"
+            >
+              Job Title <sup className="text-pink-200">*</sup>
             </label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Enter job title"
-              className="form-style"
-              {...register("title", { required: true })}
-              // defaultValue={user?.adminProfileDetails?.firstName}
-            />
-            {errors.title && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
-                Please enter your job title .
+            <select
+              {...register("jobTitle", { required: true })}
+              defaultValue=""
+              id="jobTitle"
+              className="form-style w-full"
+            >
+              <option value="" disabled>
+                Choose a Title
+              </option>
+              {!loading &&
+                sectors?.map((sector, indx) => (
+                  <option key={indx} value={sector?._id}>
+                    {sector?.sectorName}
+                  </option>
+                ))}
+            </select>
+            {errors.sector && (
+              <span className="ml-2 text-xs tracking-wide text-pink-200">
+                Title is required
               </span>
             )}
           </div>

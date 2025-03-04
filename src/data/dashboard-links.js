@@ -143,14 +143,14 @@ export const sidebarLinks = [
     path: "/dashboard/packages-for-company",
     type: ACCOUNT_TYPE.COMPANY,
     icon: "VscLayersActive"
-  }
-  // {
-  //   id: 5,
-  //   name: "Enrolled Courses",
-  //   path: "/dashboard/enrolled-courses",
-  //   type: ACCOUNT_TYPE.STUDENT,
-  //   icon: "VscMortarBoard",
-  // },
+  },
+  {
+    id: 22,
+    name: "Upload Hero Image",
+    path: "/dashboard/update-hero-section-image",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscCloudUpload",
+  },
   // {
   //   id: 7,
   //   name: "Cart",

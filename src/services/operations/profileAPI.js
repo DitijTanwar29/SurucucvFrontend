@@ -10,7 +10,9 @@ const {
     GET_COMPANY_DETAILS_API,
     GET_COMPANY_BY_ID,
     GET_COMPANY_PACKAGES_API,
-    UNENROLL_COMPANY_FROM_PACKAGE_API
+    UNENROLL_COMPANY_FROM_PACKAGE_API,
+    UPDATE_HERO_SECTION_IMAGE_API,
+    GET_HERO_SECTION_IMAGE_API,
 } = profileEndpoints
 
 
@@ -146,3 +148,26 @@ export const unenrollCompanyFromPackage = async ({companyId, packageId}) => {
   //   dispatch(setLoading(false));
   return result
 }
+
+export const uploadHeroImage = async (formData, token) => {
+  return await apiConnector("POST", UPDATE_HERO_SECTION_IMAGE_API, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+    Authorization: `Bearer ${token}`,
+  });
+};
+
+export const getHeroImage = async () => {
+  try {
+    console.log("Fetching hero image...");
+    const response = await apiConnector("GET", GET_HERO_SECTION_IMAGE_API);
+
+    if (response && response.data && response.data.success) {
+      console.log("Hero image fetched successfully:", response.data.imageUrl);
+      return response.data.imageUrl;
+    } 
+  } catch (error) {
+    console.error("Error fetching hero image:", error.message);
+    toast.error("Failed to load hero image.");
+    return null;
+  }
+};

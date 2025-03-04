@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobDetails, editJobPostDetails } from "../../../../../services/operations/jobPostAPI";
 import { useForm, useWatch } from "react-hook-form";
 import { getActiveServices } from "../../../../../services/operations/serviceDetailsAPI";
+import { getActiveSectors } from "../../../../../services/operations/sectorAPI";
 import { Country, State, City }  from 'country-state-city';
 import { useParams } from "react-router-dom"
 import { setJob, setEditJob } from "../../../../../slices/jobPostSlice"
@@ -48,6 +49,7 @@ const EditPostJob = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([]);
+  const [sectors, setSectors] = useState([]);
 
 
 const {
@@ -225,6 +227,24 @@ const selectedLicenses = useWatch({control, name:'selectedLicenses', defaultValu
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const getSectors = async () => {
+      setLoading(true);
+      const sectors = await getActiveSectors();
+      if (sectors.length > 0) {
+        // console.log("categories", categories)
+        setSectors(sectors);
+      }
+      setLoading(false);
+    };
+    
+    getSectors();
+
+      
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 const onSubmit = async (data) => {
     console.log("Form Data - ", data);
     // console.log("token - ", token)
@@ -255,18 +275,25 @@ const onSubmit = async (data) => {
             <label htmlFor="jobTitle" className="lable-style">
               Job Title <sup className="text-pink-200">*</sup>
             </label>
-            <input
-              type="text"
-              name="title"
+            <select
+              {...register("jobTitle")}
               id="jobTitle"
-              placeholder="Enter job title"
-              className="form-style"
-              {...register("jobTitle", { required:true})}
+              className="form-style w-full"
               defaultValue={job?.jobTitle}
-            />
-            {errors.title && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
-                Please enter your job title .
+            >
+              <option value="" disabled>
+                Choose a Title
+              </option>
+              {!loading &&
+                sectors?.map((sector, indx) => (
+                  <option key={indx} value={sector?._id}>
+                    {sector?.sectorName}
+                  </option>
+                ))}
+            </select>
+            {errors.sector && (
+              <span className="ml-2 text-xs tracking-wide text-pink-200">
+                Title is required
               </span>
             )}
           </div>
