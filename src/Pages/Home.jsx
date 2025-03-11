@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ServiceSlider from '../components/common/ServicesSlider'
 import { TopJobPostings } from '../components/core/HomePage/TopJobPostings'
 import JobSearchBar from '../components/core/HomePage/JobSearchBar'
@@ -17,81 +17,81 @@ import { BsTrainFreightFront } from "react-icons/bs";
 import { BsBusFront } from "react-icons/bs";
 import { FaMotorcycle } from "react-icons/fa6";
 import AdsSlider from "../components/core/HomePage/AdsSlider"
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
 
 	const [selectedSectorId, setSelectedSectorId] = useState(null);
 	const [selectedServiceId, setSelectedServiceId] = useState(null);
-	const countUpRef = React.useRef(null);
+	const navigate = useNavigate();
 
-	const [jobData, setJobData] = useState([]);
+	const [rightImage, setRightImage] = useState(Vs);
+
+	useEffect(() => {
+		const handleRightImage = async () => {
+			// TODO: Get the right image from the database
+		}
+		handleRightImage();
+	}, []);
 
 
-	const isDesktopOrLaptop = useMediaQuery({
-		query: '(min-width: 1024px)'
-	})
-	const isTablet = useMediaQuery({
-		query: '(max-width: 768px)'
-	})
-	const isMobile = useMediaQuery({
-		query: '(max-width: 425px)'
-	})
 
 
 	return (
 		<div className='bg-[#f5f5f5] w-full '>
-
 			{/* Section 1 */}
-			<div className='mt-24 w-full mx-auto flex lg:flex-row sm:flex-col px-8'>
-				{/* <div className="  flex justify-center items-center gap-2 " > */}
-
-				<div className='w-full flex  flex-col py-2 px-2'>
-					{/* heading */}
-					<div className="flex gap-y-0.5 mb-4 justify-between items-center">
-						<div className='flex-1 flex flex-col gap-x-1 px-4'>
-							<div className='flex flex-col mt-8'>
-								<h1 className='font-rubik-semibold text-3xl '>Discover  Driving Opportunities</h1>
-								<p className='text-xl'><span className='font-rubik-semibold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
+			<div className='mt-32 w-full mx-auto px-4 lg:px-8'>
+				<div className='w-full flex flex-col lg:flex-row gap-8'>
+					{/* Left Content */}
+					<div className='flex-1'>
+						<div className='flex flex-col gap-6 lg:px-4'>
+							<div className='flex flex-col gap-2'>
+								<h1 className='font-rubik-semibold text-2xl md:text-3xl'>Discover Driving Opportunities</h1>
+								<p className='text-lg md:text-xl'>
+									<span className='font-rubik-semibold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span>
+								</p>
 							</div>
+
 							<JobSearchBar />
-							<div className='flex flex-col mt-8 gap-y-8'>
-								<div className='flex flex-col  '>
+
+							<div className='flex flex-col gap-8'>
+								<div className='flex flex-col gap-3'>
 									<p className='text-base capitalize font-rubik-normal text-[#878787]'>
 										TOP JOB POSTINGS
 									</p>
 									<TopJobPostings />
 								</div>
 
-								{/* <div className='w-[50%] border-[1px] border-black absolute'></div> */}
-								<div className='flex flex-col  '>
-									<p className='text-md capitalize font-rubik-normal text-gray-500'>
+								<div className='flex flex-col gap-3'>
+									<p className='text-base capitalize font-rubik-normal text-gray-500'>
 										Top Job Locations
 									</p>
 									<TopLocations />
 								</div>
 							</div>
 						</div>
-						<div className='lg:flex hidden h-full justify-center items-start  '>
-							<img
-								src={Vs}
-								alt='hero_Section_img'
-								className="w-[375px] h-full  rounded-lg object-cover "
-							/>
-						</div>
+					</div>
+
+					{/* Right Image */}
+					<div className='hidden lg:flex items-start'>
+						<img
+							src={rightImage}
+							alt='hero_Section_img'
+							className="w-[375px] rounded-lg object-cover"
+						/>
 					</div>
 				</div>
-				{/* </div> */}
 			</div>
 
 
 			{/* Section 2 */}
-			<div className=" w-full   py-8">
+			<div className=" w-full py-8 ">
 				<ServiceSlider />
 			</div>
 
 
-			<div className='w-full grid lg:grid-cols-4 lg:grid-rows-1 grid-rows-4 gap-3 py-4 px-6 '>
+			<div className='w-full grid lg:grid-cols-4 lg:grid-rows-1 grid-rows-4 gap-3 py-4 px-2 lg:px-6 '>
 
 				<div className='flex flex-col border border-purple-700 justify-center items-center bg-white gap-2.5 p-6'>
 					<MdGroups className='size-20 text-purple-700' />
@@ -164,12 +164,12 @@ const Home = () => {
 			<div className=" w-full mx-auto  ">
 				<AdsSlider />
 			</div>
-			<div className="w-full px-6">
+			<div className="w-full ">
 				<JobSidebar />
 			</div>
 
 
-			<div className=" p-4">
+			<div className="p-4">
 				<JobDropdown
 					fetchData={getJobsByProvince}
 					title="Job Postings by Province"

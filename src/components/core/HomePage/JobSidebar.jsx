@@ -11,6 +11,8 @@ import {
   getRecentlyPublishedJobs
 } from '../../../services/operations/jobPostAPI';
 
+import { JobCard , JobWrapper} from './JobCard';
+
 
 const jobCategoryData = [
   { name: 'Full Time Jobs', slug: 'FullTimeJobs', active: true, fn: getFullTimeJobs, data: [] },
@@ -19,62 +21,6 @@ const jobCategoryData = [
   { name: 'International Jobs', slug: 'InternationalJobs', active: false, fn: getInternationalJobs, data: [] },
 ];
 
-const JobCard = ({ data, name }) => {
-
-  return (
-    <div className="flex flex-col  w-full mt-4 lg:hidden">
-      <h1 className="text-2xl text-center font-semibold mt-2">{name}</h1>
-      <div className="flex lg:flex-1 w-full flex-col lg:h-[450px] h-auto lg:ml-8 ml-0 py-2 lg:px-4 bg-white mt-4">
-        <div className="w-full flex justify-end items-center py-2 px-4">
-          <button className="text-lg text-purple-700 font-rubik-semibold">All jobs</button>
-        </div>
-        <div className="w-auto grid gap-4 py-4 ">
-          {data.length !== 0 ? (
-            data.map((data, index) => {
-              return (
-                <div key={index} className='flex flex-1 px-6 py-0.5 gap-x-2.5 justify-start items-start bg-white  border-purple-700 cursor-pointer'>
-                  <div className='flex-1 flex flex-col justify-start items-start py-1 '>
-                    <div className='w-full flex justify-between items-start'>
-                      <div className='hidden w-[100px] h-[100px] sm:flex flex-col gap-y-2 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg'>
-                        <img
-                          src={data?.companyImage}
-                          className='w-full h-full rounded-lg   object-cover'
-                        />
-                      </div>
-                      <div className='flex flex-col justify-start items-start'>
-                        <span className='text-lg font-rubik-semibold truncate'>{data.jobTitle}</span>
-                        <span className='text-sm mt-1 font-rubik-semibold truncate '>{data.companyName}</span>
-                        <span className='text-[12px] mt-2 font-rubik-light text-[#808080]  truncate'>{data?.jobDescription}</span>
-                      </div>
-                    </div>
-                    <div className='w-full flex justify-between items-center mt-4 '>
-                      <div className='flex gap-x-1.5 '>
-                        <span className='bg-[#f5f5f5] px-2 py-1 rounded-lg text-[12px] font-normal'>
-                          Vacancies: {data?.numberOfVacancy}
-                        </span>
-                        <div className='bg-black h-full w-[1px]' />
-                        <span className='bg-[#f5f5f5]  px-2 py-1 rounded-lg text-[12px] font-normal'>
-                          Location: {data?.jobLocation}
-                        </span>
-                      </div>
-                      <span
-
-                        className='text-sm w-[70px] font-rubik-semibold truncate text-purple-700  rounded-lg '>
-                        {data?.jobType}
-                      </span>
-                    </div>
-                  </div>
-                </div >
-              );
-            })
-          ) : (
-            <p className="text-center text-gray-500">No job data available</p>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-};
 
 const JobSidebar = () => {
 
@@ -114,8 +60,10 @@ const JobSidebar = () => {
   }
 
   return (
-    <div className='w-full flex flex-col py-8 px-2'>
-      <div className="lg:flex flex-row  w-full hidden">
+    <div className='w-full flex flex-col py-8 '>
+
+      {/* Desktop */}
+      <div className="lg:flex flex-row  w-full hidden gap-x-1 lg:gap-y-3 px-4">
         <div className='jobCategory gap-x-1 lg:gap-y-2.5 items-start'>
           {jobCategory.map((category) => (
             <button
@@ -132,75 +80,45 @@ const JobSidebar = () => {
             </button>
           ))}
         </div>
-        <div className='flex lg:flex-1 w-full flex-col lg:h-[450px] h-auto lg:ml-8 ml-0 py-2 lg:px-4 bg-white'>
-          <div className='w-full flex justify-end items-center py-2 px-4'>
-            <button className='text-lg text-purple-700 font-rubik-semibold'>
-              All jobs
-            </button>
-          </div>
-          <div className='w-full flex  h-[450px]'>
+        <div className='lg:flex lg:justify-start lg:items-start hidden bg-white w-full overflow-hidden '>
+          <div className='w-full flex flex-wrap border h-[450px]'>
             {jobCategory.map((category) => {
               if (category.active === false) return;
               return (
-                <div key={category.slug} className='w-full grid grid-cols-3 grid-rows-2 gap-y-4'>
-                  {category.data.map((data, index) => (
-                    <div key={index} className='flex flex-1 px-2 py-0.5 gap-x-2.5 justify-start items-start bg-white  border-purple-700 cursor-pointer'>
-                      <div className='flex-1 flex flex-col justify-start items-start py-1 '>
-                        <div className='w-full flex justify-between items-start'>
-                          <div className='flex flex-col justify-start items-start'>
-                            <span className='text-lg font-rubik-semibold truncate'>{data.jobTitle}</span>
-                            <span className='text-sm mt-1 font-rubik-semibold truncate '>{data.companyName}</span>
-                            <span className='text-[12px] mt-2 font-rubik-light text-[#808080]  truncate'>{data?.jobDescription}</span>
-                          </div>
-                          <div className='w-[50px] h-[50px] flex flex-col gap-y-2 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg'>
-                            <img
-                              src={data?.companyImage}
-                              className='w-full h-full rounded-lg   object-cover'
-                            />
-                          </div>
-                        </div>
-                        <div className='w-full flex justify-between items-center mt-2 '>
-                          <div className='flex gap-x-1.5 '>
-                            <span className='bg-[#f5f5f5] px-2 py-1 rounded-lg text-[12px] font-normal'>
-                              Vacancies: {data?.numberOfVacancy}
-                            </span>
-                            <div className='bg-black h-full w-[1px]' />
-                            <span className='bg-[#f5f5f5]  px-2 py-1 rounded-lg text-[12px] font-normal'>
-                              Location: {data?.jobLocation}
-                            </span>
-                          </div>
-                          <span
-
-                            className='text-sm w-[70px] font-rubik-semibold truncate text-purple-700  rounded-lg '>
-                            {data?.jobType}
-                          </span>
-                        </div>
-                      </div>
-                    </div >
-                  ))}
-                </div>
+                <JobWrapper
+                  key={category.slug}
+                  data={category.data}
+                  type='Desktop'
+                />
               )
             })}
           </div>
         </div>
       </div>
+      {/* Mobile, Tablet */}
+      <div className='flex flex-col gap-y-4 w-full lg:hidden'>
 
-      <JobCard
-        data={jobCategory[0].data}
-        name={jobCategory[0].name}
-      />
-      <JobCard
-        data={jobCategory[1].data}
-        name={jobCategory[1].name}
-      />
-      <JobCard
-        data={jobCategory[2].data}
-        name={jobCategory[2].name}
-      />
-      <JobCard
-        data={jobCategory[3].data}
-        name={jobCategory[3].name}
-      />
+        <JobWrapper
+          data={jobCategory[0].data}
+          name={jobCategory[0].name}
+          type='Mobile'
+        />
+        <JobWrapper
+          data={jobCategory[1].data}
+          name={jobCategory[1].name}
+          type='Mobile'
+        />
+        <JobWrapper
+          data={jobCategory[2].data}
+          name={jobCategory[2].name}
+          type='Mobile'
+        />
+        <JobWrapper
+          data={jobCategory[3].data}
+          name={jobCategory[3].name}
+          type='Mobile'
+        />
+      </div>
     </div>
   );
 };

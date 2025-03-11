@@ -56,6 +56,8 @@ import MyAds from './components/core/Dashboard/PostAds/MyAds'
 import AdDetails from "./components/core/Dashboard/PostAds/AdDetails"
 import AllAds from "./components/core/Dashboard/AllAdsForAdmin/AllAds"
 import CompanyPackages from "./components/core/Dashboard/Packages/PackagesForCompany"
+import { Search } from './Pages/SearchForJobs/Search';
+
 function App(){
 
   const { user } = useSelector((state) => state.profile)
@@ -80,6 +82,7 @@ function App(){
             <Route exact path='/signup' element= {<OpenRoute><SignupForm/></OpenRoute>} />
             <Route exact path='/packages' element= {<AdPackages/>} />
             <Route exact path='/payment/:packageId' element= {<PaymentPage/>} />
+            <Route exact path='/search' element= {<Search/>} />
             <Route
               path="verify-email"
               element={

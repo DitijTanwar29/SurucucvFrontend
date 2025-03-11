@@ -1,7 +1,7 @@
-export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
+// export const BASE_URL = "https://surucucvbackend.onrender.com/api/v1";
 
 // export const BASE_URL = process.env.REACT_APP_BASE_URL
-// export const BASE_URL = import.meta.env.VITE_BASE_URL;
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // export const BASE_URL = "http://147.79.101.184:1200/api/v1"
 
@@ -51,7 +51,6 @@ export const settingsEndpoints = {
     DELETE_COMPANY_PROFILE_API: BASE_URL + "/companyProfile/deleteAccount",
 }
 
-
 // PACKAGES ENDPOINTS
 export const packageEndpoints = {
     PACKAGE_DETAILS_API : BASE_URL + "/package/getPackageDetails",
@@ -68,7 +67,6 @@ export const packageEndpoints = {
 
 }
 
-
 // SERVICES ENDPOINTS
 export const serviceEndpoints = {
     SERVICE_DETAILS_API : BASE_URL + "/service/getServiceDetails",
@@ -79,6 +77,7 @@ export const serviceEndpoints = {
     UPDATE_SERVICE_STATUS_API: BASE_URL + "/service/updateServiceStatus",
     ACTIVE_SERVICES_API: BASE_URL + "/service/getActiveServices",
 }
+
 //SECTOR ENDPOINTS
 export const sectorEndpoints = {
     CREATE_SECTOR_API : BASE_URL + "/sector/createSector",
@@ -116,6 +115,7 @@ export const jobEndpoints = {
     GET_JOBS_BY_SECTOR : BASE_URL + "/job/by-sector",
     
 }
+
 export const adsEndpoints = {
     CREATE_AD_API : BASE_URL + "/advertisement/createAdvertisement",
     GET_ALL_ADS : BASE_URL + "/advertisement/showAllAds",
@@ -126,8 +126,15 @@ export const adsEndpoints = {
     ACTIVE_ADS_API: BASE_URL + "/advertisement/getActiveAds",
     
 }
+
 export const resumeEndpoints = {
     CREATE_RESUME_API : BASE_URL + "/resume/createResume",
     GET_RESUME_DETAILS_API : BASE_URL + "/resume/getResumeDetails",
     UPDATE_RESUME_API : BASE_URL + "/resume/editResume"
 }
+
+export const filterEndpoints = {
+    GET_FILTERS_API : BASE_URL + "/filters",
+    GET_FILTERS_JOB_API : BASE_URL + "/filters/job"
+}
+

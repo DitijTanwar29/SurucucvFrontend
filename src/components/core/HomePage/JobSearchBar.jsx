@@ -34,8 +34,8 @@ const JobSearchBar = () => {
   };
 
   return (
-    <div className='flex flex-col h-20 mt-4 ' >
-      <div className='flex gap-x-12 '>
+    <div className='flex flex-col h-auto min-h-[5rem]  w-full '>
+      <div className='flex flex-col md:flex-row lg:flex-row gap-4 sm:gap-x-12 w-full'>
         <input
           type="text"
           value={searchTerm}
@@ -43,40 +43,38 @@ const JobSearchBar = () => {
           onFocus={() => setShowServices(true)}
           onBlur={() => setShowServices(false)}
           placeholder="Search for job titles..."
-          onClick={() => setOpen(true)}
-          className="flex flex-1  max-w-[500px] h-14 bg-white-100 rounded-full p-3 outline-none border-none focus-visible:ring-1 ring-[#000]"
+          onClick={() => navigate('/search')}
+          className="w-full sm:max-w-[500px] h-14 bg-white-100 rounded-full p-3 outline-none border-none focus-visible:ring-1 ring-[#000]"
         />
         <button 
-        onClick={handleSearch}
-          className='px-10  text-md rounded-md bg-purple-800 text-white font-rubik-semibold'
+          onClick={handleSearch}
+          className='w-full sm:max-w-[500px] px-10 py-3 text-md rounded-md bg-purple-800 text-white font-rubik-semibold'
         >
           Search
         </button>
       </div>
 
       {showServices && (
-        <ul className='w-full m-0 p-0 bg-white rounded-md z-10 '
-          ref={ref}>
+        <ul className='w-full m-0 p-0 bg-white rounded-md z-10 mt-2' ref={ref}>
           {jobs.map((job, index) => (
-            <li className='w-full p-2 mx-auto rounded-md hover:cursor-pointer bg-richblack-100 text-black hover:bg-black'
-              key={index}>
+            <li 
+              className='w-full p-3 mx-auto rounded-md hover:cursor-pointer bg-richblack-100 text-black hover:bg-black hover:text-white transition-colors'
+              key={index}
+            >
               <Link
                 key={job._id}
                 onClick={() => setOpen(false)}
                 to={`/job/${job._id}`}
-
+                className='block w-full'
               >
-                <div className='text-orange-500 '>
-
+                <div className='text-orange-500'>
                   {job.jobTitle}
                 </div>
               </Link>
-
             </li>
           ))}
         </ul>
       )}
-
     </div>
   );
 };
