@@ -3,8 +3,9 @@ import { searchJobs } from "../../../services/operations/jobPostAPI";
 import { useNavigate, Link } from 'react-router-dom';
 import useOnClickOutside from "../../../hook/useOnClickOutside"
 import toast from 'react-hot-toast';
-
+import { useTranslation } from "react-i18next";
 const JobSearchBar = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('');
   const [jobs, setJobs] = useState([]);
@@ -42,7 +43,7 @@ const JobSearchBar = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setShowServices(true)}
           onBlur={() => setShowServices(false)}
-          placeholder="Search for job titles..."
+          placeholder={t("searchForJobTitles")}
           onClick={() => setOpen(true)}
           className="flex flex-1  max-w-[500px] h-14 bg-white-100 rounded-full p-3 outline-none border-none focus-visible:ring-1 ring-[#000]"
         />
@@ -50,7 +51,7 @@ const JobSearchBar = () => {
         onClick={handleSearch}
           className='px-10  text-md rounded-md bg-purple-800 text-white font-rubik-semibold'
         >
-          Search
+          {t("search")}
         </button>
       </div>
 

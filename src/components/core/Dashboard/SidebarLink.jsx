@@ -14,9 +14,9 @@ export default function SidebarLink({ link, iconName }) {
   return (
     <NavLink
       to={link.path}
-      className={`relative no-underline px-8 py-2 text-sm font-medium ${
+      className={`relative no-underline px-8 py-2 text-sm font-medium hover:font-bold hover:transition-transform hover:scale-105 ${
         matchRoute(link.path)
-          ? "bg-white/20 text-purple-700 hover:text-white border-2 border-black"
+          ? "bg-white/20 text-purple-400 hover:text-purple-500 border-2 border-black"
           : "bg-opacity-0 text-white"
       } transition-all duration-75`}
     >

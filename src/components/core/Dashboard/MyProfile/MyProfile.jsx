@@ -3,7 +3,7 @@ import React from "react";
 // import Header from "../MainPage/Header";
 // import Sidebar from "../MainPage/SideBar";
 import { RiEditBoxLine } from "react-icons/ri"
-
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux"
 // import ImageUpload from "./ImageUpload";
 // import ProfileSettingsForm from "./ProfileSettings";
@@ -16,6 +16,7 @@ import IconBtn from "../../../common/IconBtn"
 
 
 const MyProfile = () => {
+  const { t } = useTranslation()
   // const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const { user } = useSelector((state) => state.profile)
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ const MyProfile = () => {
      
 
       <h1 className="mb-14 text-3xl font-medium text-black lg:mt-14 text-center">
-        My Profile
+        {t("myProfile")}
       </h1>
       <div className="flex items-center justify-between rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
         <div className="flex items-center gap-x-4">
@@ -64,7 +65,7 @@ const MyProfile = () => {
           </div>
         </div>
         <IconBtn
-          text="Edit"
+          text={t("edit")}
           onclick={() => {
             navigate("/dashboard/settings")
           }}
@@ -80,7 +81,7 @@ const MyProfile = () => {
               Personal Details
             </p>
             <IconBtn
-              text="Edit"
+              text={t("edit")}
               onclick={() => {
                 navigate("/dashboard/settings")
               }}

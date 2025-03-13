@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import LanguageSwitcher from "../components/common/LanguageSwitcher";
 import ServiceSlider from '../components/common/ServicesSlider'
 import { TopJobPostings } from '../components/core/HomePage/TopJobPostings'
 import JobSearchBar from '../components/core/HomePage/JobSearchBar'
@@ -18,8 +19,10 @@ import { BsBusFront } from "react-icons/bs";
 import { FaMotorcycle } from "react-icons/fa6";
 import AdsSlider from "../components/core/HomePage/AdsSlider"
 import HeroImageComponent from '../components/core/Dashboard/UpdateHeroImage/HeroImageComponent'
+import { useTranslation } from "react-i18next";
 const Home = () => {
-
+	
+	const { t } = useTranslation();
 	const [selectedSectorId, setSelectedSectorId] = useState(null);
 	const [selectedServiceId, setSelectedServiceId] = useState(null);
 	const countUpRef = React.useRef(null);
@@ -50,8 +53,8 @@ const Home = () => {
 					<div className="flex gap-y-0.5 mb-4 justify-between items-center">
 						<div className='flex-1 flex flex-col gap-x-1 px-4'>
 							<div className='flex flex-col mt-8'>
-								<h1 className='font-rubik-semibold text-3xl '>Discover  Driving Opportunities</h1>
-								<p className='text-xl'><span className='font-rubik-semibold'>643,89</span> job postings, from <span className='font-bold'>tons of companies</span></p>
+								<h1 className='font-rubik-semibold text-3xl '>{t("discover")}</h1>
+								<p className='text-xl'><span className='font-rubik-semibold'>643,89</span>{t("jobPostingsFrom")}<span className='font-bold'>{t("tonsOfCompanies")}</span></p>
 							</div>
 							<JobSearchBar />
 							<div className='flex flex-col mt-8 gap-y-8'>
@@ -69,6 +72,9 @@ const Home = () => {
 									</p>
 									<TopLocations />
 								</div>
+
+							<LanguageSwitcher />
+								
 							</div>
 						</div>
 						<div className='lg:flex hidden h-full justify-center items-start  '>

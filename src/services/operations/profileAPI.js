@@ -149,25 +149,53 @@ export const unenrollCompanyFromPackage = async ({companyId, packageId}) => {
   return result
 }
 
-export const uploadHeroImage = async (formData, token) => {
-  return await apiConnector("POST", UPDATE_HERO_SECTION_IMAGE_API, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-    Authorization: `Bearer ${token}`,
-  });
-};
+// export const uploadHeroImage = async (formData, token) => {
+//   return await apiConnector("POST", UPDATE_HERO_SECTION_IMAGE_API, formData, {
+//     headers: { "Content-Type": "multipart/form-data" },
+//     Authorization: `Bearer ${token}`,
+//   });
+// };
+
+// export const getHeroImage = async () => {
+//   try {
+//     console.log("Fetching hero image...");
+//     const response = await apiConnector("GET", GET_HERO_SECTION_IMAGE_API);
+
+//     if (response && response.data && response.data.success) {
+//       console.log("Hero image fetched successfully:", response.data.imageUrl);
+//       return response.data.imageUrl;
+//     } 
+//   } catch (error) {
+//     console.error("Error fetching hero image:", error.message);
+//     toast.error("Failed to load hero image.");
+//     return null;
+//   }
+// };
+
 
 export const getHeroImage = async () => {
   try {
-    console.log("Fetching hero image...");
     const response = await apiConnector("GET", GET_HERO_SECTION_IMAGE_API);
-
-    if (response && response.data && response.data.success) {
-      console.log("Hero image fetched successfully:", response.data.imageUrl);
-      return response.data.imageUrl;
-    } 
+    return response.data;
   } catch (error) {
-    console.error("Error fetching hero image:", error.message);
-    toast.error("Failed to load hero image.");
-    return null;
+    console.error("Failed to fetch hero image:", error.message);
+    return { success: false, imageUrl: null };
+  }
+};
+
+// Upload Hero Image to Backend
+export const uploadHeroImage = async (formData, token) => {
+  try {
+    const response = await apiConnector("POST", UPDATE_HERO_SECTION_IMAGE_API, formData,{
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    });
+    // console.log("response : ",response)
+    // console.log("response.data : ",response.data)
+    // console.log("response.data.imageUrl : ",response.data.imageUrl)
+    return response;
+  } catch (error) {
+    console.error("Failed to upload hero image:", error.message);
+    return { success: false };
   }
 };

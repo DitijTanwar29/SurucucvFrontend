@@ -58,7 +58,7 @@ export default function EditCompanyProfile() {
 
             <div className="flex flex-col gap-2 lg:w-[33%]">
               <label htmlFor="companyTitle" className="lable-style">
-                Company Title
+              {t("companyTitle")}
               </label>
               <input
                 type="text"
