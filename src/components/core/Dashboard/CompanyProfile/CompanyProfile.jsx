@@ -2,7 +2,6 @@ import React from "react";
 // import Header from "../MainPage/Header";
 // import Sidebar from "../MainPage/SideBar";
 import { RiEditBoxLine } from "react-icons/ri"
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux"
 // import ImageUpload from "./ImageUpload";
 // import ProfileSettingsForm from "./ProfileSettings";
@@ -15,7 +14,7 @@ import IconBtn from "../../../common/IconBtn"
 
 
 const CompanyProfile = () => {
-  const { t } = useTranslation();
+
   // const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const { user } = useSelector((state) => state.profile)
   console.log("user from company profile slice", user);
@@ -30,7 +29,7 @@ const CompanyProfile = () => {
     <>
      
       <h1 className="mb-14 lg:mt-14 text-3xl font-medium text-black text-center">
-        {t("myProfile")}
+        My Profile
       </h1>
       
       {/* Image Section */}
@@ -49,7 +48,7 @@ const CompanyProfile = () => {
           </div>
         </div>
         <IconBtn
-          text={t("edit")}
+          text="Edit"
           onclick={() => {
             navigate("/dashboard/settings")
           }}
@@ -63,10 +62,10 @@ const CompanyProfile = () => {
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold">
-              {t("companyDetails")}
+              Company Details
             </p>
             <IconBtn
-              text={t("edit")}
+              text="Edit"
               onclick={() => {
                 navigate("/dashboard/settings")
               }}
@@ -79,7 +78,7 @@ const CompanyProfile = () => {
             <div className="flex flex-col gap-y-5">
 
               <div>
-                <p className="mb-2 text-md text-richblack-700 font-semibold">{t("companyTitle")}</p>
+                <p className="mb-2 text-md text-richblack-700 font-semibold">Company Title</p>
                 <p className="text-sm font-medium text-purple-700 font-rubik-medium">
                   {user?.companyDetails?.companyTitle  ?? "Add Company Title"}
                 </p>
@@ -134,7 +133,7 @@ const CompanyProfile = () => {
               Personal Details
             </p>
             <IconBtn
-              text={t("edit")}
+              text="Edit"
               onclick={() => {
                 navigate("/dashboard/settings")
               }}

@@ -3,7 +3,6 @@ import React from "react";
 // import Header from "../MainPage/Header";
 // import Sidebar from "../MainPage/SideBar";
 import { RiEditBoxLine } from "react-icons/ri"
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux"
 // import ImageUpload from "./ImageUpload";
 // import ProfileSettingsForm from "./ProfileSettings";
@@ -15,7 +14,6 @@ import IconBtn from "../../../common/IconBtn"
 import MyCv from "../MyCv/MyCv"
 
 const CandidateProfile = () => {
-  const { t } = useTranslation()
   // const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const { user } = useSelector((state) => state.profile)
   console.log("user from candidate profile slice", user);
@@ -30,7 +28,7 @@ const CandidateProfile = () => {
   return (
     <>     
       <h1 className="mb-14 lg:mt-14 text-3xl font-medium text-black text-center">
-        {t("myProfile")}
+        My Profile
       </h1>
       
       
@@ -50,7 +48,7 @@ const CandidateProfile = () => {
           </div>
         </div>
         <IconBtn 
-          text={t("edit")}
+          text="Edit"
           onclick={() => {
             navigate("/dashboard/settings")
           }}
@@ -136,7 +134,7 @@ const CandidateProfile = () => {
               Personal Details
             </p>
             <IconBtn
-              text={t("edit")}
+              text="Edit"
               onclick={() => {
                 navigate("/dashboard/settings")
               }}

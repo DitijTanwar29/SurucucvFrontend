@@ -48,7 +48,7 @@ function ServicesSlider() {
 
 
     return (
-        <div className='flex justify-center items-center px-4'>
+        <div className='flex lg:px-4 px-0'>
             {
                 services?.length !== 0 ? (
                     <Swiper
@@ -60,30 +60,34 @@ function ServicesSlider() {
                             delay: 2500,
                             disableOnInteraction: false,
                         }}
-                        // pagination={{
-                        // clickable: true,
-                        // }}
-                        // navigation={true}
+                        breakpoints={{
+                            640: {  // sm breakpoint
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {  // md breakpoint
+                                slidesPerView: 2,
+                                spaceBetween: 30,
+                            },
+                            1024: { // lg breakpoint
+                                slidesPerView: 1,
+                                spaceBetween: 40,
+                            },
+                        }}
                         modules={[Autoplay]}
-                        className="mySwiper w-10/12 border"
-                    // autoplay={{
-                    //     delay: 2500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    // modules={[FreeMode, Pagination, Autoplay]}
+                        className="mySwiper w-full md:w-11/12 lg:w-10/12 "
                     >
                         {data?.map((service) => (
                             <SwiperSlide key={service._id}>
                                 <div
                                     onClick={() => handleChange(service._id)}
-                                    className="flex justify-between items-center w-full h-[201px] bg-purple-700 hover:cursor-grab"
+                                    className="flex flex-col sm:flex-row justify-between items-center w-full h-full sm:h-[201px] bg-purple-700 hover:cursor-grab border"
                                 >
-                                    <div className="flex flex-1 flex-col justify-center items-center lg:gap-y-1">
-                                        <h2 className="font-semibold text-richblack-5 sm:text-[14px] lg:text-[30px] text-center leading-tight ">{service.serviceName}</h2>
-                                        {/* <h2 className="text-[12px] sm:text-[16px] lg:text-[30px] font-medium text-black">
-                                            {service?.serviceName}
-                                        </h2> */}
-                                        <p className="font-medium text-richblack-25 leading-relaxed sm:text-[11px] lg:text-[20px] lg:text-center">
+                                    <div className="flex flex-1 flex-col justify-center items-center lg:gap-y-1 p-4 sm:p-6">
+                                        <h2 className="font-semibold text-richblack-5 text-[16px] sm:text-[20px] lg:text-[30px] text-center leading-tight">
+                                            {service.serviceName}
+                                        </h2>
+                                        <p className="font-medium text-richblack-25 leading-relaxed text-[12px] sm:text-[14px] lg:text-[20px] text-center">
                                             {service?.serviceDescription.split(" ").length > truncateWords
                                                 ? service?.serviceDescription
                                                     .split(" ")
@@ -92,27 +96,21 @@ function ServicesSlider() {
                                                 : service?.serviceDescription}
                                         </p>
                                     </div>
-                                    <div className=" w-5/12 h-full ">
+                                    <div className="w-full sm:w-5/12 h-[200px] sm:h-full">
                                         <img
                                             src={service?.icon}
                                             alt={service?.serviceName}
-                                            className="w-full h-full object-cover "
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
-
                                 </div>
                             </SwiperSlide>
                         ))}
-
-
-
                     </Swiper>
                 ) : (
                     <p>No Services Found</p>
                 )
             }
-
-            {/* </div> */}
         </div>
     );
 }

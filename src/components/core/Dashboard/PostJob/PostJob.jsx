@@ -85,82 +85,79 @@ const PostJob = () => {
   
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-  
     const handleLicenseCheckboxChange = (e) => {  
       const { id, checked } = e.target;
-  
       let newSelectedLicenses = [...selectedLicenses];
   
       const updateSelection = (add, remove = []) => {
-        add.forEach((item) => {
-          if (!newSelectedLicenses.includes(item)) newSelectedLicenses.push(item);
-        });
-        remove.forEach((item) => {
-          newSelectedLicenses = newSelectedLicenses.filter((license) => license !== item);
-        });
+          add.forEach((item) => {
+              if (!newSelectedLicenses.includes(item)) newSelectedLicenses.push(item);
+          });
+          remove.forEach((item) => {
+              newSelectedLicenses = newSelectedLicenses.filter((license) => license !== item);
+          });
       };
   
       switch (id) {
-        // case 'DE':
-        //   updateSelection(
-        //     checked ? licenseCategories.filter((category) => category.id !== 'A').map((category) => category.id) : [],
-        //     checked ? [] : ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G']
-        //   );
-        //   break;
-        case 'A':
-          updateSelection(
-            checked ? ['A', 'A1','A2'] : [],
-            checked ? [] : ['A','A1','A2']
-          );
-          break;
-        case 'C':
-          updateSelection(
-            checked ? ['M', 'B', 'B1', 'C1', 'F','C','A1'] : [],
-            checked ? [] : ['M', 'B', 'B1', 'C1', 'F','C','A1']
-          );
-          break;
-        case 'B':
-          updateSelection(
-            checked ? ['M', 'B1', 'F','B','A1'] : [],
-            checked ? [] : ['M', 'B1', 'F','B','A1']
-          );
-          break;
-        case 'D1':
-          updateSelection(
-            checked ? ['M', 'B', 'B1', 'F','D1','A1'] : [],
-            checked ? [] : ['M', 'B', 'B1', 'F','D1','A1']
-          );
-          break;
-        case 'D':
-          updateSelection(
-            checked ? ['M', 'B', 'B1', 'D1', 'F','D','A1'] : [],
-            checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D','A1']
-          );
-          break;
-        case 'D1E':
-          updateSelection(
-            checked ? ['M', 'B', 'B1', 'D1', 'F','D1E','A1'] : [],
-            checked ? [] : ['M', 'B', 'B1', 'D1', 'F','D1E','A1']
-          );
-          break;
-        case 'CE':
-          updateSelection(
-            checked ? ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1'] : [],
-            checked ? [] : ['M', 'B', 'B1', 'C', 'C1', 'F','CE','A1']
-          );
-          break;
-        default:
-          if (checked) {
-            newSelectedLicenses.push(id);
-          } else {
-            newSelectedLicenses = newSelectedLicenses.filter((license) => license !== id);
-          }
-          break;
+          case 'A':
+              updateSelection(
+                  checked ? ['A', 'A1', 'A2'] : [],
+                  checked ? [] : ['A', 'A1', 'A2']
+              );
+              break;
+          case 'C':
+              updateSelection(
+                  checked ? ['M', 'B', 'B1', 'C1', 'F', 'C', 'A1'] : [],
+                  checked ? [] : ['M', 'B', 'B1', 'C1', 'F', 'C', 'A1']
+              );
+              break;
+          case 'B':
+              updateSelection(
+                  checked ? ['M', 'B1', 'F', 'B', 'A1'] : [],
+                  checked ? [] : ['M', 'B1', 'F', 'B', 'A1']
+              );
+              break;
+          case 'D1':
+              updateSelection(
+                  checked ? ['M', 'B', 'B1', 'F', 'D1', 'A1'] : [],
+                  checked ? [] : ['M', 'B', 'B1', 'F', 'D1', 'A1']
+              );
+              break;
+          case 'D':
+              updateSelection(
+                  checked ? ['M', 'B', 'B1', 'D1', 'F', 'D', 'A1'] : [],
+                  checked ? [] : ['M', 'B', 'B1', 'D1', 'F', 'D', 'A1']
+              );
+              break;
+          case 'D1E':
+              updateSelection(
+                  checked ? ['M', 'B', 'B1', 'D1', 'F', 'D1E', 'A1'] : [],
+                  checked ? [] : ['M', 'B', 'B1', 'D1', 'F', 'D1E', 'A1']
+              );
+              break;
+          case 'CE':
+              updateSelection(
+                  checked ? ['M', 'B', 'B1', 'C', 'C1', 'F', 'CE', 'A1'] : [],
+                  checked ? [] : ['M', 'B', 'B1', 'C', 'C1', 'F', 'CE', 'A1']
+              );
+              break;
+          case 'DE':
+              updateSelection(
+                  checked ? ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G'] : [],
+                  checked ? [] : ['M', 'B1', 'B', 'C1', 'D', 'D1', 'D1E', 'C1E', 'CE', 'DE', 'F', 'G']
+              );
+              break;
+          default:
+              if (checked) {
+                  newSelectedLicenses.push(id);
+              } else {
+                  newSelectedLicenses = newSelectedLicenses.filter((license) => license !== id);
+              }
+              break;
       }
   
-      // setSelectedLicenses(newSelectedLicenses);
       setValue('selectedLicenses', newSelectedLicenses);
-    };
+  };
   
     const toggleDropdown = () => {
       setDropdownOpen(!dropdownOpen);
@@ -253,6 +250,7 @@ const PostJob = () => {
     const getSectors = async () => {
       setLoading(true);
       const sectors = await getActiveSectors();
+      console.log("sectors : ",sectors)
       if (sectors.length > 0) {
         // console.log("categories", categories)
         setSectors(sectors);
@@ -283,7 +281,7 @@ const PostJob = () => {
 
     try {
       dispatch(
-        addJobPost({...data, licenseType: data.selectedLicenses.join(',')}, token,navigate)
+        addJobPost({...data, licenseType:selectedLicenses }, token,navigate)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
@@ -307,14 +305,14 @@ const PostJob = () => {
         <div className="flex flex-col space-y-2 lg:w-[25%] ">
             <label
               className="lable-style"
-              htmlFor="jobTitle"
+              htmlFor="title"
             >
               Job Title <sup className="text-pink-200">*</sup>
             </label>
             <select
-              {...register("jobTitle", { required: true })}
+              {...register("title", { required: true })}
               defaultValue=""
-              id="jobTitle"
+              id="title"
               className="form-style w-full"
             >
               <option value="" disabled>
@@ -322,7 +320,7 @@ const PostJob = () => {
               </option>
               {!loading &&
                 sectors?.map((sector, indx) => (
-                  <option key={indx} value={sector?._id}>
+                  <option key={indx} value={sector?.sectorName}>
                     {sector?.sectorName}
                   </option>
                 ))}

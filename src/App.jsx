@@ -58,6 +58,7 @@ import AllAds from "./components/core/Dashboard/AllAdsForAdmin/AllAds";
 import CompanyPackages from "./components/core/Dashboard/Packages/PackagesForCompany";
 import PackageDetails from "./components/core/Dashboard/Packages/PackageDetails";
 import UpdateHeroSectionImage from "./components/core/Dashboard/UpdateHeroImage/UpdateHeroSectionImage";
+import { Search } from './Pages/SearchForJobs/Search';
 
 
 function App() {
@@ -68,42 +69,29 @@ function App() {
 
   return (
     // bg-orange-400
-    <div className="w-full h-[100vh] min-h-screen flex flex-col font-inter bg-gradient-to-r from-slate-300 to-slate-500 overflow-x-hidden ">
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/find-job" element={<FindJob />} />
-        <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/about" element={<AboutUs />} />
+         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-gradient-to-r from-slate-300 to-slate-500 overflow-x-hidden '>
+          <NavBar/>
+          <Routes>
 
-        <Route
-          exact
-          path="/login"
-          element={
-            <OpenRoute>
-              <LoginForm />
-            </OpenRoute>
-          }
-        />
-        <Route
-          exact
-          path="/signup"
-          element={
-            <OpenRoute>
-              <SignupForm />
-            </OpenRoute>
-          }
-        />
-        <Route exact path="/packages" element={<AdPackages />} />
-        <Route exact path="/payment/:packageId" element={<PaymentPage />} />
-        <Route
-          path="verify-email"
-          element={
-            <OpenRoute>
-              <VerifyEmail />
-            </OpenRoute>
-          }
-        />
+
+            <Route exact path='/' element= {<Home/>} />
+            <Route exact path='/find-job' element= {<FindJob/>} />
+            <Route exact path='/contact' element= {<Contact/>} />
+            <Route exact path='/about' element= {<AboutUs/>} />
+            
+
+            <Route exact path='/login' element= {<OpenRoute><LoginForm/></OpenRoute>} />
+            <Route exact path='/signup' element= {<OpenRoute><SignupForm/></OpenRoute>} />
+            <Route exact path='/packages' element= {<AdPackages/>} />
+            <Route exact path='/payment/:packageId' element= {<PaymentPage/>} />
+            <Route
+              path="verify-email"
+              element={
+                <OpenRoute>
+                  <VerifyEmail />
+                </OpenRoute>
+              }
+            />
 
         <Route
           path="verify-otp"
@@ -125,6 +113,7 @@ function App() {
           path="/create-cv"
           element={<CreateCv user={user} token={token} />}
         />
+        <Route exact path='/search' element= {<Search/>} />
 
         <Route
           exact
