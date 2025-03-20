@@ -10,14 +10,13 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 const SearchLayout = () => {
   const { user } = useSelector((state) => state.profile)
-    console.log(user)
-    console.log(user.accountType)
+
     // Get user type from auth context or props
     const userType = USER_TYPES.CANDIDATE || user.accountType;
     const navigate = useNavigate();
 
     return (
-        <div className="w-full h-screen mx-auto  lg:px-8 bg-[#f5f5f5]  ">
+        <div className="w-full h-screen mx-auto  lg:px-8 bg-[#f5f5f5] overflow-auto  ">
             <div className="flex flex-col gap-4 mt-20 lg:mt-28 w-full mx-auto  lg:px-8 py-2 relative  ">
                 <SearchTop userType={userType} />
                 <MobileFilter userType={userType} />
