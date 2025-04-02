@@ -9,10 +9,9 @@ import { useSelector } from "react-redux"
 // import SocialForm from "./SocialNetwork";
 // import FooterDash from "../../Footer/FooterDash";
 import { useNavigate } from "react-router-dom"
-
+import NotificationDropdown from "../NotificationDropdown";
 import IconBtn from "../../../common/IconBtn"
 // import { formattedDate } from "../../../../utils/dataFormatter"
-
 
 const MyProfile = () => {
   // const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -44,8 +43,9 @@ const MyProfile = () => {
  
       {/* </div> */}
      
+  <NotificationDropdown/>
 
-      <h1 className="mb-14 text-3xl font-medium text-black lg:mt-14 text-center">
+      <h1 className="mb-14 mt-14 text-3xl font-medium text-black lg:mt-14 text-center">
         My Profile
       </h1>
       <div className="flex items-center justify-between rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">

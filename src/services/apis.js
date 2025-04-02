@@ -138,3 +138,7 @@ export const filterEndpoints = {
     GET_FILTERS_JOB_API : BASE_URL + "/filters/job"
 }
 
+// Notification Endpoints
+export const GET_NOTIFICATIONS = `${BASE_URL}/notification/notifications`;
+export const MARK_NOTIFICATION_READ = (id) => `${BASE_URL}/notification/notifications/${id}/read`;
+export const CLEAR_NOTIFICATIONS = `${BASE_URL}/notification/notifications/clear`;

@@ -17,18 +17,23 @@ const PaymentApprovalPage = () => {
     const fetchCompanies = async () => {
       try {
         const result = await getCompaniesWithRequestedStatus();
+        console.log("result of companies with requested status api : ",result)
         setCompanies(Array.isArray(result) ? result : []);
 
         // Fetch package details for each requestedPackageId
         if (Array.isArray(result)) {
           const packageDetails = {};
           for (const company of result) {
+            console.log("requestd package : ",company.requestedPackage)
             if (company?.requestedPackage) {
               try {
                 const response = await fetchPackageDetails(company.requestedPackage);
+                console.log("detail of requested package : " ,response )
                 if (response?.data?.success) {
                   const packageName = response.data.data[0]?.packageName || "N/A";
+                  console.log(packageName)
                   packageDetails[company.requestedPackage] = packageName;
+                  console.log("package details assigned name : ",packageDetails)
                 }
               } catch (error) {
                 console.error(

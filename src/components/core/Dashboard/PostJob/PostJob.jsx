@@ -204,8 +204,6 @@ const PostJob = () => {
     setValue('isSrc3', checked);
     if (checked) {
       setValue('isSrc4', true);
-      // setValue('isSrc1', false);
-      // setValue('isSrc2', false);
     }
   };
 
@@ -213,82 +211,87 @@ const PostJob = () => {
     const checked = e.target.checked;
     setValue('isSrc4', checked);
     if (checked) {
-      // setValue('isSrc3', false);
-      // setValue('isSrc1', false);
-      // setValue('isSrc2', false);
     }
   };
+  
+      useEffect(() => {
+        if (user?.companyDetails?.paymentStatus === "Approved") {
 
-  useEffect(() => {
-    const getServices = async () => {
-      setLoading(true);
-      const services = await getActiveServices();
-      if (services.length > 0) {
-        // console.log("categories", categories)
-        setServices(services);
-      }
-      setLoading(false);
-    };
-    // if form is in edit mode
-    // if (editCourse) {
-    //   // console.log("data populated", editCourse)
-    //   setValue("courseTitle", course.courseName)
-    //   setValue("courseShortDesc", course.courseDescription)
-    //   setValue("coursePrice", course.price)
-    //   setValue("courseTags", course.tag)
-    //   setValue("courseBenefits", course.whatYouWillLearn)
-    //   setValue("courseCategory", course.category)
-    //   setValue("courseRequirements", course.instructions)
-    //   setValue("courseImage", course.thumbnail)
-    // }
-    getServices();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const getSectors = async () => {
-      setLoading(true);
-      const sectors = await getActiveSectors();
-      console.log("sectors : ",sectors)
-      if (sectors.length > 0) {
-        // console.log("categories", categories)
-        setSectors(sectors);
-      }
-      setLoading(false);
-    };
-    // if form is in edit mode
-    // if (editCourse) {
-    //   // console.log("data populated", editCourse)
-    //   setValue("courseTitle", course.courseName)
-    //   setValue("courseShortDesc", course.courseDescription)
-    //   setValue("coursePrice", course.price)
-    //   setValue("courseTags", course.tag)
-    //   setValue("courseBenefits", course.whatYouWillLearn)
-    //   setValue("courseCategory", course.category)
-    //   setValue("courseRequirements", course.instructions)
-    //   setValue("courseImage", course.thumbnail)
-    // }
-    getSectors();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+          const getServices = async () => {
+            setLoading(true);
+            const services = await getActiveServices();
+            if (services.length > 0) {
+              setServices(services);
+            }
+            setLoading(false);
+          };
+          getServices();
+  
+          const getSectors = async () => {
+            setLoading(true);
+            const sectors = await getActiveSectors();
+            console.log("sectors : ",sectors)
+            if (sectors.length > 0) {
+              setSectors(sectors);
+            }
+            setLoading(false);
+          };
+          getSectors();
+        }
+        }, [user]);
   
 
   const submitJobPostForm = async (data) => {
     console.log("Form Data - ", data);
-    // console.log("token - ", token)
-
     try {
       dispatch(
         addJobPost({...data, licenseType:selectedLicenses }, token,navigate)
       );
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
-      
     }
   };
   return (
+  <>
+    {user?.companyDetails?.paymentStatus === "Requested" ? (
+      <div className="mt-10 flex justify-center">
+  <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-6 py-4 rounded-lg shadow-md max-w-lg w-full relative">
+    <div className="flex items-center space-x-4">
+      <svg
+        className="w-8 h-8 text-yellow-500 animate-spin"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 8v4l3 3m9 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <div className="text-left">
+        <h3 className="text-lg font-bold text-yellow-700">Payment Approval Pending!</h3>
+        <p className="text-sm text-yellow-600 mt-1">
+          Your payment is awaiting admin approval. You cannot create a job post until the payment is approved. Please
+          check back later or{" "}
+          <a href="/contact" className="text-yellow-800 font-semibold hover:underline">
+            contact support
+          </a>{" "}
+          for assistance.
+        </p>
+      </div>
+    </div>
+
+    {/* Optional Progress Indicator */}
+    <div className="mt-4 bg-yellow-200 rounded-full h-2">
+      <div className="bg-yellow-500 h-2 rounded-full animate-pulse w-3/4"></div>
+    </div>
+  </div>
+</div>
+    ) : (
+  
     <form onSubmit={handleSubmit(submitJobPostForm)}>
       {/* jJob Information */}
       <h1 className="mb-14 mt-14 text-3xl text-center font-medium text-black">
@@ -298,7 +301,6 @@ const PostJob = () => {
         <h2 className="text-lg font-semibold text-black">
           Basic Details
         </h2>
-
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
         {/* JOb Title   */}
@@ -381,7 +383,6 @@ const PostJob = () => {
               </span>
             )}
           </div>
-
 
           <div className="flex flex-col gap-2 lg:w-[25%]">
           <label className="lable-style">Contact Person</label>
@@ -509,13 +510,9 @@ const PostJob = () => {
               </span>
             )}
           </div>
-
-
         </div>
-
         {/* ROW 3 */}
         <div className="flex flex-col gap-5 lg:flex-row">
-
           {/*  Location */}
           <div className="flex flex-col gap-2 lg:w-[25%]">
             <label htmlFor="location" className="lable-style">
@@ -528,16 +525,15 @@ const PostJob = () => {
               placeholder="Choose location "
               className="form-style"
               {...register("location", { required: true })}
-              // defaultValue={user?.adminDetails?.post}
 
             >
               <option value="" disabled>
             Choose a Location
           </option>
           {!loading &&
-            State.getStatesOfCountry("TR")?.map((state, indx) => (
-              <option key={indx} value={state?.name}>
-                {state?.name}
+            City.getCitiesOfCountry("TR")?.map((city, indx) => (
+              <option key={indx} value={city?.name}>
+                {city?.name}
               </option>
             ))}
             </select>
@@ -560,8 +556,6 @@ const PostJob = () => {
               placeholder="Select start date"
               className="form-style"
               {...register("startDate", { required: true })}
-              // defaultValue={user?.adminDetails?.post}
-
             />            
             {errors.startDate && (
               <span className="-mt-1 text-[12px] text-yellow-100">
@@ -581,8 +575,6 @@ const PostJob = () => {
               placeholder="Select end date"
               className="form-style"
               {...register("endDate", { required: true })}
-              // defaultValue={user?.adminDetails?.post}
-
             />            
             {errors.endDate && (
               <span className="-mt-1 text-[12px] text-yellow-100">
@@ -590,7 +582,6 @@ const PostJob = () => {
               </span>
             )}
           </div>
-          
           {/* No. Of Vacancies */}
           <div className="flex flex-col gap-2 lg:w-[25%]">
             <label htmlFor="vacancy" className="lable-style">
@@ -612,7 +603,6 @@ const PostJob = () => {
             )}
           </div>
         </div>
-
         {/* ROW 4 */}
         <div className="flex flex-col gap-5 lg:flex-row">
         {/* Description */}
@@ -632,17 +622,12 @@ const PostJob = () => {
           </span>
         )}
       </div>
-
-
         </div>
-
       </div>
-
       <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
         <h2 className="text-lg font-semibold text-black">
             Main Certificates
         </h2>
-
         {/* ROW 1 */}
         <div className="flex flex-col gap-5 lg:flex-row">
             {/* License Type */}
@@ -660,11 +645,7 @@ const PostJob = () => {
                         id={category.id}
                         value={category.value}
                         checked={selectedLicenses.includes(category.id)}
-                        onChange={handleLicenseCheckboxChange}
-                        // name="licenseType"
-                        // {...register({selectedLicenses}, { required: true })}
-                        // checked={watchedValues.licenseType}
-                        // {...register('selectedLicenses')}       
+                        onChange={handleLicenseCheckboxChange}     
 
                       />
                       <label htmlFor={category.id} className="w-full">
@@ -682,9 +663,7 @@ const PostJob = () => {
                 className="lable-style"
               >
                 SRCBox <sup className="text-pink-200">*</sup>
-              </label>
-
-              
+              </label>            
               <div className="flex-col gap-4 space-x-8 text-black">
                 <label htmlFor="isSrc1">
                     SRC 1
@@ -721,8 +700,7 @@ const PostJob = () => {
                       
                       />
                   </label>
-              
-              
+                    
                   <label htmlFor="isSrc4">
                       SRC 4
                       <input
@@ -735,9 +713,7 @@ const PostJob = () => {
                   </label>
               </div>
 
-            </div>
-
-            
+            </div>            
             {/* Code 95 Document */}
             <div className="flex flex-col gap-2 lg:w-[33%] text-black  items-center">
                 <label className="lable-style">
@@ -749,10 +725,7 @@ const PostJob = () => {
                         onChange={(e) => setValue('isCode95Document', e.target.checked)}
                         checked={watchedValues.isCode95Document}
                     />
-            </div>
-
-
-            
+            </div>      
         </div>
         
         {/* ROW 2 */}
@@ -981,6 +954,8 @@ const PostJob = () => {
         <IconBtn type="submit" text="Save" />
       </div>
     </form>
+    )}
+    </>
   );
 };
 

@@ -67,6 +67,8 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
 
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.profile)
+  
   const [loading, setLoading] = useState(false)
   const [confirmationModal, setConfirmationModal] = useState(null)
 
