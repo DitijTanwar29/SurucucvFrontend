@@ -113,7 +113,7 @@ export const jobEndpoints = {
     GET_JOBS_BY_PROVINCE : BASE_URL + "/job/by-province",
     GET_JOBS_BY_JOB_TITLE : BASE_URL + "/job/by-job-title",
     GET_JOBS_BY_SECTOR : BASE_URL + "/job/by-sector",
-    
+    WITHDRAW_APPLICATION_API: BASE_URL + "/job/withdrawJobApplication"
 }
 
 export const adsEndpoints = {

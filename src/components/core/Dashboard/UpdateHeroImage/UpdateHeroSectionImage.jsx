@@ -235,7 +235,7 @@ export default function HeroImageComponent() {
             <img
               src={previewSource}
               alt="Preview"
-              className="h-full w-full rounded-md object-cover"
+              className="h-60 w-full rounded-md object-contain"
             />
             <button
               type="button"
@@ -258,7 +258,7 @@ export default function HeroImageComponent() {
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-gray-800">
               <FiUploadCloud className="text-2xl text-purple-700" />
             </div>
-            <p className="mt-2 max-w-[200px] text-center text-sm text-gray-200">
+            <p className="mt-2 max-w-[200px] text-center text-sm text-gray-600">
               Drag and drop an image, or click to{" "}
               <span className="font-semibold text-purple-700">Browse</span> a file
             </p>

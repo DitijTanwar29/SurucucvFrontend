@@ -17,11 +17,16 @@ export default function AllAdsTable({ ads, setAds }) {
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [confirmationModal, setConfirmationModal] = useState(null);
+  
+  console.log("ads ; ",ads)
+  console.log(ads?.companyTitle)
+  console.log(ads?.company?.companyTitle)
 
   const handleAdDelete = async (adId) => {
     setLoading(true);
     await deleteAd({ adId }, token);
     const result = await fetchAllAds();
+    console.log("result of all ads for admin : ",result)
     if (result) {
       setAds(result);
     }
@@ -67,8 +72,8 @@ export default function AllAdsTable({ ads, setAds }) {
                 key={ad._id}
                 className="flex gap-x-16 justify-between border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
-                <Td className="flex flex-col gap-x-4">
-                  <div className="text-lg font-semibold text-richblack-900">{ad.companyName}</div>
+                <Td className="flex flex-col">
+                  <div className="text-md font-semibold text-richblack-900">{ad?.company?.companyTitle}</div>
                   <div className="flex flex-col justify-between">
                     {ad.status === "Inactive" ? (
                       <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">

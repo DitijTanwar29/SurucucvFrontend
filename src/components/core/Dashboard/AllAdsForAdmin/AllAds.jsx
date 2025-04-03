@@ -16,7 +16,7 @@ export default function AllJobs() {
   useEffect(() => {
     const fetchAds = async () => {
       const result = await fetchAllAds(token)
-      console.log("result : ",result);
+      console.log("result in addads : ",result);
       if (result) {
         setAds(result)
       }

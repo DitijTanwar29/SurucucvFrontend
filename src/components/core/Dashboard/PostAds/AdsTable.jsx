@@ -68,7 +68,7 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
-  
+  console.log("user in company profile ads table page ",user)
   const [loading, setLoading] = useState(false)
   const [confirmationModal, setConfirmationModal] = useState(null)
 
@@ -99,7 +99,18 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
         </Tr>
       </Thead>
       <Tbody>
-        {ads?.length === 0 ? (
+
+      {
+        user?.companyDetails?.paymentStatus === "Unpurchased" ? (
+          <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
+                Please purchase a package and start creating advertisements
+                {/* TODO: Need to change this state */}
+              </Td>
+            </Tr>
+        ) : (
+      
+        ads?.length === 0 ? (
             <Tr className="bg-richblack-25">
               <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
                 No Advertisement found, start creating
@@ -124,7 +135,9 @@ export default function AdsTable({ ads, setAds }) { // Updated to destructure pr
           </Tr>
         ))
         )
-        }
+        
+        )
+      }  
       </Tbody>
     </Table>
   );

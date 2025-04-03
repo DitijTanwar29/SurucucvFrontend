@@ -5,15 +5,14 @@ import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
-import { FiEdit2 } from "react-icons/fi"
 import { HiClock } from "react-icons/hi"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
 import  ConfirmationModal  from "../../../common/ConfirmationModal"
 // import { formatDate } from "../../../../../services/formatDate"
+import { FaSpinner } from "react-icons/fa";
 import {
-  deleteJob,
-  getAllJobs,
+  withdrawJobApplication
 } from "../../../../services/operations/jobPostAPI"
 import { SERVICE_STATUS } from "../../../../utils/constants"
 
@@ -22,20 +21,32 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.profile)
   const [loading, setLoading] = useState(false)
   const [confirmationModal, setConfirmationModal] = useState(null)
   const TRUNCATE_LENGTH = 10
 
-  const handleJobDelete = async (jobId) => {
-    setLoading(true)
-    await deleteJob({ jobId: jobId }, token)
-    const result = await getAllJobs(token)
-    if (result) {
-      setJobs(result)
+  console.log(user)
+  const userId = user._id
+  console.log("userId : ",userId)
+
+  // TODO :: testing needed for withdrawing , so first apply for job and then test it here
+
+  const handleWithdrawApplication = async (jobId, userId) => {
+    setLoading(true);
+    try {
+      const response = await withdrawJobApplication({ jobId , userId}, token);
+      console.log("response inside handler : ",response)
+      if (response.data.success) {
+        const updatedJobs = jobs.filter(job => job._id !== jobId);
+        setJobs(updatedJobs);
+      }
+      setConfirmationModal(null);
+    } catch (error) {
+      console.error("Error withdrawing application:", error);
     }
-    setConfirmationModal(null)
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   // console.log("All Course ", courses)
 
@@ -43,9 +54,9 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
     <>
       <Table className="rounded-xl border bg-purple-700 rounded-t-md border-purple-700 ">
         <Thead>
-          <Tr className="flex gap-x-48 items-center text-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
+          <Tr className="flex gap-x-32 items-center text-center rounded-t-md border-b border-b-purple-700 px-6 py-2">
             <Th className=" text-left text-sm font-medium bg-transparent uppercase text-richblack-5">
-              Company Name
+              Status
             </Th>
             <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-5">
               Job Title
@@ -59,9 +70,9 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
             <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-5">
               Job Location
             </Th>
-            {/* <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase bg-transparent text-richblack-5">
               Action
-            </Th> */}
+            </Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -76,14 +87,15 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
             jobs?.map((job) => (
               <Tr
                 key={job._id}
-                className="flex justify-between gap-x-8 border-b border-purple-700 px-6 py-8 bg-richblack-25"
+                className="flex justify-between gap-x-3 border-b border-purple-700 px-6 py-8 bg-richblack-25"
               >
                 <Td className="flex flex-col gap-x-4">
                   {/* <img
                     src={service?.icon}
                     alt={service?.serviceName}
                     className="h-[148px] w-[220px] rounded-lg object-cover"
-                  /> */}<div className="text-lg font-semibold text-richblack-5">{job.companyName}</div>
+                  /> */}
+                  {/* <div className="text-lg font-semibold text-richblack-900">{job.companyName}</div> */}
                   <div className="flex flex-col justify-between">
                     
                     {job.status === SERVICE_STATUS.INACTIVE ? (
@@ -102,13 +114,13 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
                   </div>
                 </Td>
                 <Td>
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-900">
                         {job.jobTitle}
                     </p>
                 </Td>
                 <Td>
                     {/* <p className="text-sm font-medium text-richblack-100">{job.passport}</p> */}
-                    <p className="text-xs text-richblack-5">
+                    <p className="text-semibold text-richblack-900">
                       {job.jobDescription.split(" ").length >
                       TRUNCATE_LENGTH
                         ? job.jobDescription
@@ -119,44 +131,36 @@ export default function AppliedJobsTable({ jobs, setJobs }) {
                     </p>
                 </Td>
                 <Td>
-                    <p className="text-sm font-medium text-richblack-5">
+                    <p className="text-sm font-semibold text-richblack-900">
                         {job.jobLocation}
                     </p>
                 </Td>
-                {/* <Td className="text-sm font-medium text-richblack-100 ">
-                  <button
-                    disabled={loading}
-                    onClick={() => {
-                      navigate(`/dashboard/edit-job/${job._id}`)
+                <Td className="text-sm font-medium text-richblack-900 ">
+                <button
+                  disabled={loading}
+                  onClick={() => {
+                    setConfirmationModal({
+                      text1: "Do you want to withdraw your application?",
+                      text2: "This action cannot be undone.",
+                      btn1Text: !loading ? "Withdraw" : "Processing...",
+                      btn2Text: "Cancel",
+                      btn1Handler: !loading ? () => handleWithdrawApplication(job._id, user._id)
+                      : () => {},
+                      btn2Handler: !loading ? () => setConfirmationModal(null) : () => {},
+                      });
                     }}
-                    title="Edit"
-                    className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
+                    title="Withdraw Application"
+                    className={`flex items-center gap-2 px-3 py-1 transition-all duration-200 
+                      ${loading ? "cursor-not-allowed text-gray-400" : "hover:scale-110 hover:text-[#ff0000]"}`}
                   >
-                    <FiEdit2 size={20} />
+                    {loading ? (
+                      <FaSpinner className="animate-spin text-[#ff0000]" />
+                    ) : (
+                      <RiDeleteBin6Line className="text-lg text-[#ff0000]" />
+                    )}
+                    <span className="font-semibold">{loading ? "Processing..." : "Withdraw"}</span>
                   </button>
-                  <button
-                    disabled={loading}
-                    onClick={() => {
-                      setConfirmationModal({
-                        text1: "Do you want to delete this job?",
-                        text2:
-                          "All the data related to this job will be deleted",
-                        btn1Text: !loading ? "Delete" : "Loading...  ",
-                        btn2Text: "Cancel",
-                        btn1Handler: !loading
-                          ? () => handleJobDelete(job._id)
-                          : () => {},
-                        btn2Handler: !loading
-                          ? () => setConfirmationModal(null)
-                          : () => {},
-                      })
-                    }}
-                    title="Delete"
-                    className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
-                  >
-                    <RiDeleteBin6Line size={20} />
-                  </button>
-                </Td> */}
+                </Td>
               </Tr>
             ))
           )}

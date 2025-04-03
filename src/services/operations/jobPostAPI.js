@@ -27,7 +27,8 @@ const {
     GET_JOBS_BY_PROVINCE,
     GET_JOBS_BY_JOB_TITLE,
     GET_JOBS_BY_SECTOR,
-    JOBS_BY_COMPANY_API
+    JOBS_BY_COMPANY_API,
+    WITHDRAW_APPLICATION_API
 } = jobEndpoints
 
 
@@ -523,3 +524,22 @@ export const getJobsBySector = async () => {
         .then(response => response)
         .catch(error => { throw new Error('Could Not Fetch Jobs By Sector') });
 }
+
+
+export const withdrawJobApplication = async (data, token) => {
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", WITHDRAW_APPLICATION_API, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    console.log("WITHDRAW JOB APPLICATION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Withdraw Job Application")
+    }
+    toast.success("Job Application Withdraw Successfully")
+  } catch (error) {
+    console.log("WITHDRAW JOB APPLICATION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+};
