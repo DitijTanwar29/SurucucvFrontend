@@ -22,6 +22,7 @@ export default function JobsTable({ jobs, setJobs }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.profile)
   const [loading, setLoading] = useState(false)
   const [confirmationModal, setConfirmationModal] = useState(null)
   const TRUNCATE_LENGTH = 8
@@ -65,10 +66,22 @@ export default function JobsTable({ jobs, setJobs }) {
           </Tr>
         </Thead>
         <Tbody>
-          {jobs?.length === 0 ? (
+
+        {
+          user?.companyDetails?.paymentStatus === "Unpurchased" ? (
+          <Tr className="bg-richblack-25">
+              <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
+                Please purchase a package and start creating jobs
+                {/* TODO: Need to change this state */}
+              </Td>
+            </Tr>
+        ) : (
+
+          
+          jobs?.length === 0 ? (
             <Tr className="bg-richblack-25">
               <Td className="py-10 text-center text-2xl font-semibold text-richblack-900">
-                No jobs found
+                No jobs found, start creating
                 {/* TODO: Need to change this state */}
               </Td>
             </Tr>
@@ -173,7 +186,8 @@ export default function JobsTable({ jobs, setJobs }) {
             {/* </Link> */}
               </div>
             ))
-          )}
+          )
+        )}
         </Tbody>
       </Table>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}

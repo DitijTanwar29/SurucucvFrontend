@@ -19,7 +19,9 @@ function AdsSlider() {
     useEffect(() => {
         const fetchAds = async () => {
             const response = await getActiveAds();
+            console.log("jideijfi ;",response)
             if (response) {
+                console.log("ads : ",ads)
                 setAds(response);
             }
         };
@@ -31,8 +33,8 @@ function AdsSlider() {
         const fetchCompanies = async () => {
           const companyData = {};
           for (const ad of ads) {
-            if (ad.company && !companyData[ad.company]) {
-              const response = await fetchCompanyById(ad.company); // Fetching company details
+            if (ad.company && !companyData[ad._id]) {
+              const response = await fetchCompanyById(ad._id); // Fetching company details
               if (response.success) {
                 companyData[ad.company] = response.data.companyTitle;
               }

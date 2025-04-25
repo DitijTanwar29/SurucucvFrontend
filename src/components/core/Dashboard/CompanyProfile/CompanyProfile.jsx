@@ -33,7 +33,7 @@ const CompanyProfile = () => {
       </h1>
       
       {/* Image Section */}
-      <div className="flex items-center justify-between rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md hover:border-[1px] hover:border-purple-700 bg-richblack-25 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -58,7 +58,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Company Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md hover:border-[1px] hover:border-purple-700 bg-richblack-25 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold">
@@ -126,7 +126,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Personal Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md hover:border-[1px] hover:border-purple-700 bg-richblack-25 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold">

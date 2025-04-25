@@ -16,7 +16,7 @@ const {
 
 
 export const getAllServices = async () => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     let result = []
     try {
       const response = await apiConnector("GET", GET_ALL_SERVICES_API)
@@ -28,19 +28,19 @@ export const getAllServices = async () => {
       console.log("GET_ALL_SERVICES_API ERROR............", error)
       toast.error(error.message)
     }
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
     return result
 }
 
 export const fetchServiceDetails = async (serviceId) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     //   dispatch(setLoading(true));
     let result = null
     try {
       const response = await apiConnector("POST", SERVICE_DETAILS_API, {
         serviceId,
       })
-      console.log("SERVICE_DETAILS_API API RESPONSE............", response)
+      // console.log("SERVICE_DETAILS_API API RESPONSE............", response)
   
       if (!response.data.success) {
         throw new Error(response.data.message)
@@ -52,7 +52,7 @@ export const fetchServiceDetails = async (serviceId) => {
       result = error.response.data
       // toast.error(error.response.data.message);
     }
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
     //   dispatch(setLoading(false));
     return result
 }
@@ -153,7 +153,7 @@ export const updateServiceStatus = async (data, token) => {
 }
 
 export const getActiveServices = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", ACTIVE_SERVICES_API )
@@ -163,8 +163,8 @@ export const getActiveServices = async () => {
     result = response?.data?.data
   } catch (error) {
     console.log("GET_ACTIVE_SERVICES_API ERROR............", error)
-    toast.error(error.message)
+    // toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }

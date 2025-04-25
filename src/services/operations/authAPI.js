@@ -201,7 +201,7 @@ export function sendOtp(email, contactNumber, accountType, navigate) {
         navigate("/verify-otp");
       } catch (error) {
         console.log("SENDOTP API ERROR............", error);
-        toast.error("Could Not Send OTP");
+        toast.error(response.data.error);
       }
       dispatch(setLoading(false));
       toast.dismiss(toastId);
@@ -240,7 +240,7 @@ export function login(email, password, navigate) {
                 
         } catch (error) {
             console.log("LOGIN API ERROR................", error)
-            toast.error("Login Failed")
+            toast.error(error.response.data.message)
         }
         toast.dismiss(toastId)
     }

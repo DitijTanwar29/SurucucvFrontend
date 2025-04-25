@@ -142,3 +142,14 @@ export const filterEndpoints = {
 export const GET_NOTIFICATIONS = `${BASE_URL}/notification/notifications`;
 export const MARK_NOTIFICATION_READ = (id) => `${BASE_URL}/notification/notifications/${id}/read`;
 export const CLEAR_NOTIFICATIONS = `${BASE_URL}/notification/notifications/clear`;
+
+// UserAccessManagement For Admin, Endpoints
+export const manageUsersEndpoints = {
+
+    GET_ALL_CANDIDATE_USERS_API : BASE_URL + "/adminProfile/candidates",
+    GET_ALL_COMPANY_USERS_API : BASE_URL + "/adminProfile/companies",
+    TOGGLE_CANDIDATE_PROFILE_STATUS: BASE_URL + "/adminProfile/candidate-status",
+    TOGGLE_COMPANY_PROFILE_STATUS: BASE_URL + "/adminProfile/company-status",
+
+
+}

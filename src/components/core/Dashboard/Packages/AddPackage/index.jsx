@@ -25,7 +25,7 @@ const AddPackage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  
+
   const submitPackageForm = async (data) => {
     console.log("Form Data - ", data)
     // console.log("token - ", token)
@@ -37,7 +37,6 @@ const AddPackage = () => {
     }
   }
   return (
-    
       <form onSubmit={handleSubmit(submitPackageForm)}>
         {/* Package Information */}
         <div className="my-10 lg:mt-14 flex flex-col gap-y-6 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
@@ -242,7 +241,60 @@ const AddPackage = () => {
           </div>
           
 
-          
+          {/* ➕ NEW FIELDS ADDED HERE */}
+          {/* Homepage Visibility Time */}
+<div className="flex flex-col gap-2 lg:w-[48%]">
+  <label htmlFor="homepageVisibilityTime" className="lable-style">Homepage Visibility Time (in days)</label>
+  <input
+    type="number"
+    name="homepageVisibilityTime"
+    id="homepageVisibilityTime"
+    className="form-style"
+    {...register("homepageVisibilityTime", { required: true })}
+  />
+  {errors.homepageVisibilityTime && <span className="text-yellow-100 text-sm">Required</span>}
+</div>
+
+{/* Advertisement Publication Time */}
+<div className="flex flex-col gap-2 lg:w-[48%]">
+  <label htmlFor="totalAdPublicationTime" className="lable-style">Ad Publication Time (in days)</label>
+  <input
+    type="number"
+    name="totalAdPublicationTime"
+    id="totalAdPublicationTime"
+    className="form-style"
+    {...register("totalAdPublicationTime", { required: true })}
+  />
+  {errors.totalAdPublicationTime && <span className="text-yellow-100 text-sm">Required</span>}
+</div>
+
+{/* Candidate Pool Access Time */}
+<div className="flex flex-col gap-2 lg:w-[48%]">
+  <label htmlFor="candidatePoolAccessDuration" className="lable-style">Candidate Pool Access Time (in days)</label>
+  <input
+    type="number"
+    name="candidatePoolAccessDuration"
+    id="candidatePoolAccessDuration"
+    className="form-style"
+    {...register("candidatePoolAccessDuration", { required: true })}
+  />
+  {errors.candidatePoolAccessDuration && <span className="text-yellow-100 text-sm">Required</span>}
+</div>
+
+{/* Candidate Pool View Limit */}
+<div className="flex flex-col gap-2 lg:w-[48%]">
+  <label htmlFor="candidatePoolViewLimit" className="lable-style">Candidate Pool View Limit</label>
+  <input
+    type="number"
+    name="candidatePoolViewLimit"
+    id="candidatePoolViewLimit"
+    className="form-style"
+    {...register("candidatePoolViewLimit", { required: true })}
+  />
+  {errors.candidatePoolViewLimit && <span className="text-yellow-100 text-sm">Required</span>}
+</div>
+
+        
 
           
 

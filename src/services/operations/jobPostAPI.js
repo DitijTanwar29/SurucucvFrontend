@@ -312,7 +312,7 @@ export const getAppliedJobs = async (token) => {
 // }
 
 export const getAppliedCandidates = async (jobId) => {
-  console.log("job Id Inside API Endpoint of Applied Candidates :", jobId)
+  // console.log("job Id Inside API Endpoint of Applied Candidates :", jobId)
 
   const toastId = toast.loading("Loading...");
   let result = null;
@@ -334,7 +334,7 @@ export const getAppliedCandidates = async (jobId) => {
 };
 
 export const getTopJobPostings = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_TOP_JOB_POSTINGS_API)
@@ -346,12 +346,12 @@ export const getTopJobPostings = async () => {
     console.log("GET_TOP_JOB_POSTINGS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const getTopJobLocations = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_TOP_JOB_LOCATIONS_API)
@@ -363,17 +363,17 @@ export const getTopJobLocations = async () => {
     console.log("GET_TOP_JOB_LOCATIONSS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const searchJobs = async (searchTerm) => {
-  console.log("search term inside api endpoint of searchjobs :",searchTerm)
+  // console.log("search term inside api endpoint of searchjobs :",searchTerm)
   let result = null
   const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("GET", GET_SEARCHED_JOBS_API, null, null, {keyword:searchTerm})
-    console.log("SEARCHED JOBS API RESPONSE............", response)
+    // console.log("SEARCHED JOBS API RESPONSE............", response)
     if (!response?.data?.success) {
       toast.error("Could Not Get Searched Jobs")
     }
@@ -393,7 +393,7 @@ export const searchJobs = async (searchTerm) => {
 }
 
 export const getRecentlyPublishedJobs = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_RECENTLY_PUBLISHED_JOBS_API)
@@ -402,15 +402,15 @@ export const getRecentlyPublishedJobs = async () => {
     }
     result = response?.data?.data
   } catch (error) {
-    console.log("GET_RECENTLY_PUBLISHED_JOBS_API ERROR............", error)
+    // console.log("GET_RECENTLY_PUBLISHED_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const getFullTimeJobs = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_FULL_TIME_JOBS_API)
@@ -419,15 +419,15 @@ export const getFullTimeJobs = async () => {
     }
     result = response?.data?.data
   } catch (error) {
-    console.log("GET_FULL_TIME_JOBS_API ERROR............", error)
+    // console.log("GET_FULL_TIME_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const getPartTimeJobs = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_PART_TIME_JOBS_API)
@@ -439,12 +439,12 @@ export const getPartTimeJobs = async () => {
     console.log("GET_PART_TIME_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 
 export const getInternationalJobs = async () => {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   let result = []
   try {
     const response = await apiConnector("GET", GET_INTERNATIONAL_JOBS_API)
@@ -456,7 +456,7 @@ export const getInternationalJobs = async () => {
     console.log("GET_INTERNATIONSL_JOBS_API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
   return result
 }
 

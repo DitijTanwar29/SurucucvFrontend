@@ -151,11 +151,18 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscCloudUpload",
   },
-  // {
-  //   id: 7,
-  //   name: "Cart",
-  //   path: "/dashboard/cart",
-  //   type: ACCOUNT_TYPE.STUDENT,
-  //   icon: "VscArchive",
-  // },
+  {
+    id: 23,
+    name: "Companies",
+    path: "/dashboard/manage-companies",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscArchive",
+  },
+  {
+    id: 24,
+    name: "Drivers",
+    path: "/dashboard/manage-drivers",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscArchive",
+  },
 ]

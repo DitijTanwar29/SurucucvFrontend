@@ -59,7 +59,8 @@ import CompanyPackages from "./components/core/Dashboard/Packages/PackagesForCom
 import PackageDetails from "./components/core/Dashboard/Packages/PackageDetails";
 import UpdateHeroSectionImage from "./components/core/Dashboard/UpdateHeroImage/UpdateHeroSectionImage";
 import { Search } from './Pages/SearchForJobs/Search';
-
+import CandidateUsers from "./components/core/Dashboard/ManageUsersForAdmin/CandidateUsers";
+import CompanyUsers from "./components/core/Dashboard/ManageUsersForAdmin/CompanyUsers"
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -69,7 +70,7 @@ function App() {
 
   return (
     // bg-orange-400
-         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-gradient-to-r from-slate-300 to-slate-500 overflow-x-hidden '>
+         <div className='w-full h-[100vh] min-h-screen flex flex-col font-inter bg-[#f5f5f5] overflow-x-hidden '>
           <NavBar/>
           <Routes>
 
@@ -207,6 +208,11 @@ function App() {
                 path="company-payment-approval-page"
                 element={<PaymentApprovalPage />}
               />
+
+              {/* Manage Users(companies & drivers) Account status toggle route for admin  */}
+              <Route path="manage-drivers" element={<CandidateUsers />} />
+              <Route path="manage-companies" element={<CompanyUsers />} />
+
             </>
           )}
           <Route path="settings" element={<Settings />} />

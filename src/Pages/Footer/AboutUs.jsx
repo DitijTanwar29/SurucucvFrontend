@@ -1,91 +1,25 @@
-import React from "react";
-import Footer from "./Footer";
+import React from 'react';
+import Footer from './Footer';
 
 const AboutUs = () => {
   return (
-    <>
-      <div>
-        
-        <section className="section mt-14 lg:mt-24">
-          <div className="container max-w-full sm:max-w-5xl lg:max-w-7xl pt-3">
-            <div className="card shadow">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-6 border-left  ">
-                    <h5>About Us </h5>
-                    <hr />
-                    <p className=" ">
-                      <b>SurucuCv.Com </b>Job Seeking Drivers And Businesses
-                      Looking For The Right Driver Is A Human Resources
-                      Application That Brings Together. We Were Founded In 2007.
-                      People In 2023, We Have Just Moved Into The Field. With
-                      It, We Dominate The Entire Industry. We Were Founded Since
-                      The Day We Have Always Strived To Break New Ground In The
-                      Sector And Again By Signing A First In The Context Of
-                      "Finding The Right Driver", Which Has Become A Bleeding
-                      Wound In The Logistics/Transportation Industry We Have
-                      Developed This Design To Contribute To Businesses And The
-                      Industry.
-                    </p>
-                    <p>
-                      <b>SurucuCv.Com</b> Drivers Looking For Work And Transport
-                      In Any Industry Those Who Want To Work In The Field Of CV
-                      Can Share Their Careers With The CVs They Have Created On
-                      DriverCV. They Can Manage It Professionally. They Are Also
-                      Shown The Way To Their Development. In Addition; For The
-                      Services That Drivers Who Get The Right Job Will Benefit
-                      From When Becoming A Member Of SurucuCV.Com They Do Not
-                      Pay Any Fees
-                    </p>
-                    <p>
-                      Surucucv.ComBased On The Philosophy Of "Drive The Right
-                      For The Right Business" Aims To Bring Businesses And
-                      Job-Seeking Drivers Together In The Quickest And Easiest
-                      Way. With The Technology It Uses; Time And Effort In
-                      Reaching The Right Driver Candidate For Businesses It Also
-                      Saves Money By Saving.
-                    </p>
-                  </div>
-                  <div className="col-md-6 border-start">
-                    <h5 className="main-heading">
-                      CVs Are Reviewed By Businesses In Two Ways{" "}
-                    </h5>
-                    <hr />
-                    <p>
-                      <strong>1).</strong>Our Drivers Can Participate In The
-                      Advertisements Published By Our Member Businesses Free Of
-                      Charge. Apply And The Applications Are Reviewed By Our
-                      Member Enterprises,
-                    </p>
-                    <p>
-                      <strong>2).</strong>Our Member Businesses Can Identify The
-                      Driver Candidate Using A "Quality Score" Or Data It
-                      Examines The CVs That Emerge By Scanning From The Base
-                      According To The Criteria They Determine. The "Quality
-                      Score" Application Is Unique To Us
-                    </p>
-                    <p>
-                      Surucucv.Com Started Its Activities In September 2022
-                      SurucuCV.Com Has Been Closely Following The Developments
-                      In Internet Technologies Since Its Establishment And
-                      Transfers Them To Its Pages In The Most Accurate And Fast
-                      Way.
-                      <br />
-                      Click Here. Creating An Individual CV Click Here. To Learn
-                      About The Benefits Of Membership As A Business And To
-                      Complete The Business Membership Information Form
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="mt-8 lg:mt-14">
-          <Footer />
-        </section>
-      </div>
-    </>
+    <div>
+
+    <div className="max-w-4xl mx-auto px-6 py-12 font-rubik text-gray-800">
+      <h2 className="text-3xl font-bold text-center mb-8 mt-5">Hakkımızda</h2>
+      <p className="text-lg leading-relaxed space-y-4">
+        <strong>Biz kimiz;</strong><br /><br />
+        Biz, 2007 yılında, ulaştırma sektörüne danışmanlık yapmak için yola çıktık. Bunu başarmak ve varlığımızı sürdürmek adına, kara ulaştırması sektöründe çıkan mevzuatı öğrendik ve takip ettik. Sektöre faydamız olabilmesi için bu mevzuatı özümsemek gerekiyordu, özümsedik.
+        <br /><br />
+        Sektördeki tüm taraflara danışmanlık yaparak, iş takibi yaparak, eğitim vererek ve onlara, sektörel bütün ihtiyaçları için hizmet vererek, yolumuza devam ettik. Bu bağlamda, Türkiye’nin değeri olan, büyük lojistik işletmelerine, dev üretim tesislerine danışmanlık yaptık, yapıyoruz.
+        <br /><br />
+        Sürücülerimize, belgelendirme konusunda hizmetlerimizi halen devam ettirmekteyiz. Bunun yanında, 2014’ten bu yana da eğitim hizmetleri sağlayarak yolumuza devam ediyoruz.
+        <br /><br />
+        Sektör içinde kazandığımızı yine sektöre geri kazandırmak gibi bir hedefimiz var. Bunu yapabilmek için zaman ayırıyoruz. Enerji ve kaynak ayırıyoruz. Sektörün eksiklerini tamamlamak için projeler üretiyoruz. Bunları hayata geçirmek için araştırmalar ve yatırımlar yapıyoruz. <strong>SURUCUCV</strong>’de bunlardan biri.
+      </p>
+    </div>
+    <Footer/>
+    </div>
   );
 };
 

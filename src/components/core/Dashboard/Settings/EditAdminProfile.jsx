@@ -47,7 +47,7 @@ export default function EditAdminProfile() {
                 placeholder="Enter first name"
                 className="form-style"
                 {...register("firstName", { required: true })}
-                defaultValue={user?.adminProfileDetails?.firstName}
+                defaultValue={user?.adminDetails?.firstName}
               />
               {errors.firstName && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

@@ -40,7 +40,7 @@ const Home = () => {
 
 
 	return (
-		<div className='bg-[#f5f5f5] w-full '>
+		<div>
 			{/* Section 1 */}
 			<div className='mt-32 w-full mx-auto px-4 lg:px-8'>
 				{/* <div className="  flex justify-center items-center gap-2 " > */}

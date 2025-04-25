@@ -125,7 +125,7 @@ export default function Sidebar() {
         </button>
         
           <div
-          className={`fixed top-[70px] left-0 h-full min-w-[200px] sm:w-[30%] lg:w-[10%] bg-black/75 py-10 transform ${
+          className={`fixed top-[70px] left-0 h-[calc(100vh-70px)] bg-richblack-5 group overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 min-w-[200px] sm:w-[30%] lg:w-[10%] py-10 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 ease-in-out z-40`}
 
@@ -134,7 +134,7 @@ export default function Sidebar() {
         >
         
           <div className="flex flex-col "
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => setIsSidebarOpen(false)}
           ref={ref}>
             {sidebarLinks.map((link) => {
               if (link.type && user?.accountType !== link.type) return null;
@@ -143,7 +143,7 @@ export default function Sidebar() {
               );
             })}
           </div>
-          <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-5" />
+          <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-black" />
           <div className="flex flex-col">
             <SidebarLink
               link={{ name: "Settings", path: "/dashboard/settings" }}
@@ -160,9 +160,9 @@ export default function Sidebar() {
                   btn2Handler: () => setConfirmationModal(null),
                 })
               }
-              className="px-8 py-2 text-sm font-medium text-richblack-300"
+              className="px-8 py-2 text-sm font-medium text-richblack-900"
             >
-              <div className="flex items-center gap-x-2 text-white">
+              <div className="flex items-center gap-x-2 text-black">
                 <VscSignOut className="text-lg" />
                 <span>Logout</span>
               </div>

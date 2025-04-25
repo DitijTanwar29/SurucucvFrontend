@@ -35,43 +35,14 @@ export default function PostAdvertisement() {
 
   return (
     <>
-    {user?.companyDetails?.paymentStatus === "Requested" ? (
-      <div className="mt-10 flex justify-center">
-  <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-6 py-4 rounded-lg shadow-md max-w-lg w-full relative">
-    <div className="flex items-center space-x-4">
-      <svg
-        className="w-8 h-8 text-yellow-500 animate-spin"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 8v4l3 3m9 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-      <div className="text-left">
-        <h3 className="text-lg font-bold text-yellow-700">Payment Approval Pending!</h3>
-        <p className="text-sm text-yellow-600 mt-1">
-          Your payment is awaiting admin approval. You cannot create an advertisement until the payment is approved. Please
-          check back later or{" "}
-          <a href="/contact" className="text-yellow-800 font-semibold hover:underline">
-            contact support
-          </a>{" "}
-          for assistance.
-        </p>
-      </div>
-    </div>
-
-    {/* Optional Progress Indicator */}
-    <div className="mt-4 bg-yellow-200 rounded-full h-2">
-      <div className="bg-yellow-500 h-2 rounded-full animate-pulse w-3/4"></div>
-    </div>
-  </div>
-</div>) : (
+    {user?.companyDetails?.paymentStatus === "Unpurchased" ? (
+      <div className="bg-richblack-25 mt-10 flex justify-center">
+              <div className="py-10 text-center text-2xl font-semibold text-richblack-900">
+                Please purchase a package and start creating advertisements
+                {/* TODO: Need to change this state */}
+              </div>
+            </div>
+            ) : (
     <form onSubmit={handleSubmit(onSubmit)} className="lg:mt-20">
       <h1 className="mb-7 mt-14 text-3xl text-center font-medium text-black">
         Create Advertisement Post

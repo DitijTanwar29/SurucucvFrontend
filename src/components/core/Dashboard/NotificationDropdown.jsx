@@ -71,9 +71,10 @@ const NotificationDropdown = () => {
       {/* ✅ Notification Button with Bell Icon */}
       <button
         onClick={toggleDropdown}
-        className="relative bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow-lg transition duration-200 flex items-center"
+        className="relative bg-richblack-100 hover:bg-richblack-200 text-white px-5 py-2 rounded-lg shadow-lg transition duration-200 flex items-center"
       >
-        <FaBell className="mr-2" />
+        
+        <FaBell className="mr-2 " />
         Notifications{" "}
         {notificationList?.length > 0 && (
           <span className="bg-red-500 text-white rounded-full px-2 text-xs absolute -top-1 -right-1">
@@ -86,7 +87,7 @@ const NotificationDropdown = () => {
 
       {/* ✅ Dropdown Content */}
       {isDropdownOpen && (
-        <div className="dropdown-content absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg max-h-80 overflow-y-auto border border-gray-200">
+        <div className="dropdown-content absolute right-0 mt-12 w-80 bg-white shadow-lg rounded-lg max-h-80 overflow-y-auto border border-gray-200">
           {isLoading ? (
             <p className="p-4 text-center text-gray-600">
               Loading notifications...

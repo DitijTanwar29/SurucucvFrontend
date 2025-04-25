@@ -48,7 +48,7 @@ const MyProfile = () => {
       <h1 className="mb-14 mt-14 text-3xl font-medium text-black lg:mt-14 text-center">
         My Profile
       </h1>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] bg-richblack-25 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -72,7 +72,7 @@ const MyProfile = () => {
         </IconBtn>
       </div>
 
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-purple-700 bg-richblack-25 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px]  bg-richblack-25 p-8 px-12">
 
         <div className="flex w-full items-center justify-between">
             <p className="text-lg font-semibold text-black">

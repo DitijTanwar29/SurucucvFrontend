@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast"
 
 import { setLoading, setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
-import { profileEndpoints } from "../apis"
+import { profileEndpoints, manageUsersEndpoints } from "../apis"
 import { logout } from "./authAPI"
 
 const {
@@ -14,6 +14,13 @@ const {
     UPDATE_HERO_SECTION_IMAGE_API,
     GET_HERO_SECTION_IMAGE_API,
 } = profileEndpoints
+
+const {
+  GET_ALL_CANDIDATE_USERS_API,
+  GET_ALL_COMPANY_USERS_API,
+  TOGGLE_CANDIDATE_PROFILE_STATUS,
+  TOGGLE_COMPANY_PROFILE_STATUS
+} = manageUsersEndpoints
 
 
 
@@ -87,7 +94,7 @@ export const fetchCompanyById = async (companyId) => {
     result = response.data.data
     
   } catch (error) {
-    console.log("GET_COMPANY_BY_ID_API ERROR............", error)
+    // console.log("GET_COMPANY_BY_ID_API ERROR............", error)
     result = error.response.data
     // toast.error(error.response.data.message);
   }
@@ -149,30 +156,6 @@ export const unenrollCompanyFromPackage = async ({companyId, packageId}) => {
   return result
 }
 
-// export const uploadHeroImage = async (formData, token) => {
-//   return await apiConnector("POST", UPDATE_HERO_SECTION_IMAGE_API, formData, {
-//     headers: { "Content-Type": "multipart/form-data" },
-//     Authorization: `Bearer ${token}`,
-//   });
-// };
-
-// export const getHeroImage = async () => {
-//   try {
-//     console.log("Fetching hero image...");
-//     const response = await apiConnector("GET", GET_HERO_SECTION_IMAGE_API);
-
-//     if (response && response.data && response.data.success) {
-//       console.log("Hero image fetched successfully:", response.data.imageUrl);
-//       return response.data.imageUrl;
-//     } 
-//   } catch (error) {
-//     console.error("Error fetching hero image:", error.message);
-//     toast.error("Failed to load hero image.");
-//     return null;
-//   }
-// };
-
-
 export const getHeroImage = async () => {
   try {
     const response = await apiConnector("GET", GET_HERO_SECTION_IMAGE_API);
@@ -199,3 +182,66 @@ export const uploadHeroImage = async (formData, token) => {
     return { success: false };
   }
 };
+
+export const getAllCandidates = async () => {
+  try{
+    const result = await apiConnector("GET", GET_ALL_CANDIDATE_USERS_API)
+    return result.data
+  }catch(error){
+    console.error("Failed to get all users")
+    return error.message   
+  }
+}
+
+export const getAllCompanies = async () => {
+  try{
+    const result = await apiConnector("GET", GET_ALL_COMPANY_USERS_API)
+    return result.data
+  }catch(error){
+    console.error("Failed to get all companies")
+    return error.message   
+  }
+}
+
+export const toggleCandidateStatus = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("PATCH", TOGGLE_CANDIDATE_PROFILE_STATUS, data, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("TOGGLE_CANDIDATE_PROFILE_STATUS RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Update Candidate Profile Status")
+    }
+    toast.success("Candidate Profile Status Updated Successfully")
+    result = response?.data?.data
+    
+  } catch (error) {
+    console.log("TOGGLE_CANDIDATE_PROFILE_STATUS ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+export const toggleCompanyStatus = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("PATCH", TOGGLE_COMPANY_PROFILE_STATUS, data)
+    console.log("TOGGLE_COMPANY_PROFILE_STATUS RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Update Company Profile Status")
+    }
+    toast.success("Company Profile Status Updated Successfully")
+    result = response?.data?.data
+    
+  } catch (error) {
+    console.log("TOGGLE_COMPANY_PROFILE_STATUS ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}

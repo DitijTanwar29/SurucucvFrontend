@@ -71,7 +71,7 @@ export function updateAdminProfile(token, formData, navigate) {
 
       } catch (error) {
         console.log("UPDATE_ADMIN_PROFILE_API API ERROR............", error)
-        toast.error("Could Not Update Admin Profile")
+        toast.error(error.response.data.message)
       }
       toast.dismiss(toastId)
     }

@@ -20,18 +20,18 @@ export default function AdPackages() {
 }, [])
 
   return (
-    <div>
-      <div className="mb-14 lg:mt-24 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-medium text-black">Ad Packages</h1>
-        
-      {/* Display the packages */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-12 mt-5 justify-center items-center">
-        {packages.map((pkg) => (
-          <AdPackageCard key={pkg._id} pkg={pkg} />
-        ))}
-      </div>
-      </div>
+    <div className="mb-14 lg:mt-24 flex flex-col items-center justify-center">
+  <h1 className="text-3xl font-medium text-black">Ad Packages</h1>
 
+  {/* Grid container with max-width */}
+  <div className="mt-5 w-full flex justify-center">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-12 max-w-7xl px-4 place-items-center">
+      {packages.map((pkg) => (
+        <AdPackageCard key={pkg._id} pkg={pkg} />
+      ))}
     </div>
+  </div>
+</div>
+
   )
 }
