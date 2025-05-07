@@ -4,22 +4,23 @@ import { useSearch, SearchProvider } from './SearchContext';
 
 import { MobileFilter, DesktopFilter } from './Filter';
 import { SearchResult } from './SearchResult';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
+import { CandidateJobCard, ResumeCard } from '../../components/core/HomePage/Card';
 
 
-const SearchLayout = () => {
+export const SearchLayout = () => {
     // Get user type from auth context or props
-    const userType = USER_TYPES.CANDIDATE;
+    const { userType } = useSearch();
     const navigate = useNavigate();
 
     return (
-        <div className="w-full h-screen mx-auto  lg:px-8 bg-[#f5f5f5] overflow-x-scroll ">
+        <div className="w-full h-screen mx-auto  lg:px-8 bg-[#f5f5f5] overflow-x-scroll px-4 ">
             <div className="flex flex-col gap-4 mt-20 lg:mt-28 w-full mx-auto  lg:px-8 py-2 relative  ">
                 <SearchTop userType={userType} />
                 <MobileFilter userType={userType} />
                 <div className='flex lg:flex-row flex-col lg:gap-4 gap-2  w-full'>
-                    <button onClick={() => navigate(-1)} className='bg-white rounded-full max-w-max p-1.5 ml-2 text-purple-700'>
+                    <button onClick={() => navigate(-1)} className='bg-white rounded-full max-w-max h-7 p-1.5 ml-2 text-purple-700'>
                         <FaArrowLeft />
                     </button>
                     <DesktopFilter userType={userType} />
@@ -32,16 +33,9 @@ const SearchLayout = () => {
     );
 };
 
-export const Search = () => {
-    return (
-        <SearchProvider>
-            <SearchLayout />
-        </SearchProvider>
-    );
-};
 
 const SearchTop = ({ userType }) => {
-    const { selectedFilters, handleCheckboxChange, jobs } = useSearch();
+    const { selectedFilters, handleCheckboxChange, result } = useSearch();
     const [sortOption, setSortOption] = useState('recommended');
 
     const filterOptions = getFilterOptions(userType);
@@ -52,7 +46,7 @@ const SearchTop = ({ userType }) => {
                 <div className="flex justify-between items-center ">
                     <div className='flex gap-4'>
 
-                        <h4 className='text-[18px] font-rubik-light'>{jobs.length} Job Posts</h4>
+                        <h4 className='text-[18px] font-rubik-light'>{result.length} Job Posts</h4>
                         <div className="flex flex-wrap gap-2 ">
                             {Object.entries(selectedFilters).map(([filterId, selectedOptions]) => (
                                 selectedOptions.map(optionId => {
@@ -84,6 +78,36 @@ const SearchTop = ({ userType }) => {
                         <option value="oldest">From Old to New</option>
                         <option value="featured">Featured</option>
                     </select>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+export const SearchDetail = () => {
+
+    const { id } = useParams();
+    const { result, userType } = useSearch();
+    const navigate = useNavigate();
+
+
+    const details = result.find((result) => result._id === id);
+
+    return (
+        <div className="w-full h-screen mx-auto  lg:px-8 bg-[#f5f5f5] overflow-x-scroll px-4 ">
+            <div className="flex flex-col gap-4 mt-20 lg:mt-28 w-full mx-auto  lg:px-8 py-2 relative  ">
+                <div className='flex lg:flex-row flex-col lg:gap-4 gap-2  w-full'>
+                    <button onClick={() => navigate(-1)} className='bg-white rounded-full max-w-max h-7 p-1.5 ml-2 text-purple-700'>
+                        <FaArrowLeft />
+                    </button>
+                    <div className='w-full max-h-max bg-white rounded-lg px-4 py-2'>
+
+                        {userType === 'Candidate'
+                            ? <CandidateJobCard data={details} isDetails={true} />
+                            : <ResumeCard data={details} isDetails={true} />
+                        }
+                    </div>
                 </div>
             </div>
         </div>

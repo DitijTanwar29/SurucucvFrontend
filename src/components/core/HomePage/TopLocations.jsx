@@ -26,7 +26,7 @@ export const TopLocations = () => {
 
     
   return (
-    <div  className='w-full flex gap-x-2.5'>
+    <div  className='w-full flex gap-x-2.5 overflow-y-auto'>
         {
             topJobLocations?.length === 0 ? (
                 <p>No Job Post Available yet</p>

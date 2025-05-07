@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import SidebarForJobs from './SidebarForJobs';
-import FullTimeJobs from './FullTimeJobs';
-import PartTimeJobs from './PartTimeJobs';
-import RecentlyPublishedJobs from './RecentlyPublishedJobs';
-import InternationalJobs from './InternationalJobs';
 import {
   getFullTimeJobs,
   getInternationalJobs,
@@ -11,7 +6,7 @@ import {
   getRecentlyPublishedJobs
 } from '../../../services/operations/jobPostAPI';
 
-import { JobCard , JobWrapper} from './JobCard';
+import { JobWrapper } from './Card';
 
 
 const jobCategoryData = [
@@ -63,7 +58,7 @@ const JobSidebar = () => {
     <div className='w-full flex flex-col py-8 '>
 
       {/* Desktop */}
-      <div className="lg:flex flex-row  w-full hidden gap-x-1 lg:gap-y-3 px-4">
+      <div className="lg:flex flex-row w-full hidden gap-x-1 lg:gap-y-3 px-4">
         <div className='jobCategory gap-x-1 lg:gap-y-2.5 items-start'>
           {jobCategory.map((category) => (
             <button

@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { MobileFilterPopup } from "./Filter";
 import { getFilters, getFilteredJobs } from '../../services/operations/FiltersApi';
-import { filterEndpoints } from "../../services/apis";
+import { USER_TYPES } from "../../constant";
 
 export const SearchContext = createContext();
 
@@ -10,35 +10,33 @@ export const SearchProvider = ({ children }) => {
     const [filterOptions, setFilterOptions] = useState([]);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
     const [filters, setFilters] = useState({});
-    const [jobs, setJobs] = useState([]);
-    const [isjobsLoading, setIsjobsLoading] = useState(false);
+    const [result, setResult] = useState([]);
+    const [isResultLoading, setIsResultLoading] = useState(false);
     const [isFiltersLoading, setIsFiltersLoading] = useState(false);
+    const [userType, setUserType] = useState(USER_TYPES.CANDIDATE);   // TODO: AS USER LOGIN SET HERE USER TYPE WITH REAL USER TYPE || Default USER TYPE
 
-    useEffect(() => {
-        console.log('new filters', filters)
-    }, [filters])
 
     useEffect(() => {
 
         const fetchFilters = async () => {
-            const data = await getFilters('Candidate', setIsFiltersLoading);
+            const data = await getFilters(userType, setIsFiltersLoading);
             if (data?.filters) {
                 setFilters(data.filters);
             }
         };
         fetchFilters();
-    }, []);
+    }, [userType]);
 
 
     useEffect(() => {
         const fetchJobs = async () => {
-            const data = await getFilteredJobs(selectedFilters, 'Candidate', setIsjobsLoading);
+            const data = await getFilteredJobs(selectedFilters, userType, setIsResultLoading);
             if (data?.results) {
-                setJobs(data.results);
+                setResult(data.results);
             }
         }
         fetchJobs();
-    }, [selectedFilters]);
+    }, [selectedFilters, userType]);
 
 
     const handleCheckboxChange = (filterId, optionId, checked) => {
@@ -78,19 +76,20 @@ export const SearchProvider = ({ children }) => {
 
 
     const applyChanges = async () => {
-        const { results } = await getFilteredJobs(selectedFilters, 'Candidate', setIsjobsLoading);
-        setJobs(results);
+        const { results } = await getFilteredJobs(selectedFilters, userType, setIsResultLoading);
+        setResult(results);
     };
 
 
     const value = {
         isFiltersLoading,
-        isjobsLoading,
+        isResultLoading,
         filterOptions,
-        jobs,
+        result,
         filters,
         selectedFilters,
         applyChanges,
+        userType,
         setFilterOptions,
         setIsMobileFilterOpen,
         handleCheckboxChange

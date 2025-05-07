@@ -30,7 +30,7 @@ console.log(topJobPostings)
                                   .join(" ") + "..."
                               : job?.jobDescription}</p> */}
   return (
-    <div  className=' w-full flex gap-x-2.5 '>
+    <div  className=' w-full flex gap-x-2.5 overflow-y-auto'>
         
         {
             topJobPostings?.length === 0 ? (
