@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { useSearch } from "../../../Pages/SearchForJobs/SearchContext";
 import { USER_TYPES } from "../../../constant";
+import { useSelector } from "react-redux";
 
 export const JobWrapper = ({ data, name, type = 'Desktop' }) => {
 
-  const userType = USER_TYPES.CANDIDATE || 'real user type';
+  const { user } = useSelector(state => state.profile);
+
+  const userType = (user && user?.accountType) ?? USER_TYPES.CANDIDATE;
 
   return (
     <div className="flex flex-col w-full">

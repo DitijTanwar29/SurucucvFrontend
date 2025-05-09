@@ -2,10 +2,13 @@ import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { MobileFilterPopup } from "./Filter";
 import { getFilters, getFilteredJobs } from '../../services/operations/FiltersApi';
 import { USER_TYPES } from "../../constant";
+import {useSelector} from 'react-redux';
 
 export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
+    
+    const {user} = useSelector(state => state.profile);
     const [selectedFilters, setSelectedFilters] = useState({});
     const [filterOptions, setFilterOptions] = useState([]);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -13,7 +16,9 @@ export const SearchProvider = ({ children }) => {
     const [result, setResult] = useState([]);
     const [isResultLoading, setIsResultLoading] = useState(false);
     const [isFiltersLoading, setIsFiltersLoading] = useState(false);
-    const [userType, setUserType] = useState(USER_TYPES.CANDIDATE);   // TODO: AS USER LOGIN SET HERE USER TYPE WITH REAL USER TYPE || Default USER TYPE
+
+    const userType = (user && user?.accountType) ?? USER_TYPES.CANDIDATE
+
 
 
     useEffect(() => {
