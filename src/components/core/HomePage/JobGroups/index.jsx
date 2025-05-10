@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import RecentlyPublishedJobs from '../RecentlyPublishedJobs'
-import FullTimeJobsJobs from '../FullTimeJobs'
-import PartTimeJobsJobs from '../PartTimeJobs'
-import InternationalJobs from '../InternationalJobs'
 
 const JobGroups = () => {
 
@@ -51,11 +47,6 @@ const JobGroups = () => {
           {category.name}
         </button>
       ))}
-
-      {/* <RecentlyPublishedJobs/>
-        <FullTimeJobsJobs/>
-        <PartTimeJobsJobs/>
-        <InternationalJobs/> */}
     </div>
   )
 }

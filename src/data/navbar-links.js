@@ -4,12 +4,8 @@ const NavbarLinks = [
       path: "/",
     },
     {
-      title: "Find Job",
-      path: '/find-job',
-    },
-    {
-      title: "Find Driver",
-      path: "/find-driver",
+      title: "Search",
+      path: '/search',
     },
     {
       title: "Create Cv",

@@ -1,56 +1,48 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { MobileFilterPopup } from "./Filter";
-import {
-  getFilters,
-  getFilteredJobs,
-} from "../../services/operations/FiltersApi";
-import { filterEndpoints } from "../../services/apis";
-import { useSelector } from "react-redux";
+import { getFilters, getFilteredJobs } from '../../services/operations/FiltersApi';
 import { USER_TYPES } from "../../constant";
-
+import { useSelector } from "react-redux";
 export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
-  const [selectedFilters, setSelectedFilters] = useState({});
-  const [filterOptions, setFilterOptions] = useState([]);
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-  const [filters, setFilters] = useState({});
-  const [jobs, setJobs] = useState([]);
-  const [isjobsLoading, setIsjobsLoading] = useState(false);
-  const [isFiltersLoading, setIsFiltersLoading] = useState(false);
-  const { user } = useSelector((state) => state.profile);
-
-  console.log(user);
-
-  const accountType = (user !== null && user.accountType) || USER_TYPES.CANDIDATE;
-
+    const [selectedFilters, setSelectedFilters] = useState({});
+    const [filterOptions, setFilterOptions] = useState([]);
+    const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+    const [filters, setFilters] = useState({});
+    const [result, setResult] = useState([]);
+    const [isResultLoading, setIsResultLoading] = useState(false);
+    const [isFiltersLoading, setIsFiltersLoading] = useState(false);
+    // const [userType, setUserType] = useState(USER_TYPES.CANDIDATE);   // TODO: AS USER LOGIN SET HERE USER TYPE WITH REAL USER TYPE || Default USER TYPE
+  const { user } = useSelector((state) => state.profile)
+    
+    const userType = (user && user?.accountType) ?? USER_TYPES.CANDIDATE
   useEffect(() => {
     console.log("new filters", filters);
   }, [filters]);
 
-  useEffect(() => {
-    const fetchFilters = async () => {
-      const data = await getFilters(accountType, setIsFiltersLoading);
-      if (data?.filters) {
-        setFilters(data.filters);
-      }
-    };
-    fetchFilters();
-  }, []);
+    useEffect(() => {
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      const data = await getFilteredJobs(
-        selectedFilters,
-        accountType,
-        setIsjobsLoading
-      );
-      if (data?.results) {
-        setJobs(data.results);
-      }
-    };
-    fetchJobs();
-  }, [selectedFilters]);
+        const fetchFilters = async () => {
+            const data = await getFilters(userType, setIsFiltersLoading);
+            if (data?.filters) {
+                setFilters(data.filters);
+            }
+        };
+        fetchFilters();
+    }, [userType]);
+
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            const data = await getFilteredJobs(selectedFilters, userType, setIsResultLoading);
+            if (data?.results) {
+                setResult(data.results);
+            }
+        }
+        fetchJobs();
+    }, [selectedFilters, userType]);
+
 
   const handleCheckboxChange = (filterId, optionId, checked) => {
     setSelectedFilters((prev) => {
@@ -86,27 +78,25 @@ export const SearchProvider = ({ children }) => {
     });
   };
 
-  const applyChanges = async () => {
-    const { results } = await getFilteredJobs(
-      selectedFilters,
-      accountType,
-      setIsjobsLoading
-    );
-    setJobs(results);
-  };
+    const applyChanges = async () => {
+        const { results } = await getFilteredJobs(selectedFilters, userType, setIsResultLoading);
+        setResult(results);
+    };
 
-  const value = {
-    isFiltersLoading,
-    isjobsLoading,
-    filterOptions,
-    jobs,
-    filters,
-    selectedFilters,
-    applyChanges,
-    setFilterOptions,
-    setIsMobileFilterOpen,
-    handleCheckboxChange,
-  };
+
+    const value = {
+        isFiltersLoading,
+        isResultLoading,
+        filterOptions,
+        result,
+        filters,
+        selectedFilters,
+        applyChanges,
+        userType,
+        setFilterOptions,
+        setIsMobileFilterOpen,
+        handleCheckboxChange
+    };
 
   return (
     <SearchContext.Provider value={value}>

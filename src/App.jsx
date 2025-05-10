@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import "./App.css";
 // import Home from './Screens/Home';
-import Home from "./Pages/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home"
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { ACCOUNT_TYPE } from "./utils/constants";
 import NavBar from "./components/common/NavBar";
 import FindJob from "./Screens/FindJob";
@@ -58,14 +58,16 @@ import AllAds from "./components/core/Dashboard/AllAdsForAdmin/AllAds";
 import CompanyPackages from "./components/core/Dashboard/Packages/PackagesForCompany";
 import PackageDetails from "./components/core/Dashboard/Packages/PackageDetails";
 import UpdateHeroSectionImage from "./components/core/Dashboard/UpdateHeroImage/UpdateHeroSectionImage";
-import { Search } from './Pages/SearchForJobs/Search';
+// import { Search } from './Pages/SearchForJobs/Search';
 import CandidateUsers from "./components/core/Dashboard/ManageUsersForAdmin/CandidateUsers";
 import CompanyUsers from "./components/core/Dashboard/ManageUsersForAdmin/CompanyUsers"
-
+import { SearchDetail, SearchLayout } from './Pages/SearchForJobs/Search';
+import { SearchProvider } from './Pages/SearchForJobs/SearchContext';
 function App() {
   const { user } = useSelector((state) => state.profile);
   const token = user?.token;
-  const { serviceId } = useSelector((state) => state.service);
+
+
   // console.log("serviceId inside app ",serviceId)
 
   return (
@@ -75,30 +77,25 @@ function App() {
           <Routes>
 
 
-            <Route exact path='/' element= {<Home/>} />
-            <Route exact path='/find-job' element= {<FindJob/>} />
-            <Route exact path='/contact' element= {<Contact/>} />
-            <Route exact path='/about' element= {<AboutUs/>} />
-            
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/find-job' element={<FindJob />} />
+        <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/about' element={<AboutUs />} />
 
-            <Route exact path='/login' element= {<OpenRoute><LoginForm/></OpenRoute>} />
-            <Route exact path='/signup' element= {<OpenRoute><SignupForm/></OpenRoute>} />
-            <Route exact path='/packages' element= {<AdPackages/>} />
-            <Route exact path='/payment/:packageId' element= {<PaymentPage/>} />
-            <Route
-              path="verify-email"
-              element={
-                <OpenRoute>
-                  <VerifyEmail />
-                </OpenRoute>
-              }
-            />
 
+        <Route exact path='/login' element={<OpenRoute><LoginForm /></OpenRoute>} />
+        <Route exact path='/signup' element={<OpenRoute><SignupForm /></OpenRoute>} />
+        <Route exact path='/packages' element={<AdPackages />} />
+        <Route exact path='/payment/:packageId' element={<PaymentPage />} />
+        <Route path="/search" element={<SearchProvider><Outlet /></SearchProvider>}>
+          <Route index element={<SearchLayout />} />
+          <Route path=":id" element={<SearchDetail />} />
+        </Route>
         <Route
-          path="verify-otp"
+          path="verify-email"
           element={
             <OpenRoute>
-              <VerifyOtp />
+              <VerifyEmail />
             </OpenRoute>
           }
         />
@@ -114,7 +111,7 @@ function App() {
           path="/create-cv"
           element={<CreateCv user={user} token={token} />}
         />
-        <Route exact path='/search' element= {<Search/>} />
+        {/* <Route exact path='/search' element= {<Search/>} /> */}
 
         <Route
           exact
