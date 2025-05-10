@@ -100,6 +100,15 @@ function App() {
           }
         />
 
+<Route
+          path="verify-otp"
+          element={
+            <OpenRoute>
+              <VerifyOtp />
+            </OpenRoute>
+          }
+        />
+
         <Route
           exact
           path="/job/:jobId"
