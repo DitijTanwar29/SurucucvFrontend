@@ -2,6 +2,7 @@ import React from 'react';
 import { Card } from '../../components/core/HomePage/Card';
 import { useSearch } from './SearchContext';
 import { Loader } from './Loader';
+import { USER_TYPES } from '../../constant';
 
 
 export const SearchResult = ({ userType }) => {
@@ -18,7 +19,7 @@ export const SearchResult = ({ userType }) => {
                         <div key={index} className='border-b-2 border-b-gray-300 '>
                             <Card
                                 data={job}
-                                isUserTypeCandidate={userType === 'Candidate'}
+                                isUserTypeCandidate={userType === USER_TYPES.CANDIDATE}
                             />
                         </div>
                     ))

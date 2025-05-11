@@ -12,7 +12,14 @@ import {
   FaList,
   FaUsers,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"
 export default function AdPackageCard({ pkg }) {
+
+  const navigate = useNavigate()
+  const handleBuyNow = () => {
+    navigate(`/payment/${pkg._id}`); // Redirect to payment page with package ID
+  };
+
   return (
     // <div className="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
     //   <div className="mb-4">
@@ -97,7 +104,8 @@ export default function AdPackageCard({ pkg }) {
         </div>
       </div>
 
-      <button className="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 rounded-md transition-all duration-200">
+      <button className="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 rounded-md transition-all duration-200"
+        onClick={handleBuyNow}>
         Buy Now
       </button>
     </div>

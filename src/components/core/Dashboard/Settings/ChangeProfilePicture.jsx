@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { FiUpload } from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { updateAdminDisplayPicture } from "../../../../services/operations/SettingsAPI"
+import { updateAdminDisplayPicture, updateCandidateDisplayPicture, updateCandidateProfile, updateCompanyDisplayPicture } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
 
 export default function ChangeProfilePicture() {
@@ -43,10 +43,22 @@ export default function ChangeProfilePicture() {
       setLoading(true)
       const formData = new FormData()
       formData.append("displayPicture", imageFile)
-      // console.log("formdata", formData)
-      dispatch(updateAdminDisplayPicture(token, formData,navigate)).then(() => {
-        setLoading(false)
+      console.log("formdata", formData)
+      if(user?.accountType === 'Candidate'){
+        dispatch(updateCandidateDisplayPicture(token,formData,navigate)).then(()=> {
+          setLoading(false)
+        })
+      }
+      else if(user?.accountType === 'Company'){
+        dispatch(updateCompanyDisplayPicture(token,formData,navigate)).then(()=> {
+          setLoading(false)
       })
+      }
+      else{
+        dispatch(updateAdminDisplayPicture(token, formData,navigate)).then(() => {
+          setLoading(false)
+        })
+      }
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

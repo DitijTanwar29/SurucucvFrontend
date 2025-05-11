@@ -14,6 +14,7 @@ const options = [
 // const skillsList = ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4']; 
 export default function EditCandidateProfile() {
   const { user } = useSelector((state) => state.profile)
+  console.log("user in candidate profile : ",user)
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -90,7 +91,7 @@ export default function EditCandidateProfile() {
                 placeholder="Enter name"
                 className="form-style"
                 {...register("name", { required: true })}
-                defaultValue={user?.candidateDetails?.name}
+                defaultValue={user?.name}
               />
  
       
@@ -112,7 +113,7 @@ export default function EditCandidateProfile() {
                 placeholder="Enter email"
                 className="form-style"
                 {...register("email", { required: true })}
-                defaultValue={user?.candidateDetails?.email}
+                defaultValue={user?.email}
               />
               {errors.email && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

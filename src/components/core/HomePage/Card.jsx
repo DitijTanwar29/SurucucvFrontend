@@ -63,7 +63,7 @@ export const Card = ({ data, isUserTypeCandidate = true }) => {
 }
 
 export const CandidateJobCard = ({ data, isDetails = false }) => {
-console.log("data",data)
+console.log("data... : ",data)
   return (
     <div className='max-w-full flex flex-col justify-start items-start py-1'>
       <div className='w-full flex justify-between items-start gap-2'>

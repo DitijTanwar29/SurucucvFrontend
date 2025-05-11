@@ -17,9 +17,13 @@ export const SearchProvider = ({ children }) => {
   const { user } = useSelector((state) => state.profile)
     
     const userType = (user && user?.accountType) ?? USER_TYPES.CANDIDATE
-  useEffect(() => {
-    console.log("new filters", filters);
-  }, [filters]);
+ 
+ 
+    useEffect(() => {
+    console.log(userType);
+
+
+  }, [userType]);
 
     useEffect(() => {
 
